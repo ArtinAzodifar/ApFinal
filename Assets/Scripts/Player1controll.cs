@@ -6,7 +6,7 @@ using UnityEngine.Scripting.APIUpdating;
 public class Player1controll : MonoBehaviour
 {
     [SerializeField] private float speed = 3.5f;
-    [SerializeField] private float jumpForce = 500f;
+    [SerializeField] private float jumpForce = 2000f;
     private Vector2 movingInput;
     private Boolean inDash = false;
     private Boolean isGrounded;
@@ -46,11 +46,11 @@ public class Player1controll : MonoBehaviour
         //character direction
         if (movingInput.x > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(2, 2, 2);
         }
         else if (movingInput.x < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-2, 2, 2);
         }
         Vector2 move = new Vector2(movingInput.x, 0) * moveSpeed * Time.deltaTime;
         transform.Translate(move);
