@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 5717232652958199175}
   - component: {fileID: 5386369071908965547}
   - component: {fileID: 8377446236137034488}
-  - component: {fileID: 3850082368266937096}
   - component: {fileID: 5724483556763639124}
+  - component: {fileID: 3513978815469789178}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,10 +104,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -176,6 +176,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 41b43c70-22c9-4d37-bac0-371dfa4cbdc8
     m_ActionName: 'inputs/dash[/Keyboard/leftShift]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8377446236137034488}
+        m_TargetAssemblyTypeName: Player1controll, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5775539e-ef4d-4a97-b4de-e4f774a927fd
+    m_ActionName: 'inputs/jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: inputs
@@ -194,8 +210,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
---- !u!61 &3850082368266937096
-BoxCollider2D:
+  jumpForce: 500
+--- !u!95 &5724483556763639124
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965920720854694110}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6bef90a441d36fe4aa2fafbfae7d0358, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &3513978815469789178
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -228,7 +267,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.2757268, y: 0.0029333234}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -238,27 +277,25 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.47601318, y: 0.7608}
-  m_EdgeRadius: 0
---- !u!95 &5724483556763639124
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965920720854694110}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bef90a441d36fe4aa2fafbfae7d0358, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.36047292, y: 0.034936666}
+      - {x: 0.4872375, y: 0.15200159}
+      - {x: 0.456173, y: 0.24868217}
+      - {x: 0.3420043, y: 0.2567836}
+      - {x: 0.33623666, y: 0.37352365}
+      - {x: 0.19609587, y: 0.37025368}
+      - {x: 0.17315006, y: 0.2787617}
+      - {x: 0.08074716, y: 0.22352362}
+      - {x: 0.024428047, y: -0.022285309}
+      - {x: -0.48538142, y: -0.27433306}
+      - {x: -0.4888571, y: -0.38680944}
+      - {x: -0.35000002, y: -0.38333336}
+      - {x: -0.104285, y: -0.38066608}
+      - {x: 0.016666668, y: -0.38333336}
+      - {x: 0.5166667, y: -0.38333336}
+      - {x: 0.50825834, y: -0.337354}
+      - {x: 0.45290333, y: -0.28596902}
+      - {x: 0.46510243, y: -0.22442722}
+      - {x: 0.44473195, y: -0.07105375}
+  m_UseDelaunayMesh: 0
