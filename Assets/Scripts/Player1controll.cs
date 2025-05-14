@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
@@ -6,10 +7,14 @@ using UnityEngine.Scripting.APIUpdating;
 public class Player1controll : MonoBehaviour
 {
     [SerializeField] private float speed = 3.5f;
-    [SerializeField] private float jumpForce = 2000f;
+    [SerializeField] private float jumpForce = 1000f;
+    [SerializeField] private float dashForce = 15f;
     private Vector2 movingInput;
-    private Boolean inDash = false;
-    private Boolean isGrounded;
+    private Rigidbody2D rb;
+    private TrailRenderer tr;
+    private bool inDash = false;
+    private bool canDash = true;
+    private bool isGrounded;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -20,40 +25,27 @@ public class Player1controll : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
-    
-    public void OnDash(InputAction.CallbackContext context) {
-        if (context.performed)
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed && canDash && movingInput.x != 0)
         {
-            inDash = true;
+            StartCoroutine(Dash());
         }
-        else if (context.canceled)
-        {
-            inDash = false;
-        }
+    }
+
+    public void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        tr = GetComponent<TrailRenderer>();
     }
 
     public void Update()
     {
         move();
-    }
-
-    private void move()
-    {
-        float moveSpeed = inDash ? speed * 2 : speed;
-        //character direction
-        if (movingInput.x > 0)
-        {
-            transform.localScale = new Vector3(2, 2, 2);
-        }
-        else if (movingInput.x < 0)
-        {
-            transform.localScale = new Vector3(-2, 2, 2);
-        }
-        Vector2 move = new Vector2(movingInput.x, 0) * moveSpeed * Time.deltaTime;
-        transform.Translate(move);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -70,5 +62,42 @@ public class Player1controll : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    private IEnumerator Dash()
+    {
+        inDash = true;
+        canDash = false;
+        float tempG = rb.gravityScale;
+        rb.gravityScale = 0;
+        tr.emitting = true;
+        rb.linearVelocity = new Vector2(transform.localScale.x * dashForce, 0f);
+        yield return new WaitForSeconds(0.25f);
+        tr.emitting = false;
+        rb.gravityScale = tempG;
+        inDash = false;
+        rb.linearVelocity = new Vector2(0f, 0f);
+        yield return new WaitForSeconds(0.5f);
+        canDash = true;
+
+    }
+
+    private void move()
+    {
+        if (inDash)
+        {
+            return;
+        }
+        //character direction
+        if (movingInput.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (movingInput.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        Vector2 move = new Vector2(movingInput.x, 0) * speed * Time.deltaTime;
+        transform.Translate(move);
     }
 }
