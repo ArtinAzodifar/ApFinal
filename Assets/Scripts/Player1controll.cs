@@ -12,6 +12,7 @@ public class Player1controll : MonoBehaviour
     private Vector2 movingInput;
     private Rigidbody2D rb;
     private TrailRenderer tr;
+    private Animator animator;
     private bool inDash = false;
     private bool canDash = true;
     private bool isGrounded;
@@ -25,6 +26,7 @@ public class Player1controll : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
+            animator.SetTrigger("Jump");
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
@@ -41,10 +43,15 @@ public class Player1controll : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     public void Update()
     {
+        if (inDash)
+        {
+            return;
+        }
         move();
     }
 
@@ -84,10 +91,7 @@ public class Player1controll : MonoBehaviour
 
     private void move()
     {
-        if (inDash)
-        {
-            return;
-        }
+        animator.SetBool("Run", movingInput.x != 0);
         //character direction
         if (movingInput.x > 0)
         {
@@ -97,7 +101,7 @@ public class Player1controll : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        Vector2 move = new Vector2(movingInput.x, 0) * speed * Time.deltaTime;
-        transform.Translate(move);
+        rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
+
     }
 }
