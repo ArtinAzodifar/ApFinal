@@ -7,13 +7,16 @@ using UnityEngine.Scripting.APIUpdating;
 public class Player1controll : MonoBehaviour
 {
     [SerializeField] private float speed = 3.5f;
-    [SerializeField] private float jumpForce = 1000f;
+    [SerializeField] private float jumpForce = 750f;
     [SerializeField] private float dashForce = 15f;
+    [SerializeField] private float groundCheckRadius = 0.1f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
     private Vector2 movingInput;
     private Rigidbody2D rb;
     private TrailRenderer tr;
     private Animator animator;
-    private bool inDash = false;
+    private bool isDashing = false;
     private bool canDash = true;
     private bool isGrounded;
 
@@ -26,7 +29,7 @@ public class Player1controll : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-            animator.SetTrigger("Jump");
+            animator.SetTrigger("Jump");//should be changed
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
@@ -48,60 +51,43 @@ public class Player1controll : MonoBehaviour
 
     public void Update()
     {
-        if (inDash)
+        if (isDashing)
         {
             return;
         }
+        GroundCheck();
         move();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void GroundCheck()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     private IEnumerator Dash()
     {
-        inDash = true;
+        isDashing = true;
         canDash = false;
         float tempG = rb.gravityScale;
         rb.gravityScale = 0;
         tr.emitting = true;
         rb.linearVelocity = new Vector2(transform.localScale.x * dashForce, 0f);
         yield return new WaitForSeconds(0.25f);
+
         tr.emitting = false;
         rb.gravityScale = tempG;
-        inDash = false;
+        isDashing = false;
         rb.linearVelocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(0.5f);
-        canDash = true;
 
+        canDash = true;
     }
 
     private void move()
     {
         animator.SetBool("Run", movingInput.x != 0);
         //character direction
-        if (movingInput.x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (movingInput.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+        transform.localScale = movingInput.x > 0 ? new Vector3(1, 1, 1) : transform.localScale = new Vector3(-1, 1, 1);
         rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
-
     }
 }
