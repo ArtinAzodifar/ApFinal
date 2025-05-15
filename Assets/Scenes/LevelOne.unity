@@ -341,6 +341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4492206620924619446, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4753702385071775785, guid: afca10f2ff9646b4bb30bb2e408eaacb, type: 3}
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.114662
@@ -383,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7061938598507072919, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: Leaf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
