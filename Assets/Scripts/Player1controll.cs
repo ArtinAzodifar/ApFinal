@@ -52,7 +52,7 @@ public class Player1controll : MonoBehaviour
         {
             transform.localScale = new Vector3(-2, 2, 2);
         }
-        Vector2 move = new Vector2(movingInput.x, 0) * moveSpeed * Time.deltaTime;
+        Vector2 move = new Vector2(movingInput.x, 0) * (moveSpeed * Time.deltaTime);
         transform.Translate(move);
     }
 
