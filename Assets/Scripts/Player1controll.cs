@@ -87,7 +87,7 @@ public class Player1controll : MonoBehaviour
     {
         animator.SetBool("Run", movingInput.x != 0);
         //character direction
-        transform.localScale = movingInput.x > 0 ? new Vector3(1, 1, 1) : transform.localScale = new Vector3(-1, 1, 1);
+        transform.localScale = movingInput.x > 0 ? new Vector3(1, 1, 1) : movingInput.x < 0 ? transform.localScale = new Vector3(-1, 1, 1) : transform.localScale = transform.localScale;
         rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
     }
 }
