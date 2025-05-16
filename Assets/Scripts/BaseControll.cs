@@ -31,10 +31,6 @@ public class BaseControll : MonoBehaviour
             animator.SetTrigger("Jump");//should be changed
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        else if (!isGrounded)
-        {
-            Debug.Log("not on ground");
-        }
     }
 
     //unity events:
