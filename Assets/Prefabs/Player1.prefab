@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2278294516558620632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.383, z: 0}
+  m_LocalPosition: {x: 0, y: -0.342, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,11 +128,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6898437977410001720}
   - component: {fileID: 5717232652958199175}
-  - component: {fileID: 8377446236137034488}
   - component: {fileID: 5724483556763639124}
   - component: {fileID: 3438486562844166490}
   - component: {fileID: 7857142932792548908}
-  - component: {fileID: 5572633119479040480}
+  - component: {fileID: 3511376500369991040}
+  - component: {fileID: 480699655682297650}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player1
@@ -184,26 +184,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8377446236137034488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965920720854694110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f8a3d7c31a6834a9c2f68c5f3f6129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3.5
-  jumpForce: 750
-  dashForce: 15
-  groundCheckRadius: 0.1
-  groundCheck: {fileID: 4403262218523403020}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!95 &5724483556763639124
 Animator:
   serializedVersion: 7
@@ -388,7 +368,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.39775097, y: 0.6523931}
   m_EdgeRadius: 0
---- !u!114 &5572633119479040480
+--- !u!114 &3511376500369991040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -415,8 +395,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8377446236137034488}
-        m_TargetAssemblyTypeName: Player1controll, Assembly-CSharp
+      - m_Target: {fileID: 480699655682297650}
+        m_TargetAssemblyTypeName: BaseControll, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -431,7 +411,7 @@ MonoBehaviour:
     m_ActionName: 'Player1-melee/move[/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8377446236137034488}
+      - m_Target: {fileID: 480699655682297650}
         m_TargetAssemblyTypeName: Player1controll, Assembly-CSharp
         m_MethodName: OnDash
         m_Mode: 0
@@ -447,8 +427,8 @@ MonoBehaviour:
     m_ActionName: 'Player1-melee/dash[/Keyboard/leftShift]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8377446236137034488}
-        m_TargetAssemblyTypeName: Player1controll, Assembly-CSharp
+      - m_Target: {fileID: 480699655682297650}
+        m_TargetAssemblyTypeName: BaseControll, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -474,3 +454,23 @@ MonoBehaviour:
   m_DefaultActionMap: Player1-melee
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &480699655682297650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965920720854694110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f8a3d7c31a6834a9c2f68c5f3f6129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  jumpForce: 750
+  groundCheckRadius: 0.2
+  groundCheck: {fileID: 4403262218523403020}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  dashForce: 15
