@@ -1,67 +1,38 @@
 using System;
 using System.Collections;
+using UnityEditor.Recorder.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
 
-public class Player1controll : MonoBehaviour
+public class Player1controll : BaseControll
 {
-    [SerializeField] private float speed = 3.5f;
-    [SerializeField] private float jumpForce = 750f;
     [SerializeField] private float dashForce = 15f;
-    [SerializeField] private float groundCheckRadius = 0.1f;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    private Vector2 movingInput;
-    private Rigidbody2D rb;
     private TrailRenderer tr;
-    private Animator animator;
     private bool isDashing = false;
     private bool canDash = true;
-    private bool isGrounded;
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        movingInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.performed && isGrounded)
-        {
-            animator.SetTrigger("Jump");//should be changed
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-    }
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && canDash && movingInput.x != 0)
+        if (context.performed && canDash && IsRunning())
         {
             StartCoroutine(Dash());
         }
     }
 
-    public void Awake()
+    //unity events:
+    public override void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        base.Awake();
         tr = GetComponent<TrailRenderer>();
-        animator = GetComponent<Animator>();
     }
-
-    public void Update()
+    public override void Update()
     {
         if (isDashing)
         {
             return;
         }
-        GroundCheck();
-        move();
-    }
-
-    private void GroundCheck()
-    {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        base.Update();
     }
 
     private IEnumerator Dash()
@@ -81,13 +52,5 @@ public class Player1controll : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         canDash = true;
-    }
-
-    private void move()
-    {
-        animator.SetBool("Run", movingInput.x != 0);
-        //character direction
-        transform.localScale = movingInput.x > 0 ? new Vector3(1, 1, 1) : movingInput.x < 0 ? transform.localScale = new Vector3(-1, 1, 1) : transform.localScale = transform.localScale;
-        rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
     }
 }
