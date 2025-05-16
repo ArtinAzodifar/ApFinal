@@ -12,6 +12,7 @@ public class Player1controll : BaseControll
     private bool isDashing = false;
     private bool canDash = true;
 
+    //inputs:
     public void OnDash(InputAction.CallbackContext context)
     {
         if (context.performed && canDash && IsRunning())

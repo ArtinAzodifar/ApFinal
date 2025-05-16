@@ -9,11 +9,11 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class BaseControll : MonoBehaviour
 {
-    [SerializeField] protected float speed;
-    [SerializeField] protected float jumpForce = 750f;
-    [SerializeField] protected float groundCheckRadius = 0.2f;
-    [SerializeField] protected Transform groundCheck;
-    [SerializeField] protected LayerMask groundLayer;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce = 750f;
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
     protected Rigidbody2D rb;
     protected Animator animator;
     protected bool isGrounded;
