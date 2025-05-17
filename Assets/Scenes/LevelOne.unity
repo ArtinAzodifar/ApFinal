@@ -390,7 +390,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1910903306 stripped
+--- !u!114 &1910903313 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6911694724335906176, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
   m_PrefabInstance: {fileID: 7123807589421899191}
@@ -428,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 816654553973444014, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1910903306}
+      objectReference: {fileID: 1910903313}
     - target: {fileID: 816654553973444014, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnShoot
@@ -484,6 +484,14 @@ PrefabInstance:
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916755636235493334, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916755636235493334, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.76666665
       objectReference: {fileID: 0}
     - target: {fileID: 6911694724335906176, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: jumpForce
