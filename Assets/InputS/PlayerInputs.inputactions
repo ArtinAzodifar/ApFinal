@@ -114,9 +114,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Shoot",
                     "type": "Button",
-                    "id": "1f497207-cecb-435e-b731-355984264a8b",
+                    "id": "f6dca6dc-1b8e-4175-bf9d-e4095605aa6f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -170,12 +170,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e1d1a5e1-f9bb-446f-ad69-79e260d4f850",
+                    "id": "89a4b1ff-8283-4af3-950b-531897812939",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

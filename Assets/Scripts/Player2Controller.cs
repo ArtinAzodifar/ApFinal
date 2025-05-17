@@ -4,128 +4,131 @@ using UnityEngine.InputSystem;
 
 public class Player2Controller : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpForce;
-    public Vector2 movingInput;
-
-    private bool isGrounded;
-    [SerializeField] private Transform groundCheckCollider;
-    private const float groundCheckRadius = 0.2f;
-    [SerializeField] private LayerMask groundLayer;
-
-    private int jumpCount;
-    private const int maxJumps = 2;
-
-    Animator animator;
-    private Rigidbody2D rb;
-    
+    private Vector2 _movementInput;
+    private Animator _animator;
+    private Rigidbody2D _rigidbody;
     [SerializeField] private GameObject arrow;
-    private bool canShoot = true;
+    
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
+
+    private int _jumpCount;
+    private const int MaxJump = 2;
+    
+    [SerializeField] private Transform groundCheckCollider;  
+    private const float GroundCheckRadius = 0.2f;  
+    [SerializeField] private LayerMask groundLayer;
+    
+    private bool _isGrounded;
+
+    private bool _canShoot;
 
     void Awake()
     {
-        isGrounded = false;
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _jumpCount = 0;
+        _canShoot = true;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        movingInput = context.ReadValue<Vector2>();
+        _movementInput = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && jumpCount < maxJumps)
+        if (context.performed && _jumpCount < MaxJump)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            jumpCount++;
-
-            animator.SetTrigger("Jump");
+            _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, 0f);
+            _rigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            _jumpCount++;
+            _animator.SetTrigger("Jump");
         }
     }
 
-    public void OnShot(InputAction.CallbackContext context)
+    public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.performed && canShoot)
+        Debug.Log("OnShoot was called!");
+        if (context.performed && _canShoot)
         {
-            canShoot = false; // block further shots
-            animator.SetTrigger("Shot");
-            StartCoroutine(DelayedArrowShot(0.6f)); // delay to shoot
-            StartCoroutine(ResetShotCooldown(1.2f)); // total animation duration (adjust as needed)
+            _canShoot = false;
+            _animator.SetTrigger("Shoot");
+
+            StartCoroutine(ShootArrowAfterDelay(0.6f));
+            StartCoroutine(AllowShootingAgainAfter(1.2f));
         }
     }
 
-
-    private IEnumerator DelayedArrowShot(float delay)
+    private IEnumerator ShootArrowAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        float direction = Mathf.Sign(transform.localScale.x); // +1 for right, -1 for left
+        float direction = transform.localScale.x > 0 ? 1f : -1f;
+        float offsetX = Mathf.Abs(transform.localScale.x) * 0.5f;
+        float offsetY = Mathf.Abs(transform.localScale.y) * 0.1f;
 
-        Vector3 offset = new Vector3(1.5f * direction, 0.15f, 0f); // relative to player
-        Vector3 spawnPos = transform.position + offset;
+        Vector3 spawnPosition = transform.position + new Vector3(offsetX * direction, offsetY, 0f);
+        GameObject newArrow = Instantiate(arrow, spawnPosition, Quaternion.identity);
 
-        GameObject newArrow = Instantiate(arrow, spawnPos, Quaternion.identity);
-
-        // Flip arrow to match direction
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
         newArrow.transform.localScale = arrowScale;
     }
 
-    private IEnumerator ResetShotCooldown(float cooldownTime)
+    private IEnumerator AllowShootingAgainAfter(float delay)
     {
-        yield return new WaitForSeconds(cooldownTime);
-        canShoot = true;
-    }
-    
-    public void groundCheck()
-    {
-        isGrounded = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(
-            groundCheckCollider.position, groundCheckRadius, groundLayer
-        );
-
-        foreach (Collider2D col in colliders)
-        {
-            if (col.CompareTag("Player1") || ((1 << col.gameObject.layer) & groundLayer) != 0)
-            {
-                isGrounded = true;
-                break;
-            }
-        }
-        
-        if (isGrounded && rb.linearVelocity.y <= 0.01f)
-        {
-            jumpCount = 0;
-        }
+        yield return new WaitForSeconds(delay);
+        _canShoot = true;
     }
 
 
-    void FixedUpdate()
+    void Update()
     {
         groundCheck();
         move();
     }
 
-    private void move()
+    private void move()  
     {
-        if (movingInput.x > 0)
+        Vector3 scale = transform.localScale;
+        
+        if (_movementInput.x > 0)
         {
-            transform.localScale = new Vector3(2, 2, 2);
-        }
-        else if (movingInput.x < 0)
+            scale.x = Mathf.Abs(scale.x);
+        } else if (_movementInput.x < 0)
         {
-            transform.localScale = new Vector3(-2, 2, 2);
+            scale.x = -Mathf.Abs(scale.x);
         }
-
-        bool isRunning = Mathf.Abs(movingInput.x) > 0.01f;
-        animator.SetBool("IsRun", isRunning);
-
-        Vector2 move = new Vector2(movingInput.x, 0) * (speed * Time.deltaTime);
+        
+        transform.localScale = scale;
+        
+        bool isRunning = Mathf.Abs(_movementInput.x) > 0.01f;  
+        _animator.SetBool("IsRunning", isRunning);
+        
+        Vector2 move = new Vector2(_movementInput.x, 0) * (moveSpeed * Time.deltaTime);  
         transform.Translate(move);
     }
+
+    void groundCheck()
+    {
+        _isGrounded = false;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckCollider.position, GroundCheckRadius);
+        foreach (Collider2D col in colliders)
+        {
+            if (col.gameObject.layer == LayerMask.NameToLayer("Ground") || col.gameObject.CompareTag("Player1"))
+            {
+                _isGrounded = true;
+                break;
+            }
+        }
+
+        if (_isGrounded && _rigidbody.linearVelocity.y <= 0.01f) //we need the second condition to prevent triple jump!
+        {
+            _jumpCount = 0;
+        }
+    }
+
+
 }
