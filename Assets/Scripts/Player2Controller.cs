@@ -22,6 +22,10 @@ public class Player2Controller : MonoBehaviour
     private bool _isGrounded;
 
     private bool _canShoot;
+    private bool _canSuperShoot;
+
+    public int superShootMana;
+    private int _maxMana;
 
     void Awake()
     {
@@ -29,6 +33,7 @@ public class Player2Controller : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _jumpCount = 0;
         _canShoot = true;
+        _maxMana = 10;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -43,13 +48,13 @@ public class Player2Controller : MonoBehaviour
             _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, 0f);
             _rigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             _jumpCount++;
-            _animator.SetTrigger("Jump");
+            if (_jumpCount == 1) _animator.SetTrigger("Jump");
+            else if (_jumpCount == 2) _animator.SetTrigger("DoubleJump");
         }
     }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        Debug.Log("OnShoot was called!");
         if (context.performed && _canShoot)
         {
             _canShoot = false;
@@ -82,6 +87,14 @@ public class Player2Controller : MonoBehaviour
         _canShoot = true;
     }
 
+    public void OnSuperShoot(InputAction.CallbackContext context)
+    {
+        if (context.performed && superShootMana >= _maxMana)
+        {
+            _animator.SetTrigger("SuperShoot");
+            superShootMana -= _maxMana;
+        }
+    }
 
     void Update()
     {

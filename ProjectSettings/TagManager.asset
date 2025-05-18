@@ -7,7 +7,7 @@ TagManager:
   - Ground
   - Player1
   - AttackZone
-  - enemy
+  - Enemy
   layers:
   - Default
   - TransparentFX

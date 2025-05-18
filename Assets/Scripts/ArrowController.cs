@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -25,14 +26,33 @@ public class ArrowController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            animator.SetTrigger("Arrow-hit");
+        } else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            animator.SetTrigger("Arrow-Damage");
+            StartCoroutine(ArrowDamageCooldown(0.7f));
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
         canMove = false;
-        animator.SetTrigger("Arrow-hit");
-        StartCoroutine(ArrowHitCooldown(0.7f));
     }
 
-    private IEnumerator ArrowHitCooldown(float cooldownTime)
+    private IEnumerator ArrowDamageCooldown(float cooldownTime)
     {
         yield return new WaitForSeconds(cooldownTime);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

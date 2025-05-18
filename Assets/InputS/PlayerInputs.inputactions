@@ -141,6 +141,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SuperShoot",
+                    "type": "Button",
+                    "id": "c8c0bea1-25d2-4513-9eed-fd184a16954e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -196,6 +205,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "145cb50f-bb00-4ae3-9263-257fe37c5536",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SuperShoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
