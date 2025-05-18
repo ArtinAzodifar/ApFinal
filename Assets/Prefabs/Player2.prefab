@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5060072617130127336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.367, z: 0}
+  m_LocalPosition: {x: 0, y: -0.376, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -251,12 +251,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6407480009654865880, guid: 6f66a20407ff0c343b51ea58696ce533, type: 3}
+  m_Sprite: {fileID: -4753702385071775785, guid: afca10f2ff9646b4bb30bb2e408eaacb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.8, y: 1.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -322,8 +322,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.78333336, y: 0.6333333}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.85, y: 0.76666665}
+    newSize: {x: 4.8, y: 1.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6911694724335906176}
         m_TargetAssemblyTypeName: Player2Controller, Assembly-CSharp
-        m_MethodName: OnShot
+        m_MethodName: OnShoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -498,8 +498,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 1f497207-cecb-435e-b731-355984264a8b
-    m_ActionName: 'player2-archer/Attack[/Mouse/leftButton]'
+    m_ActionId: f6dca6dc-1b8e-4175-bf9d-e4095605aa6f
+    m_ActionName: 'player2-archer/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c23a27f-ecb0-4183-b5c7-9fb9f53140ed
+    m_ActionName: 'Player1-melee/attack[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6911694724335906176}
+        m_TargetAssemblyTypeName: Player2Controller, Assembly-CSharp
+        m_MethodName: OnSuperShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c8c0bea1-25d2-4513-9eed-fd184a16954e
+    m_ActionName: 'player2-archer/SuperShoot[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: player2-archer
@@ -517,11 +537,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c231d0810f06740b7f84ba54d8e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.5
+  arrow: {fileID: 3664534347760074242, guid: 1cf649d943fcbfd4cb4a8818ab54de5f, type: 3}
+  moveSpeed: 5
   jumpForce: 800
-  movingInput: {x: 0, y: 0}
   groundCheckCollider: {fileID: 7240584209244786267}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  arrow: {fileID: 3664534347760074242, guid: 1cf649d943fcbfd4cb4a8818ab54de5f, type: 3}
+  superShootMana: 0
