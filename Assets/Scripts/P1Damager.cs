@@ -15,7 +15,7 @@ public class P1Damager : MonoBehaviour
         {
             return;
         }
-        if (other.CompareTag("enemy"))
+        if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Damagable>().Damage(1);
             damaged = true;

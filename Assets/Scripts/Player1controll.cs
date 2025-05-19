@@ -51,7 +51,6 @@ public class Player1controll : BaseControll
         isDashing = false;
         rb.linearVelocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(0.5f);
-
         canDash = true;
     }
 }
