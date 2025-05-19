@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 5473024972079206888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.15, y: -0.10500002, z: -5}
+  m_LocalPosition: {x: -9.639999, y: 12.32, z: -5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,7 +93,7 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0
     y: 0
     width: 0.5
     height: 1
@@ -711,13 +711,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c231d0810f06740b7f84ba54d8e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 3664534347760074242, guid: 1cf649d943fcbfd4cb4a8818ab54de5f, type: 3}
-  moveSpeed: 5
+  speed: 0
   jumpForce: 800
-  groundCheckCollider: {fileID: 7240584209244786267}
+  groundCheckRadius: 0.2
+  groundCheck: {fileID: 7240584209244786267}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  arrow: {fileID: 3664534347760074242, guid: 1cf649d943fcbfd4cb4a8818ab54de5f, type: 3}
   superShootMana: 0
 --- !u!61 &6335505045724180594
 BoxCollider2D:
