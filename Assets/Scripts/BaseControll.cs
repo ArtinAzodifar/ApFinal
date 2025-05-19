@@ -25,12 +25,12 @@ public class BaseControll : MonoBehaviour
     {
         movingInput = context.ReadValue<Vector2>();
     }
-    public void OnJump(InputAction.CallbackContext context)
+    public virtual void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded)
         {
             animator.SetTrigger("Jump");//should be changed
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
     }
 
@@ -68,6 +68,11 @@ public class BaseControll : MonoBehaviour
     public bool IsRunning()
     {
         return movingInput.x != 0;
+    }
+
+    public float GetJumpForce()
+    {
+        return jumpForce;
     }
 
 }
