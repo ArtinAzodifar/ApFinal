@@ -18,6 +18,7 @@ public class BaseControll : MonoBehaviour
     protected Animator animator;
     protected bool isGrounded;
     private Vector2 movingInput;
+    private const float SCALE = 2.2f;
 
     //inputs:
     public void OnMove(InputAction.CallbackContext context)
@@ -54,7 +55,7 @@ public class BaseControll : MonoBehaviour
     {
         animator.SetBool("Run", movingInput.x != 0);
         //character direction
-        transform.localScale = movingInput.x > 0 ? new Vector3(1, 1, 1) : movingInput.x < 0 ? transform.localScale = new Vector3(-1, 1, 1) : transform.localScale = transform.localScale;
+        transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
         rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
     }
     public void GroundCheck()

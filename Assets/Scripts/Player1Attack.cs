@@ -32,6 +32,10 @@ public class Player1Attack : MonoBehaviour
     {
         isAttacking = true;
         animator.SetTrigger("Attack");
+    }
+
+    private void ActiveCollider()//is called in the middle of attack animation event
+    {
         attackZone.gameObject.SetActive(true);
     }
     private void FinishAttack()//is called in the end of attack animation event

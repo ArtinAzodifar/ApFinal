@@ -10,6 +10,7 @@ public class Player2Controller : MonoBehaviour
     [SerializeField] private GameObject arrow;
     
     [SerializeField] private float moveSpeed;
+    private float _originalMoveSpeed;
     [SerializeField] private float jumpForce;
 
     private int _jumpCount;
@@ -27,13 +28,17 @@ public class Player2Controller : MonoBehaviour
     public int superShootMana;
     private int _maxMana;
 
+    private bool _isSliding;
+    private float _slideSpeedBoost;
+    
     void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _jumpCount = 0;
+        _jumpCount = 2;
         _canShoot = true;
         _maxMana = 10;
+        _slideSpeedBoost = 2f;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -94,6 +99,34 @@ public class Player2Controller : MonoBehaviour
             _animator.SetTrigger("SuperShoot");
             superShootMana -= _maxMana;
         }
+    }
+
+    public void OnSlide(InputAction.CallbackContext context)
+    {
+        if (context.performed && _movementInput != Vector2.zero)
+        {
+            _animator.SetTrigger("Slide");
+            StartCoroutine(Slide());
+        }
+    }
+
+    IEnumerator Slide()
+    {
+        _isSliding = true;
+    
+        float slideTime = 0.8f;
+        float elapsed = 0f;
+
+        while (elapsed < slideTime)
+        {
+            Vector2 move = new Vector2(_movementInput.x, 0) * (moveSpeed * _slideSpeedBoost * Time.deltaTime);  
+            transform.Translate(move);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        _isSliding = false;
     }
 
     void Update()
