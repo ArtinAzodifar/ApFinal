@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Player1
+  - AttackZone
+  - Enemy
+  - Camera1
+  - Camera2
   layers:
   - Default
   - TransparentFX
@@ -12,15 +17,15 @@ TagManager:
   - 
   - Water
   - UI
+  - Ground
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Player1
+  - Player2
   - 
   - 
   - 
