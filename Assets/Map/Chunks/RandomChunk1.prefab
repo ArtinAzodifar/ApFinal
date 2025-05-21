@@ -1705,7 +1705,7 @@ GameObject:
   - component: {fileID: 2184102979973645552}
   - component: {fileID: 1059706421731258192}
   m_Layer: 0
-  m_Name: Rocks
+  m_Name: Stones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
