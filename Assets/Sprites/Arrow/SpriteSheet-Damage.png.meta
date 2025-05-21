@@ -125,11 +125,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        y: 30
+        width: 27
+        height: 11
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,12 +146,12 @@ TextureImporter:
       name: SpriteSheet-Damage_1
       rect:
         serializedVersion: 2
-        x: 262
-        y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        x: 256
+        y: 24
+        width: 40
+        height: 14
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: SpriteSheet-Damage_2
       rect:
         serializedVersion: 2
-        x: 524
-        y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        x: 526
+        y: 5
+        width: 57
+        height: 35
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: SpriteSheet-Damage_3
       rect:
         serializedVersion: 2
-        x: 786
+        x: 813
         y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        width: 74
+        height: 38
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: SpriteSheet-Damage_4
       rect:
         serializedVersion: 2
-        x: 1048
+        x: 1117
         y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        width: 77
+        height: 38
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: SpriteSheet-Damage_5
       rect:
         serializedVersion: 2
-        x: 1310
+        x: 1425
         y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        width: 79
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: SpriteSheet-Damage_6
       rect:
         serializedVersion: 2
-        x: 1572
+        x: 1735
         y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        width: 79
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: SpriteSheet-Damage_7
       rect:
         serializedVersion: 2
-        x: 1834
+        x: 2044
         y: 0
-        width: 262
-        height: 41
-      alignment: 9
-      pivot: {x: 0.5, y: 0.85}
+        width: 79
+        height: 40
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
