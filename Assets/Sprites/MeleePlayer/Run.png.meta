@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: edba36dce3c969e42b482e1858a65f59
+guid: f13afe631b78fe749ad652b9baa1deec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1759288059878670697
-    second: tileset-old_0
+      213: 4035959289877228764
+    second: Walk_0
   - first:
-      213: -2516726838541085641
-    second: tileset-old_1
+      213: -982904232830982447
+    second: Walk_1
   - first:
-      213: 7629713492487652713
-    second: tileset-old_2
+      213: -350908408369970039
+    second: Walk_2
   - first:
-      213: -6753558834829766180
-    second: tileset-old_3
+      213: -5409570386352685021
+    second: Walk_3
   - first:
-      213: -8316565092312250706
-    second: tileset-old_4
+      213: 1553940418269799609
+    second: Walk_4
   - first:
-      213: 8677746570141391724
-    second: tileset-old_5
+      213: 2416434504916517810
+    second: Walk_5
   - first:
-      213: -1827949974558951043
-    second: tileset-old_6
+      213: -6428935122508569504
+    second: Walk_6
+  - first:
+      213: 7144598999076838305
+    second: Walk_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 31
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +93,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -118,155 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tileset-old_0
+      name: Walk_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 111
-        width: 33
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 79e7855a4d0c597e0800000000000000
-      internalID: -1759288059878670697
+      spriteID: cdce119379b920830800000000000000
+      internalID: 4035959289877228764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_1
+      name: Walk_1
       rect:
         serializedVersion: 2
-        x: 47
-        y: 111
-        width: 34
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 288
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7341118464ac21dd0800000000000000
-      internalID: -2516726838541085641
+      spriteID: 1d6a1e1dec50c52f0800000000000000
+      internalID: -982904232830982447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_2
+      name: Walk_2
       rect:
         serializedVersion: 2
-        x: 95
-        y: 111
-        width: 34
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 576
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9654bb95fff22e960800000000000000
-      internalID: 7629713492487652713
+      spriteID: 984096a69a2512bf0800000000000000
+      internalID: -350908408369970039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_3
+      name: Walk_3
       rect:
         serializedVersion: 2
-        x: 143
-        y: 111
-        width: 34
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 864
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd15548850a8642a0800000000000000
-      internalID: -6753558834829766180
+      spriteID: 320c9fd05685de4b0800000000000000
+      internalID: -5409570386352685021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_4
+      name: Walk_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 63
-        width: 33
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1152
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ea680519c10a59c80800000000000000
-      internalID: -8316565092312250706
+      spriteID: 9b4e719c394b09510800000000000000
+      internalID: 1553940418269799609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_5
+      name: Walk_5
       rect:
         serializedVersion: 2
-        x: 47
-        y: 15
-        width: 34
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1440
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c6b5424678c8d6870800000000000000
-      internalID: 8677746570141391724
+      spriteID: 2b3cb802166e88120800000000000000
+      internalID: 2416434504916517810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_6
+      name: Walk_6
       rect:
         serializedVersion: 2
-        x: 95
-        y: 15
-        width: 34
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1728
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d79ba3bde21d1a6e0800000000000000
-      internalID: -1827949974558951043
+      spriteID: 06428da6195d7c6a0800000000000000
+      internalID: -6428935122508569504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_7
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ab169a9fe6b62360800000000000000
+      internalID: 7144598999076838305
       vertices: []
       indices: 
       edges: []
@@ -275,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 26048c6fa04f8254ca63e3ccced02bd8
+    spriteID: c131356d2a31545419ccce6df8601879
     internalID: 0
     vertices: []
     indices: 
@@ -285,13 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tileset-old_0: -1759288059878670697
-      tileset-old_1: -2516726838541085641
-      tileset-old_2: 7629713492487652713
-      tileset-old_3: -6753558834829766180
-      tileset-old_4: -8316565092312250706
-      tileset-old_5: 8677746570141391724
-      tileset-old_6: -1827949974558951043
+      Walk_0: 4035959289877228764
+      Walk_1: -982904232830982447
+      Walk_2: -350908408369970039
+      Walk_3: -5409570386352685021
+      Walk_4: 1553940418269799609
+      Walk_5: 2416434504916517810
+      Walk_6: -6428935122508569504
+      Walk_7: 7144598999076838305
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

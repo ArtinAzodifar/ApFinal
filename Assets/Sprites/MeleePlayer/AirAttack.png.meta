@@ -1,28 +1,67 @@
 fileFormatVersion: 2
-guid: edba36dce3c969e42b482e1858a65f59
+guid: 556ffff49e65bdc40bc190acfde3a831
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1759288059878670697
-    second: tileset-old_0
+      213: 7904513119024007535
+    second: AirAttack_0
   - first:
-      213: -2516726838541085641
-    second: tileset-old_1
+      213: 187467421131352405
+    second: AirAttack_1
   - first:
-      213: 7629713492487652713
-    second: tileset-old_2
+      213: 1536769090702548388
+    second: AirAttack_2
   - first:
-      213: -6753558834829766180
-    second: tileset-old_3
+      213: -5345747693556263845
+    second: AirAttack_3
   - first:
-      213: -8316565092312250706
-    second: tileset-old_4
+      213: -4123371573874687112
+    second: AirAttack_4
   - first:
-      213: 8677746570141391724
-    second: tileset-old_5
+      213: 342357397940085496
+    second: AirAttack_5
   - first:
-      213: -1827949974558951043
-    second: tileset-old_6
+      213: -1128313907667885480
+    second: AirAttack_6
+  - first:
+      213: -4839094865837513505
+    second: AirAttack_7
+  - first:
+      213: -5964600743331700690
+    second: AirAttack_8
+  - first:
+      213: -8449598491513409442
+    second: AirAttack_9
+  - first:
+      213: -249285391890372828
+    second: AirAttack_10
+  - first:
+      213: 2052035730677627351
+    second: AirAttack_11
+  - first:
+      213: 8984860847807171946
+    second: AirAttack_12
+  - first:
+      213: 1982215504925670768
+    second: AirAttack_13
+  - first:
+      213: -7601224458080701137
+    second: AirAttack_14
+  - first:
+      213: -4732369202857021656
+    second: AirAttack_15
+  - first:
+      213: 4258670075034444575
+    second: AirAttack_16
+  - first:
+      213: -7944558421255986929
+    second: AirAttack_17
+  - first:
+      213: -2957575069656353118
+    second: AirAttack_18
+  - first:
+      213: 1335585738610992638
+    second: AirAttack_19
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 31
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +129,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -118,155 +157,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tileset-old_0
+      name: AirAttack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 111
-        width: 33
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 79e7855a4d0c597e0800000000000000
-      internalID: -1759288059878670697
+      spriteID: f6947d54dc872bd60800000000000000
+      internalID: 7904513119024007535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_1
+      name: AirAttack_1
       rect:
         serializedVersion: 2
-        x: 47
-        y: 111
-        width: 34
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 288
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7341118464ac21dd0800000000000000
-      internalID: -2516726838541085641
+      spriteID: 5592e7350a40a9200800000000000000
+      internalID: 187467421131352405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_2
+      name: AirAttack_2
       rect:
         serializedVersion: 2
-        x: 95
-        y: 111
-        width: 34
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 576
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9654bb95fff22e960800000000000000
-      internalID: 7629713492487652713
+      spriteID: 4ad10298853b35510800000000000000
+      internalID: 1536769090702548388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_3
+      name: AirAttack_3
       rect:
         serializedVersion: 2
-        x: 143
-        y: 111
-        width: 34
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 864
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd15548850a8642a0800000000000000
-      internalID: -6753558834829766180
+      spriteID: b5417b2bbc610d5b0800000000000000
+      internalID: -5345747693556263845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_4
+      name: AirAttack_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 63
-        width: 33
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1152
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ea680519c10a59c80800000000000000
-      internalID: -8316565092312250706
+      spriteID: 873814e6667d6c6c0800000000000000
+      internalID: -4123371573874687112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_5
+      name: AirAttack_5
       rect:
         serializedVersion: 2
-        x: 47
-        y: 15
-        width: 34
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1440
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c6b5424678c8d6870800000000000000
-      internalID: 8677746570141391724
+      spriteID: 8f222725d3c40c400800000000000000
+      internalID: 342357397940085496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_6
+      name: AirAttack_6
       rect:
         serializedVersion: 2
-        x: 95
-        y: 15
-        width: 34
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1728
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d79ba3bde21d1a6e0800000000000000
-      internalID: -1827949974558951043
+      spriteID: 852a252aa7c6750f0800000000000000
+      internalID: -1128313907667885480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AirAttack_7
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 288
+        height: 129
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd4a65fabd418dcb0800000000000000
+      internalID: -4839094865837513505
       vertices: []
       indices: 
       edges: []
@@ -275,7 +336,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 26048c6fa04f8254ca63e3ccced02bd8
+    spriteID: 6c8484b60c5849f459eb34e6c72cdf01
     internalID: 0
     vertices: []
     indices: 
@@ -285,13 +346,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tileset-old_0: -1759288059878670697
-      tileset-old_1: -2516726838541085641
-      tileset-old_2: 7629713492487652713
-      tileset-old_3: -6753558834829766180
-      tileset-old_4: -8316565092312250706
-      tileset-old_5: 8677746570141391724
-      tileset-old_6: -1827949974558951043
+      AirAttack_0: 7904513119024007535
+      AirAttack_1: 187467421131352405
+      AirAttack_2: 1536769090702548388
+      AirAttack_3: -5345747693556263845
+      AirAttack_4: -4123371573874687112
+      AirAttack_5: 342357397940085496
+      AirAttack_6: -1128313907667885480
+      AirAttack_7: -4839094865837513505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
