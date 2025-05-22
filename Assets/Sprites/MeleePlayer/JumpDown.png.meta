@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: edba36dce3c969e42b482e1858a65f59
+guid: 40676343cb92515489c70bf194b58c6a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1759288059878670697
-    second: tileset-old_0
+      213: 4077299209633783652
+    second: JumpDown_0
   - first:
-      213: -2516726838541085641
-    second: tileset-old_1
+      213: 943188945265326868
+    second: JumpDown_1
   - first:
-      213: 7629713492487652713
-    second: tileset-old_2
-  - first:
-      213: -6753558834829766180
-    second: tileset-old_3
-  - first:
-      213: -8316565092312250706
-    second: tileset-old_4
-  - first:
-      213: 8677746570141391724
-    second: tileset-old_5
-  - first:
-      213: -1827949974558951043
-    second: tileset-old_6
+      213: 3778587667513115372
+    second: JumpDown_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 31
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +78,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -118,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tileset-old_0
+      name: JumpDown_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 111
-        width: 33
-        height: 69
+        y: 0
+        width: 288
+        height: 129
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 79e7855a4d0c597e0800000000000000
-      internalID: -1759288059878670697
+      spriteID: 46fd339570a759830800000000000000
+      internalID: 4077299209633783652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_1
+      name: JumpDown_1
       rect:
         serializedVersion: 2
-        x: 47
-        y: 111
-        width: 34
-        height: 25
+        x: 288
+        y: 0
+        width: 288
+        height: 129
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7341118464ac21dd0800000000000000
-      internalID: -2516726838541085641
+      spriteID: 41b7d963951e61d00800000000000000
+      internalID: 943188945265326868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-old_2
+      name: JumpDown_2
       rect:
         serializedVersion: 2
-        x: 95
-        y: 111
-        width: 34
-        height: 24
+        x: 576
+        y: 0
+        width: 288
+        height: 129
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,96 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9654bb95fff22e960800000000000000
-      internalID: 7629713492487652713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tileset-old_3
-      rect:
-        serializedVersion: 2
-        x: 143
-        y: 111
-        width: 34
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cd15548850a8642a0800000000000000
-      internalID: -6753558834829766180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tileset-old_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 63
-        width: 33
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ea680519c10a59c80800000000000000
-      internalID: -8316565092312250706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tileset-old_5
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 15
-        width: 34
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6b5424678c8d6870800000000000000
-      internalID: 8677746570141391724
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tileset-old_6
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 15
-        width: 34
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d79ba3bde21d1a6e0800000000000000
-      internalID: -1827949974558951043
+      spriteID: ce28acab67d307430800000000000000
+      internalID: 3778587667513115372
       vertices: []
       indices: 
       edges: []
@@ -275,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 26048c6fa04f8254ca63e3ccced02bd8
+    spriteID: 31ded04c45ba1504181752d341171222
     internalID: 0
     vertices: []
     indices: 
@@ -285,13 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tileset-old_0: -1759288059878670697
-      tileset-old_1: -2516726838541085641
-      tileset-old_2: 7629713492487652713
-      tileset-old_3: -6753558834829766180
-      tileset-old_4: -8316565092312250706
-      tileset-old_5: 8677746570141391724
-      tileset-old_6: -1827949974558951043
+      JumpDown_0: 4077299209633783652
+      JumpDown_1: 943188945265326868
+      JumpDown_2: 3778587667513115372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
