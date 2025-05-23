@@ -6,6 +6,7 @@ public class Ogre : BaseMovingEnemy
     [SerializeField] private float stopDistance = 2f;
     private Transform attackZone;
     private bool isAttacking = false;
+    private bool isInCoolDown = false;
 
     public override void Awake()
     {
@@ -37,6 +38,7 @@ public class Ogre : BaseMovingEnemy
 
     private void StartAttack()
     {
+        if (isInCoolDown) return;
         isAttacking = true;
         // animator.SetTrigger("Attack");
     }
@@ -49,5 +51,13 @@ public class Ogre : BaseMovingEnemy
     {
         isAttacking = false;
         attackZone.gameObject.SetActive(false);
+        StartCoroutine(CoolDown());
+    }
+
+    private IEnumerator CoolDown()
+    {
+        isInCoolDown = true;
+        yield return new WaitForSeconds(0.7f);
+        isInCoolDown = false;
     }
 }
