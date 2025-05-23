@@ -103,10 +103,10 @@ TextureImporter:
       name: WoodenSpikes_0
       rect:
         serializedVersion: 2
-        x: 155
-        y: 431
-        width: 715
-        height: 398
+        x: 151
+        y: 538
+        width: 720
+        height: 387
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d12ff95f69c520f46aa6c70618bb3607
+    spriteID: 5a75e47efe55eb5498a0aa974d844951
     internalID: 0
     vertices: []
     indices: 

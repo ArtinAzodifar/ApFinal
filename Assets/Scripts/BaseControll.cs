@@ -10,7 +10,7 @@ using UnityEngine.Scripting.APIUpdating;
 public class BaseControll : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float jumpForce = 750f;
+    [SerializeField] private float jumpForce;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -39,7 +39,8 @@ public class BaseControll : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        speed = gameObject.CompareTag("Player1") ? 3.5f : 5f;
+        speed = gameObject.CompareTag("Player1") ? 6f : 7.5f;
+        jumpForce = gameObject.CompareTag("Player1") ? 1200f : 880f;
     }
     public virtual void Update()
     {
