@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Camera1
   - Camera2
+  - Player2
   layers:
   - Default
   - TransparentFX
