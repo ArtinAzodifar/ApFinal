@@ -18,6 +18,10 @@ public class BaseControll : MonoBehaviour
     protected Animator animator;
     protected bool isGrounded;
     private Vector2 movingInput;
+    [SerializeField] private float knockbackForce;
+    private float knockbackTime = 0;
+    private float knockbackTotalTime = 0.2f;
+    private bool knockFromRight;
     private const float SCALE = 2.2f;
 
     //inputs:
@@ -57,7 +61,15 @@ public class BaseControll : MonoBehaviour
         animator.SetBool("Run", movingInput.x != 0);
         //character direction
         transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
-        rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
+        if (knockbackTime <= 0)
+        {
+            rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = knockFromRight ? new Vector2(-knockbackForce, knockbackForce) : new Vector2(knockbackForce, knockbackForce);
+            knockbackTime -= Time.deltaTime;
+        }
     }
     public void GroundCheck()
     {
@@ -74,6 +86,20 @@ public class BaseControll : MonoBehaviour
     public float GetJumpForce()
     {
         return jumpForce;
+    }
+
+    //setters:
+    public void setKnockbackTime()
+    {
+        knockbackTime = knockbackTotalTime;
+    }
+    public void setKnockFromRight(bool b)
+    {
+        knockFromRight = b;
+    }
+    public void setKnockbackForce(float f)
+    {
+        knockbackForce = f;
     }
 
 }

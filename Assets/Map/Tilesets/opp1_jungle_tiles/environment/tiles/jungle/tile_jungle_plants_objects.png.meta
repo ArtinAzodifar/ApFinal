@@ -240,6 +240,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1334,7 +1347,56 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tile_jungle_plants_objects_0: -6574516643534974967
+      tile_jungle_plants_objects_1: -2192006777652283914
+      tile_jungle_plants_objects_10: -5594258131475566225
+      tile_jungle_plants_objects_11: -1556023176204739170
+      tile_jungle_plants_objects_12: -9067986933401007864
+      tile_jungle_plants_objects_13: 8091458869876492257
+      tile_jungle_plants_objects_14: -8076969330329749090
+      tile_jungle_plants_objects_15: 5100138772280775990
+      tile_jungle_plants_objects_16: 4750625178678692602
+      tile_jungle_plants_objects_17: -2143086809738225803
+      tile_jungle_plants_objects_18: -2065402381455521858
+      tile_jungle_plants_objects_19: 4431819520378384170
+      tile_jungle_plants_objects_2: 4819548709854397930
+      tile_jungle_plants_objects_20: -3253887268404936223
+      tile_jungle_plants_objects_21: -7629151924954496990
+      tile_jungle_plants_objects_22: -3621196110428507242
+      tile_jungle_plants_objects_23: 4192595743939096630
+      tile_jungle_plants_objects_24: 5349553461512107651
+      tile_jungle_plants_objects_25: 7571791081505570069
+      tile_jungle_plants_objects_26: 3736734344703191054
+      tile_jungle_plants_objects_27: 6191175372798611302
+      tile_jungle_plants_objects_28: -1630842624630027158
+      tile_jungle_plants_objects_29: -7051965014031001579
+      tile_jungle_plants_objects_3: 5293392956868746899
+      tile_jungle_plants_objects_30: -4402352539517467410
+      tile_jungle_plants_objects_31: 1255609215950403675
+      tile_jungle_plants_objects_32: -7370716281554166024
+      tile_jungle_plants_objects_33: -3061755759442424053
+      tile_jungle_plants_objects_34: 5722190582129188687
+      tile_jungle_plants_objects_35: -5776672326479238952
+      tile_jungle_plants_objects_36: -3122816214041787387
+      tile_jungle_plants_objects_37: 77429981473445541
+      tile_jungle_plants_objects_38: -6826706493003397016
+      tile_jungle_plants_objects_39: -6816907351492877715
+      tile_jungle_plants_objects_4: -28685942549086970
+      tile_jungle_plants_objects_40: -8834137520983181182
+      tile_jungle_plants_objects_41: -5016565783387699537
+      tile_jungle_plants_objects_42: -2108251811862063105
+      tile_jungle_plants_objects_43: 4794608830752206462
+      tile_jungle_plants_objects_44: -2393465835911510393
+      tile_jungle_plants_objects_45: 3135292413918539591
+      tile_jungle_plants_objects_46: -7100155286868263958
+      tile_jungle_plants_objects_47: -8479038853346841971
+      tile_jungle_plants_objects_48: 1547140675013883867
+      tile_jungle_plants_objects_5: 3360465967025873512
+      tile_jungle_plants_objects_6: -6332273755119440817
+      tile_jungle_plants_objects_7: 2383470237747545331
+      tile_jungle_plants_objects_8: -3621590476577116293
+      tile_jungle_plants_objects_9: -3918610266876964731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
