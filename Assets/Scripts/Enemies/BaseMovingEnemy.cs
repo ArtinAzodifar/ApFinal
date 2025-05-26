@@ -31,7 +31,7 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
         Chase();
     }
 
-    public void FindPlayer()
+    public virtual void FindPlayer()
     {
         if (isChasing || inCoolDown) return;
 
@@ -39,7 +39,6 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
         float leafDistance = transform.position.x - leaf.transform.position.x;
         if (Mathf.Abs(meleeDistance) <= distance || Mathf.Abs(leafDistance) <= distance)
         {
-            Debug.Log("found!");
             isChasing = true;
             if (Mathf.Abs(meleeDistance) < Mathf.Abs(leafDistance)) //nazdik tare = melee
             {
@@ -68,12 +67,12 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
         if (targetDistance < 0)
         {
             isMovingRight = true;
-            transform.localScale = new Vector3(scale, scale, scale);
+            transform.localScale = new Vector3(scale, Mathf.Abs(scale), Mathf.Abs(scale));
         }
         else
         {
             isMovingRight = false;
-            transform.localScale = new Vector3(-scale, scale, scale);
+            transform.localScale = new Vector3(-scale, Mathf.Abs(scale), Mathf.Abs(scale));
         }
     }
 }
