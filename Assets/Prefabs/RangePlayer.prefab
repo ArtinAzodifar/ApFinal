@@ -749,8 +749,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7240584209244786267}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
-  knockbackForce: 1000
+    m_Bits: 8256
   arrow: {fileID: 3664534347760074242, guid: 1cf649d943fcbfd4cb4a8818ab54de5f, type: 3}
   superShootMana: 0
 --- !u!61 &6335505045724180594

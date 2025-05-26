@@ -619,8 +619,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4403262218523403020}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
-  knockbackForce: 900
+    m_Bits: 16448
   dashForce: 15
 --- !u!114 &4968053446426283087
 MonoBehaviour:
