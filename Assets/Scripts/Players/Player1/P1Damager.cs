@@ -21,4 +21,17 @@ public class P1Damager : MonoBehaviour
             damaged = true;
         }
     }
+    
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (damaged)
+        {
+            return;
+        }
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Damagable>().Damage(1);
+            damaged = true;
+        }
+    }
 }

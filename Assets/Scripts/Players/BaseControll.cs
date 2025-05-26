@@ -31,7 +31,7 @@ public class BaseControll : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-            animator.SetTrigger("Jump");//should be changed
+            animator.SetTrigger("Jump");
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
     }

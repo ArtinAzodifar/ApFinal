@@ -11,6 +11,7 @@ TagManager:
   - Camera1
   - Camera2
   - Player2
+  - OgreAttackZone
   layers:
   - Default
   - TransparentFX
