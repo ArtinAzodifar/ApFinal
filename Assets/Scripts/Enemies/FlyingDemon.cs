@@ -1,13 +1,16 @@
+using System;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class FlyingDemon : MonoBehaviour
 {
 
     [SerializeField] private float shootTimer;
-    [SerializeField] private Transform melee;
-    [SerializeField] private Transform leaf;
-    [SerializeField] private GameObject fire;
-    private Transform target;
+    [SerializeField] private ObjectPooler fire;
+    [SerializeField] private float distance;
+    private GameObject melee;
+    private GameObject leaf;
+    private GameObject target;
     private Animator animator;
     private float timePast = 0;
     private bool canShoot = false;
@@ -15,6 +18,8 @@ public class FlyingDemon : MonoBehaviour
     public void Awake()
     {
         animator = GetComponent<Animator>();
+        melee = GameObject.FindWithTag("Player1");
+        leaf = GameObject.FindWithTag("Player2");
     }
     public void Update()
     {
@@ -32,9 +37,9 @@ public class FlyingDemon : MonoBehaviour
 
     private void FindPlayer()
     {
-        float meleeDistance = transform.position.x - melee.position.x;
-        float leafDistance = transform.position.x - leaf.position.x;
-        if (Mathf.Abs(meleeDistance) <= 15 || Mathf.Abs(leafDistance) <= 15)
+        float meleeDistance = transform.position.x - melee.transform.position.x;
+        float leafDistance = transform.position.x - leaf.transform.position.x;
+        if (Mathf.Abs(meleeDistance) <= distance || Mathf.Abs(leafDistance) <= distance)
         {
             canShoot = true;
             if (Mathf.Abs(meleeDistance) < Mathf.Abs(leafDistance)) //nazdik tare = melee
@@ -57,22 +62,24 @@ public class FlyingDemon : MonoBehaviour
 
     private void Shoot()//is called in the middle of attack animation
     {
-        float distance = transform.localScale.x > 0 ? -0.4f : 0.4f;
+        float distance = transform.localScale.x > 0 ? -1f : 1f;
         Vector3 position = new Vector3(transform.position.x + distance, transform.position.y, 0);
-        Instantiate(fire, position, transform.rotation);
+        GameObject fireBall = fire.GetObject();
+        fireBall.transform.position = position;
+        fireBall.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
-    public void setDirection(Transform target)
+    public void setDirection(GameObject target)
     {
         if (target == null) return;
-        float targetDistance = transform.position.x - target.position.x;
+        float targetDistance = transform.position.x - target.transform.position.x;
         if (targetDistance < 0)
         {
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
         else
         {
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
     }
 }
