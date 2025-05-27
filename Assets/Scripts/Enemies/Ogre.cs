@@ -1,24 +1,28 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Ogre : BaseMovingEnemy
 {
-    [SerializeField] private float stopDistance = 2f;
+    [SerializeField] private float stopDistance;
+    [FormerlySerializedAs("PlayerLayers")] [SerializeField] private LayerMask playerLayers;
     private Transform attackZone;
+    private float attackRange = 1f;
     private bool isAttacking = false;
     private bool isInCoolDown = false;
 
     public override void Awake()
     {
         base.Awake();
-        attackZone = attackZone = transform.Find("AttackZone");
+        attackZone = transform.Find("OgreAttackZone");
     }
 
     public override void Chase()
     {
+        animator.SetBool("Run", isChasing && !isAttacking);
         if (!isChasing) return;
 
-        float targetDistance = transform.position.x - target.position.x;
+        float targetDistance = transform.position.x - target.transform.position.x;
         if (Mathf.Abs(targetDistance) <= stopDistance)
         {
             setDirection(target);
@@ -28,7 +32,7 @@ public class Ogre : BaseMovingEnemy
                 StartAttack();
             }
         }
-        else
+        else if(!isAttacking)
         {
             isAttacking = false;
             setDirection(target);
@@ -40,24 +44,43 @@ public class Ogre : BaseMovingEnemy
     {
         if (isInCoolDown) return;
         isAttacking = true;
-        // animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack");
     }
 
     private void ActiveCollider()//is called in the middle of attack animation event
     {
-        attackZone.gameObject.SetActive(true);
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackZone.position, attackRange, playerLayers);
+        foreach (Collider2D player in hitPlayers)
+        {
+
+            if (player.gameObject.GetComponent<Damagable>() != null)
+            {
+                player.gameObject.GetComponent<Damagable>().Damage(1);   
+            }
+            BaseControll b = player.gameObject.GetComponent<BaseControll>();
+            b.setKnockFromRight(player.gameObject.transform.position.x <= transform.position.x);
+            StartCoroutine(b.KnockBack(700));
+        }
     }
     private void FinishAttack()//is called in the end of attack animation event
     {
         isAttacking = false;
-        attackZone.gameObject.SetActive(false);
         StartCoroutine(CoolDown());
     }
 
     private IEnumerator CoolDown()
     {
+        bool oldIsChasing = isChasing;
+        isChasing = false;
         isInCoolDown = true;
         yield return new WaitForSeconds(0.7f);
         isInCoolDown = false;
+        isChasing = oldIsChasing;
+    }
+    void OnDrawGizmosSelected()
+    {
+        if (attackZone == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackZone.position, attackRange);
     }
 }

@@ -1,40 +1,46 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 {
-    [SerializeField] protected Transform melee;
-    [SerializeField] protected Transform leaf;
     [SerializeField] protected float speed;
+    [SerializeField] protected float distance;
+    [SerializeField] protected float scale;
+    [SerializeField] protected GameObject healthbar;
+    protected GameObject melee;
+    protected GameObject leaf;
+    protected GameObject target;
     protected Rigidbody2D rb;
-    // protected Animator animator;
-    protected Transform target;
+    protected Animator animator;
     protected bool isChasing;
+    protected bool inCoolDown = false;
     protected bool isMovingRight;
 
     //unity events:
     public virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        // animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         isChasing = false;
         isMovingRight = false;
+        melee = GameObject.FindGameObjectWithTag("Player1");
+        leaf = GameObject.FindGameObjectWithTag("Player2");
     }
     public virtual void Update()
     {
-        // animator.SetBool("Run", isChasing);
+        animator.SetBool("Run", isChasing);
         FindPlayer();
         Chase();
     }
 
-    public void FindPlayer()
+    public virtual void FindPlayer()
     {
-        if (isChasing) return;
+        if (isChasing || inCoolDown) return;
 
-        float meleeDistance = transform.position.x - melee.position.x;
-        float leafDistance = transform.position.x - leaf.position.x;
-        if (Mathf.Abs(meleeDistance) <= 5 || Mathf.Abs(leafDistance) <= 5)
+        float meleeDistance = transform.position.x - melee.transform.position.x;
+        float leafDistance = transform.position.x - leaf.transform.position.x;
+        if (Mathf.Abs(meleeDistance) <= distance || Mathf.Abs(leafDistance) <= distance)
         {
-            Debug.Log("found!");
             isChasing = true;
             if (Mathf.Abs(meleeDistance) < Mathf.Abs(leafDistance)) //nazdik tare = melee
             {
@@ -56,19 +62,27 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
         rb.linearVelocity = new Vector2((isMovingRight ? 1 : -1) * speed, 0);
     }
 
-    public void setDirection(Transform target)
+    public void setDirection(GameObject target)
     {
         if (target == null) return;
-        float targetDistance = transform.position.x - target.position.x;
+        float targetDistance = transform.position.x - target.transform.position.x;
         if (targetDistance < 0)
         {
             isMovingRight = true;
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(scale, Mathf.Abs(scale), Mathf.Abs(scale));
+            if (healthbar != null)
+            {
+                healthbar.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            }
         }
         else
         {
             isMovingRight = false;
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-scale, Mathf.Abs(scale), Mathf.Abs(scale));
+            if (healthbar != null)
+            {
+                healthbar.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            }
         }
     }
 }

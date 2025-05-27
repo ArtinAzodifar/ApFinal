@@ -18,10 +18,8 @@ public class BaseControll : MonoBehaviour
     protected Animator animator;
     protected bool isGrounded;
     private Vector2 movingInput;
-    [SerializeField] private float knockbackForce;
-    private float knockbackTime = 0;
-    private float knockbackTotalTime = 0.2f;
     private bool knockFromRight;
+    private bool inKnock = false;
     private const float SCALE = 2.2f;
 
     //inputs:
@@ -33,7 +31,7 @@ public class BaseControll : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-            animator.SetTrigger("Jump");//should be changed
+            animator.SetTrigger("Jump");
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
     }
@@ -61,14 +59,9 @@ public class BaseControll : MonoBehaviour
         animator.SetBool("Run", movingInput.x != 0);
         //character direction
         transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
-        if (knockbackTime <= 0)
+        if (!inKnock)
         {
-            rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);
-        }
-        else
-        {
-            rb.linearVelocity = knockFromRight ? new Vector2(-knockbackForce, knockbackForce) : new Vector2(knockbackForce, knockbackForce);
-            knockbackTime -= Time.deltaTime;
+            rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);   
         }
     }
     public void GroundCheck()
@@ -82,24 +75,29 @@ public class BaseControll : MonoBehaviour
     {
         return movingInput.x != 0;
     }
+    //setters:
+    public void setKnockFromRight(bool value)
+    {
+        knockFromRight = value;
+    }
 
     public float GetJumpForce()
     {
         return jumpForce;
     }
 
-    //setters:
-    public void setKnockbackTime()
+    public IEnumerator KnockBack(float knockbackForce)
     {
-        knockbackTime = knockbackTotalTime;
-    }
-    public void setKnockFromRight(bool b)
-    {
-        knockFromRight = b;
-    }
-    public void setKnockbackForce(float f)
-    {
-        knockbackForce = f;
+        inKnock = true;
+        rb.linearVelocity = Vector2.zero;
+        
+        Vector2 direction = knockFromRight ? new Vector2(-1, 1f) : new Vector2(1, 1f);
+
+        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        
+        yield return new WaitForSeconds(0.2f);
+
+        inKnock = false;
     }
 
 }
