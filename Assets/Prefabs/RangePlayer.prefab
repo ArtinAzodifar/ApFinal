@@ -128,11 +128,11 @@ Camera:
     y: 0
     width: 0.5
     height: 1
-  near clip plane: 0.3
+  near clip plane: -10
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -290,8 +290,8 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 8
-    NearClipPlane: 0.3
+    OrthographicSize: 10
+    NearClipPlane: -10
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -424,7 +424,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 6040189241317153041, guid: 3f9810b198238ec4a87c25cececdee8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -587,7 +587,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &816654553973444014
 MonoBehaviour:
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  jumpForce: 800
+  jumpForce: 880
   groundCheckRadius: 0.2
   groundCheck: {fileID: 7240584209244786267}
   groundLayer:
