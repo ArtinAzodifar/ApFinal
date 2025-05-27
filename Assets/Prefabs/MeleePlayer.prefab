@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 480699655682297650}
   - component: {fileID: 4968053446426283087}
   - component: {fileID: 3587003424425881770}
+  - component: {fileID: 6131238350985158192}
   m_Layer: 13
   m_Name: MeleePlayer
   m_TagString: Player1
@@ -631,6 +632,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6131238350985158192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965920720854694110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2dc94d49709084eaf9995a2d4e2a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5724483556763639124}
 --- !u!1 &8785142732819711794
 GameObject:
   m_ObjectHideFlags: 0
