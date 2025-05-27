@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 6335505045724180594}
   m_Layer: 14
   m_Name: RangePlayer
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -750,6 +750,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  knockbackForce: 10
   arrow: {fileID: 3664534347760074242, guid: 1cf649d943fcbfd4cb4a8818ab54de5f, type: 3}
   superShootMana: 0
 --- !u!61 &6335505045724180594

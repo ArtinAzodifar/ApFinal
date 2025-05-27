@@ -620,6 +620,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  knockbackForce: 10
   dashForce: 15
 --- !u!114 &4968053446426283087
 MonoBehaviour:
