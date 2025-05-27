@@ -18,6 +18,7 @@ public class Player1controll : BaseControll
         if (context.performed && canDash && IsRunning())
         {
             StartCoroutine(Dash());
+            animator.Play("Dash");
         }
     }
 

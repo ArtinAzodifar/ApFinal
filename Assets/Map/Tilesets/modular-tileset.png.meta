@@ -97,7 +97,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -132,7 +132,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -433,42 +433,23 @@ TextureImporter:
         height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 5, z: 0, w: 3}
       customData: 
-      outline: []
+      outline:
+      - - {x: 17, y: -16.5}
+        - {x: 17, y: 19.5}
+        - {x: -17, y: 19.5}
+        - {x: -17, y: -18.5}
+        - {x: -12, y: -19.5}
+        - {x: 6, y: -19.5}
       physicsShape:
-      - - {x: -1, y: -17.5}
-        - {x: -1, y: -15.5}
-        - {x: 3, y: -14.5}
-        - {x: 6, y: -18.5}
-        - {x: 8, y: -18.5}
-        - {x: 11, y: -16.5}
-        - {x: 12, y: -14.5}
-        - {x: 15, y: -14.5}
-        - {x: 17, y: -12.5}
-        - {x: 17, y: 15.5}
-        - {x: 15, y: 18.5}
-        - {x: 12, y: 19.5}
-        - {x: 4, y: 19.5}
-        - {x: 3, y: 18.5}
-        - {x: 2, y: 19.5}
-        - {x: -1, y: 18.5}
-        - {x: -2, y: 19.5}
-        - {x: -7, y: 19.5}
-        - {x: -8, y: 18.5}
-        - {x: -10, y: 18.5}
-        - {x: -11, y: 19.5}
-        - {x: -14, y: 19.5}
-        - {x: -16, y: 17.5}
-        - {x: -17, y: 13.5}
-        - {x: -17, y: -11.5}
-        - {x: -15, y: -12.5}
-        - {x: -15, y: -16.5}
-        - {x: -13, y: -18.5}
-        - {x: -9, y: -18.5}
-        - {x: -8, y: -19.5}
-        - {x: -3, y: -19.5}
-      tessellationDetail: 1
+      - - {x: 17, y: -16.5}
+        - {x: 17, y: 16.5}
+        - {x: -17, y: 16.5}
+        - {x: -17, y: -16.5}
+        - {x: -12, y: -16.5}
+        - {x: 15, y: -16.5}
+      tessellationDetail: 0
       bones: []
       spriteID: bd7d94616ed8bacb0800000000000000
       internalID: -4851628154205644837
@@ -490,22 +471,12 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 15, y: -15}
-        - {x: 15, y: -12}
-        - {x: 17, y: -10}
-        - {x: 17, y: 15}
-        - {x: 16, y: 16}
-        - {x: -16, y: 16}
+      - - {x: 17, y: 15}
         - {x: -17, y: 15}
-        - {x: -17, y: -9}
-        - {x: -12, y: -14}
-        - {x: -6, y: -14}
-        - {x: -4, y: -13}
-        - {x: -3, y: -14}
-        - {x: -1, y: -14}
-        - {x: 1, y: -16}
-        - {x: 14, y: -16}
-      tessellationDetail: 1
+        - {x: -17, y: -12}
+        - {x: -11, y: -16}
+        - {x: 17, y: -16}
+      tessellationDetail: 0
       bones: []
       spriteID: 03b0a1abe036b2650800000000000000
       internalID: 6209165426163321648
@@ -553,28 +524,6 @@ TextureImporter:
       bones: []
       spriteID: 315f719afa8059370800000000000000
       internalID: 8328572636440818963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: modular-tileset_16
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 127
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa7326e9d4ade4830800000000000000
-      internalID: 4057420341211969455
       vertices: []
       indices: 
       edges: []
