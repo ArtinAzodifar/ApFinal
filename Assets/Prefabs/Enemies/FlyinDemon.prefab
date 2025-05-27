@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7852160517696374027}
   - component: {fileID: 6019350415789255626}
   - component: {fileID: 14556698426384813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FlyinDemon
   m_TagString: Enemy
   m_Icon: {fileID: 0}

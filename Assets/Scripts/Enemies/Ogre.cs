@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Ogre : BaseMovingEnemy
 {
     [SerializeField] private float stopDistance;
+    [FormerlySerializedAs("PlayerLayers")] [SerializeField] private LayerMask playerLayers;
     private Transform attackZone;
+    private float attackRange = 1f;
     private bool isAttacking = false;
     private bool isInCoolDown = false;
 
@@ -12,7 +15,6 @@ public class Ogre : BaseMovingEnemy
     {
         base.Awake();
         attackZone = transform.Find("OgreAttackZone");
-        attackZone.gameObject.SetActive(false);
     }
 
     public override void Chase()
@@ -47,12 +49,22 @@ public class Ogre : BaseMovingEnemy
 
     private void ActiveCollider()//is called in the middle of attack animation event
     {
-        attackZone.gameObject.SetActive(true);
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackZone.position, attackRange, playerLayers);
+        foreach (Collider2D player in hitPlayers)
+        {
+
+            if (player.gameObject.GetComponent<Damagable>() != null)
+            {
+                player.gameObject.GetComponent<Damagable>().Damage(1);   
+            }
+            BaseControll b = player.gameObject.GetComponent<BaseControll>();
+            b.setKnockFromRight(player.gameObject.transform.position.x <= transform.position.x);
+            StartCoroutine(b.KnockBack(700));
+        }
     }
     private void FinishAttack()//is called in the end of attack animation event
     {
         isAttacking = false;
-        attackZone.gameObject.SetActive(false);
         StartCoroutine(CoolDown());
     }
 
@@ -64,5 +76,11 @@ public class Ogre : BaseMovingEnemy
         yield return new WaitForSeconds(0.7f);
         isInCoolDown = false;
         isChasing = oldIsChasing;
+    }
+    void OnDrawGizmosSelected()
+    {
+        if (attackZone == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackZone.position, attackRange);
     }
 }

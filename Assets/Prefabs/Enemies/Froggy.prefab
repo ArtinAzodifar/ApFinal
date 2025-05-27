@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6100269274323541556}
   - component: {fileID: 4283663509729437113}
   - component: {fileID: 4221410317721183817}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Froggy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
