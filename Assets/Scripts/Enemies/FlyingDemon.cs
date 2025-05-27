@@ -8,6 +8,7 @@ public class FlyingDemon : MonoBehaviour
     [SerializeField] private float shootTimer;
     [SerializeField] private ObjectPooler fire;
     [SerializeField] private float distance;
+    [SerializeField] private GameObject healthbar;
     private GameObject melee;
     private GameObject leaf;
     private GameObject target;
@@ -76,10 +77,12 @@ public class FlyingDemon : MonoBehaviour
         if (targetDistance < 0)
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            healthbar.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         }
         else
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            healthbar.transform.localScale = new Vector3(-0.01f, 0.01f, 0.01f);
         }
     }
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 {
     [SerializeField] protected float speed;
     [SerializeField] protected float distance;
     [SerializeField] protected float scale;
+    [SerializeField] protected GameObject healthbar;
     protected GameObject melee;
     protected GameObject leaf;
     protected GameObject target;
@@ -68,11 +70,19 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
         {
             isMovingRight = true;
             transform.localScale = new Vector3(scale, Mathf.Abs(scale), Mathf.Abs(scale));
+            if (healthbar != null)
+            {
+                healthbar.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            }
         }
         else
         {
             isMovingRight = false;
             transform.localScale = new Vector3(-scale, Mathf.Abs(scale), Mathf.Abs(scale));
+            if (healthbar != null)
+            {
+                healthbar.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            }
         }
     }
 }

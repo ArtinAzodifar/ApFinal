@@ -32,6 +32,7 @@ public class ArrowController : MonoBehaviour
         } else if (collision.gameObject.CompareTag("Enemy"))
         {
             animator.SetTrigger("Arrow-Damage");
+            collision.gameObject.GetComponent<Damagable>().Damage(1);
             StartCoroutine(ArrowDamageCooldown(0.7f));
         }
         else
