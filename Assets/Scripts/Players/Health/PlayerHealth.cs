@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
 {
     private Animator animator;
     [SerializeField] private PlayerHB healthBar;
+    [SerializeField] private HealthPoint healthPoint;
     private int lives = 3;
     private int Health = 100;
 
@@ -15,9 +16,9 @@ public class PlayerHealth : MonoBehaviour, Damagable
 
     public void Start()
     {
-        Debug.Log(lives);
         healthBar.SetMaxHealth(Health);
         healthBar.SetHealth(Health);
+        healthPoint.SetLives(lives);
     }
 
     public void Damage(int amount)
@@ -29,7 +30,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
             Health = 100;
             healthBar.SetHealth(Health);
             lives--;
-            Debug.Log(lives);
+            healthPoint.ExplodeHeart(lives);
         }
 
         if (lives <= 0)
