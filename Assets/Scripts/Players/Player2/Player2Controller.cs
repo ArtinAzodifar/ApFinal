@@ -43,23 +43,20 @@ public class Player2Controller : BaseControll
         {
             _canShoot = false;
             animator.SetTrigger("Shoot");
-
-            StartCoroutine(ShootArrowAfterDelay(0.6f));
-            StartCoroutine(AllowShootingAgainAfter(1.2f));
+            
+            StartCoroutine(AllowShootingAgainAfter(1f));
         }
     }
 
-    private IEnumerator ShootArrowAfterDelay(float delay)
+    private void Shoot()// is called in the middle of attack animation
     {
-        yield return new WaitForSeconds(delay);
-
         float direction = transform.localScale.x > 0 ? 1f : -1f;
         float offsetX = Mathf.Abs(transform.localScale.x) * 0.5f;
         float offsetY = Mathf.Abs(transform.localScale.y) * 0.1f;
 
         Vector3 spawnPosition = transform.position + new Vector3(offsetX * direction, offsetY, 0f);
         GameObject newArrow = Instantiate(arrow, spawnPosition, Quaternion.identity);
-
+        
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
         newArrow.transform.localScale = arrowScale;
