@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 816654553973444014}
   - component: {fileID: 6911694724335906176}
   - component: {fileID: 6335505045724180594}
-  - component: {fileID: 7953585550144892560}
+  - component: {fileID: 8994911087607422442}
   m_Layer: 14
   m_Name: RangePlayer
   m_TagString: Player2
@@ -799,7 +799,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4568901, y: 0.7633715}
   m_EdgeRadius: 0
---- !u!114 &7953585550144892560
+--- !u!114 &8994911087607422442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -811,4 +811,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2dc94d49709084eaf9995a2d4e2a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 3206027463697900029}
+  healthTag: RangeHealth

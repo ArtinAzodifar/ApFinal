@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2dc94d49709084eaf9995a2d4e2a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 5724483556763639124}
+  healthTag: MeleeHealth
 --- !u!1 &8785142732819711794
 GameObject:
   m_ObjectHideFlags: 0
