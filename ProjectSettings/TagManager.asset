@@ -12,6 +12,8 @@ TagManager:
   - Camera2
   - Player2
   - OgreAttackZone
+  - MeleeHealth
+  - RangeHealth
   layers:
   - Default
   - TransparentFX
