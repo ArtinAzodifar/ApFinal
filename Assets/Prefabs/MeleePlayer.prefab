@@ -577,6 +577,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  damageAmount: 1
 --- !u!212 &3587003424425881770
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -645,6 +646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthTag: MeleeHealth
+  maxLives: 5
+  MaxHealth: 150
 --- !u!1 &8785142732819711794
 GameObject:
   m_ObjectHideFlags: 0

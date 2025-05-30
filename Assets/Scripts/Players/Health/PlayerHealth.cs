@@ -8,11 +8,15 @@ public class PlayerHealth : MonoBehaviour, Damagable
     [SerializeField] private String healthTag;
     private PlayerHB healthBar;
     private HealthPoint healthPoint;
+    [SerializeField] private int maxLives;
+    [SerializeField] private int MaxHealth;
+    private int Health;
     private int lives = 3;
-    private int Health = 100;
+    private GameManager gameManager;
 
     public void Awake()
     {
+        gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
         healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
         healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
@@ -20,8 +24,9 @@ public class PlayerHealth : MonoBehaviour, Damagable
 
     public void Start()
     {
-        healthBar.SetMaxHealth(Health);
-        healthBar.SetHealth(Health);
+        Health = MaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(MaxHealth);
         healthPoint.SetLives(lives);
     }
 
@@ -31,7 +36,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
         healthBar.SetHealth(Health);
         if (Health <= 0)
         {
-            Health = 100;
+            Health = MaxHealth;
             lives--;
             healthBar.SetHealth(Health);
             healthPoint.ExplodeHeart();
@@ -40,17 +45,16 @@ public class PlayerHealth : MonoBehaviour, Damagable
         if (lives <= 0)
         {
             //animator.SetTrigger("Death");
-            Debug.Log("game over");
-            //contrtoller: lose
+            gameManager.GameOver();
         }
     }
 
     public void GetLife()
     {
-        if(lives == 5) return;
-        Health = 100;
-        lives++;
+        Health = MaxHealth;
         healthBar.SetHealth(Health);
+        if(lives == maxLives) return;
+        lives++;
         healthPoint.AddHeart();
     }
 }
