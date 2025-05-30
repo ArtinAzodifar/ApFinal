@@ -4,19 +4,34 @@ using UnityEngine.UI;
 public class HealthPoint : MonoBehaviour
 {
     [SerializeField] private Image[] heartImages;
+    private int size;
 
     public void SetLives(int lives)
     {
-        for (int i = 0; i < heartImages.Length; i++)
+        size = lives;
+        for (int i = 0; i < lives; i++)
         {
             heartImages[i].gameObject.SetActive(true);
         }
+
+        for (int i = lives; i < heartImages.Length; i++)
+        {
+            heartImages[i].gameObject.SetActive(false);
+        }
     }
 
-    public void ExplodeHeart(int index)
+    public void ExplodeHeart()
     {
-        // Optional: add explosion animation here
-        // Example: heartImages[index].GetComponent<Animator>().SetTrigger("Explode");
-        heartImages[index].gameObject.SetActive(false);
+        if (size == 0) return;
+        //heartImages[index].GetComponent<Animator>().SetTrigger("Explode");
+        heartImages[--size].gameObject.SetActive(false);
+        
+    }
+
+    public void AddHeart()
+    {
+        if(size == 5) return;
+        //heartImages[index].GetComponent<Animator>().SetTrigger("Add");
+        heartImages[size++].gameObject.SetActive(true);
     }
 }

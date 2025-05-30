@@ -32,9 +32,9 @@ public class PlayerHealth : MonoBehaviour, Damagable
         if (Health <= 0)
         {
             Health = 100;
-            healthBar.SetHealth(Health);
             lives--;
-            healthPoint.ExplodeHeart(lives);
+            healthBar.SetHealth(Health);
+            healthPoint.ExplodeHeart();
         }
 
         if (lives <= 0)
@@ -43,5 +43,14 @@ public class PlayerHealth : MonoBehaviour, Damagable
             Debug.Log("game over");
             //contrtoller: lose
         }
+    }
+
+    public void GetLife()
+    {
+        if(lives == 5) return;
+        Health = 100;
+        lives++;
+        healthBar.SetHealth(Health);
+        healthPoint.AddHeart();
     }
 }
