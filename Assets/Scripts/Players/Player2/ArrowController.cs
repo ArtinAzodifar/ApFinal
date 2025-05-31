@@ -14,6 +14,11 @@ public class ArrowController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        canMove = true;
+    }
+
     void Update()
     {
         if (canMove)
@@ -37,7 +42,7 @@ public class ArrowController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         
         canMove = false;
@@ -46,14 +51,14 @@ public class ArrowController : MonoBehaviour
     private IEnumerator ArrowDamageCooldown(float cooldownTime)
     {
         yield return new WaitForSeconds(cooldownTime);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

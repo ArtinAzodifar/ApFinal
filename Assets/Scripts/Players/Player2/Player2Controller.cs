@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class Player2Controller : BaseControll
 {
-    [SerializeField] private GameObject arrow;
+    private ObjectPooler ArrowPooler;
     
     private bool _canDoubleJump;
 
@@ -17,6 +17,7 @@ public class Player2Controller : BaseControll
     public override void Awake()
     {
         base.Awake();
+        ArrowPooler = GameObject.FindWithTag("ArrowPool").GetComponent<ObjectPooler>();
         _canShoot = true;
         _maxMana = 10;
     }
@@ -55,7 +56,8 @@ public class Player2Controller : BaseControll
         float offsetY = Mathf.Abs(transform.localScale.y) * 0.1f;
 
         Vector3 spawnPosition = transform.position + new Vector3(offsetX * direction, offsetY, 0f);
-        GameObject newArrow = Instantiate(arrow, spawnPosition, Quaternion.identity);
+        GameObject newArrow = ArrowPooler.GetObject();
+        newArrow.transform.position = spawnPosition;
         
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;

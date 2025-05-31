@@ -14,6 +14,8 @@ TagManager:
   - OgreAttackZone
   - MeleeHealth
   - RangeHealth
+  - FireBallPool
+  - ArrowPool
   layers:
   - Default
   - TransparentFX
