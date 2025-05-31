@@ -9,6 +9,7 @@ public class HealthPoint : MonoBehaviour
     public void SetLives(int lives)
     {
         size = lives;
+        Debug.Log("first size: " + size);
         for (int i = 0; i < lives; i++)
         {
             heartImages[i].gameObject.SetActive(true);
@@ -30,8 +31,10 @@ public class HealthPoint : MonoBehaviour
 
     public void AddHeart()
     {
+        Debug.Log("old size: " + size);
         if(size == 5) return;
         //heartImages[index].GetComponent<Animator>().SetTrigger("Add");
         heartImages[size++].gameObject.SetActive(true);
+        Debug.Log("new size: " + size);
     }
 }

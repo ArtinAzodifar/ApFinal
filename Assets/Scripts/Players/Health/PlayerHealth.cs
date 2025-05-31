@@ -24,6 +24,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
 
     public void Start()
     {
+        Debug.Log("lives: " + lives);
         Health = MaxHealth;
         healthBar.SetMaxHealth(MaxHealth);
         healthBar.SetHealth(MaxHealth);
@@ -55,6 +56,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
         healthBar.SetHealth(Health);
         if(lives == maxLives) return;
         lives++;
+        Debug.Log("new lives: " + lives);
         healthPoint.AddHeart();
     }
 }
