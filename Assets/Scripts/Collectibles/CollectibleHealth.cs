@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CollectibleHealth : MonoBehaviour
 {
+    public static event Action<GameObject> OnHealthCollected;
     private bool isCollected = false;
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -10,7 +11,7 @@ public class CollectibleHealth : MonoBehaviour
         {
             if (isCollected)    return;
             isCollected = true;
-            other.gameObject.GetComponent<PlayerHealth>().GetLife();
+            OnHealthCollected?.Invoke(other.gameObject);
             Destroy(gameObject);
         }
     }
