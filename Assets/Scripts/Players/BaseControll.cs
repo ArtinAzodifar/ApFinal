@@ -42,7 +42,7 @@ public class BaseControll : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         speed = gameObject.CompareTag("Player1") ? 6f : 7.5f;
-        jumpForce = gameObject.CompareTag("Player1") ? 1200f : 880f;
+        jumpForce = gameObject.CompareTag("Player1") ? 900f : 680f;
     }
     public virtual void Update()
     {

@@ -4,11 +4,14 @@ using UnityEngine.InputSystem;
 
 public class Player2Controller : BaseControll
 {
+    [SerializeField] private InputActionReference shootActionRef;
     [SerializeField] private GameObject arrow;
     
     private bool _canDoubleJump;
 
     private bool _canShoot;
+    private bool _isCharging = false;
+    private bool _isFullyCharged = false;
     private bool _canSuperShoot;
 
     public int superShootMana;
@@ -27,7 +30,7 @@ public class Player2Controller : BaseControll
         {
             _canDoubleJump = true;
             base.OnJump(context);
-        }
+        } 
         else if (context.performed && _canDoubleJump)
         {
             _canDoubleJump = false;
@@ -35,24 +38,24 @@ public class Player2Controller : BaseControll
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(GetJumpForce() * Vector2.up, ForceMode2D.Impulse);
         }
+        
     }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.performed && _canShoot)
+        if (context.started)
         {
-            _canShoot = false;
             animator.SetTrigger("Shoot");
+        }
 
-            StartCoroutine(ShootArrowAfterDelay(0.6f));
-            StartCoroutine(AllowShootingAgainAfter(1.2f));
+        if (context.canceled)
+        {
+            animator.SetTrigger("Cancel");
         }
     }
 
-    private IEnumerator ShootArrowAfterDelay(float delay)
+    private void FireArrow()
     {
-        yield return new WaitForSeconds(delay);
-
         float direction = transform.localScale.x > 0 ? 1f : -1f;
         float offsetX = Mathf.Abs(transform.localScale.x) * 0.5f;
         float offsetY = Mathf.Abs(transform.localScale.y) * 0.1f;
@@ -63,12 +66,6 @@ public class Player2Controller : BaseControll
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
         newArrow.transform.localScale = arrowScale;
-    }
-
-    private IEnumerator AllowShootingAgainAfter(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        _canShoot = true;
     }
 
     public void OnSuperShoot(InputAction.CallbackContext context)
