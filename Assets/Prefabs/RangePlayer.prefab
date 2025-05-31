@@ -812,3 +812,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthTag: RangeHealth
+  maxLives: 5
+  MaxHealth: 100

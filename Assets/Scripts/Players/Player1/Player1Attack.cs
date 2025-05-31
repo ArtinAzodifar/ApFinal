@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Player1Attack : MonoBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int damageAmount;
     private Animator animator;
     private Transform attackZone;
     private float attackRange = 0.9f;
@@ -38,7 +39,7 @@ public class Player1Attack : MonoBehaviour
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackZone.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemy)
         {
-            enemy.gameObject.GetComponent<Damagable>().Damage(1);
+            enemy.gameObject.GetComponent<Damagable>().Damage(damageAmount);
         }
     }
     private void FinishAttack()//is called in the end of attack animation event
