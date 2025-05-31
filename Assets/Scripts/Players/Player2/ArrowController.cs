@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    
+    [SerializeField] private float speed; 
+    private int DamageAmount = 1;
     private Animator animator;
     private bool canMove = true;
 
@@ -37,7 +37,7 @@ public class ArrowController : MonoBehaviour
         } else if (collision.gameObject.CompareTag("Enemy"))
         {
             animator.SetTrigger("Arrow-Damage");
-            collision.gameObject.GetComponent<Damagable>().Damage(1);
+            collision.gameObject.GetComponent<Damagable>().Damage(DamageAmount);
             StartCoroutine(ArrowDamageCooldown(0.7f));
         }
         else
@@ -60,5 +60,16 @@ public class ArrowController : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+    
+    //getters:
+    public int GetDamageAmount()
+    {
+        return DamageAmount;
+    }
+    //setters:
+    public void SetDamageAmount(int amount)
+    {
+        DamageAmount = amount;
     }
 }

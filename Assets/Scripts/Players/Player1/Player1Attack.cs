@@ -54,4 +54,10 @@ public class Player1Attack : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackZone.position, attackRange);
     }
+    
+    //getters:
+    public bool IsAttacking()
+    {
+        return isAttacking;
+    }
 }
