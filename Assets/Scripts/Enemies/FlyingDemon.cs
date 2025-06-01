@@ -6,9 +6,9 @@ public class FlyingDemon : MonoBehaviour
 {
 
     [SerializeField] private float shootTimer;
-    [SerializeField] private ObjectPooler fire;
     [SerializeField] private float distance;
     [SerializeField] private GameObject healthbar;
+    private ObjectPooler fire;
     private GameObject melee;
     private GameObject leaf;
     private GameObject target;
@@ -18,6 +18,7 @@ public class FlyingDemon : MonoBehaviour
 
     public void Awake()
     {
+        fire = GameObject.FindWithTag("FireBallPool").GetComponent<ObjectPooler>();
         animator = GetComponent<Animator>();
         melee = GameObject.FindWithTag("Player1");
         leaf = GameObject.FindWithTag("Player2");

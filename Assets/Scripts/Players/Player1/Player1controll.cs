@@ -15,7 +15,7 @@ public class Player1controll : BaseControll
     //inputs:
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && canDash && IsRunning())
+        if (context.performed && canDash && IsRunning() && !GetComponent<Player1Attack>().IsAttacking())
         {
             StartCoroutine(Dash());
             animator.Play("Dash");

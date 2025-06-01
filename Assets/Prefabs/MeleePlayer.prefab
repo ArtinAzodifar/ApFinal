@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 480699655682297650}
   - component: {fileID: 4968053446426283087}
   - component: {fileID: 3587003424425881770}
+  - component: {fileID: 6131238350985158192}
   m_Layer: 13
   m_Name: MeleePlayer
   m_TagString: Player1
@@ -536,6 +537,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2d3e728a-0c23-4abd-abe0-3541019ce0ae
     m_ActionName: 'player2-archer/Slide[/Keyboard/downArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7a5e776-57f8-4488-8de9-1c1692414b97
+    m_ActionName: 'GameManager/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1-melee
@@ -576,6 +581,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  BaseDamageAmount: 1
 --- !u!212 &3587003424425881770
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -631,6 +637,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6131238350985158192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965920720854694110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2dc94d49709084eaf9995a2d4e2a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthTag: MeleeHealth
+  maxLives: 5
+  MaxHealth: 150
 --- !u!1 &8785142732819711794
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,9 +715,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 0.5
-    height: 1
+    y: 0.5
+    width: 1
+    height: 0.5
   near clip plane: -10
   far clip plane: 1000
   field of view: 60

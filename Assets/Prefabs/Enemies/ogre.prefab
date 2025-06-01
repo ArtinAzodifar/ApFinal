@@ -455,11 +455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.610389
+      value: 9.8
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.9554532
+      value: -3.74
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -619,7 +619,8 @@ MonoBehaviour:
   distance: 6
   scale: 4
   healthbar: {fileID: 4747945319592578782}
-  stopDistance: 3
+  stopDistance: 2.2
+  damageAmount: 20
   playerLayers:
     serializedVersion: 2
     m_Bits: 24576

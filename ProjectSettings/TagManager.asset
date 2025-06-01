@@ -12,6 +12,10 @@ TagManager:
   - Camera2
   - Player2
   - OgreAttackZone
+  - MeleeHealth
+  - RangeHealth
+  - FireBallPool
+  - ArrowPool
   layers:
   - Default
   - TransparentFX

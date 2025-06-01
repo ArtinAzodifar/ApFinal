@@ -36,7 +36,11 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
     public virtual void FindPlayer()
     {
         if (isChasing || inCoolDown) return;
+        ForceFindPlayer();
+    }
 
+    public virtual void ForceFindPlayer()
+    {
         float meleeDistance = transform.position.x - melee.transform.position.x;
         float leafDistance = transform.position.x - leaf.transform.position.x;
         if (Mathf.Abs(meleeDistance) <= distance || Mathf.Abs(leafDistance) <= distance)
