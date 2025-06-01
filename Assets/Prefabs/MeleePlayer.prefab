@@ -537,6 +537,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2d3e728a-0c23-4abd-abe0-3541019ce0ae
     m_ActionName: 'player2-archer/Slide[/Keyboard/downArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7a5e776-57f8-4488-8de9-1c1692414b97
+    m_ActionName: 'GameManager/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1-melee
@@ -577,7 +581,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  damageAmount: 1
+  BaseDamageAmount: 1
 --- !u!212 &3587003424425881770
 SpriteRenderer:
   m_ObjectHideFlags: 0
