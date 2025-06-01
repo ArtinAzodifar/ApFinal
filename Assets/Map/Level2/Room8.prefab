@@ -3410,27 +3410,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1689468456985520322}
-    m_ColliderPaths:
-    - - X: 290000000
-        Y: 593750016
-      - X: 290000000
-        Y: 600000000
-      - X: 260000000
-        Y: 600000000
-      - X: 260000000
-        Y: 596249984
-      - X: 261250000
-        Y: 595000000
-      - X: 270000000
-        Y: 595000000
-      - X: 270000000
-        Y: 594374976
-      - X: 278750016
-        Y: 590000000
-      - X: 286249984
-        Y: 590000000
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 28.624989, y: 59}

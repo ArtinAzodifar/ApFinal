@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_brick_wall_yellow.png_0: -717928800755373886
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
