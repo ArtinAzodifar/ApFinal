@@ -1,0 +1,79 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Player2Controller : BaseControll
+{
+    [SerializeField] private InputActionReference shootActionRef;
+    [SerializeField] private GameObject arrow;
+    
+    private bool _canDoubleJump;
+
+    private bool _canShoot;
+    private bool _isCharging = false;
+    private bool _isFullyCharged = false;
+    private bool _canSuperShoot;
+
+    public int superShootMana;
+    private int _maxMana;
+    
+    public override void Awake()
+    {
+        base.Awake();
+        _canShoot = true;
+        _maxMana = 10;
+    }
+
+    public override void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded)
+        {
+            _canDoubleJump = true;
+            base.OnJump(context);
+        } 
+        else if (context.performed && _canDoubleJump)
+        {
+            _canDoubleJump = false;
+            animator.SetTrigger("DoubleJump");//should be changed
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(GetJumpForce() * Vector2.up, ForceMode2D.Impulse);
+        }
+        
+    }
+
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger("Shoot");
+        }
+
+        if (context.canceled)
+        {
+            animator.SetTrigger("Cancel");
+        }
+    }
+
+    private void FireArrow()
+    {
+        float direction = transform.localScale.x > 0 ? 1f : -1f;
+        float offsetX = Mathf.Abs(transform.localScale.x) * 0.5f;
+        float offsetY = Mathf.Abs(transform.localScale.y) * 0.1f;
+
+        Vector3 spawnPosition = transform.position + new Vector3(offsetX * direction, offsetY, 0f);
+        GameObject newArrow = Instantiate(arrow, spawnPosition, Quaternion.identity);
+
+        Vector3 arrowScale = newArrow.transform.localScale;
+        arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
+        newArrow.transform.localScale = arrowScale;
+    }
+
+    public void OnSuperShoot(InputAction.CallbackContext context)
+    {
+        if (context.performed && superShootMana >= _maxMana)
+        {
+            animator.SetTrigger("SuperShoot");
+            superShootMana -= _maxMana;
+        }
+    }
+}
