@@ -23,9 +23,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Background1
+  - Background2
   - Ground
-  - 
-  - 
   - 
   - Enemy
   - 
@@ -52,6 +52,42 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Layer1
+    uniqueID: 3762689351
+    locked: 0
+  - name: Layer2
+    uniqueID: 3278381159
+    locked: 0
+  - name: Layer3
+    uniqueID: 3772114365
+    locked: 0
+  - name: Layer4
+    uniqueID: 2425021059
+    locked: 0
+  - name: Layer5
+    uniqueID: 3422403685
+    locked: 0
+  - name: Layer6
+    uniqueID: 537633081
+    locked: 0
+  - name: Layer7
+    uniqueID: 927204689
+    locked: 0
+  - name: Layer8
+    uniqueID: 3606532773
+    locked: 0
+  - name: Layer9
+    uniqueID: 1014333751
+    locked: 0
+  - name: Crystal
+    uniqueID: 1438242893
+    locked: 0
+  - name: Tile-Back
+    uniqueID: 3641093529
+    locked: 0
+  - name: Player
+    uniqueID: 2489550621
     locked: 0
   m_RenderingLayers:
   - Default
