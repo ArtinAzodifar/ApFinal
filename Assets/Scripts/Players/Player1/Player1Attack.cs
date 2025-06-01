@@ -81,4 +81,10 @@ public class Player1Attack : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
         damageBoostAmount -= damage;
     }
+    
+    //getters:
+    public bool IsAttacking()
+    {
+        return isAttacking;
+    }
 }
