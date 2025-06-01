@@ -35,18 +35,14 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 
     public virtual void FindPlayer()
     {
-        if (isChasing || inCoolDown) return;
-        ForceFindPlayer();
-    }
-
-    public virtual void ForceFindPlayer()
-    {
-        float meleeDistance = transform.position.x - melee.transform.position.x;
-        float leafDistance = transform.position.x - leaf.transform.position.x;
-        if (Mathf.Abs(meleeDistance) <= distance || Mathf.Abs(leafDistance) <= distance)
+        float meleeXDistance = transform.position.x - melee.transform.position.x;
+        float leafXDistance = transform.position.x - leaf.transform.position.x;
+        float meleeYDistance = transform.position.y - melee.transform.position.y;
+        float leafYDistance = transform.position.y - leaf.transform.position.y;
+        if ((Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 4) || (Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 4))
         {
             isChasing = true;
-            if (Mathf.Abs(meleeDistance) < Mathf.Abs(leafDistance)) //nazdik tare = melee
+            if (Mathf.Abs(meleeXDistance) < Mathf.Abs(leafXDistance)) //nazdik tare = melee
             {
                 target = melee;
             }
@@ -57,11 +53,20 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 
             setDirection(target);
         }
+        else
+        {
+            isChasing = false;
+            target = null;
+        }
     }
 
     public virtual void Chase()
     {
-        if (!isChasing) return;
+        if (!isChasing)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
         setDirection(target);
         rb.linearVelocity = new Vector2((isMovingRight ? 1 : -1) * speed, 0);
     }

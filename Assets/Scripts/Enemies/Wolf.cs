@@ -31,6 +31,5 @@ public class Wolf : BaseMovingEnemy
         isChasing = true;
         speed = oldSpeed;
         inCoolDown = false;
-        ForceFindPlayer();
     }
 }
