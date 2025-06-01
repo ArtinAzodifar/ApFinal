@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tile_jungle_bg_vines_0: 5036703933108395320
+      tile_jungle_bg_vines_1: -7540351380869496083
+      tile_jungle_bg_vines_2: -3005587293937196137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

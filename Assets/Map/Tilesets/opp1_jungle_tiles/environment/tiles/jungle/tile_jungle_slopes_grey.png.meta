@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tile_jungle_slopes_grey_0: -2927813778886636764
+      tile_jungle_slopes_grey_1: 9152774082866023547
+      tile_jungle_slopes_grey_2: 5547028549648125111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

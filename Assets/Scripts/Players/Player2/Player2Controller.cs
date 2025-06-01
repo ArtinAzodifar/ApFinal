@@ -47,7 +47,6 @@ public class Player2Controller : BaseControll
         {
             animator.SetTrigger("Shoot");
             
-            StartCoroutine(AllowShootingAgainAfter(1f));
         }
     }
 
