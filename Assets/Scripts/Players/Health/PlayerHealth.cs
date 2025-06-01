@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -47,16 +48,15 @@ public class PlayerHealth : MonoBehaviour, Damagable
         healthBar.SetHealth(Health);
         if (Health <= 0)
         {
+            animator.SetTrigger("Death");
             Health = MaxHealth;
             lives--;
             healthBar.SetHealth(Health);
             healthPoint.ExplodeHeart();
         }
-
-        if (lives <= 0)
+        else
         {
-            //animator.SetTrigger("Death");
-            gameManager.GameOver();
+            animator.SetTrigger("TakeHit");
         }
     }
 
@@ -67,7 +67,14 @@ public class PlayerHealth : MonoBehaviour, Damagable
         healthBar.SetHealth(Health);
         if(lives == maxLives) return;
         lives++;
-        Debug.Log("new lives: " + lives);
         healthPoint.AddHeart();
+    }
+
+    private void GameOverCheck() // at the end of death animation
+    {
+        if (lives <= 0)
+        {
+            gameManager.GameOver();
+        }
     }
 }

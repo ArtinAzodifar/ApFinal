@@ -48,6 +48,6 @@ public class HealthPoint : MonoBehaviour
     private IEnumerator enable()
     {
         yield return new WaitForSeconds(1f);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent as RectTransform);
+        heartImages[size - 1].gameObject.transform.localScale = new Vector3(1, 1, 1);
     }
 }
