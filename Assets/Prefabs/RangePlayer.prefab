@@ -124,10 +124,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0
     y: 0
-    width: 0.5
-    height: 1
+    width: 1
+    height: 0.5
   near clip plane: -10
   far clip plane: 1000
   field of view: 60
@@ -727,6 +727,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2d3e728a-0c23-4abd-abe0-3541019ce0ae
     m_ActionName: 'player2-archer/Slide[/Keyboard/downArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7a5e776-57f8-4488-8de9-1c1692414b97
+    m_ActionName: 'GameManager/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: player2-archer
@@ -751,7 +755,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8256
-  arrow: {fileID: 3664534347760074242, guid: 1cf649d943fcbfd4cb4a8818ab54de5f, type: 3}
   superShootMana: 0
 --- !u!61 &6335505045724180594
 BoxCollider2D:
