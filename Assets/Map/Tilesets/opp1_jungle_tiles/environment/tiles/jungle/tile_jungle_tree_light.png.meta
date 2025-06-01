@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tile_jungle_tree_light_0: 7348877587443456748
+      tile_jungle_tree_light_1: -2073001046725104352
+      tile_jungle_tree_light_2: -7662348710888223396
+      tile_jungle_tree_light_3: 7991765407693724662
+      tile_jungle_tree_light_4: -386137511874565684
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
