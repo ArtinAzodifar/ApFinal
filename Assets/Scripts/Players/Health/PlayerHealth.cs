@@ -14,6 +14,16 @@ public class PlayerHealth : MonoBehaviour, Damagable
     private int lives = 3;
     private GameManager gameManager;
 
+    private void OnEnable()
+    {
+        CollectibleHealth.OnHealthCollected += GetLife;
+    }
+
+    private void OnDisable()
+    {
+        CollectibleHealth.OnHealthCollected -= GetLife;
+    }
+
     public void Awake()
     {
         gameManager = GameManager.Instance;
@@ -24,6 +34,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
 
     public void Start()
     {
+        Debug.Log("lives: " + lives);
         Health = MaxHealth;
         healthBar.SetMaxHealth(MaxHealth);
         healthBar.SetHealth(MaxHealth);
@@ -49,12 +60,14 @@ public class PlayerHealth : MonoBehaviour, Damagable
         }
     }
 
-    public void GetLife()
+    public void GetLife(GameObject player)
     {
+        if (player != gameObject) return;
         Health = MaxHealth;
         healthBar.SetHealth(Health);
         if(lives == maxLives) return;
         lives++;
+        Debug.Log("new lives: " + lives);
         healthPoint.AddHeart();
     }
 }
