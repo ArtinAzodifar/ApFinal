@@ -15,7 +15,7 @@ public class Wolf : BaseMovingEnemy
             StartCoroutine(b.KnockBack(900));
             if (collision.gameObject.GetComponent<Damagable>() != null)
             {
-                collision.gameObject.GetComponent<Damagable>().Damage(1);
+                collision.gameObject.GetComponent<Damagable>().Damage(20);
             }
             if(!inCoolDown) StartCoroutine(CoolDown());
         }
@@ -31,5 +31,6 @@ public class Wolf : BaseMovingEnemy
         isChasing = true;
         speed = oldSpeed;
         inCoolDown = false;
+        ForceFindPlayer();
     }
 }

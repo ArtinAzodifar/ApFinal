@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 public class Ogre : BaseMovingEnemy
 {
     [SerializeField] private float stopDistance;
+    [SerializeField] private int damageAmount;
     [FormerlySerializedAs("PlayerLayers")] [SerializeField] private LayerMask playerLayers;
     private Transform attackZone;
     private float attackRange = 1f;
@@ -55,7 +56,7 @@ public class Ogre : BaseMovingEnemy
 
             if (player.gameObject.GetComponent<Damagable>() != null)
             {
-                player.gameObject.GetComponent<Damagable>().Damage(1);   
+                player.gameObject.GetComponent<Damagable>().Damage(damageAmount);   
             }
             BaseControll b = player.gameObject.GetComponent<BaseControll>();
             b.setKnockFromRight(player.gameObject.transform.position.x <= transform.position.x);
