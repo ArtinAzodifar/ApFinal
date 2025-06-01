@@ -29,7 +29,7 @@ public class Player1Attack : MonoBehaviour
     {
         if (context.performed && !isAttacking)
         {
-            StartAttack();
+            StartCoroutine(Attack());
         }
     }
 
@@ -40,26 +40,20 @@ public class Player1Attack : MonoBehaviour
         attackZone = transform.Find("AttackZone");
     }
 
+    
     //methods:
-    private void StartAttack()
+    private IEnumerator Attack()
     {
-        Debug.Log("started attack");
         isAttacking = true;
         animator.SetTrigger("Attack");
-    }
-
-    private void ActiveCollider()//is called in the middle of attack animation event
-    {
+        yield return new WaitForSeconds(0.05f);
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackZone.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemy)
         {
             enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
         }
-    }
-    private void FinishAttack()//is called in the end of attack animation event
-    {
+        yield return new WaitForSeconds(0.5f);
         isAttacking = false;
-        Debug.Log("finished attack");
     }
 
     private void DamageBoost(GameObject player, int damage, float time)
