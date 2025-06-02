@@ -46,7 +46,7 @@ public class Player1Attack : MonoBehaviour
     {
         isAttacking = true;
         animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackZone.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemy)
         {

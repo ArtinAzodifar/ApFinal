@@ -11,7 +11,6 @@ public class HealthPoint : MonoBehaviour
     public void SetLives(int lives)
     {
         size = lives;
-        Debug.Log("first size: " + size);
         for (int i = 0; i < lives; i++)
         {
             heartImages[i].gameObject.SetActive(true);

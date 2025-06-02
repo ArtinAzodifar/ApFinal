@@ -6,7 +6,7 @@ public class Ogre : BaseMovingEnemy
 {
     [SerializeField] private float stopDistance;
     [SerializeField] private int damageAmount;
-    [FormerlySerializedAs("PlayerLayers")] [SerializeField] private LayerMask playerLayers;
+    [SerializeField] private LayerMask playerLayers;
     private Transform attackZone;
     private float attackRange = 1f;
     private bool isAttacking = false;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
+    [SerializeField] private int damageAmount;
     [SerializeField] private float speed;
     private Rigidbody2D rb;
 
@@ -23,9 +24,13 @@ public class FireBall : MonoBehaviour
         {
             if (collision.GetComponent<Damagable>() != null)
             {
-                collision.GetComponent<Damagable>().Damage(1);
+                collision.GetComponent<Damagable>().Damage(damageAmount);
             }
         }
-        gameObject.SetActive(false);
+
+        if (!collision.CompareTag("Enemy"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
