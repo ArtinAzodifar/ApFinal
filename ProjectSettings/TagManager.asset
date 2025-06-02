@@ -32,7 +32,7 @@ TagManager:
   - 
   - Player1
   - Player2
-  - arrow
+  - Arrow
   - 
   - 
   - 
@@ -88,6 +88,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2489550621
+    locked: 0
+  - name: HealthBar
+    uniqueID: 558454447
     locked: 0
   m_RenderingLayers:
   - Default
