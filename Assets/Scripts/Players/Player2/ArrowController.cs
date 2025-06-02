@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
-    [SerializeField] private float speed; 
+    [SerializeField] private float speed;
+    private Rigidbody2D rb;
     private int DamageAmount = 1;
     private Animator animator;
     private bool canMove = true;
+    private bool isCollided = false;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
+        isCollided = false;
         canMove = true;
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void Update()
@@ -31,15 +37,26 @@ public class ArrowController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if(isCollided) return;
+        isCollided = true;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             animator.SetTrigger("Arrow-hit");
+            canMove = false;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            StartCoroutine(ArrowDamageCooldown(3f));
         } else if (collision.gameObject.CompareTag("Enemy"))
         {
             animator.SetTrigger("Arrow-Damage");
             collision.gameObject.GetComponent<Damagable>().Damage(DamageAmount);
             StartCoroutine(ArrowDamageCooldown(0.7f));
         }
+        // else if (collision.gameObject.CompareTag("Ground"))
+        // {
+        //     Debug.Log("ground");
+        //     canMove = false;
+        //     StartCoroutine(ArrowDamageCooldown(3f));
+        // }
         else
         {
             gameObject.SetActive(false);
@@ -54,13 +71,13 @@ public class ArrowController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            gameObject.SetActive(false);
-        }
-    }
+    // private void OnCollisionExit2D(Collision2D other)
+    // {
+    //     if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+    //     {
+    //         gameObject.SetActive(false);
+    //     }
+    // }
     
     //getters:
     public int GetDamageAmount()
