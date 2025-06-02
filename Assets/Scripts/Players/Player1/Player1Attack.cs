@@ -50,7 +50,10 @@ public class Player1Attack : MonoBehaviour
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackZone.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemy)
         {
-            enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
+            if (enemy.gameObject.GetComponent<Damagable>() != null)
+            {
+                enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
+            }
         }
         yield return new WaitForSeconds(0.5f);
         isAttacking = false;

@@ -48,15 +48,12 @@ public class ArrowController : MonoBehaviour
         } else if (collision.gameObject.CompareTag("Enemy"))
         {
             animator.SetTrigger("Arrow-Damage");
-            collision.gameObject.GetComponent<Damagable>().Damage(DamageAmount);
+            if (collision.gameObject.GetComponent<Damagable>() != null)
+            {
+                collision.gameObject.GetComponent<Damagable>().Damage(DamageAmount);
+            }
             StartCoroutine(ArrowDamageCooldown(0.7f));
         }
-        // else if (collision.gameObject.CompareTag("Ground"))
-        // {
-        //     Debug.Log("ground");
-        //     canMove = false;
-        //     StartCoroutine(ArrowDamageCooldown(3f));
-        // }
         else
         {
             gameObject.SetActive(false);
@@ -70,14 +67,6 @@ public class ArrowController : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
         gameObject.SetActive(false);
     }
-
-    // private void OnCollisionExit2D(Collision2D other)
-    // {
-    //     if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-    //     {
-    //         gameObject.SetActive(false);
-    //     }
-    // }
     
     //getters:
     public int GetDamageAmount()
