@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEditor.Recorder.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +28,7 @@ public class Player1controll : BaseControll
     {
         base.Awake();
         tr = GetComponent<TrailRenderer>();
+        vcam = GetComponent<CinemachineCamera>();
     }
     public override void Update()
     {

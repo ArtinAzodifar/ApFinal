@@ -90,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5473024972079206888}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_ConstrainProportionsScale: 0
@@ -128,11 +128,11 @@ Camera:
     y: 0
     width: 1
     height: 0.5
-  near clip plane: -10
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2932556609766023713}
   - component: {fileID: 4431617050699166964}
-  - component: {fileID: 7761700764970007557}
+  - component: {fileID: 1784447212609605637}
   m_Layer: 14
   m_Name: vcam2
   m_TagString: Untagged
@@ -290,8 +290,8 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 10
-    NearClipPlane: -10
+    OrthographicSize: 5
+    NearClipPlane: 0.01
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &7761700764970007557
+--- !u!114 &1784447212609605637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -754,7 +754,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7240584209244786267}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8256
+    m_Bits: 8448
   superShootMana: 0
 --- !u!61 &6335505045724180594
 BoxCollider2D:
