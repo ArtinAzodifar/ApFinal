@@ -41,20 +41,27 @@ public class FlyingDemon : MonoBehaviour
     private void FindPlayer()
     {
         float meleeXDistance = transform.position.x - melee.transform.position.x;
-        float meleeYDistance = transform.position.y - melee.transform.position.y;
         float leafXDistance = transform.position.x - leaf.transform.position.x;
+        float meleeYDistance = transform.position.y - melee.transform.position.y;
         float leafYDistance = transform.position.y - leaf.transform.position.y;
-        if ((Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 4) || Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 4)
+        bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 4;
+        bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 4;
+        if (meleeInSight && leafInSight)
         {
             canShoot = true;
-            if (Mathf.Abs(meleeXDistance) < Mathf.Abs(leafXDistance)) //nazdik tare = melee
-            {
-                target = melee;
-            }
-            else
-            {
-                target = leaf;
-            }
+            target = Mathf.Abs(meleeXDistance) <= Mathf.Abs(leafXDistance) ? melee : leaf;
+            setDirection(target);
+        }
+        else if (meleeInSight)
+        {
+            canShoot = true;
+            target = melee;
+            setDirection(target);
+        } 
+        else if (leafInSight)
+        {
+            canShoot = true;
+            target = leaf;
             setDirection(target);
         }
         else
