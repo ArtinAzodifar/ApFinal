@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, Damagable
 {
+    [SerializeField] private GameObject[] collectibles;
     [SerializeField] private int health;
     [SerializeField] private EnemyHB healthBar;
 
@@ -19,6 +20,23 @@ public class EnemyHealth : MonoBehaviour, Damagable
         if (health <= 0)
         {
             Animator animator = gameObject.GetComponent<Animator>();
+            int random = UnityEngine.Random.Range(0, 100);
+            Debug.Log(random);
+            if (random < 25)
+            {
+                Vector3 position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+                Instantiate(collectibles[0], position, Quaternion.identity);//health
+            } 
+            else if (random < 50)
+            {
+                Vector3 position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+                Instantiate(collectibles[1], position, Quaternion.identity);//damage booster
+            }
+            else if (random < 60)
+            {
+                Vector3 position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+                Instantiate(collectibles[2], position, Quaternion.identity);//max mana
+            }
             if (animator != null && HasTrigger(animator, "Death"))
             {
                 animator.SetTrigger("Death");

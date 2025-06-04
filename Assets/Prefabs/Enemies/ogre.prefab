@@ -636,5 +636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e48a34aaee66e24696da28dcbe631b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectibles:
+  - {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+  - {fileID: 7856322251727230245, guid: 00c884c15187ce74e8e3d75ca7933cc2, type: 3}
+  - {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
   health: 6
   healthBar: {fileID: 5266717283551094618}

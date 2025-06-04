@@ -51,7 +51,6 @@ public class Ogre : BaseMovingEnemy
 
     private void ActiveCollider()//is called in the middle of attack animation event
     {
-        Debug.Log("Active Collider");
         Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackZone.position, attackRange, playerLayers);
         foreach (Collider2D player in hitPlayers)
         {
@@ -67,14 +66,12 @@ public class Ogre : BaseMovingEnemy
     }
     private void FinishAttack()//is called in the end of attack animation event
     {
-        Debug.Log("finished attack");
         isAttacking = false;
         StartCoroutine(CoolDown());
     }
 
     private IEnumerator CoolDown()
     {
-        Debug.Log("Cool Down");
         bool oldIsChasing = isChasing;
         isChasing = false;
         isInCoolDown = true;

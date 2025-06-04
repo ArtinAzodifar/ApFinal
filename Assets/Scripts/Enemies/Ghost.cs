@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Ghost : BaseMovingEnemy
 {
-    
     private bool hasHit = false;
 
     public override void Update()
