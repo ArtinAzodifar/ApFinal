@@ -27,7 +27,7 @@ public class Player1Attack : MonoBehaviour
     //inputs:
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAttacking)
+        if (context.performed && !isAttacking && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage())
         {
             StartCoroutine(Attack());
         }

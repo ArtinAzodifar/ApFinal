@@ -37,12 +37,12 @@ public class Player2Controller : BaseControll
 
     public override void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && !IsInDamage())
         {
             _canDoubleJump = true;
             base.OnJump(context);
         } 
-        else if (context.performed && _canDoubleJump)
+        else if (context.performed && _canDoubleJump && !IsInDamage())
         {
             _canDoubleJump = false;
             animator.SetTrigger("DoubleJump");//should be changed
@@ -54,7 +54,7 @@ public class Player2Controller : BaseControll
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !IsInDamage())
         {
             animator.SetTrigger("Shoot");
         }
@@ -77,7 +77,7 @@ public class Player2Controller : BaseControll
 
     public void OnSuperShoot(InputAction.CallbackContext context)
     {
-        if (context.performed && superShootMana >= _maxMana)
+        if (context.performed && superShootMana >= _maxMana && !IsInDamage())
         {
             animator.SetTrigger("SuperShoot");
             superShootMana -= _maxMana;

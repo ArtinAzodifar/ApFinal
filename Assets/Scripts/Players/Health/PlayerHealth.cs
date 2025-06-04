@@ -44,6 +44,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
     public void Damage(int amount)
     {
         Health -= amount;
+        StartCoroutine(LockPlayer());
         healthBar.SetHealth(Health);
         if (Health <= 0)
         {
@@ -75,5 +76,12 @@ public class PlayerHealth : MonoBehaviour, Damagable
         {
             gameManager.GameOver();
         }
+    }
+
+    private IEnumerator LockPlayer()
+    {
+        gameObject.GetComponent<BaseControll>().setIsInDamage(true);
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
 }
