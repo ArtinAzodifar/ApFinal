@@ -16,6 +16,8 @@ TagManager:
   - RangeHealth
   - FireBallPool
   - ArrowPool
+  - GameOver
+  - PauseScreen
   layers:
   - Default
   - TransparentFX

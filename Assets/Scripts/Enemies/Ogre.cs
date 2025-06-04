@@ -23,8 +23,9 @@ public class Ogre : BaseMovingEnemy
         animator.SetBool("Run", isChasing && !isAttacking);
         if (!isChasing) return;
 
-        float targetDistance = transform.position.x - target.transform.position.x;
-        if (Mathf.Abs(targetDistance) <= stopDistance)
+        float targetXDistance = transform.position.x - target.transform.position.x;
+        float targetYDistance = transform.position.y - target.transform.position.y;
+        if (Mathf.Abs(targetXDistance) <= stopDistance && Mathf.Abs(targetYDistance) <= 4)
         {
             setDirection(target);
             rb.linearVelocity = Vector2.zero;

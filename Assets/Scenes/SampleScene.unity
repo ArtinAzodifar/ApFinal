@@ -568,11 +568,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.8
+      value: 31.8
       objectReference: {fileID: 0}
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.5
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1065,11 +1065,11 @@ GameObject:
   - component: {fileID: 1212130103}
   m_Layer: 5
   m_Name: GameOver
-  m_TagString: Untagged
+  m_TagString: GameOver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1212130102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1682,8 +1682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba86f1f455d36a4f97f8eebd4206e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 1212130101}
-  pauseScreen: {fileID: 1778964286}
 --- !u!4 &1619656334
 Transform:
   m_ObjectHideFlags: 0
@@ -2132,11 +2130,11 @@ GameObject:
   - component: {fileID: 1778964287}
   m_Layer: 5
   m_Name: PauseScreen
-  m_TagString: Untagged
+  m_TagString: PauseScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1778964287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4192,13 +4190,13 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1619656334}
   - {fileID: 1419130290}
   - {fileID: 750549269}
   - {fileID: 305985067}
   - {fileID: 6584381804143363458}
   - {fileID: 4257413121834062551}
   - {fileID: 876041623}
-  - {fileID: 1619656334}
   - {fileID: 1347532875128699606}
   - {fileID: 1698905377}
   - {fileID: 139373191}
