@@ -12,6 +12,8 @@ public class Player2Controller : BaseControll
     private bool _isCharging = false;
     private bool _isFullyCharged = false;
     private bool _canSuperShoot;
+    private bool isBoosted = false;
+    private Coroutine boostCoroutine;
 
     public int superShootMana;
     private int _maxMana;
@@ -22,6 +24,15 @@ public class Player2Controller : BaseControll
         ArrowPooler = GameObject.FindWithTag("ArrowPool").GetComponent<ObjectPooler>();
         _canShoot = true;
         _maxMana = 10;
+    }
+    private void OnEnable()
+    {
+        DamageBooster.OnDamageBoost += DamageBoost;
+    }
+
+    private void OnDisable()
+    {
+        DamageBooster.OnDamageBoost -= DamageBoost;
     }
 
     public override void OnJump(InputAction.CallbackContext context)
@@ -58,7 +69,7 @@ public class Player2Controller : BaseControll
         Vector3 spawnPosition = transform.position + new Vector3(offsetX * direction, offsetY, 0f);
         GameObject newArrow = ArrowPooler.GetObject();
         newArrow.transform.position = spawnPosition;
-        
+        newArrow.gameObject.GetComponent<ArrowController>().SetDamageAmount(isBoosted ? 2 : 1);
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
         newArrow.transform.localScale = arrowScale;
@@ -71,5 +82,23 @@ public class Player2Controller : BaseControll
             animator.SetTrigger("SuperShoot");
             superShootMana -= _maxMana;
         }
+    }
+    
+    private void DamageBoost(GameObject player, int damage, float time)
+    {
+        if (player != gameObject) return;
+        if (boostCoroutine != null)
+        {
+            StopCoroutine(boostCoroutine);
+        }
+        boostCoroutine = StartCoroutine(ApplyBoost(damage, time));
+    }
+    private IEnumerator ApplyBoost(int damage, float time)
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        isBoosted = true;
+        yield return new WaitForSeconds(time);
+        GetComponent<SpriteRenderer>().color = Color.white;
+        isBoosted = false;
     }
 }

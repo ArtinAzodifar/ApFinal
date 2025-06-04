@@ -67,7 +67,6 @@ public class Player1Attack : MonoBehaviour
             StopCoroutine(boostCoroutine);
         }
         boostCoroutine = StartCoroutine(ApplyBoost(damage, time));
-        
     }
 
     private IEnumerator ApplyBoost(int damage, float time)
