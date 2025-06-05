@@ -8,7 +8,6 @@ public class BackgroundControllerMeleePlayer : MonoBehaviour
     [SerializeField] private float parallexEffect;
     
     public Transform player1Transform;
-    public CinemachineCamera vcam1;
     void Start()
     {
         _startPos = transform.position.x;
