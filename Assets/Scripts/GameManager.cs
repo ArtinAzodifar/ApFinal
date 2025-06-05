@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance ??= FindFirstObjectByType<GameManager>();
     
-    [SerializeField] private GameObject gameOverScreen;
-    [SerializeField] private GameObject pauseScreen;
+    private GameObject gameOverScreen;
+    private GameObject pauseScreen;
     private GameState gameState;
     
     public void Awake()
@@ -30,10 +30,26 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         gameState = GameState.Level1;
-        gameOverScreen.SetActive(false);
-        pauseScreen.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        pauseScreen = GameObject.FindWithTag("PauseScreen");
+        gameOverScreen = GameObject.FindWithTag("GameOver");
+        gameOverScreen.SetActive(false);
+        pauseScreen.SetActive(false);
     }
 
     public void GameOver()

@@ -201,6 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  distance: 5
-  scale: -3
+  distance: 30
+  scale: -4.5
   healthbar: {fileID: 0}

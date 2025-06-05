@@ -21,6 +21,7 @@ public class BaseControll : MonoBehaviour
     private Vector2 movingInput;
     private bool knockFromRight;
     private bool inKnock = false;
+    private bool isInDamage = false;
     private const float SCALE = 2.2f;
     
     protected CinemachineCamera vcam;
@@ -32,7 +33,7 @@ public class BaseControll : MonoBehaviour
     }
     public virtual void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && !isInDamage)
         {
             animator.SetTrigger("Jump");
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
@@ -59,6 +60,7 @@ public class BaseControll : MonoBehaviour
     //methods:
     public void Move()
     {
+        if (isInDamage) return;
         animator.SetBool("Run", movingInput.x != 0);
         //character direction
         transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
@@ -78,16 +80,26 @@ public class BaseControll : MonoBehaviour
     {
         return movingInput.x != 0;
     }
+    public float GetJumpForce()
+    {
+        return jumpForce;
+    }
+
+    public bool IsInDamage()
+    {
+        return isInDamage;
+    }
     //setters:
     public void setKnockFromRight(bool value)
     {
         knockFromRight = value;
     }
 
-    public float GetJumpForce()
+    public void setIsInDamage(bool value)
     {
-        return jumpForce;
+        isInDamage = value;
     }
+    
 
     public IEnumerator KnockBack(float knockbackForce)
     {
@@ -96,7 +108,7 @@ public class BaseControll : MonoBehaviour
         
         Vector2 direction = knockFromRight ? new Vector2(-1, 1f) : new Vector2(1, 1f);
 
-        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        rb.AddForce(direction.normalized * knockbackForce, ForceMode2D.Impulse);
         
         yield return new WaitForSeconds(0.2f);
 

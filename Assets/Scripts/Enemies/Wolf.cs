@@ -27,10 +27,9 @@ public class Wolf : BaseMovingEnemy
         isChasing = false;
         float oldSpeed = speed;
         speed = 0;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         isChasing = true;
         speed = oldSpeed;
         inCoolDown = false;
-        ForceFindPlayer();
     }
 }

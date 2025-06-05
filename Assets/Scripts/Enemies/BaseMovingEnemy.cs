@@ -35,33 +35,44 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 
     public virtual void FindPlayer()
     {
-        if (isChasing || inCoolDown) return;
-        ForceFindPlayer();
-    }
-
-    public virtual void ForceFindPlayer()
-    {
-        float meleeDistance = transform.position.x - melee.transform.position.x;
-        float leafDistance = transform.position.x - leaf.transform.position.x;
-        if (Mathf.Abs(meleeDistance) <= distance || Mathf.Abs(leafDistance) <= distance)
+        float meleeXDistance = transform.position.x - melee.transform.position.x;
+        float leafXDistance = transform.position.x - leaf.transform.position.x;
+        float meleeYDistance = transform.position.y - melee.transform.position.y;
+        float leafYDistance = transform.position.y - leaf.transform.position.y;
+        bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 4;
+        bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 4;
+        if (meleeInSight && leafInSight)
         {
             isChasing = true;
-            if (Mathf.Abs(meleeDistance) < Mathf.Abs(leafDistance)) //nazdik tare = melee
-            {
-                target = melee;
-            }
-            else //nazdiktare leaf
-            {
-                target = leaf;
-            }
-
+            target = Mathf.Abs(meleeXDistance) <= Mathf.Abs(leafXDistance) ? melee : leaf;
             setDirection(target);
+        }
+        else if (meleeInSight)
+        {
+            isChasing = true;
+            target = melee;
+            setDirection(target);
+        } 
+        else if (leafInSight)
+        {
+            isChasing = true;
+            target = leaf;
+            setDirection(target);
+        }
+        else
+        {
+            isChasing = false;
+            target = null;
         }
     }
 
     public virtual void Chase()
     {
-        if (!isChasing) return;
+        if (!isChasing)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
         setDirection(target);
         rb.linearVelocity = new Vector2((isMovingRight ? 1 : -1) * speed, 0);
     }

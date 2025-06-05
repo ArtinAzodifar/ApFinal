@@ -6,7 +6,7 @@ public class Ogre : BaseMovingEnemy
 {
     [SerializeField] private float stopDistance;
     [SerializeField] private int damageAmount;
-    [FormerlySerializedAs("PlayerLayers")] [SerializeField] private LayerMask playerLayers;
+    [SerializeField] private LayerMask playerLayers;
     private Transform attackZone;
     private float attackRange = 1f;
     private bool isAttacking = false;
@@ -23,8 +23,9 @@ public class Ogre : BaseMovingEnemy
         animator.SetBool("Run", isChasing && !isAttacking);
         if (!isChasing) return;
 
-        float targetDistance = transform.position.x - target.transform.position.x;
-        if (Mathf.Abs(targetDistance) <= stopDistance)
+        float targetXDistance = transform.position.x - target.transform.position.x;
+        float targetYDistance = transform.position.y - target.transform.position.y;
+        if (Mathf.Abs(targetXDistance) <= stopDistance && Mathf.Abs(targetYDistance) <= 4)
         {
             setDirection(target);
             rb.linearVelocity = Vector2.zero;

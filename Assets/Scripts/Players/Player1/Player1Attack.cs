@@ -1,10 +1,12 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class Player1Attack : MonoBehaviour
 {
+    public static event Action P1Mana;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int BaseDamageAmount;
     private Animator animator;
@@ -27,7 +29,7 @@ public class Player1Attack : MonoBehaviour
     //inputs:
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAttacking)
+        if (context.performed && !isAttacking && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage())
         {
             StartCoroutine(Attack());
         }
@@ -46,11 +48,15 @@ public class Player1Attack : MonoBehaviour
     {
         isAttacking = true;
         animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackZone.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemy)
         {
-            enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
+            if (enemy.gameObject.GetComponent<Damagable>() != null)
+            {
+                enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
+            }
+            P1Mana?.Invoke();
         }
         yield return new WaitForSeconds(0.5f);
         isAttacking = false;
@@ -64,7 +70,6 @@ public class Player1Attack : MonoBehaviour
             StopCoroutine(boostCoroutine);
         }
         boostCoroutine = StartCoroutine(ApplyBoost(damage, time));
-        
     }
 
     private IEnumerator ApplyBoost(int damage, float time)
@@ -74,6 +79,12 @@ public class Player1Attack : MonoBehaviour
         yield return new WaitForSeconds(time);
         GetComponent<SpriteRenderer>().color = Color.white;
         damageBoostAmount -= damage;
+    }
+    
+    //setters:
+    public void setIsAttacking(bool value)
+    {
+        isAttacking = value;
     }
     
     //getters:

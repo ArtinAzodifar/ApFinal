@@ -7,31 +7,32 @@ public class Player2Controller : BaseControll
     private ObjectPooler ArrowPooler;
     
     private bool _canDoubleJump;
-
-    private bool _canShoot;
-    private bool _isCharging = false;
-    private bool _isFullyCharged = false;
-    private bool _canSuperShoot;
-
-    public int superShootMana;
-    private int _maxMana;
+    private bool isBoosted = false;
+    private Coroutine boostCoroutine;
     
     public override void Awake()
     {
         base.Awake();
         ArrowPooler = GameObject.FindWithTag("ArrowPool").GetComponent<ObjectPooler>();
-        _canShoot = true;
-        _maxMana = 10;
+    }
+    private void OnEnable()
+    {
+        DamageBooster.OnDamageBoost += DamageBoost;
+    }
+
+    private void OnDisable()
+    {
+        DamageBooster.OnDamageBoost -= DamageBoost;
     }
 
     public override void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && !IsInDamage())
         {
             _canDoubleJump = true;
             base.OnJump(context);
         } 
-        else if (context.performed && _canDoubleJump)
+        else if (context.performed && _canDoubleJump && !IsInDamage())
         {
             _canDoubleJump = false;
             animator.SetTrigger("DoubleJump");//should be changed
@@ -43,10 +44,9 @@ public class Player2Controller : BaseControll
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !IsInDamage())
         {
             animator.SetTrigger("Shoot");
-            
         }
     }
 
@@ -59,18 +59,27 @@ public class Player2Controller : BaseControll
         Vector3 spawnPosition = transform.position + new Vector3(offsetX * direction, offsetY, 0f);
         GameObject newArrow = ArrowPooler.GetObject();
         newArrow.transform.position = spawnPosition;
-        
+        newArrow.gameObject.GetComponent<ArrowController>().SetDamageAmount(isBoosted ? 2 : 1);
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
         newArrow.transform.localScale = arrowScale;
     }
-
-    public void OnSuperShoot(InputAction.CallbackContext context)
+    
+    private void DamageBoost(GameObject player, int damage, float time)
     {
-        if (context.performed && superShootMana >= _maxMana)
+        if (player != gameObject) return;
+        if (boostCoroutine != null)
         {
-            animator.SetTrigger("SuperShoot");
-            superShootMana -= _maxMana;
+            StopCoroutine(boostCoroutine);
         }
+        boostCoroutine = StartCoroutine(ApplyBoost(damage, time));
+    }
+    private IEnumerator ApplyBoost(int damage, float time)
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        isBoosted = true;
+        yield return new WaitForSeconds(time);
+        GetComponent<SpriteRenderer>().color = Color.white;
+        isBoosted = false;
     }
 }

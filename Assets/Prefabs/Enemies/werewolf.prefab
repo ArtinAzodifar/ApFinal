@@ -432,11 +432,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 5438ea32042341843af45f09c42a1a72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -73.125175
+      value: 44.2
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 5438ea32042341843af45f09c42a1a72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -86.67855
+      value: 13.838362
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 5438ea32042341843af45f09c42a1a72, type: 3}
       propertyPath: m_LocalPosition.z
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  distance: 6
+  distance: 15
   scale: 5
   healthbar: {fileID: 6351487021700840169}
 --- !u!114 &4873026640828437975
@@ -605,5 +605,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e48a34aaee66e24696da28dcbe631b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectibles:
+  - {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+  - {fileID: 7856322251727230245, guid: 00c884c15187ce74e8e3d75ca7933cc2, type: 3}
+  - {fileID: 4767994364265407176, guid: a0fc537eb36371d459cc092546c87d07, type: 3}
   health: 3
   healthBar: {fileID: 1007721114576773054}
