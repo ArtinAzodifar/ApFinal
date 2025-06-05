@@ -165,7 +165,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 558454447
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7064797590235498353
@@ -463,11 +463,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.4
+      value: 27.7417
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.9
+      value: 14.548051
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       propertyPath: m_LocalPosition.z
