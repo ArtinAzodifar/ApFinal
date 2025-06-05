@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983139162978747500}
   - component: {fileID: 4246248750883820804}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8981,7 +8981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9087658118439144169}
   - component: {fileID: 6513512717186046024}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9708,7 +9708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1907709184216713052}
   - component: {fileID: 3445660067165732980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9876,8 +9876,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
-  player1: {fileID: 0}
-  player2: {fileID: 0}
 --- !u!1 &2242510997742544295
 GameObject:
   m_ObjectHideFlags: 0
@@ -145742,7 +145740,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.26
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &2492952417790964697
 GameObject:
   m_ObjectHideFlags: 0
@@ -145958,7 +145955,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.35
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &2834354254955197230
 GameObject:
   m_ObjectHideFlags: 0
@@ -145969,7 +145965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4179421460377632805}
   - component: {fileID: 3646435516904692086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146055,8 +146051,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5308197117666392889}
-  m_Layer: 0
-  m_Name: Background-RangePlayer
+  m_Layer: 7
+  m_Name: Background-RangePlayer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146186,7 +146182,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.2
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &3038272079585814279
 GameObject:
   m_ObjectHideFlags: 0
@@ -146292,7 +146287,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.29
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &3081862668872600477
 GameObject:
   m_ObjectHideFlags: 0
@@ -146421,7 +146415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8105957346354618303}
   m_Layer: 7
-  m_Name: Background-Player2
+  m_Name: Background-SuperAttack-RangePlayer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146459,7 +146453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231363349318040884}
   - component: {fileID: 3580844026631364833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146547,7 +146541,7 @@ GameObject:
   - component: {fileID: 155637371927965313}
   - component: {fileID: 6981195296945744446}
   - component: {fileID: 3675906679143346145}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146643,7 +146637,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.45
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &3294315161913122527
 GameObject:
   m_ObjectHideFlags: 0
@@ -149104,7 +149097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4241017040259836671}
   - component: {fileID: 2130369438448246062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149452,7 +149445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2264388642580934658}
   - component: {fileID: 3812845816618068654}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153410,7 +153403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3923590654432098360}
   - component: {fileID: 2720429922841084982}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153886,7 +153879,7 @@ GameObject:
   - component: {fileID: 5177067233729515721}
   - component: {fileID: 8923507427862132440}
   - component: {fileID: 1624557061542152522}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153982,7 +153975,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.3
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &6095866961287226541
 GameObject:
   m_ObjectHideFlags: 0
@@ -154088,7 +154080,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.23
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &6378749703701277970
 GameObject:
   m_ObjectHideFlags: 0
@@ -154186,7 +154177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4062711786843534496}
   - component: {fileID: 3187067694585821610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154478,7 +154469,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.38
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &6593797201149073051
 GameObject:
   m_ObjectHideFlags: 0
@@ -154489,7 +154479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424402639350742875}
   - component: {fileID: 7319893030260373898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154774,7 +154764,7 @@ GameObject:
   - component: {fileID: 4655684019777559331}
   - component: {fileID: 2753549174262797103}
   - component: {fileID: 3584932866020306090}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154870,7 +154860,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.4
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &7079682224006812560
 GameObject:
   m_ObjectHideFlags: 0
@@ -155188,7 +155177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402068265020009472}
   - component: {fileID: 8106798281400505205}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155487,7 +155476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7913512084862403556}
   - component: {fileID: 5089484963869242152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155669,7 +155658,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.32
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &8145139087822889813
 GameObject:
   m_ObjectHideFlags: 0
@@ -155768,7 +155756,7 @@ GameObject:
   - component: {fileID: 6056222214046013062}
   - component: {fileID: 6815515236415114579}
   - component: {fileID: 7440259981814552960}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155864,7 +155852,6 @@ MonoBehaviour:
   cam: {fileID: 0}
   parallexEffect: 0.35
   player1Transform: {fileID: 0}
-  vcam1: {fileID: 0}
 --- !u!1 &8191926353996174780
 GameObject:
   m_ObjectHideFlags: 0
@@ -156506,7 +156493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099399573946942590}
   - component: {fileID: 6888869072286220803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156680,7 +156667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149428450848205305}
   - component: {fileID: 8310008735871726588}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157293,7 +157280,7 @@ GameObject:
   - component: {fileID: 7346452307665303578}
   m_Layer: 10
   m_Name: Terget 1_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157414,7 +157401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1534786851024096880}
   - component: {fileID: 6804347189994171253}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157501,7 +157488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8178616361870883710}
   - component: {fileID: 8408461008111385367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
