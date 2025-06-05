@@ -8,7 +8,6 @@ public class BackgroundControllerRangePlayer : MonoBehaviour
     [SerializeField] private float parallexEffect;
 
     public Transform player1Transform;
-    public CinemachineCamera vcam1;
 
     void Start()
     {
