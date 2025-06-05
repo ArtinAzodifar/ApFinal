@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 6911694724335906176}
   - component: {fileID: 6335505045724180594}
   - component: {fileID: 8994911087607422442}
+  - component: {fileID: 4608508507699886268}
   m_Layer: 14
   m_Name: RangePlayer
   m_TagString: Player2
@@ -681,9 +682,9 @@ MonoBehaviour:
     m_ActionName: 'Player1-melee/attack[/Keyboard/space]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6911694724335906176}
-        m_TargetAssemblyTypeName: Player2Controller, Assembly-CSharp
-        m_MethodName: OnSuperShoot
+      - m_Target: {fileID: 4608508507699886268}
+        m_TargetAssemblyTypeName: P2SuperShoot, Assembly-CSharp
+        m_MethodName: OnSuperAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -731,6 +732,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a7a5e776-57f8-4488-8de9-1c1692414b97
     m_ActionName: 'GameManager/Pause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 481ce4ed-025e-4791-8972-611a03bef2a9
+    m_ActionName: 'Player1-melee/superAttack[/Keyboard/r]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: player2-archer
@@ -755,7 +760,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8448
-  superShootMana: 0
 --- !u!61 &6335505045724180594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -817,3 +821,18 @@ MonoBehaviour:
   healthTag: RangeHealth
   maxLives: 5
   MaxHealth: 100
+--- !u!114 &4608508507699886268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061938598507072919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6112accdf0e03f47a6f8c8def68b5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024

@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "superAttack",
+                    "type": "Button",
+                    "id": "481ce4ed-025e-4791-8972-611a03bef2a9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -106,6 +115,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46d9836f-8a22-4215-900f-977da73564a3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "superAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

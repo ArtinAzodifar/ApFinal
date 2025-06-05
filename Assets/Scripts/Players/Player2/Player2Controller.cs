@@ -7,23 +7,13 @@ public class Player2Controller : BaseControll
     private ObjectPooler ArrowPooler;
     
     private bool _canDoubleJump;
-
-    private bool _canShoot;
-    private bool _isCharging = false;
-    private bool _isFullyCharged = false;
-    private bool _canSuperShoot;
     private bool isBoosted = false;
     private Coroutine boostCoroutine;
-
-    public int superShootMana;
-    private int _maxMana;
     
     public override void Awake()
     {
         base.Awake();
         ArrowPooler = GameObject.FindWithTag("ArrowPool").GetComponent<ObjectPooler>();
-        _canShoot = true;
-        _maxMana = 10;
     }
     private void OnEnable()
     {
@@ -73,15 +63,6 @@ public class Player2Controller : BaseControll
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
         newArrow.transform.localScale = arrowScale;
-    }
-
-    public void OnSuperShoot(InputAction.CallbackContext context)
-    {
-        if (context.performed && superShootMana >= _maxMana && !IsInDamage())
-        {
-            animator.SetTrigger("SuperShoot");
-            superShootMana -= _maxMana;
-        }
     }
     
     private void DamageBoost(GameObject player, int damage, float time)

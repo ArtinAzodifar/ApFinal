@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
+    public static event Action P2Mana;
     [SerializeField] private float speed;
     private Rigidbody2D rb;
     private int DamageAmount = 1;
@@ -52,6 +53,7 @@ public class ArrowController : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Damagable>().Damage(DamageAmount);
             }
+            P2Mana?.Invoke();
             StartCoroutine(ArrowDamageCooldown(0.7f));
         }
         else

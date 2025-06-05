@@ -1,10 +1,12 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class Player1Attack : MonoBehaviour
 {
+    public static event Action P1Mana;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int BaseDamageAmount;
     private Animator animator;
@@ -54,6 +56,7 @@ public class Player1Attack : MonoBehaviour
             {
                 enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
             }
+            P1Mana?.Invoke();
         }
         yield return new WaitForSeconds(0.5f);
         isAttacking = false;
@@ -76,6 +79,12 @@ public class Player1Attack : MonoBehaviour
         yield return new WaitForSeconds(time);
         GetComponent<SpriteRenderer>().color = Color.white;
         damageBoostAmount -= damage;
+    }
+    
+    //setters:
+    public void setIsAttacking(bool value)
+    {
+        isAttacking = value;
     }
     
     //getters:
