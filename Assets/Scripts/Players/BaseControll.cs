@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using NUnit.Framework;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +23,8 @@ public class BaseControll : MonoBehaviour
     private bool inKnock = false;
     private bool isInDamage = false;
     private const float SCALE = 2.2f;
+    
+    protected CinemachineCamera vcam;
 
     //inputs:
     public void OnMove(InputAction.CallbackContext context)
@@ -112,4 +115,8 @@ public class BaseControll : MonoBehaviour
         inKnock = false;
     }
 
+    public void Teleport(Vector2 position)
+    {
+        transform.position = position;
+    }
 }

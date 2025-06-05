@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     private GameObject gameOverScreen;
     private GameObject pauseScreen;
     private GameState gameState;
-
+    
     public void Awake()
     {
         if (instance != null && instance != this)

@@ -441,6 +441,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7c346395816093e45ae7f945a7f7abe7, type: 2}
+    - target: {fileID: 3626916397498700004, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -653873767
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -519,6 +527,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1231511201122491611}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4261945837542748475}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5662684751564553559}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
 --- !u!4 &8434907571468111613 stripped
 Transform:
@@ -642,3 +656,118 @@ MonoBehaviour:
   - {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
   health: 6
   healthBar: {fileID: 5266717283551094618}
+--- !u!82 &4261945837542748475
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710864586969687704}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5662684751564553559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710864586969687704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9800feaa28416418bd939d99c3149a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  soundClips:
+  - name: OgreAttack
+    clip: {fileID: 8300000, guid: 6c8742e4e0c3c974d9b871a669c69d3e, type: 3}
+  - name: OgreAttack2
+    clip: {fileID: 8300000, guid: c2fe603a50e358e40b5ef055b9920c2a, type: 3}
