@@ -696,7 +696,7 @@ Transform:
   m_GameObject: {fileID: 1245143860609517491}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.35, y: 3.83, z: 0}
+  m_LocalPosition: {x: 18.76, y: 3.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -835,6 +835,7 @@ GameObject:
   - component: {fileID: 3268992909636172042}
   - component: {fileID: 4542814371929519932}
   - component: {fileID: 5395298719766087930}
+  - component: {fileID: 7301378613397180206}
   m_Layer: 8
   m_Name: Rock (1)
   m_TagString: Untagged
@@ -851,7 +852,7 @@ Transform:
   m_GameObject: {fileID: 1914154071080073076}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.8099976, z: 0}
+  m_LocalPosition: {x: -6.750565, y: -7.8099976, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -925,7 +926,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d0ed39c7894f8ee4da613d59e9371c9c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -975,7 +976,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointA: {fileID: 2162186662121624703}
   PointB: {fileID: 7009981613635812953}
-  speed: 2
+  speed: 3
+--- !u!50 &7301378613397180206
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914154071080073076}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &1926025536632586055
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +1016,7 @@ GameObject:
   - component: {fileID: 4725342628367675303}
   - component: {fileID: 7554399548820273412}
   - component: {fileID: 7420776318388656844}
+  - component: {fileID: 9045766663215497081}
   m_Layer: 8
   m_Name: Rock (5)
   m_TagString: Untagged
@@ -1004,7 +1033,7 @@ Transform:
   m_GameObject: {fileID: 1926025536632586055}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.789999, y: 16.48, z: 0}
+  m_LocalPosition: {x: 12.76, y: 16.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1078,7 +1107,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d0ed39c7894f8ee4da613d59e9371c9c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1128,7 +1157,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointA: {fileID: 1492494269796119225}
   PointB: {fileID: 4630500578926850101}
-  speed: 2
+  speed: 3
+--- !u!50 &9045766663215497081
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926025536632586055}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2644996483296496190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1399,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1515342306937133706}
-  - component: {fileID: 1495422274235875072}
   m_Layer: 8
   m_Name: Rock (4)
   m_TagString: Untagged
@@ -1369,21 +1424,6 @@ Transform:
   - {fileID: 8325179536541866205}
   m_Father: {fileID: 1220804440938885330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1495422274235875072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019085716967992438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79e5d67e8bb559a41b8c33d6606c3f50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PointA: {fileID: 1651068782547164334}
-  PointB: {fileID: 8325179536541866205}
-  speed: 3
 --- !u!1 &3534307055738172811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,7 +1659,7 @@ Transform:
   m_GameObject: {fileID: 4576958427933094212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.25, z: 0}
+  m_LocalPosition: {x: 6.76, y: -6.59124, z: -0.25543782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1802,7 +1842,7 @@ Transform:
   m_GameObject: {fileID: 5766261445808238493}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.35, y: 16.48, z: 0}
+  m_LocalPosition: {x: 18.76, y: 16.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10499,7 +10539,7 @@ Transform:
   m_GameObject: {fileID: 6803951973794074888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.750565, y: -7.809998, z: -0.25543782}
+  m_LocalPosition: {x: 6.750565, y: -7.809998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10778,6 +10818,7 @@ GameObject:
   - component: {fileID: 1201254050846872054}
   - component: {fileID: 1798282982398621444}
   - component: {fileID: 3090200936613184601}
+  - component: {fileID: 1144759507383166287}
   m_Layer: 8
   m_Name: Rock (2)
   m_TagString: Untagged
@@ -10794,7 +10835,7 @@ Transform:
   m_GameObject: {fileID: 7210383008060216639}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.76, y: -4.0699997, z: 0}
+  m_LocalPosition: {x: 6.76, y: 2.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10868,7 +10909,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d0ed39c7894f8ee4da613d59e9371c9c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10919,6 +10960,33 @@ MonoBehaviour:
   PointA: {fileID: 4900738025303383782}
   PointB: {fileID: 1379573587974853746}
   speed: 3
+--- !u!50 &1144759507383166287
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210383008060216639}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7217578660583550516
 GameObject:
   m_ObjectHideFlags: 0
@@ -10931,6 +10999,7 @@ GameObject:
   - component: {fileID: 2507050032096164571}
   - component: {fileID: 6132932169334073922}
   - component: {fileID: 2787590484799408685}
+  - component: {fileID: 1644138608262139793}
   m_Layer: 8
   m_Name: Rock (3)
   m_TagString: Untagged
@@ -10947,7 +11016,7 @@ Transform:
   m_GameObject: {fileID: 7217578660583550516}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.789999, y: 3.83, z: 0}
+  m_LocalPosition: {x: 12.76, y: 3.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11021,7 +11090,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d0ed39c7894f8ee4da613d59e9371c9c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11071,7 +11140,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointA: {fileID: 4871849000030235704}
   PointB: {fileID: 2312833489143900378}
-  speed: 2
+  speed: 3
+--- !u!50 &1644138608262139793
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217578660583550516}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7404096989072266292
 GameObject:
   m_ObjectHideFlags: 0
@@ -13431,6 +13527,8 @@ GameObject:
   - component: {fileID: 7798808205961944919}
   - component: {fileID: 6363565459494777622}
   - component: {fileID: 7338045436640701304}
+  - component: {fileID: 1545775449020298092}
+  - component: {fileID: 596058214539072975}
   m_Layer: 8
   m_Name: Rock (4)
   m_TagString: Untagged
@@ -13447,7 +13545,7 @@ Transform:
   m_GameObject: {fileID: 8232359124239984051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.76, y: 7.68, z: 0}
+  m_LocalPosition: {x: 6.76, y: 10.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13521,7 +13619,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d0ed39c7894f8ee4da613d59e9371c9c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13557,6 +13655,48 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.0633278, y: 0.8400154}
   m_EdgeRadius: 0
+--- !u!50 &1545775449020298092
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232359124239984051}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &596058214539072975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232359124239984051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e5d67e8bb559a41b8c33d6606c3f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointA: {fileID: 1651068782547164334}
+  PointB: {fileID: 8325179536541866205}
+  speed: 3
 --- !u!1 &8358801979027851507
 GameObject:
   m_ObjectHideFlags: 0
