@@ -358,7 +358,6 @@ GameObject:
   - component: {fileID: 8994911087607422442}
   - component: {fileID: 4608508507699886268}
   - component: {fileID: 3480105491003057242}
-  - component: {fileID: 2834091322649128116}
   m_Layer: 14
   m_Name: RangePlayer
   m_TagString: Player2
@@ -935,29 +934,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2834091322649128116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7061938598507072919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af9800feaa28416418bd939d99c3149a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  soundClips:
-  - name: JumpRange
-    clip: {fileID: 8300000, guid: 093e5747bbdf3854e82f80d0d12d0e82, type: 3}
-  - name: AttackRange
-    clip: {fileID: 8300000, guid: 29c56845dcf1a594fb602c7dfde33795, type: 3}
-  - name: SuperAttack1Range
-    clip: {fileID: 8300000, guid: a7326b0d5dc422f468b7895daaba051a, type: 3}
-  - name: SuperAttack2Range
-    clip: {fileID: 8300000, guid: d6481a87baf1dbd49a82470af2389cfa, type: 3}
-  - name: TakeHitRange
-    clip: {fileID: 8300000, guid: 71e3ba0a398bec14ca4e97dc37adb348, type: 3}
-  - name: DeathRange
-    clip: {fileID: 8300000, guid: 48b6bb545b0c3634d885d72b45c77125, type: 3}

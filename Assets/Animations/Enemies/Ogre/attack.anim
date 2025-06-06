@@ -95,8 +95,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.51
-    functionName: PlaySound
-    data: OgreAttack
+    functionName: Play
+    data: Ogre
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
@@ -109,8 +109,8 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.22
-    functionName: PlaySound
-    data: OgreAttack2
+    functionName: Play
+    data: OgreAttack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
