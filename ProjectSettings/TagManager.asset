@@ -28,7 +28,7 @@ TagManager:
   - Background1
   - Background2
   - Ground
-  - 
+  - Collectible
   - Enemy
   - 
   - 
@@ -87,6 +87,9 @@ TagManager:
     locked: 0
   - name: None
     uniqueID: 3641093529
+    locked: 0
+  - name: Collectible
+    uniqueID: 3931652397
     locked: 0
   - name: Player
     uniqueID: 2489550621

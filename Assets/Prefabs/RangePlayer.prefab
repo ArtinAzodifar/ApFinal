@@ -136,7 +136,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 58807
+    m_Bits: 59319
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -426,7 +426,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1805416675
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 10
   m_Sprite: {fileID: 6040189241317153041, guid: 3f9810b198238ec4a87c25cececdee8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
