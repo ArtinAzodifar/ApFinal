@@ -699,7 +699,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  swordAttack: {fileID: 8300000, guid: 54334a24312df5c46b051193bf1b77f3, type: 3}
+  soundClips:
+  - name: AttackMelee
+    clip: {fileID: 8300000, guid: 54334a24312df5c46b051193bf1b77f3, type: 3}
+  - name: JumpMelee
+    clip: {fileID: 8300000, guid: bb4ba25c414d96849ac8dffb1eb3ce29, type: 3}
+  - name: SuperAttack1Melee
+    clip: {fileID: 8300000, guid: bb4ba25c414d96849ac8dffb1eb3ce29, type: 3}
 --- !u!82 &7871806560800947775
 AudioSource:
   m_ObjectHideFlags: 0
