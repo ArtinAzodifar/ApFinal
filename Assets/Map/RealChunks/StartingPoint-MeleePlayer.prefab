@@ -28012,6 +28012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e48a34aaee66e24696da28dcbe631b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectibles: []
   health: 10
   healthBar: {fileID: 0}
 --- !u!1 &4781770074842066458
