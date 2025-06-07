@@ -8,6 +8,7 @@ public class Player1Attack : MonoBehaviour
 {
     public static event Action P1Mana;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask leverLayer;
     [SerializeField] private int BaseDamageAmount;
     private Animator animator;
     private Transform attackZone;
@@ -57,6 +58,14 @@ public class Player1Attack : MonoBehaviour
                 enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
             }
             P1Mana?.Invoke();
+        }
+        Collider2D[] toggleLever = Physics2D.OverlapCircleAll(attackZone.position, attackRange, leverLayer);
+        foreach (Collider2D lever in toggleLever)
+        {
+            if (lever.gameObject.GetComponent<LeverToggle>() != null)
+            {
+                lever.gameObject.GetComponent<LeverToggle>().Toggle();
+            }
         }
         yield return new WaitForSeconds(0.5f);
         isAttacking = false;
