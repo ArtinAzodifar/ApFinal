@@ -28,7 +28,7 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
     }
     public virtual void Update()
     {
-        animator.SetBool("Run", isChasing);
+        animator.SetBool("Run", isChasing && !inCoolDown);
         FindPlayer();
         Chase();
     }
