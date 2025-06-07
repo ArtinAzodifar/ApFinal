@@ -25,7 +25,7 @@ public class Ogre : BaseMovingEnemy
 
         float targetXDistance = transform.position.x - target.transform.position.x;
         float targetYDistance = transform.position.y - target.transform.position.y;
-        if (Mathf.Abs(targetXDistance) <= stopDistance && Mathf.Abs(targetYDistance) <= 4)
+        if (Mathf.Abs(targetXDistance) <= stopDistance && Mathf.Abs(targetYDistance) <= 2)
         {
             setDirection(target);
             rb.linearVelocity = Vector2.zero;

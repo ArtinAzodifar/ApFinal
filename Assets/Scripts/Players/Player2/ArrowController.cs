@@ -11,6 +11,8 @@ public class ArrowController : MonoBehaviour
     private Animator animator;
     private bool canMove = true;
     private bool isCollided = false;
+    private float elapsedTime;
+    private float totalTime = 10f;
 
     private void Awake()
     {
@@ -24,10 +26,16 @@ public class ArrowController : MonoBehaviour
         canMove = true;
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        elapsedTime = 0f;
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime >= totalTime)
+        {
+            gameObject.SetActive(false);
+        }
         if (canMove)
         {
             float direction = Mathf.Sign(transform.localScale.x);
@@ -54,7 +62,7 @@ public class ArrowController : MonoBehaviour
                 collision.gameObject.GetComponent<Damagable>().Damage(DamageAmount);
             }
             P2Mana?.Invoke();
-            StartCoroutine(ArrowDamageCooldown(0.7f));
+            StartCoroutine(ArrowDamageCooldown(0.5f));
         }
         else
         {

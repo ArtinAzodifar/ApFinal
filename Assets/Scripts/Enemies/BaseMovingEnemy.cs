@@ -28,7 +28,7 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
     }
     public virtual void Update()
     {
-        animator.SetBool("Run", isChasing);
+        animator.SetBool("Run", isChasing && !inCoolDown);
         FindPlayer();
         Chase();
     }
@@ -39,8 +39,8 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
         float leafXDistance = transform.position.x - leaf.transform.position.x;
         float meleeYDistance = transform.position.y - melee.transform.position.y;
         float leafYDistance = transform.position.y - leaf.transform.position.y;
-        bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 4;
-        bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 4;
+        bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 2;
+        bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 2;
         if (meleeInSight && leafInSight)
         {
             isChasing = true;
