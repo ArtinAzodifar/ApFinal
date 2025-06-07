@@ -9,14 +9,16 @@ public enum GameState {MainMenu, Level1, Level2, Level3, GameOver}
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    public static GameManager Instance => instance ??= FindFirstObjectByType<GameManager>();
+    public static GameManager Instance;
     
     private GameObject gameOverScreen;
     private GameObject pauseScreen;
     private GameState gameState;
+    private bool level1keyFound = false;
     
     public void Awake()
     {
+        Instance = this;
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -37,11 +39,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Key.KeyCollected += FindKey1;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        Key.KeyCollected -= FindKey1;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -145,5 +149,15 @@ public class GameManager : MonoBehaviour
             default:
                 return GameState.GameOver;
         }
+    }
+
+    public void FindKey1()
+    {
+        level1keyFound = true;
+    }
+
+    public bool GetKey1()
+    {
+        return level1keyFound;
     }
 }

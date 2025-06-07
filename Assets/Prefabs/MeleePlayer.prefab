@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  jumpForce: 1200
+  jumpForce: 1300
   groundCheckRadius: 0.2
   groundCheck: {fileID: 4403262218523403020}
   groundLayer:
