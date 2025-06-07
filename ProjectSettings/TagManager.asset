@@ -18,6 +18,7 @@ TagManager:
   - ArrowPool
   - GameOver
   - PauseScreen
+  - FireBall
   layers:
   - Default
   - TransparentFX

@@ -6,19 +6,27 @@ public class EnemyHealth : MonoBehaviour, Damagable
     [SerializeField] private GameObject[] collectibles;
     [SerializeField] private int health;
     [SerializeField] private EnemyHB healthBar;
+    private bool isDead = false;
 
 
     public void Start()
     {
-        healthBar.SetMaxHealth(health);
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(health);   
+        }
     }
 
     public void Damage(int amount)
     {
         health -= amount;
-        healthBar.SetHealth(health);
-        if (health <= 0)
+        if (healthBar != null)
         {
+            healthBar.SetHealth(health);
+        }
+        if (health <= 0 && !isDead)
+        {
+            isDead = true;
             Animator animator = gameObject.GetComponent<Animator>();
             int random = UnityEngine.Random.Range(0, 100);
             Debug.Log(random);

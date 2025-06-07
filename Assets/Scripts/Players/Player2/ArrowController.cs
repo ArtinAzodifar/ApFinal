@@ -58,7 +58,8 @@ public class ArrowController : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            Debug.Log(collision.gameObject.name);
+            //gameObject.SetActive(false);
         }
         
         canMove = false;
