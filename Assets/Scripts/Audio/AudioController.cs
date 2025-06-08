@@ -32,14 +32,18 @@ public class AudioController : MonoBehaviour
     public void RegisterSFXPlayer(SoundPlayer player)
     {
         if (!allSFXPlayers.Contains(player))
+        {
             allSFXPlayers.Add(player);
+        }
         player.SetVolume(sfxVolume);
     }
 
     public void RegisterMusic(AudioSource musicSource)
     {
         if (!musicSources.Contains(musicSource))
+        {
             musicSources.Add(musicSource);
+        }
         musicSource.volume = musicVolume;
     }
 

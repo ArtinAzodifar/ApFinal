@@ -122,7 +122,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.17
-    functionName: PlaySound
+    functionName: Play
     data: JumpRange
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

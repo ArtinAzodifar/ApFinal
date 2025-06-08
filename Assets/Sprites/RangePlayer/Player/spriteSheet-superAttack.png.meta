@@ -158,8 +158,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -180,8 +180,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -202,8 +202,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -224,8 +224,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -246,8 +246,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -268,8 +268,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -290,8 +290,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -312,8 +312,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -334,8 +334,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -356,8 +356,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -378,8 +378,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -393,6 +393,28 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: spriteSheet-superAttack_11
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 0
+        width: 288
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65fa8ff54abf4a5c0800000000000000
+      internalID: -4204959468653858986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: spriteSheet-superAttack_12
       rect:
         serializedVersion: 2
@@ -400,8 +422,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -422,8 +444,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -444,8 +466,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -466,8 +488,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -488,8 +510,8 @@ TextureImporter:
         y: 0
         width: 288
         height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -502,33 +524,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: spriteSheet-superAttack_11
-      rect:
-        serializedVersion: 2
-        x: 3168
-        y: 0
-        width: 288
-        height: 81
-      alignment: 9
-      pivot: {x: 0.5, y: 0.415}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c287b2bb53f6c14c9b126c4ab26f6dc
-      internalID: -4204959468653858986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5c64f2ddf03eb604baa64cf3334571e1
+    spriteID: 7364a3b6c2958c84aa379717d4645cac
     internalID: 0
     vertices: []
     indices: 

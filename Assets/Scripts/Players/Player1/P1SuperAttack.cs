@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Player1SuperAttack : MonoBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
-    private int mana;
+    public int mana;
     private int maxMana;
     private Animator animator;
     private ManaBar manaBar;

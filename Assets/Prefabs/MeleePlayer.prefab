@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2217095036202126404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29175026476276075}
+  - component: {fileID: 734102418995567980}
+  m_Layer: 0
+  m_Name: Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &29175026476276075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2217095036202126404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6898437977410001720}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &734102418995567980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2217095036202126404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 2
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.53
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.84
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 00000000471546e0672068c3bde5d5e083e28a9065bcfdcb39a10b2051054437a552f7d63781753c4dd8b95599ad06d9
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0.19
+  m_PointLightOuterRadius: 3.71
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &2278294516558620632
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +273,7 @@ GameObject:
   - component: {fileID: 6131238350985158192}
   - component: {fileID: 5854428833428526923}
   - component: {fileID: 7871806560800947775}
+  - component: {fileID: 8891576289635702712}
   m_Layer: 13
   m_Name: MeleePlayer
   m_TagString: Player1
@@ -213,6 +298,7 @@ Transform:
   - {fileID: 814901463061809481}
   - {fileID: 395642446586128157}
   - {fileID: 2086998835103325318}
+  - {fileID: 29175026476276075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5717232652958199175
@@ -230,7 +316,7 @@ Rigidbody2D:
   m_Mass: 40
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 4.5
   m_Material: {fileID: 6200000, guid: 53cc5319669c294418c9345c3129805e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -500,11 +586,35 @@ MonoBehaviour:
     m_ActionId: 5775539e-ef4d-4a97-b4de-e4f774a927fd
     m_ActionName: 'Player1-melee/jump[/Keyboard/w]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9d6147c5-9406-40aa-a0d4-b98043ec6b7c
     m_ActionName: 'player2-archer/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 360be24a-dbbc-4e9d-9c3b-65ec31db8a96
     m_ActionName: 'player2-archer/Jump[/Keyboard/upArrow]'
   - m_PersistentCalls:
@@ -626,7 +736,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: cbd3e1cc4ae141c42a30e33b4d666a61, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -688,6 +798,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  mana: 0
 --- !u!82 &7871806560800947775
 AudioSource:
   m_ObjectHideFlags: 0
@@ -785,6 +896,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8891576289635702712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965920720854694110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720ef202f22e32d4d9685d70da9451a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - name: AttackMelee
+    clip: {fileID: 8300000, guid: 54334a24312df5c46b051193bf1b77f3, type: 3}
+  - name: JumpMelee
+    clip: {fileID: 8300000, guid: bb4ba25c414d96849ac8dffb1eb3ce29, type: 3}
+  - name: SuperAttack1Melee
+    clip: {fileID: 8300000, guid: 99d1b599bb7d6e2439893cd8134be63b, type: 3}
+  - name: TakeHitMelee
+    clip: {fileID: 8300000, guid: 25341bc89ef8f354e83e7380e164c80c, type: 3}
+  - name: Death1Melee
+    clip: {fileID: 8300000, guid: 075c326522646b24792e8dcc445ea3bd, type: 3}
+  - name: Death2Melee
+    clip: {fileID: 8300000, guid: 48b6bb545b0c3634d885d72b45c77125, type: 3}
 --- !u!1 &8785142732819711794
 GameObject:
   m_ObjectHideFlags: 0

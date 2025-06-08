@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7790113418200624238, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7790113418200624238, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: clips.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4855aad81620850448991b8b4e687829, type: 3}
+    - target: {fileID: -7790113418200624238, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: clips.Array.data[0].name
+      value: AttackSkeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: -7790113418200624238, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: clips.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -7790113418200624238, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: clips.Array.data[1].name
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 594795932471082040, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_Controller
       value: 

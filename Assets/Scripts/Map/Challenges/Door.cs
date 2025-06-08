@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -6,7 +7,9 @@ public class Door : MonoBehaviour
 
     private Vector3 startPos;
     private Vector3 endPosVertical;
-    public bool shouldMove = false;
+    private bool shouldMove = false;
+    
+    public List<GameObject> enemies;
 
     void Start()
     {
@@ -18,9 +21,17 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        if (shouldMove)
+        void Update()
         {
-            VerticalMove();
+            if (!shouldMove && AllEnemiesDead())
+            {
+                OpenDoor();
+            }
+
+            if (shouldMove)
+            {
+                VerticalMove();
+            }
         }
     }
 
@@ -37,5 +48,15 @@ public class Door : MonoBehaviour
     public void OpenDoor()
     {
         shouldMove = true;
+    }
+    
+    private bool AllEnemiesDead()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+                return false;
+        }
+        return true;
     }
 }
