@@ -8,32 +8,46 @@ public enum GameState {MainMenu, Level1, Level2, Level3, GameOver}
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    public static GameManager Instance;
+    // private static GameManager instance;
+    public static GameManager Instance { get; private set; }
     
     private GameObject gameOverScreen;
     private GameObject pauseScreen;
     private GameState gameState;
     private bool level1keyFound = false;
     
-    public void Awake()
+    public GameObject audioControllerPrefab;
+    public GameObject musicPlayerPrefab;
+    
+    private void Awake()
     {
-        Instance = this;
-        if (instance != null && instance != this)
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitializeAudioSystems();
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
     }
+
+    private void InitializeAudioSystems()
+    {
+        if (AudioController.Instance == null && audioControllerPrefab != null)
+            Instantiate(audioControllerPrefab);
+
+        if (FindObjectOfType<MusicPlayer>() == null && musicPlayerPrefab != null)
+            Instantiate(musicPlayerPrefab);
+    }
+
 
     public void Start()
     {
-        gameState = GameState.Level1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        gameState = GameState.MainMenu;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     
     private void OnEnable()
@@ -52,8 +66,15 @@ public class GameManager : MonoBehaviour
     {
         pauseScreen = GameObject.FindWithTag("PauseScreen");
         gameOverScreen = GameObject.FindWithTag("GameOver");
-        gameOverScreen.SetActive(false);
-        pauseScreen.SetActive(false);
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(false);
+        }
+
+        if (pauseScreen != null)
+        {
+            pauseScreen.SetActive(false);
+        }
     }
 
     public void GameOver()
@@ -67,7 +88,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameState = GameState.Level1;
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("LevelOne");
     }
 
     public void NextLevel()
@@ -76,7 +97,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Level1:
                 gameState = GameState.Level2;
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("LevelTwo");
                 break;
             case GameState.Level2:
                 gameState = GameState.Level3;
@@ -91,7 +112,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        Cursor.visible = false;
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -125,13 +146,12 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         pauseScreen.SetActive(true);
-        
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
-        Cursor.visible = false;
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Locked;
         pauseScreen.SetActive(false);
     }

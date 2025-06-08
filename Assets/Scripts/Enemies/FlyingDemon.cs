@@ -16,6 +16,8 @@ public class FlyingDemon : MonoBehaviour
     private float timePast = 0;
     private bool canShoot = false;
 
+    private AudioSource audioSource;
+    private bool playerIsInTrigger;
     public void Awake()
     {
         transform.localScale = new Vector3(scale, scale, scale);
@@ -23,6 +25,9 @@ public class FlyingDemon : MonoBehaviour
         animator = GetComponent<Animator>();
         melee = GameObject.FindWithTag("Player1");
         leaf = GameObject.FindWithTag("Player2");
+        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0f;
     }
     public void Update()
     {
@@ -35,6 +40,14 @@ public class FlyingDemon : MonoBehaviour
         else if (canShoot)//cooldown
         {
             timePast += Time.deltaTime;
+        }
+        if (playerIsInTrigger)
+        {
+            audioSource.volume = AudioController.Instance.sfxVolume;
+        }
+        else
+        {
+            audioSource.volume = 0f;
         }
     }
 
@@ -94,6 +107,21 @@ public class FlyingDemon : MonoBehaviour
         {
             transform.localScale = new Vector3(scale, scale, scale);
             healthbar.transform.localScale = new Vector3(-0.01f, 0.01f, 0.01f);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
+        {
+            playerIsInTrigger = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
+        {
+            playerIsInTrigger = false;
         }
     }
 }

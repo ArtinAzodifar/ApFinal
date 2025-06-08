@@ -368,7 +368,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.13333334
-    functionName: PlaySound
+    functionName: Play
     data: ArrowHit
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

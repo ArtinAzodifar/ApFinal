@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour, Damagable
     [SerializeField] private int health;
     [SerializeField] private EnemyHB healthBar;
     private bool isDead = false;
+    
+    private SoundPlayer soundPlayer;
+    [SerializeField] private String DeathSound;
 
 
     public void Start()
@@ -15,6 +18,7 @@ public class EnemyHealth : MonoBehaviour, Damagable
         {
             healthBar.SetMaxHealth(health);   
         }
+        soundPlayer = GetComponent<SoundPlayer>();
     }
 
     public void Damage(int amount)
@@ -28,6 +32,10 @@ public class EnemyHealth : MonoBehaviour, Damagable
         {
             isDead = true;
             Animator animator = gameObject.GetComponent<Animator>();
+            
+            Debug.Log($"[EnemyHealth] DeathSound name: '{DeathSound}'");
+            soundPlayer.Play(DeathSound);
+            Debug.Log($"[SoundPlayer] Playing clip: {DeathSound}");
             int random = UnityEngine.Random.Range(0, 100);
             Debug.Log(random);
             if (random < 25)

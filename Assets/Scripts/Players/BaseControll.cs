@@ -111,7 +111,7 @@ public class BaseControll : MonoBehaviour
         rb.AddForce(direction.normalized * knockbackForce, ForceMode2D.Impulse);
         
         yield return new WaitForSeconds(0.2f);
-
+        rb.AddForce(Vector2.zero, ForceMode2D.Impulse);
         inKnock = false;
     }
 

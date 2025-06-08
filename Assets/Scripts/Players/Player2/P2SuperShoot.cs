@@ -6,10 +6,15 @@ using UnityEngine.InputSystem;
 public class P2SuperShoot : MonoBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
-    private int mana;
+    public int mana;
     private int maxMana;
     private Animator animator;
     private ManaBar manaBar;
+    
+    [SerializeField] private GameObject laserSegmentPrefab;
+    [SerializeField] private Transform laserStartPoint;
+    [SerializeField] private int laserCount = 3;
+    [SerializeField] private float segmentSpacing = 1f;
 
     //unity events:
     public void Awake()
@@ -94,4 +99,23 @@ public class P2SuperShoot : MonoBehaviour
         Vector2 boxSize = new Vector2(9f, 2f);
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
+    
+    private void ShowLaserAnimation()
+    {
+        Vector3 direction = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
+
+        for (int i = 0; i < laserCount; i++)
+        {
+            Vector3 spawnPos = laserStartPoint.position + direction * segmentSpacing * i;
+            GameObject laserSegment = Instantiate(laserSegmentPrefab, spawnPos, Quaternion.identity);
+
+            if (transform.localScale.x < 0)
+            {
+                Vector3 scale = laserSegment.transform.localScale;
+                scale.x *= -1;
+                laserSegment.transform.localScale = scale;
+            }
+        }
+    }
+
 }
