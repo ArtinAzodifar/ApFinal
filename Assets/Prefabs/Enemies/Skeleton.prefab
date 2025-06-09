@@ -23,15 +23,19 @@ PrefabInstance:
     - target: {fileID: -7790113418200624238, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: clips.Array.data[1].clip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 30f7b9c2850b250489659530b92fb175, type: 3}
     - target: {fileID: -7790113418200624238, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: clips.Array.data[1].name
-      value: 
+      value: skeletonDeath
       objectReference: {fileID: 0}
     - target: {fileID: 594795932471082040, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ec24d3f5609d3cf4ca5a883abbaa72f6, type: 2}
+    - target: {fileID: 1231511201122491611, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: deathSoundName
+      value: skeletonDeath
+      objectReference: {fileID: 0}
     - target: {fileID: 1577653205328310859, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.129

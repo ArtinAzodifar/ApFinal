@@ -37,4 +37,13 @@ public class SoundPlayer : MonoBehaviour
         if (clipMap.TryGetValue(clipName, out var clip))
             audioSource.PlayOneShot(clip, audioSource.volume);
     }
+    
+    public AudioClip GetClipByName(string name)
+    {
+        if (clipMap.TryGetValue(name, out AudioClip clip))
+        {
+            return clip;
+        }
+        return null;
+    }
 }
