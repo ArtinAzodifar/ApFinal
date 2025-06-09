@@ -9,32 +9,21 @@ public class TeleportManager : MonoBehaviour
 
     void Start()
     {
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-
-        foreach (GameObject obj in allObjects)
-        {
-            if (obj.layer == LayerMask.NameToLayer("Player1"))
-            {
-                player1 = obj.gameObject.GetComponent<Player1controll>();
-            } 
-            if (obj.layer == LayerMask.NameToLayer("Player2"))
-            {
-                player2 = obj.gameObject.GetComponent<Player2Controller>();
-            }
-        }
+        GameObject player1Tag = GameObject.FindGameObjectWithTag("Player1");
+        player1 = player1Tag.GetComponent<Player1controll>();
+        GameObject player2Tag = GameObject.FindGameObjectWithTag("Player2");
+        player2 = player2Tag.GetComponent<Player2Controller>();
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         
         if (other.CompareTag("Player1"))
         {
-            DestroyAllChildren();
             player1.Teleport(destination.position);
         }
 
         if (other.CompareTag("Player2"))
         {
-            DestroyAllChildren();
             player2.Teleport(destination.position);
         }
     }
