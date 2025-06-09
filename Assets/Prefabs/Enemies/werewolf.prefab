@@ -618,7 +618,7 @@ MonoBehaviour:
   health: 3
   healthBar: {fileID: 1007721114576773054}
   isDead: 0
-  deathSoundClip: {fileID: 8300000, guid: ced2c0d46c2bce34eb0bb911088c9d49, type: 3}
+  deathSoundName: WolfDeath
 --- !u!82 &5472072339250749766
 AudioSource:
   m_ObjectHideFlags: 0
@@ -731,3 +731,5 @@ MonoBehaviour:
   clips:
   - name: Wolf
     clip: {fileID: 8300000, guid: a2ac36a842a157d4f86e5f0b9a762bc9, type: 3}
+  - name: WolfDeath
+    clip: {fileID: 8300000, guid: ced2c0d46c2bce34eb0bb911088c9d49, type: 3}

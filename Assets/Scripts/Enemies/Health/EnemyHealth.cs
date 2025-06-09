@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour, Damagable
     public bool isDead = false;
     
     private SoundPlayer soundPlayer;
-    [SerializeField] private AudioClip deathSoundClip;
+    [SerializeField] private string deathSoundName;
 
 
     public void Start()
@@ -33,7 +33,21 @@ public class EnemyHealth : MonoBehaviour, Damagable
             isDead = true;
             Animator animator = gameObject.GetComponent<Animator>();
             
-            AudioSource.PlayClipAtPoint(deathSoundClip, transform.position, AudioController.Instance.sfxVolume);
+            if (soundPlayer != null)
+            {
+                AudioClip clipToPlay = soundPlayer.GetClipByName(deathSoundName);
+
+                if (clipToPlay != null)
+                {
+                    float volume = AudioController.Instance.sfxVolume;
+                    AudioSource.PlayClipAtPoint(clipToPlay, transform.position, volume);
+                }
+                else
+                {
+                    Debug.LogError($"SOUND NOT FOUND! The name '{deathSoundName}' does not match any clip in the SoundPlayer component on {gameObject.name}.");
+                }
+            }
+            
             int random = UnityEngine.Random.Range(0, 100);
             Debug.Log(random);
             if (random < 25)

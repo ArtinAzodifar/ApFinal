@@ -435,7 +435,7 @@ MonoBehaviour:
   health: 2
   healthBar: {fileID: 99529438138609735}
   isDead: 0
-  deathSoundClip: {fileID: 8300000, guid: 30f7b9c2850b250489659530b92fb175, type: 3}
+  deathSoundName: DeathDemon
 --- !u!114 &652210721510892243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +453,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e2408b3773ed03f44b523fc7a944db7d, type: 3}
   - name: FlappingDemon
     clip: {fileID: 8300000, guid: 4a0e1af52ad7c5744854606c4e183bdb, type: 3}
+  - name: DeathDemon
+    clip: {fileID: 8300000, guid: 30f7b9c2850b250489659530b92fb175, type: 3}
 --- !u!82 &-8490107568270870121
 AudioSource:
   m_ObjectHideFlags: 0
