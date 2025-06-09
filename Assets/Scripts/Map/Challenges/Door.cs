@@ -5,37 +5,34 @@ public class Door : MonoBehaviour
 {
     public float speed = 2f;
 
-    private Vector3 startPos;
-    private Vector3 endPosVertical;
-    private bool shouldMove = false;
+    protected Vector3 startPos;
+    protected Vector3 endPosVertical;
+    protected bool shouldMove = false;
     
-    public List<GameObject> enemies;
+    [SerializeField] private List<GameObject> enemies;
 
-    void Start()
+    protected void Start()
     {
         startPos = transform.position;
 
         float height = GetComponent<CompositeCollider2D>().bounds.size.y;
         endPosVertical = startPos + new Vector3(0, height, 0);
     }
-
-    void Update()
+    
+    protected virtual void Update()
     {
-        void Update()
+        if (!shouldMove && AllEnemiesDead())
         {
-            if (!shouldMove && AllEnemiesDead())
-            {
-                OpenDoor();
-            }
+            OpenDoor();
+        }
 
-            if (shouldMove)
-            {
-                VerticalMove();
-            }
+        if (shouldMove)
+        {
+            VerticalMove();
         }
     }
 
-    private void VerticalMove()
+    protected void VerticalMove()
     {
         transform.position = Vector3.MoveTowards(transform.position, endPosVertical, speed * Time.deltaTime);
 
@@ -45,7 +42,7 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void OpenDoor()
+    private void OpenDoor()
     {
         shouldMove = true;
     }
