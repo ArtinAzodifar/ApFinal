@@ -20,7 +20,7 @@ public class BaseControll : MonoBehaviour
     protected bool isGrounded;
     private Vector2 movingInput;
     private bool knockFromRight;
-    private bool inKnock = false;
+    protected bool inKnock = false;
     private bool isInDamage = false;
     private const float SCALE = 2.2f;
     
@@ -33,7 +33,7 @@ public class BaseControll : MonoBehaviour
     }
     public virtual void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && !isInDamage)
+        if (context.performed && isGrounded && !isInDamage && !inKnock)
         {
             animator.SetTrigger("Jump");
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
@@ -60,14 +60,11 @@ public class BaseControll : MonoBehaviour
     //methods:
     public void Move()
     {
-        if (isInDamage) return;
+        if (isInDamage || inKnock) return;
         animator.SetBool("Run", movingInput.x != 0);
         //character direction
         transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
-        if (!inKnock)
-        {
-            rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);   
-        }
+        rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);   
     }
     public void GroundCheck()
     {
@@ -99,9 +96,13 @@ public class BaseControll : MonoBehaviour
     {
         isInDamage = value;
     }
-    
 
-    public IEnumerator KnockBack(float knockbackForce)
+    public void startKnock(float knockbackForce)
+    {
+        StartCoroutine(KnockBack(knockbackForce));
+    }
+
+    private IEnumerator KnockBack(float knockbackForce)
     {
         inKnock = true;
         rb.linearVelocity = Vector2.zero;

@@ -21,7 +21,7 @@ public class Ghost : BaseMovingEnemy
             }
             BaseControll b = collision.gameObject.GetComponent<BaseControll>();
             b.setKnockFromRight(collision.gameObject.transform.position.x <= transform.position.x);
-            StartCoroutine(b.KnockBack(700));
+            b.startKnock(900);
             animator.SetTrigger("Vanish");
         }
         Destroy(gameObject, 0.6f);

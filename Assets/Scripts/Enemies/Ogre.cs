@@ -61,7 +61,7 @@ public class Ogre : BaseMovingEnemy
             }
             BaseControll b = player.gameObject.GetComponent<BaseControll>();
             b.setKnockFromRight(player.gameObject.transform.position.x <= transform.position.x);
-            StartCoroutine(b.KnockBack(700));
+            b.startKnock(900);
         }
     }
     private void FinishAttack()//is called in the end of attack animation event

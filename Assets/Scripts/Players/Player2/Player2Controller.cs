@@ -27,12 +27,12 @@ public class Player2Controller : BaseControll
 
     public override void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && !IsInDamage())
+        if (context.performed && isGrounded && !IsInDamage() && !inKnock)
         {
             _canDoubleJump = true;
             base.OnJump(context);
         } 
-        else if (context.performed && _canDoubleJump && !IsInDamage())
+        else if (context.performed && _canDoubleJump && !IsInDamage() && !inKnock)
         {
             _canDoubleJump = false;
             animator.SetTrigger("DoubleJump");//should be changed

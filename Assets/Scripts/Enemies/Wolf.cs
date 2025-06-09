@@ -12,7 +12,7 @@ public class Wolf : BaseMovingEnemy
         {
             BaseControll b = collision.gameObject.GetComponent<BaseControll>();
             b.setKnockFromRight(collision.gameObject.transform.position.x <= transform.position.x);
-            StartCoroutine(b.KnockBack(900));
+            b.startKnock(900);
             if (collision.gameObject.GetComponent<Damagable>() != null)
             {
                 collision.gameObject.GetComponent<Damagable>().Damage(20);

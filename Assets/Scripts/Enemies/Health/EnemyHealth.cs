@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour, Damagable
     [SerializeField] private GameObject[] collectibles;
     [SerializeField] private int health;
     [SerializeField] private EnemyHB healthBar;
-    private bool isDead = false;
+    public bool isDead = false;
     
     private SoundPlayer soundPlayer;
     [SerializeField] private String DeathSound;
@@ -34,7 +34,11 @@ public class EnemyHealth : MonoBehaviour, Damagable
             Animator animator = gameObject.GetComponent<Animator>();
             
             Debug.Log($"[EnemyHealth] DeathSound name: '{DeathSound}'");
-            soundPlayer.Play(DeathSound);
+            if (soundPlayer != null)
+            {
+                soundPlayer.Play(DeathSound);
+                
+            }
             Debug.Log($"[SoundPlayer] Playing clip: {DeathSound}");
             int random = UnityEngine.Random.Range(0, 100);
             Debug.Log(random);
