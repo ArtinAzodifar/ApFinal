@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6c65d949-2f6c-490c-9c7e-a129dad13119" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/SuperAttackNobullet.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/SuperAttackNobullet.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/Music.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/8bit-game-jump-up-stairs-smartsound-fx-low-2-00-00.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/8bit-game-jump-up-stairs-smartsound-fx-low-2-00-00.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Arrow.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Arrow/ArrowDamage.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Arrow/ArrowDamage.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Arrow/arrow-twang_01-306041.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Arrow/arrow-twang_01-306041.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Arrow/arrow-wood-impact-146418.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Arrow/arrow-wood-impact-146418.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Collectibles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Collectibles/Mana.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Collectibles/Mana.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Collectibles/coin.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Collectibles/coin.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/melee-attack-with-voice-1-104995-[AudioTrimmer.com]-[AudioTrimmer.com] (1).mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/melee-attack-with-voice-1-104995-[AudioTrimmer.com]-[AudioTrimmer.com] (1).mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/melee-attack-with-voice-1-104995-[AudioTrimmer.com].mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/melee-attack-with-voice-1-104995-[AudioTrimmer.com].mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/sword-schwing-40520.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/sword-schwing-40520.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/sword-sound-260274-[AudioTrimmer.com].mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Melee/sword-sound-260274-[AudioTrimmer.com].mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Menu.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Menu/tap.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Menu/tap.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Ogre.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Ogre/OgreAttack-[AudioTrimmer.com].mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Ogre/OgreAttack-[AudioTrimmer.com].mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Ogre/OgreAttack.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Ogre/OgreAttack.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Ogre/desk-slam_YabSxhJ.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Ogre/desk-slam_YabSxhJ.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/062708_laser-charging-81968.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/062708_laser-charging-81968.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/Jump.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/Jump.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/SuperAttack1.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/SuperAttack1.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/TakeHit.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/TakeHit.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/arrow-swish_03-306040.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/arrow-swish_03-306040.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/laser-gun-81720.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/laser-gun-81720.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/sci-fi-charge-up-37395.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Range/sci-fi-charge-up-37395.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/WerewolfAttack.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/WerewolfAttack.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/WerewolfHowl.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/WerewolfHowl.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/wolf-growls-at-maurice-and-philippe-with-his-teeth-193235.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/wolf-growls-at-maurice-and-philippe-with-his-teeth-193235.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/wolf-howling-335492.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/Werewolf/wolf-howling-335492.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/footsteps-landing-impact-mechanical-wave-3-3-00-01.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/footsteps-landing-impact-mechanical-wave-3-3-00-01.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/futuristic-gun-pulse-blaster-slava-pogorelsky-1-1-00-04.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/futuristic-gun-pulse-blaster-slava-pogorelsky-1-1-00-04.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/jump-sound-14839.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/jump-sound-14839.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/maro-jump-sound-effect_1.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/maro-jump-sound-effect_1.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/melee-attack-with-voice-1-104995.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/melee-attack-with-voice-1-104995.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/prowler.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/prowler.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/you-died-deep-monster-voice-tomas-herudek-1-1-00-03.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Audio/SoundEffects/you-died-deep-monster-voice-tomas-herudek-1-1-00-03.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Bounciness.physicsMaterial2D" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Bounciness.physicsMaterial2D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/1.Backround.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/1.Backround.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/2.Trees_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/2.Trees_back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/3.Trees_front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/3.Trees_front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/4.Ground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Jungle/4.Ground.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/ChunkGenerator.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/ChunkGenerator.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Light.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Light/New Universal Render Pipeline Asset_Renderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Light/New Universal Render Pipeline Asset_Renderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Light/Sprite-lit.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Light/Sprite-lit.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Light/URP.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Map/Light/URP.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/BackgroundControllerMeleePlayer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/BackgroundControllerRangePlayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/Door.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/Door.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/Moving2.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/Moving2.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/Pushable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/Pushable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/TargetDetection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/TargetDetection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/TrunkDestroy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/TrunkDestroy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/moving1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Challenges/moving1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/ChunkManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/ChunkManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/TeleportException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/TeleportException.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/TeleportManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Map/TeleportManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/RangePlayer/Player/spriteSheet-superAttack_NoBullet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/RangePlayer/Player/spriteSheet-superAttack_NoBullet.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemies/Ogre/attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Ogre/attack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Attack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Dash.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Dash.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/Jump.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/SuperAttack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/MeleePlayer/SuperAttack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Arrow/Arrow-Damage.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Arrow/Arrow-Damage.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Arrow/Arrow-StaticShot.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Arrow/Arrow-StaticShot.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Attack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Death.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Death.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Jump.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Leaf.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/Leaf.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/SuperAttack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/SuperAttack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/TakeHit.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/RangePlayer/Player/TakeHit.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-5.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Backgrounds/Forest/Jungle Asset Pack/parallax background/plx-5.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room6.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room7.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room7.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Level2/Room8.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Level2/Room8.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Probs/Lever/lever_floor_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Probs/Lever/lever_floor_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Probs/Lever/lever_floor_3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Probs/Lever/lever_floor_3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk2_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk2_1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk2_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk2_2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/RealChunks/RandomChunk3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/RealChunks/StartingPoint-MeleePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/RealChunks/StartingPoint-MeleePlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/RealChunks/StartingPoint-RangePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/RealChunks/StartingPoint-RangePlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond5.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/diamond5.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchA4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchB4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/Cave/Pixel/Anim/torchC4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/modular-tileset.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/modular-tileset.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/Tilesets/opp1_jungle_tiles/environment/tiles/jungle/tile_jungle_ground_brown.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Tilesets/opp1_jungle_tiles/environment/tiles/jungle/tile_jungle_ground_brown.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Arrow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Arrow.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/ogre.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/ogre.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/werewolf.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/werewolf.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MeleePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MeleePlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ObjectPool.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ObjectPool.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RangePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RangePlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelOne.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelOne.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelTwo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LevelTwo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Map/BackgroundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Map/BackgroundControllerMeleePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Map/BackgroundController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Map/BackgroundControllerRangePlayer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/BaseControll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/BaseControll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/Player1/Player1controll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/Player1/Player1controll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/Player2/Player2Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/Player2/Player2Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Attack2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Attack2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Attack3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Attack3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Dash.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Dash.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Death.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Death.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Jump.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/Jump.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/SuperAttack.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/SuperAttack.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/TakeHit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MeleePlayer/TakeHit.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Light/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Map/Light/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/unity/ApFinal/ApFinal/Assets/Prefabs/Arrow.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/unity/ApFinal/ApFinal/Assets/Prefabs/Arrow.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/unity/ApFinal/ApFinal/Assets/Prefabs/MeleePlayer.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/unity/ApFinal/ApFinal/Assets/Prefabs/MeleePlayer.prefab" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2y6kJRLteZX0guItBIL3mBCNyzA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Merging bugFix",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c65d949-2f6c-490c-9c7e-a129dad13119" name="Changes" comment="" />
+      <created>1749162338725</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749162338725</updated>
+      <workItem from="1749162341607" duration="149000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityProjectDiscoverer">
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
