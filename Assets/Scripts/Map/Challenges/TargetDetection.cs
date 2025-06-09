@@ -3,19 +3,24 @@ using UnityEngine;
 
 public class TargetDetection : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    [SerializeField] private GameObject key;
 
     void Start()
     {
-        rb = GameObject.Find("Trunk").GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
+        if (key != null)
+        {
+            key.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("ArrowPool"))
         {
-            rb.gravityScale = 1;
+            if (key != null)
+            {
+                key.SetActive(true);
+            }
         }
     }
 }
