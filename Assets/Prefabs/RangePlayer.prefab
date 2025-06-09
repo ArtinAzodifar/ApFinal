@@ -614,7 +614,7 @@ Rigidbody2D:
   m_Mass: 30
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 4.5
+  m_GravityScale: 6
   m_Material: {fileID: 6200000, guid: 53cc5319669c294418c9345c3129805e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -794,7 +794,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7240584209244786267}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 41216
 --- !u!61 &6335505045724180594
 BoxCollider2D:
   m_ObjectHideFlags: 0

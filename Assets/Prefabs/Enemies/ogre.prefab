@@ -656,6 +656,8 @@ MonoBehaviour:
   - {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
   health: 6
   healthBar: {fileID: 5266717283551094618}
+  isDead: 0
+  deathSoundClip: {fileID: 8300000, guid: 30f7b9c2850b250489659530b92fb175, type: 3}
 --- !u!82 &4261945837542748475
 AudioSource:
   m_ObjectHideFlags: 0

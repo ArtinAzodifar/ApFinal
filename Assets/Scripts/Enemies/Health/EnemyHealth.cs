@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour, Damagable
     public bool isDead = false;
     
     private SoundPlayer soundPlayer;
-    [SerializeField] private String DeathSound;
+    [SerializeField] private AudioClip deathSoundClip;
 
 
     public void Start()
@@ -33,13 +33,7 @@ public class EnemyHealth : MonoBehaviour, Damagable
             isDead = true;
             Animator animator = gameObject.GetComponent<Animator>();
             
-            Debug.Log($"[EnemyHealth] DeathSound name: '{DeathSound}'");
-            if (soundPlayer != null)
-            {
-                soundPlayer.Play(DeathSound);
-                
-            }
-            Debug.Log($"[SoundPlayer] Playing clip: {DeathSound}");
+            AudioSource.PlayClipAtPoint(deathSoundClip, transform.position, AudioController.Instance.sfxVolume);
             int random = UnityEngine.Random.Range(0, 100);
             Debug.Log(random);
             if (random < 25)
