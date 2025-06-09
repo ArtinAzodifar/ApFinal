@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
             lives--;
             healthBar.SetHealth(Health);
             healthPoint.ExplodeHeart();
+            StartCoroutine(GameOverCheck());
         }
         else
         {
@@ -70,8 +71,9 @@ public class PlayerHealth : MonoBehaviour, Damagable
         healthPoint.AddHeart();
     }
 
-    private void GameOverCheck() // at the end of death animation
+    private IEnumerator GameOverCheck()
     {
+        yield return new WaitForSeconds(1f);
         if (lives <= 0)
         {
             gameManager.GameOver();

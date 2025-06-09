@@ -15,11 +15,14 @@ public class ChunkManager : MonoBehaviour
     private int chunkWorldWidth;
     private int totalChunksGenerated = 0;
 
-    [SerializeField] private int numOfChunks1 = 5;
+    [SerializeField] private int numOfChunks1 = 4;
+    private int fixIndex = 1;
+    private int lastIndexChunk1 = -1; 
     private int chunks1Counter = 0;
     private bool type1Ended = false;
 
-    [SerializeField] private int numOfChunks2 = 5;
+    [SerializeField] private int numOfChunks2 = 3;
+    private int lastIndexChunk2 = -1;
     private int chunks2Counter = 0;
 
     void Start()
@@ -66,18 +69,29 @@ public class ChunkManager : MonoBehaviour
         if (chunks1Counter < numOfChunks1)
         {
             randomChunkIndex = Random.Range(0, chunkPrefabs1.Length);
+            while (lastIndexChunk1 == randomChunkIndex || randomChunkIndex == fixIndex)
+            {
+                randomChunkIndex = Random.Range(0, chunkPrefabs1.Length);
+            }
+            lastIndexChunk1 = randomChunkIndex;
             selectedChunkPrefab = chunkPrefabs1[randomChunkIndex];
             chunks1Counter++;
         }
         else if (!type1Ended)
         {
+            selectedChunkPrefab = chunkPrefabs1[fixIndex];
             type1Ended = true;
             totalChunksGenerated++;
-            return null;
+            //return null;
         }
         else if (chunks2Counter < numOfChunks2)
         {
             randomChunkIndex = Random.Range(0, chunkPrefabs2.Length);
+            while (lastIndexChunk2 == randomChunkIndex)
+            {
+                randomChunkIndex = Random.Range(0, chunkPrefabs2.Length);
+            }
+            lastIndexChunk2 = randomChunkIndex;
             selectedChunkPrefab = chunkPrefabs2[randomChunkIndex];
             chunks2Counter++;
             positionY = -100f;
@@ -88,7 +102,7 @@ public class ChunkManager : MonoBehaviour
         }
 
         GameObject chunk = Instantiate(selectedChunkPrefab, transform);
-        chunk.name = "Chunk_1_" + chunkIndex + "_Type_" + randomChunkIndex;
+        //chunk.name = "Chunk_1_" + chunkIndex + "_Type_" + randomChunkIndex;
 
         float positionX = chunkIndex * chunkWorldWidth;
         chunk.transform.position = new Vector3(positionX, positionY, 0);
