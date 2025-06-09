@@ -16352,7 +16352,7 @@ GameObject:
   - component: {fileID: 8078854966191125869}
   - component: {fileID: 7255377339262143352}
   - component: {fileID: 6840860394193558249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16621,7 +16621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e238b876b8ae02d49874e598d5ddba06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroy: 1.5
+  timeToDestroy: 5
 --- !u!1 &6143941148404500772
 GameObject:
   m_ObjectHideFlags: 0

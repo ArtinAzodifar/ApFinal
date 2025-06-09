@@ -91,6 +91,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LevelOne");
     }
 
+    public void Level2()
+    {
+        gameState = GameState.Level2;
+        SceneManager.LoadScene("LevelTwo");
+    }
+
     public void NextLevel()
     {
         switch (gameState)
