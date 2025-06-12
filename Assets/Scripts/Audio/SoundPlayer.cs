@@ -22,7 +22,6 @@ public class SoundPlayer : MonoBehaviour
         foreach (var c in clips)
             clipMap[c.name] = c.clip;
 
-        // Register with controller
         AudioController.Instance?.RegisterSFXPlayer(this);
     }
 
