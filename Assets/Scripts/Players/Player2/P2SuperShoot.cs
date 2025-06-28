@@ -15,6 +15,7 @@ public class P2SuperShoot : MonoBehaviour
     [SerializeField] private Transform laserStartPoint;
     [SerializeField] private int laserCount = 3;
     [SerializeField] private float segmentSpacing = 1f;
+    [SerializeField] private int damageAmount;
 
     //unity events:
     public void Awake()
@@ -70,7 +71,7 @@ public class P2SuperShoot : MonoBehaviour
             {
                 if (enemy.gameObject.GetComponent<Damagable>() != null)
                 {
-                    enemy.gameObject.GetComponent<Damagable>().Damage(10000);
+                    enemy.gameObject.GetComponent<Damagable>().Damage(damageAmount);
                 }
             }
             yield return null;
