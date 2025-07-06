@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 582b0939cb43fbf49a3f8ab8af0381e2
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Plant2_Run_front_Clip
+    second: {fileID: 7400000, guid: e665939a7eedb2744883b40766651376, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -76,7 +81,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -89,7 +94,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -98,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638873974838552618
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -125,7 +130,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.3611111}
+    pivot: {x: 0.5, y: 0.5277778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -146,7 +151,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 92}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.52, y: -0.37142858}
+    pivot: {x: 0.52, y: 0.54285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -167,7 +172,7 @@ ScriptedImporter:
     uvTransform: {x: 75, y: 4}
   - name: Frame_2
     originalName: 
-    pivot: {x: 0.5217391, y: -0.33333334}
+    pivot: {x: 0.5217391, y: 0.4871795}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -188,7 +193,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 180}
   - name: Frame_3
     originalName: 
-    pivot: {x: 0.53125, y: -0.3611111}
+    pivot: {x: 0.53125, y: 0.5277778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -209,7 +214,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Frame_4
     originalName: 
-    pivot: {x: 0.43333337, y: -0.3611111}
+    pivot: {x: 0.43333337, y: 0.5277778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -230,7 +235,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 136}
   - name: Frame_5
     originalName: 
-    pivot: {x: 0.44, y: -0.37142858}
+    pivot: {x: 0.44, y: 0.54285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -251,7 +256,7 @@ ScriptedImporter:
     uvTransform: {x: 75, y: 47}
   - name: Frame_6
     originalName: 
-    pivot: {x: 0.43478262, y: -0.33333334}
+    pivot: {x: 0.43478262, y: 0.4871795}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -272,7 +277,7 @@ ScriptedImporter:
     uvTransform: {x: 44, y: 4}
   - name: Frame_7
     originalName: 
-    pivot: {x: 0.46875, y: -0.3611111}
+    pivot: {x: 0.46875, y: 0.5277778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -384,6 +389,30 @@ ScriptedImporter:
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0

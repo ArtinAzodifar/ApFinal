@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 48196b17a76c0304a88809d620d4d3a7
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Plant2_Attack_right_Clip
+    second: {fileID: 7400000, guid: e2ed7d4d2ee86144cbed1e38f7e2797f, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -76,7 +81,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -89,7 +94,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -98,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638873988803520516
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -125,7 +130,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-    pivot: {x: 0.4848485, y: -0.3611111}
+    pivot: {x: 0.4848485, y: 0.5277778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -146,7 +151,7 @@ ScriptedImporter:
     uvTransform: {x: 61, y: 49}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.62857145, y: -0.35135135}
+    pivot: {x: 0.62857145, y: 0.5135135}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -167,7 +172,7 @@ ScriptedImporter:
     uvTransform: {x: 61, y: 4}
   - name: Frame_2
     originalName: 
-    pivot: {x: 0.65789473, y: -0.35135135}
+    pivot: {x: 0.65789473, y: 0.5135135}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -188,7 +193,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 195}
   - name: Frame_3
     originalName: 
-    pivot: {x: 0.675, y: -0.35135135}
+    pivot: {x: 0.675, y: 0.5135135}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -209,7 +214,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 150}
   - name: Frame_4
     originalName: 
-    pivot: {x: 0.34693876, y: -0.25}
+    pivot: {x: 0.34693876, y: 0.55}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -230,7 +235,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 53}
   - name: Frame_5
     originalName: 
-    pivot: {x: 0.34693876, y: -0.19512194}
+    pivot: {x: 0.34693876, y: 0.58536583}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -251,7 +256,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Frame_6
     originalName: 
-    pivot: {x: 0.30434784, y: -0.1707317}
+    pivot: {x: 0.30434784, y: 0.60975605}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -354,6 +359,30 @@ ScriptedImporter:
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
