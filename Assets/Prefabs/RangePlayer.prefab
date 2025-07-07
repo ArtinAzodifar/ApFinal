@@ -876,6 +876,7 @@ MonoBehaviour:
   laserStartPoint: {fileID: 8583815463440738841}
   laserCount: 3
   segmentSpacing: 9
+  damageAmount: 1000
 --- !u!82 &3480105491003057242
 AudioSource:
   m_ObjectHideFlags: 0

@@ -798,6 +798,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  damageAmount: 1000
   mana: 0
 --- !u!82 &7871806560800947775
 AudioSource:
