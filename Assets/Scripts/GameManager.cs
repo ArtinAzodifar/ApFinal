@@ -129,6 +129,16 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void LoginScene()
+    {
+        SceneManager.LoadScene("LoginScene");
+    }
+
+    public void Lobby()
+    {
+        SceneManager.LoadScene("LobbyScene");
+    }
+
     public void Quit()
     {
         Application.Quit();
