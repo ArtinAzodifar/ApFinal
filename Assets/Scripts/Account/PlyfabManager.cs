@@ -8,7 +8,7 @@ public class PlayfabManager : MonoBehaviour
 {
     [SerializeField] private TMP_InputField email;
     [SerializeField] private TMP_InputField password;
-    [SerializeField] private TMP_Text errorText;
+    [SerializeField] private TMP_Text resultText;
     private GameManager gameManager = GameManager.Instance;
 
     //button methods
@@ -16,7 +16,7 @@ public class PlayfabManager : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(email.text) || string.IsNullOrWhiteSpace(password.text))
         {
-            errorText.text = "Please fill all fields";
+            resultText.text = "Please fill all fields";
             return;
         }
 
@@ -33,7 +33,7 @@ public class PlayfabManager : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(email.text) || string.IsNullOrWhiteSpace(password.text))
         {
-            errorText.text = "Please fill all fields";
+            resultText.text = "Please fill all fields";
             return;
         }
 
@@ -49,7 +49,7 @@ public class PlayfabManager : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(email.text))
         {
-            errorText.text = "Please fill all fields";
+            resultText.text = "Please fill all fields!";
             return;
         }
 
@@ -65,42 +65,52 @@ public class PlayfabManager : MonoBehaviour
     //result methods
     void OnSignupSuccess(RegisterPlayFabUserResult result)
     {
-        Debug.Log("Signup Successful");
+        resultText.text = "Signup Successful!";
         gameManager.Lobby();
     }
     private void OnLoginSuccess(LoginResult result)
     {
-        Debug.Log("Login Successful");
+        resultText.text = "Login Successful!";
         gameManager.Lobby();
     }
     void OnRecoverySuccess(SendAccountRecoveryEmailResult result)
     {
-        Debug.Log("Email Sent!");
+        resultText.text = "Recovery email sent!\n please check your email.";
     }
     void OnError(PlayFabError error)
     {
+        string message;
         switch (error.Error)
         {
             case PlayFabErrorCode.InvalidParams:
-                errorText.text = "PlayFab Error: Invalid parameters provided.";
+                message = "Please check your input. Some fields might be missing or incorrect.";
+                break;
+            case PlayFabErrorCode.InvalidEmailAddress:
+                message = "Invalid email format.";
+                break;
+            case PlayFabErrorCode.EmailAddressNotAvailable:
+                message = "This email is already registered.";
                 break;
             case PlayFabErrorCode.AccountNotFound:
-                errorText.text = "PlayFab Error: Account not found.";
+            case PlayFabErrorCode.InvalidEmailOrPassword:
+                message = "Email or password is incorrect.";
                 break;
-            case PlayFabErrorCode.NotAuthenticated:
-                errorText.text = "PlayFab Error: User not authenticated. Please log in.";
-                break;
-            case PlayFabErrorCode.APIClientRequestRateLimitExceeded:
-                errorText.text = "PlayFab Error: API request rate limit exceeded. Retrying with delay.";
+            case PlayFabErrorCode.InvalidPassword:
+                message = "Password is too weak or incorrect.";
                 break;
             case PlayFabErrorCode.ServiceUnavailable:
-                errorText.text = "PlayFab Error: PlayFab service unavailable. Retrying with delay.";
+                message = "PlayFab service is currently unavailable. try again later.";
+                break;
+            case PlayFabErrorCode.APIClientRequestRateLimitExceeded:
+                message = "Too many requests. try again later.";
                 break;
             default:
-                errorText.text = "Unknown Error";
+                message = "unknown error:\n" + error.GenerateErrorReport();
                 break;
         }
+        resultText.text = message;
     }
+
 
     //mode setting (TODO)
     public void recoverPassMode() { }
