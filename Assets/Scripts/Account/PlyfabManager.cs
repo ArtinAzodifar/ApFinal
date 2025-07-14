@@ -11,6 +11,7 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField] private TMP_Text errorText;
     private GameManager gameManager = GameManager.Instance;
 
+    //button methods
     public void Signup()
     {
         if (string.IsNullOrWhiteSpace(email.text) || string.IsNullOrWhiteSpace(password.text))
@@ -28,7 +29,6 @@ public class PlayfabManager : MonoBehaviour
 
         PlayFabClientAPI.RegisterPlayFabUser(request, OnSignupSuccess, OnError);
     }
-
     public void Login()
     {
         if (string.IsNullOrWhiteSpace(email.text) || string.IsNullOrWhiteSpace(password.text))
@@ -37,14 +37,14 @@ public class PlayfabManager : MonoBehaviour
             return;
         }
 
-        var request = new LoginWithEmailAddressRequest {
+        var request = new LoginWithEmailAddressRequest
+        {
             Email = email.text,
             Password = password.text,
         };
 
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
     }
-
     public void RecoverPass()
     {
         if (string.IsNullOrWhiteSpace(email.text))
@@ -62,22 +62,21 @@ public class PlayfabManager : MonoBehaviour
         PlayFabClientAPI.SendAccountRecoveryEmail(request, OnRecoverySuccess, OnError);
     }
 
+    //result methods
     void OnSignupSuccess(RegisterPlayFabUserResult result)
     {
         Debug.Log("Signup Successful");
         gameManager.Lobby();
     }
-
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Login Successful");
         gameManager.Lobby();
     }
-
-    void OnRecoverySuccess(SendAccountRecoveryEmailResult result){
+    void OnRecoverySuccess(SendAccountRecoveryEmailResult result)
+    {
         Debug.Log("Email Sent!");
     }
-
     void OnError(PlayFabError error)
     {
         switch (error.Error)
@@ -102,4 +101,10 @@ public class PlayfabManager : MonoBehaviour
                 break;
         }
     }
+
+    //mode setting (TODO)
+    public void recoverPassMode() { }
+    public void signupMode() { }
+    public void loginMode() { }
+
 }
