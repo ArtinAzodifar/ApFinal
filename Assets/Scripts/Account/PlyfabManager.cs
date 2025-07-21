@@ -9,7 +9,12 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField] private TMP_InputField email;
     [SerializeField] private TMP_InputField password;
     [SerializeField] private TMP_Text resultText;
-    private GameManager gameManager = GameManager.Instance;
+    private GameManager gameManager;
+
+    public void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     //button methods
     public void Signup()

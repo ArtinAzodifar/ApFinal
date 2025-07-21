@@ -1,6 +1,8 @@
+using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharSelector : NetworkBehaviour
 {
@@ -11,6 +13,7 @@ public class CharSelector : NetworkBehaviour
     private void Awake()
     {
         players = new NetworkList<CharacterSelectState>();
+        Debug.Log(EmailStore.Instance.GetEmail());
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -65,12 +68,14 @@ public class CharSelector : NetworkBehaviour
 
     public void Select(int characterID)
     {
+        Debug.Log("Select");
         SelectServerRpc(characterID);
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void SelectServerRpc(int characterID, ServerRpcParams serverRpcParams = default)
     {
+        Debug.Log("SelectServerRpc");
         for (int i = 0; i < characters.Length; i++)
         {
             if (characters[i].CharacterID() == characterID) //characteri ke donbaleshim
@@ -129,5 +134,14 @@ public class CharSelector : NetworkBehaviour
                 break;
             }
         }
+    }
+    
+    public void StartGame()
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].characterID == -1) return;
+        }
+        NetworkManager.Singleton.SceneManager.LoadScene("Scene1", LoadSceneMode.Single);
     }
 }
