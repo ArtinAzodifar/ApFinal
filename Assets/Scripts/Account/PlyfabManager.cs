@@ -66,11 +66,13 @@ public class PlayfabManager : MonoBehaviour
     void OnSignupSuccess(RegisterPlayFabUserResult result)
     {
         resultText.text = "Signup Successful!";
+        EmailStore.Instance.SetEmail(email.text);
         gameManager.Lobby();
     }
     private void OnLoginSuccess(LoginResult result)
     {
         resultText.text = "Login Successful!";
+        EmailStore.Instance.SetEmail(email.text);
         gameManager.Lobby();
     }
     void OnRecoverySuccess(SendAccountRecoveryEmailResult result)
@@ -109,6 +111,11 @@ public class PlayfabManager : MonoBehaviour
                 break;
         }
         resultText.text = message;
+    }
+
+    public string getEmail()
+    {
+        return email.text;
     }
 
 

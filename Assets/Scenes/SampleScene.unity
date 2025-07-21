@@ -838,9 +838,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62096ffa017131040bbf587901c89dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loginCanvas: {fileID: 0}
+  lobbyCanvas: {fileID: 0}
   email: {fileID: 1494065840}
   password: {fileID: 1738916629}
-  errorText: {fileID: 1566269208}
+  resultText: {fileID: 0}
+  emailAccount: {fileID: 0}
 --- !u!4 &577721899
 Transform:
   m_ObjectHideFlags: 0
@@ -1225,7 +1228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &771942118
 MonoBehaviour:
   m_ObjectHideFlags: 0
