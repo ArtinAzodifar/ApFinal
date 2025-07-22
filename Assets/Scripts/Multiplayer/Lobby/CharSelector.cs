@@ -30,17 +30,13 @@ public class CharSelector : NetworkBehaviour
         if (IsClient)
         {
             players.OnListChanged += StateChange;
+            StartCoroutine(setEmail());
         }
 
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
-        }
-
-        if (IsOwner)
-        {
-            StartCoroutine(setEmail());
         }
 
         UpdateAllCharactersUI();
