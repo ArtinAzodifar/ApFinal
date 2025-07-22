@@ -92,7 +92,7 @@ public class CharSelector : NetworkBehaviour
             }
             if (!found)
             {
-                c.SetSelected(false, 0, default); // حالت انتخاب نشده
+                c.SetSelected(false, 0, default);
             }
         }
     }
@@ -111,7 +111,6 @@ public class CharSelector : NetworkBehaviour
         {
             if (characters[i].CharacterID() == characterID)
             {
-                // اگر قبلا این کاراکتر توسط خود بازیکن انتخاب شده بود، لغو انتخاب کن
                 if (characters[i].IsSelected() && characters[i].ClientID() == senderId)
                 {
                     characters[i].SetSelected(false, 0, default);
@@ -131,12 +130,10 @@ public class CharSelector : NetworkBehaviour
                     {
                         if (players[j].clientID == senderId)
                         {
-                            // اگر قبلا کاراکتری انتخاب کرده بود، آن را آزاد کن
                             if (players[j].characterID != -1)
                             {
                                 EnableCharServerRpc(players[j].characterID);
                             }
-                            // انتخاب جدید
                             characters[i].SetSelected(true, senderId, players[j].email.ToString());
                             players[j] = new CharacterSelectState(senderId, characterID, players[j].email);
                             break;
