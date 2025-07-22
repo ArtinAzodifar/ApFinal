@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
@@ -8,12 +9,11 @@ public class CharSelector : NetworkBehaviour
 {
     public NetworkList<CharacterSelectState> players;
     [SerializeField] private Character[] characters;
-    public static CharSelector Instance {get; private set;}
+    public static CharSelector Instance { get; private set; }
 
     private void Awake()
     {
         players = new NetworkList<CharacterSelectState>();
-        Debug.Log(EmailStore.Instance.GetEmail());
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -24,13 +24,12 @@ public class CharSelector : NetworkBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    
+
     public override void OnNetworkSpawn()
     {
         if (IsClient)
         {
             players.OnListChanged += StateChange;
-            RegisterEmailServerRpc(EmailStore.Instance.GetEmail());
         }
 
         if (IsServer)
@@ -38,11 +37,24 @@ public class CharSelector : NetworkBehaviour
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
         }
+
+        if (IsOwner)
+        {
+            StartCoroutine(setEmail());
+        }
+
+        UpdateAllCharactersUI();
     }
-    
+
+    private IEnumerator setEmail()
+    {
+        yield return new WaitForSeconds(1f);
+        RegisterEmailServerRpc(EmailStore.Instance.GetEmail());
+    }
+
     private void OnClientConnected(ulong clientId)
     {
-        players.Add(new CharacterSelectState(clientId, -1, EmailStore.Instance.GetEmail()));
+        players.Add(new CharacterSelectState(clientId, -1, "test"));
     }
 
     private void OnClientDisconnected(ulong clientId)
@@ -51,56 +63,86 @@ public class CharSelector : NetworkBehaviour
         {
             if (players[i].clientID == clientId)
             {
-                if (players[i].characterID != -1) {EnableCharServerRpc(players[i].characterID);}
+                if (players[i].characterID != -1)
+                {
+                    EnableCharServerRpc(players[i].characterID);
+                }
                 players.RemoveAt(i);
                 break;
             }
         }
+        UpdateAllCharactersUI();
     }
 
     private void StateChange(NetworkListEvent<CharacterSelectState> changeEvent)
     {
-        foreach (Character c in characters)
+        UpdateAllCharactersUI();
+    }
+
+    private void UpdateAllCharactersUI()
+    {
+        for (int i = 0; i < characters.Length; i++)
         {
-            c.updateState();
+            var c = characters[i];
+            bool found = false;
+            for (int j = 0; j < players.Count; j++)
+            {
+                if (players[j].characterID == c.CharacterID())
+                {
+                    c.SetSelected(true, players[j].clientID, players[j].email.ToString());
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                c.SetSelected(false, 0, default); // حالت انتخاب نشده
+            }
         }
     }
 
     public void Select(int characterID)
     {
-        Debug.Log("Select");
         SelectServerRpc(characterID);
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void SelectServerRpc(int characterID, ServerRpcParams serverRpcParams = default)
     {
-        Debug.Log("SelectServerRpc");
+        ulong senderId = serverRpcParams.Receive.SenderClientId;
+
         for (int i = 0; i < characters.Length; i++)
         {
-            if (characters[i].CharacterID() == characterID) //characteri ke donbaleshim
+            if (characters[i].CharacterID() == characterID)
             {
-                if (characters[i].IsSelected() && characters[i].ClientID() == serverRpcParams.Receive.SenderClientId)
+                // اگر قبلا این کاراکتر توسط خود بازیکن انتخاب شده بود، لغو انتخاب کن
+                if (characters[i].IsSelected() && characters[i].ClientID() == senderId)
                 {
-                    characters[i].SetSelected(false, 0, "nothing");
+                    characters[i].SetSelected(false, 0, default);
+
                     for (int j = 0; j < players.Count; j++)
                     {
-                        if (players[j].clientID == characters[i].ClientID())
+                        if (players[j].clientID == senderId)
                         {
-                            players[j] = new CharacterSelectState(players[j].clientID, -1, EmailStore.Instance.GetEmail());
+                            players[j] = new CharacterSelectState(senderId, -1, players[j].email);
                             break;
                         }
                     }
                 }
                 else if (!characters[i].IsSelected())
                 {
-                    for(int j = 0; j < players.Count; j++)
+                    for (int j = 0; j < players.Count; j++)
                     {
-                        if(players[j].clientID == serverRpcParams.Receive.SenderClientId)
+                        if (players[j].clientID == senderId)
                         {
-                            if(players[j].characterID != -1) {EnableCharServerRpc(players[j].characterID);}
-                            characters[i].SetSelected(true, serverRpcParams.Receive.SenderClientId, players[j].email.ToString());
-                            players[j] = new CharacterSelectState(players[j].clientID, characterID, players[j].email);
+                            // اگر قبلا کاراکتری انتخاب کرده بود، آن را آزاد کن
+                            if (players[j].characterID != -1)
+                            {
+                                EnableCharServerRpc(players[j].characterID);
+                            }
+                            // انتخاب جدید
+                            characters[i].SetSelected(true, senderId, players[j].email.ToString());
+                            players[j] = new CharacterSelectState(senderId, characterID, players[j].email);
                             break;
                         }
                     }
@@ -108,21 +150,25 @@ public class CharSelector : NetworkBehaviour
                 break;
             }
         }
+
+        UpdateAllCharactersUI();
     }
-    
+
     [ServerRpc(RequireOwnership = false)]
     public void RegisterEmailServerRpc(string email, ServerRpcParams rpcParams = default)
     {
+        ulong senderId = rpcParams.Receive.SenderClientId;
         for (int i = 0; i < players.Count; i++)
         {
-            if (players[i].clientID == rpcParams.Receive.SenderClientId)
+            if (players[i].clientID == senderId)
             {
-                players[i] = new CharacterSelectState(players[i].clientID, players[i].characterID, email);
+                players[i] = new CharacterSelectState(senderId, players[i].characterID, email);
                 break;
             }
         }
+        UpdateAllCharactersUI();
     }
-    
+
     [ServerRpc(RequireOwnership = false)]
     private void EnableCharServerRpc(int characterID, ServerRpcParams serverRpcParams = default)
     {
@@ -130,12 +176,12 @@ public class CharSelector : NetworkBehaviour
         {
             if (characters[i].CharacterID() == characterID)
             {
-                characters[i].SetSelected(false, 0, "nothing");
+                characters[i].SetSelected(false, 0, default);
                 break;
             }
         }
     }
-    
+
     public void StartGame()
     {
         for (int i = 0; i < players.Count; i++)

@@ -1454,7 +1454,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1127278078}
   - component: {fileID: 1127278079}
-  - component: {fileID: 1127278080}
   m_Layer: 5
   m_Name: range
   m_TagString: Untagged
@@ -1495,35 +1494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918e7a9067efb174d94ab94646c41a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   characterPrefab: {fileID: 0}
   charID: 2
   owner: {fileID: 1220206461}
---- !u!114 &1127278080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127278077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 784585147
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!1 &1198266236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,7 +2547,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1579058584}
-  - component: {fileID: 1579058586}
   - component: {fileID: 1579058585}
   m_Layer: 5
   m_Name: melee
@@ -2616,35 +2588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918e7a9067efb174d94ab94646c41a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   characterPrefab: {fileID: 0}
   charID: 1
   owner: {fileID: 1567603689}
---- !u!114 &1579058586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579058583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2891697870
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!1 &1643448533
 GameObject:
   m_ObjectHideFlags: 0

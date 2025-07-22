@@ -5,14 +5,14 @@ using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine.UI;
 
-public class Character : NetworkBehaviour
+public class Character : MonoBehaviour
 {
-    public GameObject characterPrefab;
+    public GameObject[] characterPrefabs;
     [SerializeField] private int charID;
     [SerializeField] private TMP_Text owner;
-    private NetworkVariable<ulong> clientID = new NetworkVariable<ulong>();
-    private NetworkVariable<FixedString64Bytes> ownerEmail = new NetworkVariable<FixedString64Bytes>();
-    private NetworkVariable<bool> isSelected = new NetworkVariable<bool>();
+    private ulong clientID;
+    private string ownerEmail;
+    private bool isSelected;
 
     public void Awake()
     {
@@ -21,9 +21,9 @@ public class Character : NetworkBehaviour
 
     public void updateState()
     {
-        if (isSelected.Value == true)
+        if (isSelected == true)
         {
-            owner.text = ownerEmail.Value.ToString();
+            owner.text = ownerEmail;
         }
         else
         {
@@ -38,18 +38,19 @@ public class Character : NetworkBehaviour
     }
     public ulong ClientID()
     {
-        return clientID.Value;
+        return clientID;
     }
     public bool IsSelected()
     {
-        return isSelected.Value;
+        return isSelected;
     }
-    
+
     //setters
     public void SetSelected(bool selected, ulong id, string ownerEmail)
     {
-        isSelected.Value = selected;
-        clientID.Value = id;
-        this.ownerEmail.Value = new FixedString64Bytes(ownerEmail);
+        isSelected = selected;
+        clientID = id;
+        this.ownerEmail = ownerEmail;
+        updateState();
     }
 }
