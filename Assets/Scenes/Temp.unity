@@ -823,6 +823,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2709668241137870008, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2953880127974994207, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
       propertyPath: parallaxEffect
       value: 0.2
