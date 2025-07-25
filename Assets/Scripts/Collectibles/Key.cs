@@ -9,9 +9,9 @@ public class Key : MonoBehaviour
 
     public void Start()
     {
-        if (gameManager.GetKey1())
+        // if (gameManager.GetKey1())
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
     }
     public void OnTriggerEnter2D(Collider2D other)

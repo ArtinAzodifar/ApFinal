@@ -21,7 +21,7 @@ public class FlyingDemon : MonoBehaviour
     public void Awake()
     {
         transform.localScale = new Vector3(scale, scale, scale);
-        fire = GameObject.FindWithTag("FireBallPool").GetComponent<ObjectPooler>();
+        // fire = GameObject.FindWithTag("FireBallPool").GetComponent<ObjectPooler>();
         animator = GetComponent<Animator>();
         melee = GameObject.FindWithTag("Player1");
         leaf = GameObject.FindWithTag("Player2");
@@ -29,60 +29,60 @@ public class FlyingDemon : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0f;
     }
-    public void Update()
-    {
-        FindPlayer();
-        if (canShoot && timePast >= shootTimer)
-        {
-            animator.SetTrigger("Attack");
-            timePast = 0;
-        }
-        else if (canShoot)//cooldown
-        {
-            timePast += Time.deltaTime;
-        }
-        if (playerIsInTrigger)
-        {
-            audioSource.volume = AudioController.Instance.sfxVolume;
-        }
-        else
-        {
-            audioSource.volume = 0f;
-        }
-    }
+    // public void Update()
+    // {
+        // FindPlayer();
+        // if (canShoot && timePast >= shootTimer)
+        // {
+            // animator.SetTrigger("Attack");
+            // timePast = 0;
+        // }
+        // else if (canShoot)//cooldown
+        // {
+            // timePast += Time.deltaTime;
+        // }
+        // if (playerIsInTrigger)
+        // {
+            // audioSource.volume = AudioController.Instance.sfxVolume;
+        // }
+        // else
+        // {
+            // audioSource.volume = 0f;
+        // }
+    // }
 
-    private void FindPlayer()
-    {
-        float meleeXDistance = transform.position.x - melee.transform.position.x;
-        float leafXDistance = transform.position.x - leaf.transform.position.x;
-        float meleeYDistance = transform.position.y - melee.transform.position.y;
-        float leafYDistance = transform.position.y - leaf.transform.position.y;
-        bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 2;
-        bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 2;
-        if (meleeInSight && leafInSight)
-        {
-            canShoot = true;
-            target = Mathf.Abs(meleeXDistance) <= Mathf.Abs(leafXDistance) ? melee : leaf;
-            setDirection(target);
-        }
-        else if (meleeInSight)
-        {
-            canShoot = true;
-            target = melee;
-            setDirection(target);
-        } 
-        else if (leafInSight)
-        {
-            canShoot = true;
-            target = leaf;
-            setDirection(target);
-        }
-        else
-        {
-            canShoot = false;
-            target = null;
-        }
-    }
+    // private void FindPlayer()
+    // {
+        // float meleeXDistance = transform.position.x - melee.transform.position.x;
+        // float leafXDistance = transform.position.x - leaf.transform.position.x;
+        // float meleeYDistance = transform.position.y - melee.transform.position.y;
+        // float leafYDistance = transform.position.y - leaf.transform.position.y;
+        // bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 2;
+        // bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 2;
+        // if (meleeInSight && leafInSight)
+        // {
+            // canShoot = true;
+            // target = Mathf.Abs(meleeXDistance) <= Mathf.Abs(leafXDistance) ? melee : leaf;
+            // setDirection(target);
+        // }
+        // else if (meleeInSight)
+        // {
+            // canShoot = true;
+            // target = melee;
+            // setDirection(target);
+        // } 
+        // else if (leafInSight)
+        // {
+            // canShoot = true;
+            // target = leaf;
+            // setDirection(target);
+        // }
+        // else
+        // {
+            // canShoot = false;
+            // target = null;
+        // }
+    // }
 
 
     private void Shoot()//is called in the middle of attack animation

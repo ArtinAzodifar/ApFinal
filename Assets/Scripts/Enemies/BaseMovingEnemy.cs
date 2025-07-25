@@ -28,42 +28,42 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
     }
     public virtual void Update()
     {
-        animator.SetBool("Run", isChasing && !inCoolDown);
-        FindPlayer();
-        Chase();
+        // animator.SetBool("Run", isChasing && !inCoolDown);
+        // FindPlayer();
+        // Chase();
     }
 
     public virtual void FindPlayer()
     {
-        float meleeXDistance = transform.position.x - melee.transform.position.x;
-        float leafXDistance = transform.position.x - leaf.transform.position.x;
-        float meleeYDistance = transform.position.y - melee.transform.position.y;
-        float leafYDistance = transform.position.y - leaf.transform.position.y;
-        bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 2;
-        bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 2;
-        if (meleeInSight && leafInSight)
-        {
-            isChasing = true;
-            target = Mathf.Abs(meleeXDistance) <= Mathf.Abs(leafXDistance) ? melee : leaf;
-            setDirection(target);
-        }
-        else if (meleeInSight)
-        {
-            isChasing = true;
-            target = melee;
-            setDirection(target);
-        } 
-        else if (leafInSight)
-        {
-            isChasing = true;
-            target = leaf;
-            setDirection(target);
-        }
-        else
-        {
-            isChasing = false;
-            target = null;
-        }
+        // float meleeXDistance = transform.position.x - melee.transform.position.x;
+        // float leafXDistance = transform.position.x - leaf.transform.position.x;
+        // float meleeYDistance = transform.position.y - melee.transform.position.y;
+        // float leafYDistance = transform.position.y - leaf.transform.position.y;
+        // bool meleeInSight = Mathf.Abs(meleeXDistance) <= distance && Mathf.Abs(meleeYDistance) <= 2;
+        // bool leafInSight = Mathf.Abs(leafXDistance) <= distance && Mathf.Abs(leafYDistance) <= 2;
+        // if (meleeInSight && leafInSight)
+        // {
+            // isChasing = true;
+            // target = Mathf.Abs(meleeXDistance) <= Mathf.Abs(leafXDistance) ? melee : leaf;
+            // setDirection(target);
+        // }
+        // else if (meleeInSight)
+        // {
+            // isChasing = true;
+            // target = melee;
+            // setDirection(target);
+        // } 
+        // else if (leafInSight)
+        // {
+            // isChasing = true;
+            // target = leaf;
+            // setDirection(target);
+        // }
+        // else
+        // {
+            // isChasing = false;
+            // target = null;
+        // }
     }
 
     public virtual void Chase()
