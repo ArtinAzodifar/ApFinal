@@ -3,13 +3,19 @@ using PlayFab.ClientModels;
 using UnityEngine;
 using TMPro;
 using System;
+using System.Collections;
 
 public class PlayfabManager : MonoBehaviour
 {
     [SerializeField] private TMP_InputField email;
     [SerializeField] private TMP_InputField password;
     [SerializeField] private TMP_Text resultText;
-    private GameManager gameManager = GameManager.Instance;
+    private GameManager gameManager;
+
+    public void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     //button methods
     public void Signup()
@@ -65,18 +71,20 @@ public class PlayfabManager : MonoBehaviour
     //result methods
     void OnSignupSuccess(RegisterPlayFabUserResult result)
     {
-        resultText.text = "Signup Successful!";
-        gameManager.Lobby();
+        
+        EmailStore.Instance.SetEmail(email.text);
+        StartCoroutine(enter("Signup Successful!"));
     }
     private void OnLoginSuccess(LoginResult result)
     {
-        resultText.text = "Login Successful!";
-        gameManager.Lobby();
+        EmailStore.Instance.SetEmail(email.text);
+        StartCoroutine(enter("Login Successful!"));
     }
     void OnRecoverySuccess(SendAccountRecoveryEmailResult result)
     {
         resultText.text = "Recovery email sent!\n please check your email.";
     }
+
     void OnError(PlayFabError error)
     {
         string message;
@@ -109,6 +117,18 @@ public class PlayfabManager : MonoBehaviour
                 break;
         }
         resultText.text = message;
+    }
+
+    private IEnumerator enter(string text)
+    {
+        resultText.text = text;
+        yield return new WaitForSeconds(0.3f);
+        gameManager.Lobby();
+    }
+
+    public string getEmail()
+    {
+        return email.text;
     }
 
 
