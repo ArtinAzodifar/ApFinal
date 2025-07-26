@@ -10,6 +10,7 @@ public class CharSelector : NetworkBehaviour
     public NetworkList<CharacterSelectState> players;
     [SerializeField] private Character[] characters;
     public static CharSelector Instance { get; private set; }
+    private GameManager gameManager = GameManager.Instance;
 
     private void Awake()
     {
@@ -181,6 +182,6 @@ public class CharSelector : NetworkBehaviour
         {
             if (players[i].characterID == -1) return;
         }
-        NetworkManager.Singleton.SceneManager.LoadScene("Scene1", LoadSceneMode.Single);
+        gameManager.StartGame();
     }
 }
