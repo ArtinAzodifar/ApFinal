@@ -74,7 +74,7 @@ public class GameManager : NetworkBehaviour
         {
             pauseScreen.SetActive(false);
         }
-        if (!isLocalMode && scene.name.Contains("Level") && IsServer) assignPlayers();
+        if (!isLocalMode && scene.name.Contains("Level") && IsServer) StartCoroutine(assignPlayers());
     }
 
     public void GameOver()
@@ -123,15 +123,19 @@ public class GameManager : NetworkBehaviour
     }
 
     //assign characters to their owner in online mode
-    private void assignPlayers()
+    private IEnumerator assignPlayers()
     {
-        if (!IsServer) return;
+        yield return new WaitUntil(() => NetworkManager.Singleton.IsListening);
+
+        if (!IsServer) yield break;
 
         //give the ownerShip of each character to its player
         foreach (var player in CharSelector.Instance.players)
         {
-            GameObject spawnedPlayer = player.characterID == 0 ? GameObject.FindWithTag("Player1") : GameObject.FindWithTag("Player2");
-            spawnedPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(player.clientID);
+            GameObject scenePlayer = player.characterID == 0 ? GameObject.FindWithTag("Player1") : GameObject.FindWithTag("Player2");
+            if (scenePlayer == null) continue;
+            yield return new WaitUntil(() => scenePlayer.GetComponent<NetworkObject>().IsSpawned == true);
+            scenePlayer.GetComponent<NetworkObject>().ChangeOwnership(player.clientID);
         }
     }
 

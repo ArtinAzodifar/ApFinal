@@ -383,13 +383,17 @@ GameObject:
   - component: {fileID: 3206027463697900029}
   - component: {fileID: 5916755636235493334}
   - component: {fileID: 4252138731406926605}
+  - component: {fileID: 6335505045724180594}
   - component: {fileID: 816654553973444014}
   - component: {fileID: 6911694724335906176}
-  - component: {fileID: 6335505045724180594}
   - component: {fileID: 8994911087607422442}
   - component: {fileID: 4608508507699886268}
-  - component: {fileID: 3480105491003057242}
   - component: {fileID: 2745891640763834439}
+  - component: {fileID: 3480105491003057242}
+  - component: {fileID: -1082669617771971578}
+  - component: {fileID: 182590657648151833}
+  - component: {fileID: -2494524612504240565}
+  - component: {fileID: -2407735688815959884}
   m_Layer: 14
   m_Name: RangePlayer
   m_TagString: Player2
@@ -626,6 +630,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!61 &6335505045724180594
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061938598507072919}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.010292053, y: -0.005145639}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.85, y: 0.76666665}
+    newSize: {x: 4.8, y: 1.35}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.4568901, y: 0.7633715}
+  m_EdgeRadius: 0
 --- !u!114 &816654553973444014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,6 +821,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 481ce4ed-025e-4791-8972-611a03bef2a9
     m_ActionName: 'Player1-melee/superAttack[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5cd4b51b-21fd-4c04-a512-b48783dc91f3
+    m_ActionName: 'meleeLevel3/move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 337e42f3-5a96-45a1-a411-3d5fe5d55aa4
+    m_ActionName: 'meleeLevel3/attack[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 70663c4f-b5ac-42ef-b404-f808da58ff0f
+    m_ActionName: 'meleeLevel3/superAttack[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3617a7f-cbf1-4823-9aa8-7e457effa296
+    m_ActionName: 'rangeLevel3/move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c3cc4ff-8410-48df-beb7-ef2039bbdf8d
+    m_ActionName: 'rangeLevel3/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7b34384-ab72-4ab1-b189-45c369852b9b
+    m_ActionName: 'rangeLevel3/SuperShoot[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: player2-archer
@@ -795,52 +869,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 41216
---- !u!61 &6335505045724180594
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7061938598507072919}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.010292053, y: -0.005145639}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.85, y: 0.76666665}
-    newSize: {x: 4.8, y: 1.35}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.4568901, y: 0.7633715}
-  m_EdgeRadius: 0
 --- !u!114 &8994911087607422442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +905,31 @@ MonoBehaviour:
   laserCount: 3
   segmentSpacing: 9
   damageAmount: 1000
+--- !u!114 &2745891640763834439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061938598507072919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720ef202f22e32d4d9685d70da9451a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - name: AttackRange
+    clip: {fileID: 8300000, guid: 29c56845dcf1a594fb602c7dfde33795, type: 3}
+  - name: JumpRange
+    clip: {fileID: 8300000, guid: 093e5747bbdf3854e82f80d0d12d0e82, type: 3}
+  - name: TakeHitRange
+    clip: {fileID: 8300000, guid: 71e3ba0a398bec14ca4e97dc37adb348, type: 3}
+  - name: DeathRange
+    clip: {fileID: 8300000, guid: 48b6bb545b0c3634d885d72b45c77125, type: 3}
+  - name: SuperAttack1Range
+    clip: {fileID: 8300000, guid: a7326b0d5dc422f468b7895daaba051a, type: 3}
+  - name: SuperAttack2Range
+    clip: {fileID: 8300000, guid: d6481a87baf1dbd49a82470af2389cfa, type: 3}
 --- !u!82 &3480105491003057242
 AudioSource:
   m_ObjectHideFlags: 0
@@ -974,7 +1027,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2745891640763834439
+--- !u!114 &-1082669617771971578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -983,22 +1036,184 @@ MonoBehaviour:
   m_GameObject: {fileID: 7061938598507072919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720ef202f22e32d4d9685d70da9451a5, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips:
-  - name: AttackRange
-    clip: {fileID: 8300000, guid: 29c56845dcf1a594fb602c7dfde33795, type: 3}
-  - name: JumpRange
-    clip: {fileID: 8300000, guid: 093e5747bbdf3854e82f80d0d12d0e82, type: 3}
-  - name: TakeHitRange
-    clip: {fileID: 8300000, guid: 71e3ba0a398bec14ca4e97dc37adb348, type: 3}
-  - name: DeathRange
-    clip: {fileID: 8300000, guid: 48b6bb545b0c3634d885d72b45c77125, type: 3}
-  - name: SuperAttack1Range
-    clip: {fileID: 8300000, guid: a7326b0d5dc422f468b7895daaba051a, type: 3}
-  - name: SuperAttack2Range
-    clip: {fileID: 8300000, guid: d6481a87baf1dbd49a82470af2389cfa, type: 3}
+  GlobalObjectIdHash: 2157791479
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 0
+  AllowOwnerToParent: 0
+--- !u!114 &182590657648151833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061938598507072919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  TransitionStateInfoList:
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: 125937960
+    TransitionDuration: 0
+    TriggerNameHash: 125937960
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: -1316629574
+    TransitionIndex: 2
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: 2018140595
+    TransitionDuration: 0
+    TriggerNameHash: 1326360856
+    TransitionIndex: 3
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 1748754976
+    DestinationState: 125937960
+    TransitionDuration: 0
+    TriggerNameHash: 125937960
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 1748754976
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: -1316629574
+    TransitionIndex: 2
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 1748754976
+    DestinationState: 2018140595
+    TransitionDuration: 0
+    TriggerNameHash: 1326360856
+    TransitionIndex: 3
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 1748754976
+    DestinationState: -1288781466
+    TransitionDuration: 0
+    TriggerNameHash: -1288781466
+    TransitionIndex: 4
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 125937960
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: -1316629574
+    TransitionIndex: 2
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 125937960
+    DestinationState: 129565385
+    TransitionDuration: 0
+    TriggerNameHash: 129565385
+    TransitionIndex: 3
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 125937960
+    DestinationState: 2018140595
+    TransitionDuration: 0
+    TriggerNameHash: 1326360856
+    TransitionIndex: 4
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 129565385
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: -1316629574
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 129565385
+    DestinationState: 2018140595
+    TransitionDuration: 0
+    TriggerNameHash: 1326360856
+    TransitionIndex: 2
+  m_Animator: {fileID: 3206027463697900029}
+--- !u!114 &-2494524612504240565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061938598507072919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 1
+  TickSyncChildren: 1
+  UseUnreliableDeltas: 1
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 0
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
+  SyncRotAngleZ: 0
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 1
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &-2407735688815959884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061938598507072919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 1
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1 &7573904575286300250
 GameObject:
   m_ObjectHideFlags: 0
