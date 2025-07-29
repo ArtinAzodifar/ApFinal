@@ -80,7 +80,7 @@ public class Player1SuperAttack : MonoBehaviour
     private void ManaAdd()
     {
         mana++;
-        manaBar.addMana();
+        // manaBar.addMana();
     }
 
     private void MaxMana(GameObject g)
