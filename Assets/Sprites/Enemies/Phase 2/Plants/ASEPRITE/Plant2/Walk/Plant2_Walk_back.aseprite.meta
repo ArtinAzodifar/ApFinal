@@ -7,7 +7,7 @@ ScriptedImporter:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
       name: Plant2_Walk_back_Clip
-    second: {fileID: 7400000, guid: 8e47bdd3300d4314395342ac33a3680c, type: 2}
+    second: {fileID: 7400000, guid: 8ba75ccbbd25728408c8fa31d7a9856f, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -103,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638873974925348210
+  platformSettingsDirtyTick: 638891221785035523
   textureAssetName: 
   singleSpriteImportData:
   - name: 

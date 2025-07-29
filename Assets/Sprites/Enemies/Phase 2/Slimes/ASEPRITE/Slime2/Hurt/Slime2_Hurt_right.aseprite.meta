@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: ce3abef0a46ea6b419a21035c317e3ac
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Slime2_Hurt_right_Clip
+    second: {fileID: 7400000, guid: 6b8fd94b8d4020148bc2c4f2a51b24a8, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -98,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638873976152586246
+  platformSettingsDirtyTick: 638892846189169870
   textureAssetName: 
   singleSpriteImportData:
   - name: 

@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 768cf7654b13ed6439e06cdf44dccd43
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Slime2_Attack_right_Clip
+    second: {fileID: 7400000, guid: e55b645accfe7444ea435eeb61f50358, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -98,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638873976042274332
+  platformSettingsDirtyTick: 638892845958968454
   textureAssetName: 
   singleSpriteImportData:
   - name: 
