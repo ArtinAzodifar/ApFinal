@@ -56,11 +56,33 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        if (_cooldownTimer > 0f) _cooldownTimer -= Time.deltaTime;
+        if (_spawnEnemyCooldownTimer > 0f) _spawnEnemyCooldownTimer -= Time.deltaTime;
+        if (_castCooldownTimer > 0f) _castCooldownTimer -= Time.deltaTime;
+
         FindPlayer();
+
+        if (_closestPlayer == null) return;
+
+        if (_distance <= attackRange && _cooldownTimer <= 0)
+        {
+            Attack();
+            return;
+        }
+
+        if (_distance <= spawnRadius && _spawnEnemyCooldownTimer <= 0.1)
+        {
+            RandomEnemySpawner();
+            return;
+        }
+
+        if (_distance <= spawnRadius && _castCooldownTimer <= 0)
+        {
+            RandomSpellCasting();
+            return;
+        }
+        
         Chase();
-        Attack();
-        RandomEnemySpawner();
-        RandomSpellCasting();
     }
 
     private void FixedUpdate()
@@ -127,7 +149,7 @@ public class Boss : MonoBehaviour
     {
         if (_closestPlayer != null && _distance <= attackRange && _cooldownTimer <= 0.05)
         {
-            
+
             _movement = Vector2.zero;
             _animator.SetFloat("Speed", 0);
 
@@ -141,18 +163,8 @@ public class Boss : MonoBehaviour
                 _spriteRenderer.flipX = true;
             }
 
-            _animator.SetBool("IsAttacking", true);
-
+            _animator.SetTrigger("Attack");
             _cooldownTimer = attackCooldown;
-        }
-        else
-        {
-            _animator.SetBool("IsAttacking", false);
-        }
-
-        if (_cooldownTimer > 0f)
-        {
-            _cooldownTimer -= Time.deltaTime;
         }
     }
 
@@ -163,9 +175,6 @@ public class Boss : MonoBehaviour
             
             _movement = Vector2.zero;
             _animator.SetFloat("Speed", 0);
-
-            _animator.SetBool("IsSpawning", true);
-            _spawnEnemyCooldownTimer = spawnCooldown;
             
             foreach (var e in enemies)
             {
@@ -173,15 +182,8 @@ public class Boss : MonoBehaviour
                 Instantiate(e, randomPos, Quaternion.identity);
                 Instantiate(spawn, randomPos, Quaternion.identity);
             }
-        }
-        else if (_spawnEnemyCooldownTimer > 0.05)
-        {
-            _animator.SetBool("IsSpawning", false);
-        }
-
-        if (_spawnEnemyCooldownTimer > 0f)
-        {
-            _spawnEnemyCooldownTimer -= Time.deltaTime;
+            _animator.SetTrigger("Spawn");
+            _spawnEnemyCooldownTimer = spawnCooldown;
         }
     }
 
@@ -192,24 +194,15 @@ public class Boss : MonoBehaviour
             
             _movement = Vector2.zero;
             _animator.SetFloat("Speed", 0);
-
-            _animator.SetBool("IsCasting", true);
-            _castCooldownTimer = castCooldown;
             
             for (int i = 0; i < numOfSpells; i++)
             {
                 Vector3 randomPos = transform.position + (Vector3)Random.insideUnitCircle * spawnRadius;
                 Instantiate(spell, randomPos, Quaternion.identity);
             }
-        }
-        else if (_castCooldownTimer > 0.05)
-        {
-            _animator.SetBool("IsCasting", false);
-        }
-
-        if (_castCooldownTimer > 0f)
-        {
-            _castCooldownTimer -= Time.deltaTime;
+            
+            _animator.SetTrigger("Cast");
+            _castCooldownTimer = castCooldown;
         }
     }
 
