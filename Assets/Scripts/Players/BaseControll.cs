@@ -22,6 +22,7 @@ public class BaseControll : MonoBehaviour
     private bool knockFromRight;
     protected bool inKnock = false;
     private bool isInDamage = false;
+    private bool topDown;
     private const float SCALE = 2.2f;
     
     protected CinemachineCamera vcam;
@@ -48,23 +49,30 @@ public class BaseControll : MonoBehaviour
         speed = gameObject.CompareTag("Player1") ? 6f : 7.5f;
         jumpForce = gameObject.CompareTag("Player1") ? 900f : 680f;
     }
+    public virtual void Start()
+    {
+        topDown = groundCheck == null;
+    }
     public virtual void Update()
     {
         Move();
     }
     public void FixedUpdate()
     {
-        GroundCheck();
+        if (!topDown)
+        {
+            GroundCheck();   
+        }
     }
 
     //methods:
     public void Move()
     {
         if (isInDamage || inKnock) return;
-        animator.SetBool("Run", movingInput.x != 0);
+        animator.SetBool("Run", movingInput.x != 0 || movingInput.y != 0);
         //character direction
         transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
-        rb.linearVelocity = new Vector2(movingInput.x * speed, rb.linearVelocity.y);   
+        rb.linearVelocity = new Vector2(movingInput.x * speed, topDown ? movingInput.y * speed : rb.linearVelocity.y);
     }
     public void GroundCheck()
     {

@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameState = GameState.Level1;
-        SceneManager.LoadScene("LevelTwo");
+        SceneManager.LoadScene("LevelOne");
     }
 
     public void Level2()
@@ -127,6 +127,16 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.MainMenu;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void LoginScene()
+    {
+        SceneManager.LoadScene("LoginScene");
+    }
+
+    public void Lobby()
+    {
+        SceneManager.LoadScene("LobbyScene");
     }
 
     public void Quit()

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player1SuperAttack : MonoBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int damageAmount;
     public int mana;
     private int maxMana;
     private Animator animator;
@@ -15,7 +16,7 @@ public class Player1SuperAttack : MonoBehaviour
     public void Awake()
     {
         animator = GetComponent<Animator>();
-        manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
+        // manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
     }
     public void Start()
     {
@@ -66,9 +67,10 @@ public class Player1SuperAttack : MonoBehaviour
             {
                 if (enemy.gameObject.GetComponent<Damagable>() != null)
                 {
-                    enemy.gameObject.GetComponent<Damagable>().Damage(10000);
+                    enemy.gameObject.GetComponent<Damagable>().Damage(damageAmount);
                 }
             }
+
             yield return null;
         }
         yield return new WaitForSeconds(1.7f);
