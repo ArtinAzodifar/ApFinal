@@ -42,9 +42,10 @@ GameObject:
   - component: {fileID: 4944644692615182320}
   - component: {fileID: 9056457555057818094}
   - component: {fileID: 8607406395844159786}
-  - component: {fileID: 6497734211543258611}
   - component: {fileID: 3130857095643480640}
   - component: {fileID: 8823649232728456010}
+  - component: {fileID: 1375191359603071268}
+  - component: {fileID: 9114100924651390455}
   m_Layer: 0
   m_Name: Plan2 - Shooter
   m_TagString: Untagged
@@ -148,27 +149,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6497734211543258611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023190645243070429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c947322d655d142b9d1f9b7ba37cb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  damageAmount: 1
-  detectionRange: 8
-  attackRange: 7
-  attackCooldown: 1
-  hitboxUp: {fileID: 640295506745614144}
-  hitboxDown: {fileID: 6750810688965596583}
-  hitboxLeft: {fileID: 2978076650686263567}
-  hitboxRight: {fileID: 1611797125474257279}
 --- !u!50 &3130857095643480640
 Rigidbody2D:
   serializedVersion: 5
@@ -242,6 +222,40 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.19, y: 0.29}
   m_EdgeRadius: 0
+--- !u!114 &1375191359603071268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023190645243070429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d0975a94f8bcc43979f473c81b9ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  damageAmount: 3
+  detectionRange: 10
+  attackRange: 6
+  attackCooldown: 1
+--- !u!114 &9114100924651390455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023190645243070429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e48a34aaee66e24696da28dcbe631b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibles: []
+  health: 1
+  healthBar: {fileID: 0}
+  isDead: 0
+  deathSoundName: 
 --- !u!1 &1611797125474257279
 GameObject:
   m_ObjectHideFlags: 0

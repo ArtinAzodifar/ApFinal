@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 3ec9770f173c34d44a6298f9189fead4
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Slime2_Idle_right_Clip
+    second: {fileID: 7400000, guid: b5e79a1fb3e9a184dbbd2a1919586caf, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -98,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638873976206164366
+  platformSettingsDirtyTick: 638892846290489113
   textureAssetName: 
   singleSpriteImportData:
   - name: 

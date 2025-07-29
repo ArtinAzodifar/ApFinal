@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 6fc27260019c8f845a96fd1e4ec70ab1
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Slime2_Run_left_Clip
+    second: {fileID: 7400000, guid: 034fd33ae1e1fe64399ac3cced763fce, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -98,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638873976257815033
+  platformSettingsDirtyTick: 638892848212723078
   textureAssetName: 
   singleSpriteImportData:
   - name: 
