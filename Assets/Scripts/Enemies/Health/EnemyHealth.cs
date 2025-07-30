@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour, Damagable
     public void Damage(int amount)
     {
         health -= amount;
-        _damageFlash.CallDamageFlash();
+        if(_damageFlash != null)    _damageFlash.CallDamageFlash();
         
         if (healthBar != null)
         {
@@ -73,12 +73,12 @@ public class EnemyHealth : MonoBehaviour, Damagable
             if (animator != null && HasTrigger(animator, "Death"))
             {
                 animator.SetTrigger("Death");
-                GetComponent<PersistentObject>().OnProcessed();
+                if(GetComponent<PersistentObject>() != null)    GetComponent<PersistentObject>().OnProcessed();
                 Destroy(gameObject, 1.8f);
             }
             else
             {
-                GetComponent<PersistentObject>().OnProcessed();
+                if(GetComponent<PersistentObject>() != null)    GetComponent<PersistentObject>().OnProcessed();
                 Destroy(gameObject);   
             }
         }

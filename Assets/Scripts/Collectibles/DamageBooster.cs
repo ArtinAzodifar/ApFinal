@@ -15,7 +15,7 @@ public class DamageBooster : MonoBehaviour
             if (isCollected)    return;
             isCollected = true;
             OnDamageBoost?.Invoke(other.gameObject, damageBoosterAmount, damageBoosterTimer);
-            GetComponent<PersistentObject>().OnProcessed();
+            if(GetComponent<PersistentObject>() != null)    GetComponent<PersistentObject>().OnProcessed();
             Destroy(gameObject);
         }
     }
