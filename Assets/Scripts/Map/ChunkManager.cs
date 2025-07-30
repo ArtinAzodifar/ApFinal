@@ -29,19 +29,7 @@ public class ChunkManager : MonoBehaviour
 
     void Start()
     {
-        // chunkWorldWidth = chunkWidth;
-        //
-        // for (int i = 0; i < initialChunks; i++)
-        // {
-        //     GameObject newChunk = GenerateChunk(i);
-        //     totalChunksGenerated++;
-        // }
-    }
-    
-    public void InitializeLevel(int seed)
-    {
-        this.worldSeed = seed;
-        Random.InitState(this.worldSeed);
+        chunkWorldWidth = chunkWidth;
         
         for (int i = 0; i < initialChunks; i++)
         {
