@@ -36,7 +36,7 @@ public class SaveManager : MonoBehaviour
 
         if (chunkManager != null)
         {
-            chunkManager.InitializeLevel(this.gameData.level1_worldSeed);
+            // chunkManager.InitializeLevel(this.gameData.level1_worldSeed);
         }
     }
 
@@ -65,7 +65,7 @@ public class SaveManager : MonoBehaviour
             
             if (chunkManager != null)
             {
-                chunkManager.InitializeLevel(this.gameData.level1_worldSeed);
+                // chunkManager.InitializeLevel(this.gameData.level1_worldSeed);
             }
         }
         else
