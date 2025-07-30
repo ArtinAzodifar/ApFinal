@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 652210721510892243}
   - component: {fileID: -8490107568270870121}
   - component: {fileID: 7852160517696374027}
+  - component: {fileID: 6300829063943300835}
   m_Layer: 10
   m_Name: FlyinDemon
   m_TagString: Enemy
@@ -683,6 +684,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.799997, y: 4.6499996}
   m_EdgeRadius: 0
+--- !u!114 &6300829063943300835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001415287839663241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: 
 --- !u!1 &3043846981558523018
 GameObject:
   m_ObjectHideFlags: 0

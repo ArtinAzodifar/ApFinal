@@ -73,10 +73,12 @@ public class EnemyHealth : MonoBehaviour, Damagable
             if (animator != null && HasTrigger(animator, "Death"))
             {
                 animator.SetTrigger("Death");
+                GetComponent<PersistentObject>().OnProcessed();
                 Destroy(gameObject, 1.8f);
             }
             else
             {
+                GetComponent<PersistentObject>().OnProcessed();
                 Destroy(gameObject);   
             }
         }

@@ -2139,6 +2139,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1322109036}
     m_Modifications:
+    - target: {fileID: 32511067645103463, guid: 56b355830484fc54ea9af341ba294950, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyingDemon2
+      objectReference: {fileID: 0}
     - target: {fileID: 745665932629406514, guid: 56b355830484fc54ea9af341ba294950, type: 3}
       propertyPath: m_Name
       value: StartingPoint-RangePlayer
@@ -2195,6 +2199,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7417962645640132025, guid: 56b355830484fc54ea9af341ba294950, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyingDemon1
+      objectReference: {fileID: 0}
     - target: {fileID: 9049588719343637605, guid: 56b355830484fc54ea9af341ba294950, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2206,13 +2214,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1482141543718830260, guid: 56b355830484fc54ea9af341ba294950, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1497924134}
   m_SourcePrefab: {fileID: 100100000, guid: 56b355830484fc54ea9af341ba294950, type: 3}
 --- !u!4 &1497924132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5783612029874518281, guid: 56b355830484fc54ea9af341ba294950, type: 3}
   m_PrefabInstance: {fileID: 1497924131}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1497924133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1482141543718830260, guid: 56b355830484fc54ea9af341ba294950, type: 3}
+  m_PrefabInstance: {fileID: 1497924131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1497924134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497924133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: TrainingTarget
 --- !u!1 &1506396743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2877,6 +2906,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1322109036}
     m_Modifications:
+    - target: {fileID: 216575547300922936, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: m_Name
+      value: Skeleton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 585883673941339605, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: m_Name
+      value: Skeleton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957089446308503271, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: m_Name
+      value: Skeleton (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987014592207992282, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: Skeleton1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2845845473977609848, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: Skeleton4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865916796964685125, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: m_Name
+      value: Skeleton (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3554978382751160598, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -167.35095
@@ -2916,6 +2969,14 @@ PrefabInstance:
     - target: {fileID: 3554978382751160598, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780764202978614602, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: Skeleton3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564377649867962023, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: Skeleton2
       objectReference: {fileID: 0}
     - target: {fileID: 4957132299451931020, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
       propertyPath: m_Name
@@ -2965,16 +3026,41 @@ PrefabInstance:
       propertyPath: destination
       value: 
       objectReference: {fileID: 55541025}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4121504814826324423, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+    - {fileID: 3043033297410208501, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+    - {fileID: 2385521188165327128, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+    - {fileID: 423255445760416357, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4756027307109004605, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1950615225}
   m_SourcePrefab: {fileID: 100100000, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
 --- !u!4 &1950615223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3554978382751160598, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
   m_PrefabInstance: {fileID: 1950615222}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1950615224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4756027307109004605, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+  m_PrefabInstance: {fileID: 1950615222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950615225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950615224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: TrainingDummy
 --- !u!1 &1973285911
 GameObject:
   m_ObjectHideFlags: 0

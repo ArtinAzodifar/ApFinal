@@ -13376,6 +13376,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6300829063943300835, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyinDemon4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13445,6 +13449,10 @@ PrefabInstance:
     - target: {fileID: 3068098120212643809, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300829063943300835, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyinDemon2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13516,6 +13524,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6300829063943300835, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyinDemon3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13581,6 +13593,10 @@ PrefabInstance:
     - target: {fileID: 3102738315967579641, guid: 841f21a6e4d5b5a4dae523a6b70e1e83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9036964507896089810, guid: 841f21a6e4d5b5a4dae523a6b70e1e83, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: ghost
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13651,6 +13667,10 @@ PrefabInstance:
     - target: {fileID: 6826759700482265879, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000359220383960045, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 8972437246890484737, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
       propertyPath: distance
@@ -13726,6 +13746,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6300829063943300835, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyinDemon1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13751,6 +13775,10 @@ PrefabInstance:
     - target: {fileID: 3108945221216207101, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951063659455403527, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: ogre
       objectReference: {fileID: 0}
     - target: {fileID: 8434907571468111613, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_LocalPosition.x
