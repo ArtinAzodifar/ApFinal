@@ -86,4 +86,14 @@ public class PlayerHealth : MonoBehaviour, Damagable
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
+
+    public int getHealth()
+    {
+        return Health;
+    }
+
+    public void setHealth(int amount)
+    {
+        this.Health = amount;
+    }
 }

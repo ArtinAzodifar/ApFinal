@@ -586,6 +586,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 5438ea32042341843af45f09c42a1a72, type: 3}
       insertIndex: -1
       addedObject: {fileID: -899143494232471991}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 5438ea32042341843af45f09c42a1a72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7225347068144027522}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 5438ea32042341843af45f09c42a1a72, type: 3}
 --- !u!4 &477685574399317459 stripped
 Transform:
@@ -820,3 +823,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a2ac36a842a157d4f86e5f0b9a762bc9, type: 3}
   - name: WolfDeath
     clip: {fileID: 8300000, guid: ced2c0d46c2bce34eb0bb911088c9d49, type: 3}
+--- !u!114 &7225347068144027522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814288348651847094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: 

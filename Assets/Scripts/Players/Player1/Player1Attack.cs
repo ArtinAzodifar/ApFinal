@@ -57,7 +57,7 @@ public class Player1Attack : MonoBehaviour
             {
                 enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
             }
-            P1Mana?.Invoke();
+            // P1Mana?.Invoke();
         }
         Collider2D[] toggleLever = Physics2D.OverlapCircleAll(attackZone.position, attackRange, leverLayer);
         foreach (Collider2D lever in toggleLever)

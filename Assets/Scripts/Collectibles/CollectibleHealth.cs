@@ -12,6 +12,7 @@ public class CollectibleHealth : MonoBehaviour
             if (isCollected)    return;
             isCollected = true;
             OnHealthCollected?.Invoke(other.gameObject);
+            GetComponent<PersistentObject>().OnProcessed();
             Destroy(gameObject);
         }
     }

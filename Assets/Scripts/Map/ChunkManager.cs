@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
 {
+    private int worldSeed;
+    
     [Header("Chunk Settings")]
     [SerializeField] private int chunkWidth;
     [SerializeField] private float generateAheadDistance;
@@ -27,8 +29,20 @@ public class ChunkManager : MonoBehaviour
 
     void Start()
     {
-        chunkWorldWidth = chunkWidth;
-
+        // chunkWorldWidth = chunkWidth;
+        //
+        // for (int i = 0; i < initialChunks; i++)
+        // {
+        //     GameObject newChunk = GenerateChunk(i);
+        //     totalChunksGenerated++;
+        // }
+    }
+    
+    public void InitializeLevel(int seed)
+    {
+        this.worldSeed = seed;
+        Random.InitState(this.worldSeed);
+        
         for (int i = 0; i < initialChunks; i++)
         {
             GameObject newChunk = GenerateChunk(i);

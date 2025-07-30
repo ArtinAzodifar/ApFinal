@@ -49,24 +49,30 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
 
     public void FindPlayer()
     {
-        if (_meleePlayer)
+        if (_meleePlayer != null && _rangePlayer != null)
         {
             _distance1 = Vector2.Distance(transform.position, _meleePlayer.position);
-        }
-
-        if (_rangePlayer)
-        {
             _distance2 = Vector2.Distance(transform.position, _rangePlayer.position);
-        }
 
-        if (_distance1 <= _distance2)
+            if (_distance1 <= _distance2)
+            {
+                _distance = _distance1;
+                _closestPlayer = _meleePlayer;
+            }
+            else
+            {
+                _distance = _distance2;
+                _closestPlayer = _rangePlayer;
+            }
+        }
+        else if (_meleePlayer != null)
         {
-            _distance = _distance1;
+            _distance = Vector2.Distance(transform.position, _meleePlayer.position);
             _closestPlayer = _meleePlayer;
         }
-        else
+        else if (_rangePlayer != null)
         {
-            _distance = _distance2;
+            _distance = Vector2.Distance(transform.position, _rangePlayer.position);
             _closestPlayer = _rangePlayer;
         }
     }

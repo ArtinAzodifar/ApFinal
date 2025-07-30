@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour, Damagable
     private SoundPlayer soundPlayer;
     [SerializeField] private string deathSoundName;
 
+    private DamageFlash _damageFlash;
+
 
     public void Start()
     {
@@ -19,11 +21,14 @@ public class EnemyHealth : MonoBehaviour, Damagable
             healthBar.SetMaxHealth(health);   
         }
         soundPlayer = GetComponent<SoundPlayer>();
+        _damageFlash = GetComponent<DamageFlash>();
     }
 
     public void Damage(int amount)
     {
         health -= amount;
+        _damageFlash.CallDamageFlash();
+        
         if (healthBar != null)
         {
             healthBar.SetHealth(health);
@@ -68,10 +73,12 @@ public class EnemyHealth : MonoBehaviour, Damagable
             if (animator != null && HasTrigger(animator, "Death"))
             {
                 animator.SetTrigger("Death");
+                GetComponent<PersistentObject>().OnProcessed();
                 Destroy(gameObject, 1.8f);
             }
             else
             {
+                GetComponent<PersistentObject>().OnProcessed();
                 Destroy(gameObject);   
             }
         }
