@@ -29,8 +29,8 @@ public class PlayerHealth : MonoBehaviour, Damagable
     {
         gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
-        healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
-        healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
+        // healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
+        // healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
     }
 
     public void Start()
@@ -85,5 +85,15 @@ public class PlayerHealth : MonoBehaviour, Damagable
         gameObject.GetComponent<BaseControll>().setIsInDamage(true);
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
+    }
+
+    public int getHealth()
+    {
+        return Health;
+    }
+
+    public void setHealth(int amount)
+    {
+        this.Health = amount;
     }
 }

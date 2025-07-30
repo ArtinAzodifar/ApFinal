@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Hurt
+    m_ConditionEvent: IsHurting
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4510130996349213907}
@@ -34,7 +34,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Attack
+    m_ConditionEvent: IsAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6505730529330357200}
@@ -146,8 +146,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: XMove
     m_Mirror: 0
-  m_BlendParameter: XLastMove
-  m_BlendParameterY: YLastMove
+  m_BlendParameter: XInput
+  m_BlendParameterY: YInput
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -160,7 +160,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsAttacking
+    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3707740871990160097}
   m_Solo: 0
@@ -233,50 +239,38 @@ AnimatorController:
   m_Name: Plant3
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: XMove
+  - m_Name: XInput
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: YMove
+  - m_Name: YInput
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: XLastMove
+  - m_Name: Speed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: YLastMove
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Attack
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Run
+  - m_Name: IsAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Hurt
-    m_Type: 9
+  - m_Name: IsHurting
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Dead
-    m_Type: 4
+  - m_Name: Death
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -303,7 +297,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Dead
+    m_ConditionEvent: Death
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -176640999798511475}
@@ -327,9 +321,12 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Run
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsAttacking
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5067985257969999326}
   m_Solo: 0
@@ -381,7 +378,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Dead
+    m_ConditionEvent: IsHurting
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3707740871990160097}
@@ -406,7 +403,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Attack
+    m_ConditionEvent: IsAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6505730529330357200}
@@ -430,9 +427,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Run
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5067985257969999326}
   m_Solo: 0
@@ -522,8 +519,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: XMove
     m_Mirror: 0
-  m_BlendParameter: XMove
-  m_BlendParameterY: YMove
+  m_BlendParameter: XInput
+  m_BlendParameterY: YInput
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -597,8 +594,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: XMove
     m_Mirror: 0
-  m_BlendParameter: XLastMove
-  m_BlendParameterY: YLastMove
+  m_BlendParameter: XInput
+  m_BlendParameterY: YInput
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -644,8 +641,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: XMove
     m_Mirror: 0
-  m_BlendParameter: XLastMove
-  m_BlendParameterY: YLastMove
+  m_BlendParameter: XInput
+  m_BlendParameterY: YInput
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -691,8 +688,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: XMove
     m_Mirror: 0
-  m_BlendParameter: XLastMove
-  m_BlendParameterY: YLastMove
+  m_BlendParameter: XInput
+  m_BlendParameterY: YInput
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -706,9 +703,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Run
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3707740871990160097}
   m_Solo: 0

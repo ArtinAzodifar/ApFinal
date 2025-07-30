@@ -119,4 +119,13 @@ public class P2SuperShoot : MonoBehaviour
         }
     }
 
+    public int getMana()
+    {
+        return mana;
+    }
+    
+    public void setMana(int amount)
+    {
+        this.mana = amount;
+    }
 }

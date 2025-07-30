@@ -9845,6 +9845,8 @@ MonoBehaviour:
   - {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
   health: 1
   healthBar: {fileID: 0}
+  isDead: 0
+  deathSoundName: 
 --- !u!50 &7114492321895890077
 Rigidbody2D:
   serializedVersion: 5
@@ -157888,8 +157890,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1353675886780125817}
   m_SourcePrefab: {fileID: 100100000, guid: a982e43fd4182d949b45964e22a24133, type: 3}
+--- !u!1 &5966864544710115707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
+  m_PrefabInstance: {fileID: 1847314733575084662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1353675886780125817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5966864544710115707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: FullMana
 --- !u!4 &6686816018592267194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5003126777607086540, guid: a982e43fd4182d949b45964e22a24133, type: 3}

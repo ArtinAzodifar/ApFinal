@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 7d526029373141649b028e2a04dbbae2
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Slime2_Run_back_Clip
+    second: {fileID: 7400000, guid: c96f4edfd63d7d84080203bf6c7f62f1, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -98,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638873976257825020
+  platformSettingsDirtyTick: 638892848068611139
   textureAssetName: 
   singleSpriteImportData:
   - name: 

@@ -28062,6 +28062,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9036964507896089810, guid: 841f21a6e4d5b5a4dae523a6b70e1e83, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: ghost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28131,6 +28135,10 @@ PrefabInstance:
     - target: {fileID: 3068098120212643809, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300829063943300835, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyinDemon2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28202,6 +28210,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6300829063943300835, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyinDemon1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28267,13 +28279,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4767994364265407176, guid: a0fc537eb36371d459cc092546c87d07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2129386587450121896}
   m_SourcePrefab: {fileID: 100100000, guid: a0fc537eb36371d459cc092546c87d07, type: 3}
 --- !u!4 &1934731564057320347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7900559480219493590, guid: a0fc537eb36371d459cc092546c87d07, type: 3}
   m_PrefabInstance: {fileID: 8610285342560141133}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3843454472220450181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767994364265407176, guid: a0fc537eb36371d459cc092546c87d07, type: 3}
+  m_PrefabInstance: {fileID: 8610285342560141133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2129386587450121896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3843454472220450181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: Key
 --- !u!1001 &8671648831649009863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28289,6 +28322,10 @@ PrefabInstance:
     - target: {fileID: 3108945221216207101, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951063659455403527, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: ogre
       objectReference: {fileID: 0}
     - target: {fileID: 8434907571468111613, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -7,7 +7,7 @@ ScriptedImporter:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
       name: Plant2_Walk_left_Clip
-    second: {fileID: 7400000, guid: b302cb76a5bbc79438bbd45aad791eba, type: 2}
+    second: {fileID: 7400000, guid: 76ba332d8052f0245b213a140ad790a2, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -103,7 +103,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638873989245628547
+  platformSettingsDirtyTick: 638891222280558823
   textureAssetName: 
   singleSpriteImportData:
   - name: 

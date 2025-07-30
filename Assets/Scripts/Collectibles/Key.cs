@@ -21,6 +21,7 @@ public class Key : MonoBehaviour
             if (isCollected)    return;
             isCollected = true;
             KeyCollected?.Invoke();
+            GetComponent<PersistentObject>().OnProcessed();
             Destroy(gameObject);
         }
     }

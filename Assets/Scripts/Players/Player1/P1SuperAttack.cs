@@ -16,7 +16,7 @@ public class Player1SuperAttack : MonoBehaviour
     public void Awake()
     {
         animator = GetComponent<Animator>();
-        manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
+        // manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
     }
     public void Start()
     {
@@ -80,7 +80,7 @@ public class Player1SuperAttack : MonoBehaviour
     private void ManaAdd()
     {
         mana++;
-        manaBar.addMana();
+        // manaBar.addMana();
     }
 
     private void MaxMana(GameObject g)
@@ -96,5 +96,15 @@ public class Player1SuperAttack : MonoBehaviour
         Vector2 boxCenter = transform.position;
         Vector2 boxSize = new Vector2(9.5f, 2f);
         Gizmos.DrawWireCube(boxCenter, boxSize);
+    }
+    
+    public int getMana()
+    {
+        return mana;
+    }
+
+    public void setMana(int amount)
+    {
+        this.mana = amount;
     }
 }

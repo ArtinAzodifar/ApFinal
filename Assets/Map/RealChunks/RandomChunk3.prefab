@@ -8504,6 +8504,7 @@ GameObject:
   - component: {fileID: 7407498464437003917}
   - component: {fileID: 8216051919077385831}
   - component: {fileID: 112136998584577768}
+  - component: {fileID: 2645259318791090249}
   m_Layer: 0
   m_Name: Trunk
   m_TagString: Untagged
@@ -8615,6 +8616,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 2.5
+--- !u!114 &2645259318791090249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343446627118390260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: Trunk
 --- !u!1 &6109211872285006798
 GameObject:
   m_ObjectHideFlags: 0
@@ -14084,8 +14098,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 836692382740194839}
   m_SourcePrefab: {fileID: 100100000, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+--- !u!1 &3742504772408159252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+  m_PrefabInstance: {fileID: 5689809636959232072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &836692382740194839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742504772408159252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cede78a6bf49834887b38b2fb46d5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdInChunk: Life
 --- !u!4 &7477490635963720304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2968753574695256632, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
@@ -14106,6 +14141,10 @@ PrefabInstance:
     - target: {fileID: 3108945221216207101, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951063659455403527, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: ogre
       objectReference: {fileID: 0}
     - target: {fileID: 8434907571468111613, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14220,6 +14259,10 @@ PrefabInstance:
     - target: {fileID: 3068098120212643809, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300829063943300835, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: uniqueIdInChunk
+      value: FlyinDemon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
