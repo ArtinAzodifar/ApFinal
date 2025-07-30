@@ -29,8 +29,8 @@ public class PlayerHealth : MonoBehaviour, Damagable
     {
         gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
-        // healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
-        // healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
+        healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
+        healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
     }
 
     public void Start()

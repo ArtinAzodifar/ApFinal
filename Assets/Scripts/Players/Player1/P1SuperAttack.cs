@@ -16,7 +16,7 @@ public class Player1SuperAttack : MonoBehaviour
     public void Awake()
     {
         animator = GetComponent<Animator>();
-        // manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
+        manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
     }
     public void Start()
     {
@@ -80,7 +80,7 @@ public class Player1SuperAttack : MonoBehaviour
     private void ManaAdd()
     {
         mana++;
-        // manaBar.addMana();
+        manaBar.addMana();
     }
 
     private void MaxMana(GameObject g)

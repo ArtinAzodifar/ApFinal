@@ -12,7 +12,7 @@ public class FullMana : MonoBehaviour
             if (isCollected)    return;
             isCollected = true;
             ManaFill?.Invoke(other.gameObject);
-            GetComponent<PersistentObject>().OnProcessed();
+            if(GetComponent<PersistentObject>() != null)    GetComponent<PersistentObject>().OnProcessed();
             Destroy(gameObject);
         }
     }
