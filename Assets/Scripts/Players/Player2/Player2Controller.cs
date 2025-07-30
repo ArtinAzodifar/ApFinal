@@ -27,11 +27,12 @@ public class Player2Controller : BaseControll
 
     public override void OnJump(InputAction.CallbackContext context)
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (context.performed && isGrounded && !IsInDamage() && !inKnock)
         {
             _canDoubleJump = true;
             base.OnJump(context);
-        } 
+        }
         else if (context.performed && _canDoubleJump && !IsInDamage() && !inKnock)
         {
             _canDoubleJump = false;
@@ -44,6 +45,7 @@ public class Player2Controller : BaseControll
 
     public void OnShoot(InputAction.CallbackContext context)
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (context.started && !IsInDamage())
         {
             animator.SetTrigger("Shoot");

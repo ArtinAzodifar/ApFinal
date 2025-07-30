@@ -16,6 +16,7 @@ public class Player1controll : BaseControll
     //inputs:
     public void OnDash(InputAction.CallbackContext context)
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (context.performed && canDash && IsRunning() && !GetComponent<Player1Attack>().IsAttacking())
         {
             StartCoroutine(Dash());
@@ -28,14 +29,11 @@ public class Player1controll : BaseControll
     {
         base.Awake();
         tr = GetComponent<TrailRenderer>();
-        vcam = GetComponent<CinemachineCamera>();
     }
     public override void Update()
     {
-        if (isDashing)
-        {
-            return;
-        }
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (isDashing)  return;
         base.Update();
     }
 

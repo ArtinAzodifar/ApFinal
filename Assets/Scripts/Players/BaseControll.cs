@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using NUnit.Framework;
 using Unity.Cinemachine;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
 
 
-public class BaseControll : MonoBehaviour
+public class BaseControll : NetworkBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
@@ -24,16 +25,16 @@ public class BaseControll : MonoBehaviour
     private bool isInDamage = false;
     private bool topDown;
     private const float SCALE = 2.2f;
-    
-    protected CinemachineCamera vcam;
-
+    protected GameManager gameManager;
     //inputs:
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         movingInput = context.ReadValue<Vector2>();
     }
     public virtual void OnJump(InputAction.CallbackContext context)
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (context.performed && isGrounded && !isInDamage && !inKnock)
         {
             animator.SetTrigger("Jump");
@@ -44,6 +45,7 @@ public class BaseControll : MonoBehaviour
     //unity events:
     public virtual void Awake()
     {
+        gameManager = GameManager.Instance;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         speed = gameObject.CompareTag("Player1") ? 6f : 7.5f;
@@ -51,23 +53,27 @@ public class BaseControll : MonoBehaviour
     }
     public virtual void Start()
     {
+        
         topDown = groundCheck == null;
     }
     public virtual void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         Move();
     }
     public void FixedUpdate()
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (!topDown)
         {
-            GroundCheck();   
+            GroundCheck();
         }
     }
 
     //methods:
     public void Move()
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (isInDamage || inKnock) return;
         animator.SetBool("Run", movingInput.x != 0 || movingInput.y != 0);
         //character direction
@@ -114,11 +120,11 @@ public class BaseControll : MonoBehaviour
     {
         inKnock = true;
         rb.linearVelocity = Vector2.zero;
-        
+
         Vector2 direction = knockFromRight ? new Vector2(-1, 1f) : new Vector2(1, 1f);
 
         rb.AddForce(direction.normalized * knockbackForce, ForceMode2D.Impulse);
-        
+
         yield return new WaitForSeconds(0.2f);
         rb.AddForce(Vector2.zero, ForceMode2D.Impulse);
         inKnock = false;
@@ -126,6 +132,37 @@ public class BaseControll : MonoBehaviour
 
     public void Teleport(Vector2 position)
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         transform.position = position;
+    }
+
+    //for online mode
+
+    [ClientRpc]
+    public void setKnockFromRightClientRpc(bool value)
+    {
+        if (!IsOwner) return;
+        setKnockFromRight(value);
+    }
+
+    [ClientRpc]
+    public void setIsInDamageClientRpc(bool value)
+    {
+        if (!IsOwner) return;
+        setIsInDamage(value);
+    }
+
+    [ClientRpc]
+    public void startKnockClientRpc(float force)
+    {
+        if (!IsOwner) return;
+        startKnock(force);
+    }
+
+    [ClientRpc]
+    public void TeleportClientRpc(Vector2 position)
+    {
+        if (!IsOwner) return;
+        Teleport(position);
     }
 }

@@ -1,24 +1,27 @@
 using System;
+using System.Collections;
+using PlayFab.SharedModels;
 using Unity.Cinemachine;
+using Unity.Mathematics;
+using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-public enum GameState {MainMenu, Level1, Level2, Level3, GameOver}
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     // private static GameManager instance;
     public static GameManager Instance { get; private set; }
-    
     private GameObject gameOverScreen;
     private GameObject pauseScreen;
-    private GameState gameState;
-    private bool level1keyFound = false;
-    
+    private NetworkVariable<bool> level1keyFound = new NetworkVariable<bool>(false);
+
     public GameObject audioControllerPrefab;
     public GameObject musicPlayerPrefab;
-    
+    private bool isLocalMode;
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,25 +34,20 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        isLocalMode = NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening;
     }
 
+    //TODO
     private void InitializeAudioSystems()
     {
         if (AudioController.Instance == null && audioControllerPrefab != null)
             Instantiate(audioControllerPrefab);
 
-        if (FindObjectOfType<MusicPlayer>() == null && musicPlayerPrefab != null)
+        if (FindFirstObjectByType<MusicPlayer>() == null && musicPlayerPrefab != null)
             Instantiate(musicPlayerPrefab);
     }
 
 
-    public void Start()
-    {
-        gameState = GameState.MainMenu;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-    
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -64,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Time.timeScale = 1f;
         pauseScreen = GameObject.FindWithTag("PauseScreen");
         gameOverScreen = GameObject.FindWithTag("GameOver");
         if (gameOverScreen != null)
@@ -75,57 +74,98 @@ public class GameManager : MonoBehaviour
         {
             pauseScreen.SetActive(false);
         }
+        if (!isLocalMode && scene.name.Contains("Level") && IsServer) StartCoroutine(assignPlayers());
     }
 
     public void GameOver()
     {
-        Time.timeScale = 0f;// should be changed
+        if (isLocalMode)
+        {
+            applyGameOver();
+            return;
+        }
+        //online mode
+        if (!IsServer) return;
+        //ask all clients to apply gameOver
+        gameOverClientRpc();
+    }
+    [ClientRpc]
+    private void gameOverClientRpc()
+    {
+        applyGameOver();
+    }
+    private void applyGameOver()
+    {
+        Time.timeScale = 0f;
         gameOverScreen.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
+    //level set
     public void StartGame()
     {
-        gameState = GameState.Level1;
-        SceneManager.LoadScene("LevelOne");
+        if (isLocalMode) SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
+        //online mode
+        else NetworkManager.Singleton.SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
     }
-
     public void Level2()
     {
-        gameState = GameState.Level2;
-        SceneManager.LoadScene("LevelTwo");
+        if (isLocalMode) SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
+        //online mode
+        else NetworkManager.Singleton.SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
+    }
+    public void Level3()
+    {
+        if (isLocalMode) SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);
+        //online mode
+        else NetworkManager.Singleton.SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);
     }
 
-    public void NextLevel()
+    //assign characters to their owner in online mode
+    private IEnumerator assignPlayers()
     {
-        switch (gameState)
+        yield return new WaitUntil(() => NetworkManager.Singleton.IsListening);
+
+        if (!IsServer) yield break;
+
+        //give the ownerShip of each character to its player
+        foreach (var player in CharSelector.Instance.players)
         {
-            case GameState.Level1:
-                gameState = GameState.Level2;
-                SceneManager.LoadScene("LevelTwo");
-                break;
-            case GameState.Level2:
-                gameState = GameState.Level3;
-                SceneManager.LoadScene("Level3");
-                break;
-            default:
-                gameState = GameState.Level3;
-                break;
+            GameObject scenePlayer = player.characterID == 0 ? GameObject.FindWithTag("Player1") : GameObject.FindWithTag("Player2");
+            if (scenePlayer == null) continue;
+            yield return new WaitUntil(() => scenePlayer.GetComponent<NetworkObject>().IsSpawned == true);
+            scenePlayer.GetComponent<NetworkObject>().ChangeOwnership(player.clientID);
         }
     }
-    
+
     public void Restart()
+    {
+        if (isLocalMode)
+        {
+            Time.timeScale = 1f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            return;
+        }
+        if (!IsServer) return;
+        restartClientRpc(SceneManager.GetActiveScene().buildIndex);
+    }
+    [ClientRpc]
+    private void restartClientRpc(int sceneIndex)
     {
         Time.timeScale = 1f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Locked;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void MainMenu()
     {
-        gameState = GameState.MainMenu;
+        //in MainMenu we don't have network yet
+        if (!isLocalMode) NetworkManager.Singleton.Shutdown();
+        Instance.isLocalMode = true;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -133,17 +173,17 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("LoginScene");
     }
-
     public void Lobby()
     {
+        Instance.isLocalMode = false;
         SceneManager.LoadScene("LobbyScene");
     }
-
     public void Quit()
     {
         Application.Quit();
     }
 
+    //in online mode, only host can pause/resume the game
     public void TogglePause()
     {
         if (Time.timeScale == 0f)
@@ -158,6 +198,21 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (isLocalMode)
+        {
+            applyPause();
+            return;
+        }
+        if (!IsServer) return;
+        pauseClientRpc();
+    }
+    [ClientRpc]
+    private void pauseClientRpc()
+    {
+        applyPause();
+    }
+    private void applyPause()
+    {
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -166,34 +221,45 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (isLocalMode)
+        {
+            applyResume();
+            return;
+        }
+        if (!IsServer) return;
+        resumeClientRpc();
+    }
+    [ClientRpc]
+    private void resumeClientRpc()
+    {
+        applyResume();
+    }
+    private void applyResume()
+    {
         Time.timeScale = 1f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Locked;
         pauseScreen.SetActive(false);
     }
 
-    public GameState GetLevel()
-    {
-        switch (SceneManager.GetActiveScene().name)
-        {
-            case "Level1":
-                return GameState.Level1;
-            case "Level2":
-                return GameState.Level2;
-            case "Level3":
-                return GameState.Level3;
-            default:
-                return GameState.GameOver;
-        }
-    }
-
     public void FindKey1()
     {
-        level1keyFound = true;
+        if (isLocalMode || IsServer) level1keyFound.Value = true;
+        else requestFindKey1ServerRpc();
+    }
+    [ServerRpc]
+    private void requestFindKey1ServerRpc()
+    {
+        level1keyFound.Value = true;
     }
 
+    //getters
     public bool GetKey1()
     {
-        return level1keyFound;
+        return level1keyFound.Value;
+    }
+    public bool IsLocalMode()
+    {
+        return isLocalMode;
     }
 }
