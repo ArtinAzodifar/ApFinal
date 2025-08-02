@@ -29,8 +29,22 @@ public class ChunkManager : MonoBehaviour
 
     void Start()
     {
-        chunkWorldWidth = chunkWidth;
+        if (SaveManager.Instance != null && SaveManager.Instance.IsGameLoaded)
+        {
+            this.worldSeed = SaveManager.Instance.GetWorldSeed();
+        }
+        else
+        {
+            this.worldSeed = Random.Range(int.MinValue, int.MaxValue);
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SetWorldSeed(this.worldSeed);
+            }
+        }
         
+        Random.InitState(this.worldSeed);
+
+        chunkWorldWidth = chunkWidth;
         for (int i = 0; i < initialChunks; i++)
         {
             GameObject newChunk = GenerateChunk(i);

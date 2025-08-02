@@ -12,10 +12,10 @@ using UnityEngine.Serialization;
 
 public class GameManager : NetworkBehaviour
 {
-    // private static GameManager instance;
     public static GameManager Instance { get; private set; }
     private GameObject gameOverScreen;
     private GameObject pauseScreen;
+    private PauseMenuController pauseMenuController;
     private NetworkVariable<bool> level1keyFound = new NetworkVariable<bool>(false);
 
     public GameObject audioControllerPrefab;
@@ -72,6 +72,7 @@ public class GameManager : NetworkBehaviour
 
         if (pauseScreen != null)
         {
+            pauseMenuController = pauseScreen.GetComponent<PauseMenuController>();
             pauseScreen.SetActive(false);
         }
         if (!isLocalMode && scene.name.Contains("Level") && IsServer) StartCoroutine(assignPlayers());
@@ -105,12 +106,14 @@ public class GameManager : NetworkBehaviour
     //level set
     public void StartGame()
     {
+        SaveManager.Instance.NewGame();
+        
         if (isLocalMode) SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
     }
     public void Level2()
-    {
+    {   
         if (isLocalMode) SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
@@ -206,17 +209,22 @@ public class GameManager : NetworkBehaviour
         if (!IsServer) return;
         pauseClientRpc();
     }
+
     [ClientRpc]
     private void pauseClientRpc()
     {
         applyPause();
     }
+
     private void applyPause()
     {
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        pauseScreen.SetActive(true);
+        if (pauseMenuController != null)
+        {
+            pauseMenuController.ShowMenu();
+        }
     }
 
     public void ResumeGame()
@@ -229,17 +237,22 @@ public class GameManager : NetworkBehaviour
         if (!IsServer) return;
         resumeClientRpc();
     }
+
     [ClientRpc]
     private void resumeClientRpc()
     {
         applyResume();
     }
+
     private void applyResume()
     {
         Time.timeScale = 1f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Locked;
-        pauseScreen.SetActive(false);
+        if (pauseMenuController != null)
+        {
+            pauseMenuController.HideMenu();
+        }
     }
 
     public void FindKey1()
