@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public int currentLevelIndex;
+    public string currentLevelSceneName;
     
     // Player Data
     public int player1_health;

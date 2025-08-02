@@ -1,15 +1,14 @@
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
+    public bool IsGameLoaded { get; private set; }
+    public int CurrentSlotIndex { get; private set; } = -1;
 
     private GameData gameData;
-    private string saveFilePath;
-
-    [SerializeField] private ChunkManager chunkManager;
-    [SerializeField] private GameObject[] players;
 
     private void Awake()
     {
@@ -20,86 +19,118 @@ public class SaveManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        saveFilePath = Path.Combine(Application.persistentDataPath, "savegame.json");
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        LoadGame();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private string GetSaveFilePath(int slotIndex)
+    {
+        return Path.Combine(Application.persistentDataPath, $"save_slot_{slotIndex}.json");
+    }
+
+    public bool DoesSlotExist(int slotIndex)
+    {
+        return File.Exists(GetSaveFilePath(slotIndex));
+    }
+
+    public GameData GetSlotData(int slotIndex)
+    {
+        if (!DoesSlotExist(slotIndex))
+        {
+            return null;
+        }
+        string json = File.ReadAllText(GetSaveFilePath(slotIndex));
+        GameData data = JsonUtility.FromJson<GameData>(json);
+        return data;
+    }
+
+    public void SelectSlot(int slotIndex)
+    {
+        CurrentSlotIndex = slotIndex;
+        IsGameLoaded = DoesSlotExist(slotIndex);
     }
 
     public void NewGame()
     {
-        this.gameData = new GameData();
-        this.gameData.level1_worldSeed = Random.Range(int.MinValue, int.MaxValue);
+        if (CurrentSlotIndex == -1) return;
 
-        if (chunkManager != null)
-        {
-            // chunkManager.InitializeLevel(this.gameData.level1_worldSeed);
-        }
+        this.gameData = new GameData();
+        gameData.currentLevelSceneName = "LevelOne";
+        gameData.player1_health = 100;
+        gameData.player2_health = 100;
+
+        string json = JsonUtility.ToJson(gameData, true);
+        File.WriteAllText(GetSaveFilePath(CurrentSlotIndex), json);
+
+        IsGameLoaded = true;
+        SceneManager.LoadScene(gameData.currentLevelSceneName);
     }
 
     public void LoadGame()
     {
-        if (File.Exists(saveFilePath))
+        if (CurrentSlotIndex == -1 || !IsGameLoaded) return;
+        
+        string json = File.ReadAllText(GetSaveFilePath(CurrentSlotIndex));
+        this.gameData = new GameData();
+        JsonUtility.FromJsonOverwrite(json, this.gameData);
+
+        if (SceneManager.GetActiveScene().name != gameData.currentLevelSceneName)
         {
-            string json = File.ReadAllText(saveFilePath);
-            this.gameData = new GameData();
-            JsonUtility.FromJsonOverwrite(json, this.gameData);
-            
-            if (players.Length > 0 && players[0] != null)
-            {
-                players[0].transform.position = gameData.player1_position;
-                players[0].transform.rotation = gameData.player1_rotation;
-                players[0].GetComponent<PlayerHealth>().setHealth(gameData.player1_health);
-                players[0].GetComponent<Player1SuperAttack>().setMana(gameData.player1_mana);
-            }
-            if (players.Length > 1 && players[1] != null)
-            {
-                players[1].transform.position = gameData.player2_position;
-                players[1].transform.rotation = gameData.player2_rotation;
-                players[1].GetComponent<PlayerHealth>().setHealth(gameData.player1_health);
-                players[1].GetComponent<P2SuperShoot>().setMana(gameData.player1_mana);
-            }
-            
-            if (chunkManager != null)
-            {
-                // chunkManager.InitializeLevel(this.gameData.level1_worldSeed);
-            }
+            SceneManager.LoadScene(gameData.currentLevelSceneName);
         }
         else
         {
-            NewGame();
+            ApplyGameData();
         }
     }
 
     public void SaveGame()
     {
+        if (CurrentSlotIndex == -1) return;
+
+        gameData.currentLevelSceneName = SceneManager.GetActiveScene().name;
+        var players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length > 0 && players[0] != null)
         {
-            // Player 1
             gameData.player1_health = players[0].GetComponent<PlayerHealth>().getHealth();
-            gameData.player1_mana = players[0].GetComponent<Player1SuperAttack>().getMana();
             gameData.player1_position = players[0].transform.position;
             gameData.player1_rotation = players[0].transform.rotation;
         }
-        if (players.Length > 1 && players[1] != null)
-        {
-            // Player 2
-            gameData.player2_health = players[1].GetComponent<PlayerHealth>().getHealth();
-            gameData.player2_mana = players[1].GetComponent<P2SuperShoot>().getMana();
-            gameData.player2_position = players[1].transform.position;
-            gameData.player2_rotation = players[1].transform.rotation;
-        }
+        
+        string json = JsonUtility.ToJson(gameData, true);
+        File.WriteAllText(GetSaveFilePath(CurrentSlotIndex), json);
+    }
 
-        string json = JsonUtility.ToJson(this.gameData, true);
-        File.WriteAllText(saveFilePath, json);
+    private void ApplyGameData()
+    {
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length > 0 && players[0] != null)
+        {
+            players[0].transform.position = gameData.player1_position;
+            players[0].transform.rotation = gameData.player1_rotation;
+            players[0].GetComponent<PlayerHealth>().setHealth(gameData.player1_health);
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (IsGameLoaded)
+        {
+            ApplyGameData();
+        }
     }
     
     public void RegisterObjectProcessed(string objectID)
     {
-        if (!gameData.DeactiveObjectIDs.Contains(objectID))
+        if (gameData != null && !gameData.DeactiveObjectIDs.Contains(objectID))
         {
             gameData.DeactiveObjectIDs.Add(objectID);
         }
@@ -111,7 +142,34 @@ public class SaveManager : MonoBehaviour
         {
             return false;
         }
-        
         return gameData.DeactiveObjectIDs.Contains(objectID);
+    }
+    
+    public void SetWorldSeed(int seed)
+    {
+        if (gameData != null)
+        {
+            gameData.level1_worldSeed = seed;
+        }
+    }
+
+    public int GetWorldSeed()
+    {
+        return (gameData != null) ? gameData.level1_worldSeed : 0;
+    }
+    
+    public void DeleteSlot(int slotIndex)
+    {
+        string filePath = GetSaveFilePath(slotIndex);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+        if (CurrentSlotIndex == slotIndex)
+        {
+            CurrentSlotIndex = -1;
+            IsGameLoaded = false;
+            gameData = null;
+        }
     }
 }

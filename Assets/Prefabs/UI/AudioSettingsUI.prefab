@@ -44,11 +44,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b8642a9d29430408422cc2a35629fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxMuteToggle: {fileID: 0}
-  musicMuteToggle: {fileID: 0}
-  sfxMuteIcon: {fileID: 0}
-  musicMuteIcon: {fileID: 0}
-  muteSprite: {fileID: -1276094637, guid: ed6cbf7a97037f84e9f12e6ce565aa7c, type: 3}
-  unmuteSprite: {fileID: -1226052992, guid: ed6cbf7a97037f84e9f12e6ce565aa7c, type: 3}
+  themes:
+  - themeName: Green
+    sfxSlider: {fileID: 0}
+    musicSlider: {fileID: 0}
+    sfxMuteToggle: {fileID: 0}
+    musicMuteToggle: {fileID: 0}
+    sfxMuteIcon: {fileID: 0}
+    musicMuteIcon: {fileID: 0}
+    muteSprite: {fileID: -1492797761, guid: ed6cbf7a97037f84e9f12e6ce565aa7c, type: 3}
+    unmuteSprite: {fileID: -677013992, guid: ed6cbf7a97037f84e9f12e6ce565aa7c, type: 3}
+  - themeName: Brown
+    sfxSlider: {fileID: 0}
+    musicSlider: {fileID: 0}
+    sfxMuteToggle: {fileID: 0}
+    musicMuteToggle: {fileID: 0}
+    sfxMuteIcon: {fileID: 0}
+    musicMuteIcon: {fileID: 0}
+    muteSprite: {fileID: -1686661160, guid: 88ddbbccccaa24a45bed15e96b8b03c3, type: 3}
+    unmuteSprite: {fileID: 1173714394, guid: 88ddbbccccaa24a45bed15e96b8b03c3, type: 3}
+  - themeName: Gray
+    sfxSlider: {fileID: 0}
+    musicSlider: {fileID: 0}
+    sfxMuteToggle: {fileID: 0}
+    musicMuteToggle: {fileID: 0}
+    sfxMuteIcon: {fileID: 0}
+    musicMuteIcon: {fileID: 0}
+    muteSprite: {fileID: -568410129, guid: 1a0dc2f2cc1d19044b45057851967d34, type: 3}
+    unmuteSprite: {fileID: 1084249834, guid: 1a0dc2f2cc1d19044b45057851967d34, type: 3}
