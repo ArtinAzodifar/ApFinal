@@ -1,28 +1,28 @@
-using System;
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player1SuperAttack : MonoBehaviour
+public class Player1SuperAttack : NetworkBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int damageAmount;
-    public int mana;
-    private int maxMana;
+    public NetworkVariable<int> mana = new NetworkVariable<int>(0);
+    private const int MAX_MANA = 10;
     private Animator animator;
     private ManaBar manaBar;
+    private GameManager gameManager;
 
     //unity events:
     public void Awake()
     {
+        gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
         manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
     }
     public void Start()
     {
-        mana = 0;
-        maxMana = 10;
-        manaBar.SetMaxMana(maxMana);
+        manaBar.SetMaxMana(MAX_MANA);
     }
 
     private void OnEnable()
@@ -36,22 +36,37 @@ public class Player1SuperAttack : MonoBehaviour
         Player1Attack.P1Mana -= ManaAdd;
         FullMana.ManaFill -= MaxMana;
     }
-    
-    
+
+
     //inputs:
     public void OnSuperAttack(InputAction.CallbackContext context)
     {
+        if (!GameManager.Instance.IsLocalMode() && !IsOwner) return;
         if (context.performed && !gameObject.GetComponent<Player1Attack>().IsAttacking() &&
-            !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana >= maxMana)
+            !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana.Value >= MAX_MANA)
         {
-            mana = 0;
-            manaBar.SetMaxMana(maxMana);
-            StartCoroutine(SuperAttack());
+            if (gameManager.IsLocalMode())
+            {
+                mana.Value = 0;
+                manaBar.SetMaxMana(MAX_MANA);
+                StartCoroutine(SuperAttack());
+            }
+            else if (IsOwner) applySuperShootServerRpc();
         }
     }
+    [ServerRpc]
+    private void applySuperShootServerRpc()
+    {
+        mana.Value = 0;
+        StartCoroutine(SuperAttack());
+        resetManaBarClientRpc();
+    }
+    [ClientRpc]
+    private void resetManaBarClientRpc() { manaBar.SetMaxMana(MAX_MANA); }
 
     private IEnumerator SuperAttack()
     {
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) yield break; //only local mode or the server(in online mode) can start this
         gameObject.GetComponent<Player1Attack>().setIsAttacking(true);
         animator.SetTrigger("SuperAttack");
         yield return new WaitForSeconds(0.5f);
@@ -79,17 +94,23 @@ public class Player1SuperAttack : MonoBehaviour
 
     private void ManaAdd()
     {
-        mana++;
+        if (GameManager.Instance.IsLocalMode()) mana.Value++; // local mode
+        else if (IsOwner) addManaServerRpc(); // in online mode only server modifies mana value, and only the owner can ask for it
         manaBar.addMana();
     }
+    [ServerRpc]
+    private void addManaServerRpc() { mana.Value++; }
 
     private void MaxMana(GameObject g)
     {
-        if(g != gameObject) return;
-        mana = maxMana;
+        if (g != gameObject) return;
+        if (GameManager.Instance.IsLocalMode()) {mana.Value = MAX_MANA;} // local mode
+        else if (IsOwner) maxManaServerRpc(); // in online mode only server modifies mana value, and only the owner can ask for it
         manaBar.FillMana();
     }
-    
+    [ServerRpc]
+    private void maxManaServerRpc() { mana.Value = MAX_MANA; }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -97,14 +118,14 @@ public class Player1SuperAttack : MonoBehaviour
         Vector2 boxSize = new Vector2(9.5f, 2f);
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
-    
+
     public int getMana()
     {
-        return mana;
+        return mana.Value;
     }
 
     public void setMana(int amount)
     {
-        this.mana = amount;
+        mana.Value = amount;
     }
 }
