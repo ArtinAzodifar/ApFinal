@@ -33,7 +33,7 @@ public class Player1Attack : NetworkBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
-        if (context.performed && !isAttacking.Value && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage())
+        if (context.performed && !isAttacking.Value && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             if (gameManager.IsLocalMode()) StartCoroutine(Attack());
             else attackServerRpc();

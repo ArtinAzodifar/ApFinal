@@ -43,7 +43,7 @@ public class Player1SuperAttack : NetworkBehaviour
     {
         if (!GameManager.Instance.IsLocalMode() && !IsOwner) return;
         if (context.performed && !gameObject.GetComponent<Player1Attack>().IsAttacking() &&
-            !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana.Value >= MAX_MANA)
+            !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana.Value >= MAX_MANA && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             if (gameManager.IsLocalMode())
             {
