@@ -34,6 +34,9 @@ public class Boss : MonoBehaviour
     private float _spawnEnemyCooldownTimer = 0;
     private float _castCooldownTimer;
 
+    [SerializeField] private GameObject attackZoneLeft;
+    [SerializeField] private GameObject attackZoneRight;
+
     void Start()
     {
         GameObject player1 = GameObject.FindWithTag("Player1");
@@ -204,6 +207,15 @@ public class Boss : MonoBehaviour
             _animator.SetTrigger("Cast");
             _castCooldownTimer = castCooldown;
         }
+    }
+    
+    public void EnableLeftAttackZone() { attackZoneLeft.SetActive(true);}
+    public void EnableRightAttackZone() { attackZoneRight.SetActive(true);}
+
+    public void DisableAttackZone()
+    {
+        attackZoneLeft.SetActive(false);
+        attackZoneRight.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()

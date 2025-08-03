@@ -327,9 +327,10 @@ GameObject:
   - component: {fileID: 8682456016200354051}
   - component: {fileID: 1277848626232276449}
   - component: {fileID: 4433452646334395199}
+  - component: {fileID: 6163836364652244469}
   m_Layer: 10
   m_Name: ORC2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,7 +377,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 62326e0dcd444f244a387735b467612b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -445,7 +446,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -456,7 +457,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8682456016200354051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -536,8 +537,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e48a34aaee66e24696da28dcbe631b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibles: []
+  collectibles:
+  - {fileID: 7856322251727230245, guid: 00c884c15187ce74e8e3d75ca7933cc2, type: 3}
+  - {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
+  - {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
   health: 3
   healthBar: {fileID: 0}
   isDead: 0
   deathSoundName: 
+--- !u!114 &6163836364652244469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823845203306623818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704c754011267ae4c93d4f48c6070e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 0.6754716, g: 0, b: 0, a: 1}
+  flashTime: 0.25
+  _flashSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.0636525
+      outSlope: -2.0636525
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19108847
+      value: 0.6056598
+      inSlope: -6.172244
+      outSlope: -6.172244
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0
+      inSlope: -10.280836
+      outSlope: -10.280836
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

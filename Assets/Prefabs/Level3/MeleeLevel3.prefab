@@ -8,13 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3165846436105814462, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1458869965
+      objectReference: {fileID: 0}
     - target: {fileID: 3511376500369991040, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
       propertyPath: m_DefaultActionMap
       value: meleeLevel3
       objectReference: {fileID: 0}
     - target: {fileID: 3511376500369991040, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3511376500369991040, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_ActionId
@@ -214,15 +218,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5717232652958199175, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717232652958199175, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6898437977410001720, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 160.26825
+      value: -196.96825
       objectReference: {fileID: 0}
     - target: {fileID: 6898437977410001720, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 132.8847
+      value: -27.254486
       objectReference: {fileID: 0}
     - target: {fileID: 6898437977410001720, guid: 9661d9c3439380e4e81a48628ac16738, type: 3}
       propertyPath: m_LocalPosition.z
@@ -291,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692e29476abb63b40a695d949f231def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   speed: 0
   jumpForce: 0
   groundCheckRadius: 0.2

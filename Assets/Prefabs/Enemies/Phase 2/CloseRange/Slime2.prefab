@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 5087465677757167304}
   - component: {fileID: 963514130887139127}
   - component: {fileID: 6300213445557331436}
+  - component: {fileID: -5560160836203266408}
   m_Layer: 0
   m_Name: Slime2
   m_TagString: Untagged
@@ -132,7 +133,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 62326e0dcd444f244a387735b467612b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,7 +202,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -212,7 +213,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5087465677757167304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -297,6 +298,26 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   isDead: 0
   deathSoundName: 
+--- !u!114 &-5560160836203266408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699445880093235987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704c754011267ae4c93d4f48c6070e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 0.82641506, g: 0, b: 0, a: 1}
+  flashTime: 0.25
+  _flashSpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5388733730833657269
 GameObject:
   m_ObjectHideFlags: 0
