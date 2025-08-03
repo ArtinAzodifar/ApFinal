@@ -18,7 +18,7 @@ public class Player1SuperAttack : NetworkBehaviour
         gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
     }
-    
+
     public void Start()
     {
         manaBar.SetMaxMana(MAX_MANA);
@@ -27,6 +27,11 @@ public class Player1SuperAttack : NetworkBehaviour
         {
             mana.Value = 0;
             manaBar.SetMana(mana.Value);
+        }
+        else if (!gameManager.IsLocalMode() && IsServer)
+        {
+            mana.Value = 0;
+            resetManaBarClientRpc();
         }
     }
 
@@ -52,7 +57,7 @@ public class Player1SuperAttack : NetworkBehaviour
             if (gameManager.IsLocalMode())
             {
                 mana.Value = 0;
-                manaBar.SetMaxMana(MAX_MANA);
+                manaBar.SetMana(0);
                 StartCoroutine(SuperAttack());
             }
             else if (IsOwner) applySuperShootServerRpc();
@@ -66,7 +71,7 @@ public class Player1SuperAttack : NetworkBehaviour
         resetManaBarClientRpc();
     }
     [ClientRpc]
-    private void resetManaBarClientRpc() { manaBar.SetMaxMana(MAX_MANA); }
+    private void resetManaBarClientRpc() { manaBar.SetMana(0); }
 
     private IEnumerator SuperAttack()
     {
@@ -107,7 +112,7 @@ public class Player1SuperAttack : NetworkBehaviour
     private void MaxMana(GameObject g)
     {
         if (g != gameObject) return;
-        if (GameManager.Instance.IsLocalMode()) {mana.Value = MAX_MANA;} // local mode
+        if (GameManager.Instance.IsLocalMode()) { mana.Value = MAX_MANA; } // local mode
         else if (IsOwner) maxManaServerRpc(); // in online mode only server modifies mana value, and only the owner can ask for it
         manaBar.FillMana();
     }
