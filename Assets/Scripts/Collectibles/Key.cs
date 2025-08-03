@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
 
     public void Start()
     {
-        if (gameManager.GetKey1())
+        if (gameManager.GetKey())
         {
             Destroy(gameObject);
         }

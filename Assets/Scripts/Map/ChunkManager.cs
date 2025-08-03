@@ -117,6 +117,7 @@ public class ChunkManager : MonoBehaviour
         }
 
         GameObject chunk = Instantiate(selectedChunkPrefab, transform);
+
         chunk.name = $"Chunk_{chunkIndex}";
 
         float positionX = chunkIndex * chunkWorldWidth;
