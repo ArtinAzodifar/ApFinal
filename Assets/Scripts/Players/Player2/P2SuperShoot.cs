@@ -7,26 +7,34 @@ using Unity.Netcode;
 public class P2SuperShoot : NetworkBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
-    public NetworkVariable<int> mana = new NetworkVariable<int>(0);
-    private const int MAX_MANA = 10;
+    [SerializeField] private ManaBar manaBar;
+    
+    public int mana;
+    private int maxMana;
     private Animator animator;
-    private ManaBar manaBar;
-
+    public NetworkVariable<int> mana = new NetworkVariable<int>(0);
+    
     [SerializeField] private GameObject laserSegmentPrefab;
     [SerializeField] private Transform laserStartPoint;
     [SerializeField] private int laserCount = 3;
     [SerializeField] private float segmentSpacing = 1f;
     [SerializeField] private int damageAmount;
 
-    //unity events:
     public void Awake()
     {
         animator = GetComponent<Animator>();
-        manaBar = GameObject.FindWithTag("RangeHealth").GetComponentInChildren<ManaBar>();
     }
+    
     public void Start()
     {
-        manaBar.SetMaxMana(MAX_MANA);
+        maxMana = 10;
+        manaBar.SetMaxMana(maxMana);
+        
+        if (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded)
+        {
+            mana = 0;
+            manaBar.SetMana(mana);
+        }
     }
 
     private void OnEnable()
@@ -41,21 +49,14 @@ public class P2SuperShoot : NetworkBehaviour
         FullMana.ManaFill -= MaxMana;
     }
 
-
-    //inputs:
     public void OnSuperAttack(InputAction.CallbackContext context)
     {
         if (!GameManager.Instance.IsLocalMode() && !IsOwner) return;
         if (context.performed && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana.Value >= MAX_MANA)
         {
-            if (GameManager.Instance.IsLocalMode())
-            {
-                mana.Value = 0;
-                StartCoroutine(SuperAttack());
-                manaBar.SetMaxMana(MAX_MANA);
-            }
-            else if (IsOwner) applySuperShootServerRpc();
-
+            mana = 0;
+            manaBar.SetMana(mana);
+            StartCoroutine(SuperAttack());
         }
     }
     [ServerRpc]
@@ -150,6 +151,7 @@ public class P2SuperShoot : NetworkBehaviour
 
     public void setMana(int amount)//this method is only for save/load which is only for local mode
     {
-        mana.Value = amount;
+        this.mana = amount;
+        manaBar.SetMana(this.mana);
     }
 }
