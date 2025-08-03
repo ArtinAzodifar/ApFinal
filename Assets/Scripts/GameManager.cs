@@ -107,8 +107,6 @@ public class GameManager : NetworkBehaviour
     //level set
     public void StartGame()
     {
-        SaveManager.Instance.NewGame();
-        
         if (isLocalMode) SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
@@ -167,6 +165,9 @@ public class GameManager : NetworkBehaviour
 
     public void MainMenu()
     {
+        // the important call to save the game!
+        SaveManager.Instance.SaveGame();
+            
         //in MainMenu we don't have network yet
         if (!isLocalMode && IsServer)
         {

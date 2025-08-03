@@ -13,16 +13,23 @@ public class Player1SuperAttack : NetworkBehaviour
     private ManaBar manaBar;
     private GameManager gameManager;
 
-    //unity events:
     public void Awake()
     {
         gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
-        manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
     }
+    
     public void Start()
     {
         manaBar.SetMaxMana(MAX_MANA);
+        maxMana = 10;
+        manaBar.SetMaxMana(maxMana);
+
+        if (gameManager.IsLocalMode() && (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded))
+        {
+            mana.Value = 0;
+            manaBar.SetMana(mana.Value);
+        }
     }
 
     private void OnEnable()
@@ -36,7 +43,6 @@ public class Player1SuperAttack : NetworkBehaviour
         Player1Attack.P1Mana -= ManaAdd;
         FullMana.ManaFill -= MaxMana;
     }
-
 
     //inputs:
     public void OnSuperAttack(InputAction.CallbackContext context)
@@ -85,7 +91,6 @@ public class Player1SuperAttack : NetworkBehaviour
                     enemy.gameObject.GetComponent<Damagable>().Damage(damageAmount);
                 }
             }
-
             yield return null;
         }
         yield return new WaitForSeconds(1.7f);
@@ -127,5 +132,6 @@ public class Player1SuperAttack : NetworkBehaviour
     public void setMana(int amount)
     {
         mana.Value = amount;
+        manaBar.SetMana(mana.Value);
     }
 }

@@ -97,7 +97,8 @@ public class ChunkManager : MonoBehaviour
         {
             selectedChunkPrefab = chunkPrefabs1[fixIndex];
             type1Ended = true;
-            totalChunksGenerated++;        }
+            totalChunksGenerated++;
+        }
         else if (chunks2Counter < numOfChunks2)
         {
             randomChunkIndex = Random.Range(0, chunkPrefabs2.Length);
@@ -116,6 +117,8 @@ public class ChunkManager : MonoBehaviour
         }
 
         GameObject chunk = Instantiate(selectedChunkPrefab, transform);
+
+        chunk.name = $"Chunk_{chunkIndex}";
 
         float positionX = chunkIndex * chunkWorldWidth;
         chunk.transform.position = new Vector3(positionX, positionY, 0);

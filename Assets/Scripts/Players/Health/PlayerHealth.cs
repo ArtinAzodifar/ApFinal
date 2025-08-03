@@ -105,12 +105,26 @@ public class PlayerHealth : NetworkBehaviour, Damagable
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
+    
+    public void LoadHealth(int healthAmount, int livesAmount)
+    {
+        Health.Value = healthAmount;
+        lives.Value = livesAmount;
+        
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(Health.Value);
+        healthPoint.SetLives(lives.Value);
+    }
 
 
     //getters
     public int getHealth()
     {
         return Health.Value;
+    }
+    public int getLives()
+    {
+        return lives.Value;
     }
     public bool IsDying()
     {
@@ -132,3 +146,4 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     [ClientRpc]
     private void addHeartClientRpc() { healthPoint.AddHeart(); }
 }
+

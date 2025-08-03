@@ -8,7 +8,7 @@ public class PersistentObject : MonoBehaviour
 
     void Start()
     {
-        fullUniqueId = $"{transform.parent.name}_{transform.parent.GetInstanceID()}_{uniqueIdInChunk}";
+        fullUniqueId = $"{transform.parent.name}_{uniqueIdInChunk}";
 
         if (SaveManager.Instance != null && SaveManager.Instance.IsObjectProcessed(fullUniqueId))
         {

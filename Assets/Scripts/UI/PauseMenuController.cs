@@ -45,7 +45,7 @@ public class PauseMenuController : MonoBehaviour
             Navigate(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
         {
             ConfirmSelection();
         }
