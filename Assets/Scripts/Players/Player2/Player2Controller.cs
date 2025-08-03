@@ -30,12 +30,12 @@ public class Player2Controller : BaseControll
     public override void OnJump(InputAction.CallbackContext context)
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
-        if (context.performed && isGrounded && !IsInDamage() && !inKnock)
+        if (context.performed && isGrounded && !IsInDamage() && !inKnock && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             _canDoubleJump = true;
             base.OnJump(context);
         }
-        else if (context.performed && _canDoubleJump && !IsInDamage() && !inKnock)
+        else if (context.performed && _canDoubleJump && !IsInDamage() && !inKnock && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             _canDoubleJump = false;
             animator.SetTrigger("DoubleJump");//should be changed
@@ -48,7 +48,7 @@ public class Player2Controller : BaseControll
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
-        if (context.started && !IsInDamage())
+        if (context.started && !IsInDamage() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             animator.SetTrigger("Shoot");
         }

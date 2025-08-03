@@ -17,7 +17,7 @@ public class GameManager : NetworkBehaviour
     private GameObject pauseScreen;
 
     private PauseMenuController pauseMenuController;
-    private NetworkVariable<bool> level1keyFound = new NetworkVariable<bool>(false);
+    private NetworkVariable<bool> keyFound = new NetworkVariable<bool>(false);
 
     public GameObject audioControllerPrefab;
     public GameObject musicPlayerPrefab;

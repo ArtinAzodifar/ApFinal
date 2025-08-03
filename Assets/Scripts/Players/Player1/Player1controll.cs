@@ -17,7 +17,7 @@ public class Player1controll : BaseControll
     public void OnDash(InputAction.CallbackContext context)
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
-        if (context.performed && canDash && IsRunning() && !GetComponent<Player1Attack>().IsAttacking())
+        if (context.performed && canDash && IsRunning() && !GetComponent<Player1Attack>().IsAttacking() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             StartCoroutine(Dash());
             animator.Play("Dash");

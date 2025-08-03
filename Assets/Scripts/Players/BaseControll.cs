@@ -31,12 +31,13 @@ public class BaseControll : NetworkBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (gameObject.GetComponent<PlayerHealth>().IsDying()) return;
         movingInput = context.ReadValue<Vector2>();
     }
     public virtual void OnJump(InputAction.CallbackContext context)
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
-        if (context.performed && isGrounded && !isInDamage && !inKnock)
+        if (context.performed && isGrounded && !isInDamage && !inKnock && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             animator.SetTrigger("Jump");
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);

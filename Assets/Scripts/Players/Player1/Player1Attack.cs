@@ -3,8 +3,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Unity.Netcode;
 
-public class Player1Attack : MonoBehaviour
+public class Player1Attack : NetworkBehaviour
 {
     public static event Action P1Mana;
     [SerializeField] private LayerMask enemyLayer;
@@ -13,9 +14,10 @@ public class Player1Attack : MonoBehaviour
     private Animator animator;
     private Transform attackZone;
     private float attackRange = 0.9f;
-    private bool isAttacking = false;
+    private NetworkVariable<bool> isAttacking = new NetworkVariable<bool>(false);
     private int damageBoostAmount = 0;
     private Coroutine boostCoroutine;
+    private GameManager gameManager;
 
     private void OnEnable()
     {
@@ -30,15 +32,20 @@ public class Player1Attack : MonoBehaviour
     //inputs:
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAttacking && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage())
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (context.performed && !isAttacking.Value && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
-            StartCoroutine(Attack());
+            if (gameManager.IsLocalMode()) StartCoroutine(Attack());
+            else attackServerRpc();
         }
     }
+    [ServerRpc]
+    private void attackServerRpc(){StartCoroutine(Attack());}
 
     //unity events:
     public void Awake()
     {
+        gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
         attackZone = transform.Find("AttackZone");
     }
@@ -47,9 +54,14 @@ public class Player1Attack : MonoBehaviour
     //methods:
     private IEnumerator Attack()
     {
-        isAttacking = true;
+        //this method applies attack process and lever toggles
+        //this IEnumerator is only started in local mode or by *server*
+        if (!gameManager.IsLocalMode() && !IsServer) yield break;
+        isAttacking.Value = true;
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(0.1f);
+
+        //attack enemies
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackZone.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemy)
         {
@@ -57,19 +69,24 @@ public class Player1Attack : MonoBehaviour
             {
                 enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
             }
-            P1Mana?.Invoke();
+            if (gameManager.IsLocalMode()) P1Mana?.Invoke();
+            else if(IsServer) invokeManaClientRpc();
         }
+
+        //use levers
         Collider2D[] toggleLever = Physics2D.OverlapCircleAll(attackZone.position, attackRange, leverLayer);
         foreach (Collider2D lever in toggleLever)
         {
             if (lever.gameObject.GetComponent<LeverToggle>() != null)
             {
-                lever.gameObject.GetComponent<LeverToggle>().Toggle();
+                if (gameManager.IsLocalMode() || IsServer) lever.gameObject.GetComponent<LeverToggle>().Toggle();
             }
         }
         yield return new WaitForSeconds(0.5f);
-        isAttacking = false;
+        isAttacking.Value = false;
     }
+    [ClientRpc]
+    private void invokeManaClientRpc(){P1Mana?.Invoke();}
 
     private void DamageBoost(GameObject player, int damage, float time)
     {
@@ -93,12 +110,12 @@ public class Player1Attack : MonoBehaviour
     //setters:
     public void setIsAttacking(bool value)
     {
-        isAttacking = value;
+        isAttacking.Value = value;
     }
     
     //getters:
     public bool IsAttacking()
     {
-        return isAttacking;
+        return isAttacking.Value;
     }
 }

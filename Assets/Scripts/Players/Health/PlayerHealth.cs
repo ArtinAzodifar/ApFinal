@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Unity.Netcode;
 
-public class PlayerHealth : MonoBehaviour, Damagable
+public class PlayerHealth : NetworkBehaviour, Damagable
 {
     private Animator animator;
     [SerializeField] private String healthTag;
@@ -11,8 +12,9 @@ public class PlayerHealth : MonoBehaviour, Damagable
     private HealthPoint healthPoint;
     [SerializeField] private int maxLives;
     [SerializeField] private int MaxHealth;
-    private int Health;
-    private int lives;
+    private NetworkVariable<int> Health = new NetworkVariable<int>();
+    private NetworkVariable<int> lives = new NetworkVariable<int>(3);
+    private NetworkVariable<bool> isDying = new NetworkVariable<bool>(false);
     private GameManager gameManager;
 
     private void OnEnable()
@@ -35,20 +37,33 @@ public class PlayerHealth : MonoBehaviour, Damagable
 
     public void Start()
     {
+        if (gameManager.IsLocalMode() || IsServer) Health.Value = MaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(MaxHealth);
+        healthPoint.SetLives(lives.Value);
     }
 
     public void Damage(int amount)
     {
-        Health -= amount;
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+        
+        if (isDying.Value) return;
+        Health.Value -= amount;
         StartCoroutine(LockPlayer());
-        healthBar.SetHealth(Health);
-        if (Health <= 0)
+        if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
+        else if (IsServer) updateHealthBarClientRpc(Health.Value);
+        if (Health.Value <= 0)
         {
+            isDying.Value = true;
             animator.SetTrigger("Death");
-            Health = MaxHealth;
-            lives--;
-            healthBar.SetHealth(Health);
-            healthPoint.ExplodeHeart();
+            Health.Value = MaxHealth;
+            lives.Value--;
+
+            if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
+            else if (IsServer) updateHealthBarClientRpc(Health.Value);
+
+            if (gameManager.IsLocalMode()) healthPoint.ExplodeHeart();
+            else if (IsServer) explodeHeartClientRpc();
             StartCoroutine(GameOverCheck());
         }
         else
@@ -59,21 +74,29 @@ public class PlayerHealth : MonoBehaviour, Damagable
 
     public void GetLife(GameObject player)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (player != gameObject) return;
-        Health = MaxHealth;
-        healthBar.SetHealth(Health);
-        if(lives == maxLives) return;
-        lives++;
-        healthPoint.AddHeart();
+        Health.Value = MaxHealth;
+
+        if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
+        else if (IsServer) updateHealthBarClientRpc(Health.Value);
+
+        if (lives.Value == maxLives) return;
+        lives.Value++;
+
+        if (gameManager.IsLocalMode()) healthPoint.AddHeart();
+        else if (IsServer) addHeartClientRpc();
     }
 
     private IEnumerator GameOverCheck()
     {
-        yield return new WaitForSeconds(1f);
-        if (lives <= 0)
+        yield return new WaitForSeconds(2.5f);
+        if (lives.Value <= 0)
         {
             gameManager.GameOver();
         }
+        isDying.Value = false;
     }
 
     private IEnumerator LockPlayer()
@@ -85,21 +108,42 @@ public class PlayerHealth : MonoBehaviour, Damagable
     
     public void LoadHealth(int healthAmount, int livesAmount)
     {
-        this.Health = healthAmount;
-        this.lives = livesAmount;
+        Health.Value = healthAmount;
+        lives.Value = livesAmount;
         
         healthBar.SetMaxHealth(MaxHealth);
-        healthBar.SetHealth(this.Health);
-        healthPoint.SetLives(this.lives);
+        healthBar.SetHealth(Health.Value);
+        healthPoint.SetLives(lives.Value);
     }
 
+
+    //getters
     public int getHealth()
     {
-        return Health;
+        return Health.Value;
     }
-
     public int getLives()
     {
-        return lives;
+        return lives.Value;
     }
+    public bool IsDying()
+    {
+        return isDying.Value;
+    }
+
+    //setter
+    public void setHealth(int amount)
+    {
+        Health.Value = amount;
+    }
+
+
+    //Rpc - for UI update in online mode
+    [ClientRpc]
+    private void updateHealthBarClientRpc(int health) { healthBar.SetHealth(health); }
+    [ClientRpc]
+    private void explodeHeartClientRpc() { healthPoint.ExplodeHeart(); }
+    [ClientRpc]
+    private void addHeartClientRpc() { healthPoint.AddHeart(); }
 }
+

@@ -52,7 +52,7 @@ public class P2SuperShoot : NetworkBehaviour
     public void OnSuperAttack(InputAction.CallbackContext context)
     {
         if (!GameManager.Instance.IsLocalMode() && !IsOwner) return;
-        if (context.performed && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana.Value >= MAX_MANA)
+        if (context.performed && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana.Value >= MAX_MANA && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             mana = 0;
             manaBar.SetMana(mana);
