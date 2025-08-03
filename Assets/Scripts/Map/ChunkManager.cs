@@ -98,7 +98,6 @@ public class ChunkManager : MonoBehaviour
             selectedChunkPrefab = chunkPrefabs1[fixIndex];
             type1Ended = true;
             totalChunksGenerated++;
-            //return null;
         }
         else if (chunks2Counter < numOfChunks2)
         {
@@ -118,7 +117,7 @@ public class ChunkManager : MonoBehaviour
         }
 
         GameObject chunk = Instantiate(selectedChunkPrefab, transform);
-        //chunk.name = "Chunk_1_" + chunkIndex + "_Type_" + randomChunkIndex;
+        chunk.name = $"Chunk_{chunkIndex}";
 
         float positionX = chunkIndex * chunkWorldWidth;
         chunk.transform.position = new Vector3(positionX, positionY, 0);

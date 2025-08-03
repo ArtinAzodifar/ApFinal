@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 public class P2SuperShoot : MonoBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private ManaBar manaBar;
+    
     public int mana;
     private int maxMana;
     private Animator animator;
-    private ManaBar manaBar;
     
     [SerializeField] private GameObject laserSegmentPrefab;
     [SerializeField] private Transform laserStartPoint;
@@ -17,17 +18,21 @@ public class P2SuperShoot : MonoBehaviour
     [SerializeField] private float segmentSpacing = 1f;
     [SerializeField] private int damageAmount;
 
-    //unity events:
     public void Awake()
     {
         animator = GetComponent<Animator>();
-        manaBar = GameObject.FindWithTag("RangeHealth").GetComponentInChildren<ManaBar>();
     }
+    
     public void Start()
     {
-        mana = 0;
         maxMana = 10;
         manaBar.SetMaxMana(maxMana);
+        
+        if (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded)
+        {
+            mana = 0;
+            manaBar.SetMana(mana);
+        }
     }
 
     private void OnEnable()
@@ -38,18 +43,16 @@ public class P2SuperShoot : MonoBehaviour
 
     private void OnDisable()
     {
-        Player1Attack.P1Mana -= ManaAdd;
+        ArrowController.P2Mana -= ManaAdd;
         FullMana.ManaFill -= MaxMana;
     }
     
-    
-    //inputs:
     public void OnSuperAttack(InputAction.CallbackContext context)
     {
         if (context.performed && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana >= maxMana)
         {
             mana = 0;
-            manaBar.SetMaxMana(maxMana);
+            manaBar.SetMana(mana);
             StartCoroutine(SuperAttack());
         }
     }
@@ -127,5 +130,6 @@ public class P2SuperShoot : MonoBehaviour
     public void setMana(int amount)
     {
         this.mana = amount;
+        manaBar.SetMana(this.mana);
     }
 }

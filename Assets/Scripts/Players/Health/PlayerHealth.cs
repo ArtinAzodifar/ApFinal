@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour, Damagable
     [SerializeField] private int maxLives;
     [SerializeField] private int MaxHealth;
     private int Health;
-    private int lives = 3;
+    private int lives;
     private GameManager gameManager;
 
     private void OnEnable()
@@ -35,10 +35,6 @@ public class PlayerHealth : MonoBehaviour, Damagable
 
     public void Start()
     {
-        Health = MaxHealth;
-        healthBar.SetMaxHealth(MaxHealth);
-        healthBar.SetHealth(MaxHealth);
-        healthPoint.SetLives(lives);
     }
 
     public void Damage(int amount)
@@ -86,14 +82,24 @@ public class PlayerHealth : MonoBehaviour, Damagable
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
+    
+    public void LoadHealth(int healthAmount, int livesAmount)
+    {
+        this.Health = healthAmount;
+        this.lives = livesAmount;
+        
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(this.Health);
+        healthPoint.SetLives(this.lives);
+    }
 
     public int getHealth()
     {
         return Health;
     }
 
-    public void setHealth(int amount)
+    public int getLives()
     {
-        this.Health = amount;
+        return lives;
     }
 }

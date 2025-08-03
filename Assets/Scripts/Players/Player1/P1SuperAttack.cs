@@ -7,22 +7,27 @@ public class Player1SuperAttack : MonoBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int damageAmount;
+    [SerializeField] private ManaBar manaBar;
+    
     public int mana;
     private int maxMana;
     private Animator animator;
-    private ManaBar manaBar;
 
-    //unity events:
     public void Awake()
     {
         animator = GetComponent<Animator>();
-        manaBar = GameObject.FindWithTag("MeleeHealth").GetComponentInChildren<ManaBar>();
     }
+    
     public void Start()
     {
-        mana = 0;
         maxMana = 10;
         manaBar.SetMaxMana(maxMana);
+
+        if (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded)
+        {
+            mana = 0;
+            manaBar.SetMana(mana);
+        }
     }
 
     private void OnEnable()
@@ -37,15 +42,13 @@ public class Player1SuperAttack : MonoBehaviour
         FullMana.ManaFill -= MaxMana;
     }
     
-    
-    //inputs:
     public void OnSuperAttack(InputAction.CallbackContext context)
     {
         if (context.performed && !gameObject.GetComponent<Player1Attack>().IsAttacking() &&
             !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana >= maxMana)
         {
             mana = 0;
-            manaBar.SetMaxMana(maxMana);
+            manaBar.SetMana(mana);
             StartCoroutine(SuperAttack());
         }
     }
@@ -70,7 +73,6 @@ public class Player1SuperAttack : MonoBehaviour
                     enemy.gameObject.GetComponent<Damagable>().Damage(damageAmount);
                 }
             }
-
             yield return null;
         }
         yield return new WaitForSeconds(1.7f);
@@ -106,5 +108,6 @@ public class Player1SuperAttack : MonoBehaviour
     public void setMana(int amount)
     {
         this.mana = amount;
+        manaBar.SetMana(this.mana);
     }
 }
