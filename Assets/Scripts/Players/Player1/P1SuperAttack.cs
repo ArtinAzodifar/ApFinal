@@ -10,7 +10,7 @@ public class Player1SuperAttack : NetworkBehaviour
     public NetworkVariable<int> mana = new NetworkVariable<int>(0);
     private const int MAX_MANA = 10;
     private Animator animator;
-    private ManaBar manaBar;
+    [SerializeField] private ManaBar manaBar;
     private GameManager gameManager;
 
     public void Awake()
@@ -22,8 +22,6 @@ public class Player1SuperAttack : NetworkBehaviour
     public void Start()
     {
         manaBar.SetMaxMana(MAX_MANA);
-        maxMana = 10;
-        manaBar.SetMaxMana(maxMana);
 
         if (gameManager.IsLocalMode() && (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded))
         {

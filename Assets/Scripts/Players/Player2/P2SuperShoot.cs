@@ -8,9 +8,8 @@ public class P2SuperShoot : NetworkBehaviour
 {
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private ManaBar manaBar;
-    
-    public int mana;
-    private int maxMana;
+
+    private const int MAX_MANA = 10;
     private Animator animator;
     public NetworkVariable<int> mana = new NetworkVariable<int>(0);
     
@@ -27,13 +26,12 @@ public class P2SuperShoot : NetworkBehaviour
     
     public void Start()
     {
-        maxMana = 10;
-        manaBar.SetMaxMana(maxMana);
+        manaBar.SetMaxMana(MAX_MANA);
         
         if (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded)
         {
-            mana = 0;
-            manaBar.SetMana(mana);
+            mana.Value = 0;
+            manaBar.SetMana(mana.Value);
         }
     }
 
@@ -54,8 +52,8 @@ public class P2SuperShoot : NetworkBehaviour
         if (!GameManager.Instance.IsLocalMode() && !IsOwner) return;
         if (context.performed && !gameObject.gameObject.GetComponent<BaseControll>().IsInDamage() && mana.Value >= MAX_MANA && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
-            mana = 0;
-            manaBar.SetMana(mana);
+            mana.Value = 0;
+            manaBar.SetMana(mana.Value);
             StartCoroutine(SuperAttack());
         }
     }
@@ -151,7 +149,7 @@ public class P2SuperShoot : NetworkBehaviour
 
     public void setMana(int amount)//this method is only for save/load which is only for local mode
     {
-        this.mana = amount;
-        manaBar.SetMana(this.mana);
+        this.mana.Value = amount;
+        manaBar.SetMana(this.mana.Value);
     }
 }

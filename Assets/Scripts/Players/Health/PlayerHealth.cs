@@ -37,10 +37,21 @@ public class PlayerHealth : NetworkBehaviour, Damagable
 
     public void Start()
     {
-        if (gameManager.IsLocalMode() || IsServer) Health.Value = MaxHealth;
+        // This is fine, it just sets the slider's maximum possible value.
         healthBar.SetMaxHealth(MaxHealth);
-        healthBar.SetHealth(MaxHealth);
-        healthPoint.SetLives(lives.Value);
+
+        // Only initialize health and UI for a new game.
+        // If a game is loaded, the SaveManager will handle setting the values.
+        if (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded)
+        {
+            if (gameManager.IsLocalMode() || IsServer)
+            {
+                Health.Value = MaxHealth;
+            }
+            // These lines are now correctly inside the IF block.
+            healthBar.SetHealth(MaxHealth);
+            healthPoint.SetLives(lives.Value);
+        }
     }
 
     public void Damage(int amount)
@@ -108,12 +119,14 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     
     public void LoadHealth(int healthAmount, int livesAmount)
     {
+        // Assign the new values to the NetworkVariables
         Health.Value = healthAmount;
         lives.Value = livesAmount;
-        
+    
+        // Set the UI using the direct parameter values, NOT by reading back from the NetworkVariable
         healthBar.SetMaxHealth(MaxHealth);
-        healthBar.SetHealth(Health.Value);
-        healthPoint.SetLives(lives.Value);
+        healthBar.SetHealth(healthAmount); // Use healthAmount directly
+        healthPoint.SetLives(livesAmount); // Use livesAmount directly
     }
 
 
