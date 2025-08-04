@@ -31,7 +31,7 @@ public class Player1SuperAttack : NetworkBehaviour
         else if (!gameManager.IsLocalMode() && IsServer)
         {
             mana.Value = 0;
-            resetManaBarClientRpc();
+            UpdateManaBarClientRpc(mana.Value);
         }
     }
 
@@ -63,15 +63,6 @@ public class Player1SuperAttack : NetworkBehaviour
             else if (IsOwner) applySuperShootServerRpc();
         }
     }
-    [ServerRpc]
-    private void applySuperShootServerRpc()
-    {
-        mana.Value = 0;
-        StartCoroutine(SuperAttack());
-        resetManaBarClientRpc();
-    }
-    [ClientRpc]
-    private void resetManaBarClientRpc() { manaBar.SetMana(0); }
 
     private IEnumerator SuperAttack()
     {
@@ -102,22 +93,24 @@ public class Player1SuperAttack : NetworkBehaviour
 
     private void ManaAdd()
     {
-        if (GameManager.Instance.IsLocalMode()) mana.Value++; // local mode
+        if (GameManager.Instance.IsLocalMode()) //local mode
+        {
+            mana.Value++;
+            manaBar.addMana();
+        }
         else if (IsOwner) addManaServerRpc(); // in online mode only server modifies mana value, and only the owner can ask for it
-        manaBar.addMana();
     }
-    [ServerRpc]
-    private void addManaServerRpc() { mana.Value++; }
 
     private void MaxMana(GameObject g)
     {
         if (g != gameObject) return;
-        if (GameManager.Instance.IsLocalMode()) { mana.Value = MAX_MANA; } // local mode
+        if (GameManager.Instance.IsLocalMode()) // local mode
+        {
+            mana.Value = MAX_MANA;
+            manaBar.FillMana();
+        }
         else if (IsOwner) maxManaServerRpc(); // in online mode only server modifies mana value, and only the owner can ask for it
-        manaBar.FillMana();
     }
-    [ServerRpc]
-    private void maxManaServerRpc() { mana.Value = MAX_MANA; }
 
     private void OnDrawGizmos()
     {
@@ -137,4 +130,35 @@ public class Player1SuperAttack : NetworkBehaviour
         mana.Value = amount;
         manaBar.SetMana(mana.Value);
     }
+
+    //ServerRpc
+    [ServerRpc]
+    private void applySuperShootServerRpc()
+    {
+        mana.Value = 0;
+        UpdateManaBarClientRpc(mana.Value);
+        StartCoroutine(SuperAttack());
+    }
+
+    [ServerRpc]
+    private void addManaServerRpc()
+    {
+        mana.Value++;
+        UpdateManaBarClientRpc(mana.Value);
+    }
+
+    [ServerRpc]
+    private void maxManaServerRpc()
+    {
+        mana.Value = MAX_MANA;
+        UpdateManaBarClientRpc(mana.Value);
+    }
+
+    //ClientRpc
+    [ClientRpc]
+    private void UpdateManaBarClientRpc(int value)
+    {
+        manaBar.SetMana(value);
+    }
+
 }
