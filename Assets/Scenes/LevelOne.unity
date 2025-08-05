@@ -4095,25 +4095,9 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 198262256
       objectReference: {fileID: 0}
-    - target: {fileID: 2226886688451219311, guid: 4b786e558a63b2e4fb524993aefa3993, type: 3}
-      propertyPath: InScenePlacedSourceGlobalObjectIdHash
-      value: 465250973
-      objectReference: {fileID: 0}
-    - target: {fileID: 3338135203373225981, guid: 4b786e558a63b2e4fb524993aefa3993, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5151484314392642823, guid: 4b786e558a63b2e4fb524993aefa3993, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1675161942
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151484314392642823, guid: 4b786e558a63b2e4fb524993aefa3993, type: 3}
-      propertyPath: InScenePlacedSourceGlobalObjectIdHash
-      value: 465250973
-      objectReference: {fileID: 0}
-    - target: {fileID: 6056075719281717972, guid: 4b786e558a63b2e4fb524993aefa3993, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6907245139769957160, guid: 4b786e558a63b2e4fb524993aefa3993, type: 3}
       propertyPath: m_Name

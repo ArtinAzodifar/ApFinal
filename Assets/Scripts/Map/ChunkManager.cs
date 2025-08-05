@@ -135,7 +135,7 @@ public class ChunkManager : NetworkBehaviour
         chunk.name = $"Chunk_{chunkIndex}";
 
         float positionX = chunkIndex * chunkWorldWidth;
-        chunk.transform.position = new Vector3(positionX, positionY, 0);
+        chunk.transform.position = new Vector3(positionX, positionY, 2);
 
         if (!gameManager.IsLocalMode() && IsServer)
         {
