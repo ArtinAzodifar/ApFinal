@@ -80,6 +80,7 @@ public class BaseControll : NetworkBehaviour
         //character direction
         transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
         rb.linearVelocity = new Vector2(movingInput.x * speed, topDown ? movingInput.y * speed : rb.linearVelocity.y);
+        if (gameObject.GetComponent<PlayerHealth>().IsDying()) rb.linearVelocity = Vector2.zero;
     }
     public void GroundCheck()
     {
@@ -114,6 +115,7 @@ public class BaseControll : NetworkBehaviour
 
     public void startKnock(float knockbackForce)
     {
+        if (!gameManager.IsLocalMode() || !IsServer) return;
         StartCoroutine(KnockBack(knockbackForce));
     }
 
