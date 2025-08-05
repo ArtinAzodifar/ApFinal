@@ -47,8 +47,25 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: -1543127259366380736, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
+    - {fileID: -8117997915307472692, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
+    - {fileID: -5275532446536783352, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
+    - {fileID: 6216772023213279108, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
+    - {fileID: -2461060714717478550, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
+    - {fileID: 8495447195819936000, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
+    - {fileID: 8269638412935070570, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
+    - {fileID: 8269638412935070570, guid: 486a39cd58f728b4e8d69db169fa9457, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -73,4 +90,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.41
+    functionName: EnableUpHitbox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.51
+    functionName: DisableAllHitboxes
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

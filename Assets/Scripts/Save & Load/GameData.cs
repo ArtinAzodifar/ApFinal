@@ -28,13 +28,13 @@ public class GameData
         player1_health = 150;
         player1_lives = 3;
         player1_mana = 0;
-        player1_position = new Vector3(-278.5f, 226.1f, 0f);
+        player1_position = new Vector3(-201.7082f, -17.64f, 0f);
         player1_rotation = Quaternion.identity;
 
         player2_health = 100;
         player2_lives = 3;
         player2_mana = 0;
-        player2_position = new Vector3(-277.3f, 146.9f, 0f);
+        player2_position = new Vector3(-203.65f, -17.64f, 0f);
         player2_rotation = Quaternion.identity;
     }
 }
