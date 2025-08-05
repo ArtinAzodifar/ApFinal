@@ -58,11 +58,14 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
         
-        if (isDying.Value) return;
+        if (isDying.Value || gameObject.GetComponent<BaseControll>().IsInDamage()) return;
+
         Health.Value -= amount;
         StartCoroutine(LockPlayer());
+
         if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
         else if (IsServer) updateHealthBarClientRpc(Health.Value);
+        
         if (Health.Value <= 0)
         {
             isDying.Value = true;
@@ -70,11 +73,15 @@ public class PlayerHealth : NetworkBehaviour, Damagable
             Health.Value = MaxHealth;
             lives.Value--;
 
+            //health bar reset
             if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
             else if (IsServer) updateHealthBarClientRpc(Health.Value);
 
+
+            //health point check
             if (gameManager.IsLocalMode()) healthPoint.ExplodeHeart();
             else if (IsServer) explodeHeartClientRpc();
+
             StartCoroutine(GameOverCheck());
         }
         else

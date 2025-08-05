@@ -1,58 +1,93 @@
 using System.Collections;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Traps : MonoBehaviour
+public class Traps : NetworkBehaviour
 {
     [SerializeField] private int damageAmount;
     private bool p1Trapped = false;
+    private bool p1CoolDown = false;
     private bool p2Trapped = false;
+    private bool p2CoolDown = false;
+    private GameManager gameManager;
+    private GameObject player1;
+    private GameObject player2;
+
+    private Coroutine p1TrapRoutine = null;
+    private Coroutine p2TrapRoutine = null;
+
+    public void Awake()
+    {
+        gameManager = GameManager.Instance;
+        player1 = GameObject.FindWithTag("Player1");
+        player2 = GameObject.FindWithTag("Player2");
+    }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player1"))
+        if (!gameManager.IsLocalMode() && !IsServer) return; //only server and local mode
+
+        if (collision.gameObject.CompareTag("Player1") && !p1CoolDown && p1TrapRoutine == null)
         {
             p1Trapped = true;
-            StartCoroutine(p1Trap(collision.gameObject));
+            p1TrapRoutine = StartCoroutine(p1Trap());
         }
 
-        if (collision.gameObject.CompareTag("Player2"))
+        if (collision.gameObject.CompareTag("Player2") && !p2CoolDown && p2TrapRoutine == null)
         {
             p2Trapped = true;
-            StartCoroutine(p2Trap(collision.gameObject));
+            p2TrapRoutine = StartCoroutine(p2Trap());
         }
     }
 
     public void OnCollisionExit2D(Collision2D collision)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return; //only server and local mode
+
         if (collision.gameObject.CompareTag("Player1"))
         {
-            Debug.Log("stop");
             p1Trapped = false;
-            StopCoroutine(p1Trap(collision.gameObject));
+            if (p1TrapRoutine != null)
+            {
+                StopCoroutine(p1TrapRoutine);
+                p1TrapRoutine = null;
+            }
+            p1CoolDown = false;
         }
 
         if (collision.gameObject.CompareTag("Player2"))
         {
             p2Trapped = false;
-            StopCoroutine(p2Trap(collision.gameObject));
+            if (p2TrapRoutine != null)
+            {
+                StopCoroutine(p2TrapRoutine);
+                p2TrapRoutine = null;
+            }
+            p2CoolDown = false;
         }
     }
 
-    private IEnumerator p1Trap(GameObject g)
+    private IEnumerator p1Trap()
     {
         while (p1Trapped)
         {
-            g.GetComponent<Damagable>().Damage(damageAmount);
+            var Health = player1.GetComponent<PlayerHealth>();
+            if (!Health.IsDying()) player1.GetComponent<Damagable>().Damage(damageAmount);
+            p1CoolDown = true;
             yield return new WaitForSeconds(1f);
+            p1CoolDown = false;
         }
     }
-    private IEnumerator p2Trap(GameObject g)
+    private IEnumerator p2Trap()
     {
         while (p2Trapped)
         {
-            g.GetComponent<Damagable>().Damage(damageAmount);
+            var Health = player2.GetComponent<PlayerHealth>();
+            if (!Health.IsDying()) player2.GetComponent<Damagable>().Damage(damageAmount);
+            p2CoolDown = true;
             yield return new WaitForSeconds(1f);
+            p2CoolDown = false;
         }
     }
-    
+
 }
