@@ -130,6 +130,8 @@ public class P2SuperShoot : NetworkBehaviour
 
     private void ShowLaserAnimation()//is called in the middle of super shoot animation
     {
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+
         Vector3 direction = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
 
         for (int i = 0; i < laserCount; i++)

@@ -13,10 +13,8 @@ public class DestroyAfterTime : NetworkBehaviour
         timer += Time.deltaTime;
         if (timer >= lifeTime)
         {
-            if (!GameManager.Instance.IsLocalMode())
-                GetComponent<NetworkObject>().Despawn();
-            else
-                Destroy(gameObject);
+            if (!GameManager.Instance.IsLocalMode()) gameObject.GetComponent<NetworkObject>().Despawn();
+            else Destroy(gameObject);
         }
     }
 }
