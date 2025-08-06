@@ -8,13 +8,13 @@ public class ThemeColorSwapEditor
 
     public static void SwapThemeColors(RandomizedVideoPlaylist playlist)
     {
-        int targetThemeIndex = 3; 
+        int targetThemeIndex = 1; 
 
         // Set the four HEX colors for your find-and-replace operation.
-        string originalDarkHex  = "#483B37";
-        string newDarkHex       = "#292D3F";
-        string originalLightHex = "#E1CFAF";
-        string newLightHex      = "#A9B1D6";
+        string originalDarkHex  = "#004C68";
+        string newDarkHex       = "#014421";
+        string originalLightHex = "#87DEFF";
+        string newLightHex      = "#CDFFE6";
 
         SerializedObject serializedPlaylist = new SerializedObject(playlist);
         SerializedProperty videoThemesProperty = serializedPlaylist.FindProperty("videoThemes");

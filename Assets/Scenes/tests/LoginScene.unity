@@ -181,7 +181,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -767,19 +767,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284891519}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1403485495}
   - {fileID: 543943806}
-  m_Father: {fileID: 1460503428}
+  m_Father: {fileID: 1077689007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 960, y: 1080}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &284891521
 MonoBehaviour:
@@ -1399,18 +1399,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 679915880}
   videoThemes:
-  - clip: {fileID: 32900000, guid: 45e69ca8a4517464d92443c891d8bd49, type: 3}
+  - clip: {fileID: 32900000, guid: e8c94506682f34b48ba803070dc0af0a, type: 3}
     colorTargets:
     - uiElement: {fileID: 14259577}
       themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
     - uiElement: {fileID: 740934314}
-      themeColor: {r: 0.528, g: 0.87243253, b: 1, a: 1}
+      themeColor: {r: 0.528, g: 0.87243253, b: 1, a: 0.4}
     - uiElement: {fileID: 313844083}
       themeColor: {r: 0.528, g: 0.87243253, b: 1, a: 1}
     - uiElement: {fileID: 167852804}
       themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
     - uiElement: {fileID: 37192341}
-      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
+      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 0.4}
     - uiElement: {fileID: 1725943383}
       themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
     - uiElement: {fileID: 615007477}
@@ -1426,47 +1426,47 @@ MonoBehaviour:
     - uiElement: {fileID: 1607482516}
       themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
     - uiElement: {fileID: 1934202539}
-      themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
-  - clip: {fileID: 32900000, guid: 9db9358d6e9748249baba812e4e1a960, type: 3}
+      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
+  - clip: {fileID: 32900000, guid: 9f11ec147f18eac41b8bad75d3d55ab5, type: 3}
     colorTargets:
     - uiElement: {fileID: 14259577}
-      themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
+      themeColor: {r: 0.003921569, g: 0.26666668, b: 0.12941177, a: 1}
     - uiElement: {fileID: 740934314}
-      themeColor: {r: 0.528, g: 0.87243253, b: 1, a: 1}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 0.4}
     - uiElement: {fileID: 313844083}
-      themeColor: {r: 0.528, g: 0.87243253, b: 1, a: 1}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 1}
     - uiElement: {fileID: 167852804}
-      themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
+      themeColor: {r: 0.003921569, g: 0.26666668, b: 0.12941177, a: 1}
     - uiElement: {fileID: 37192341}
-      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 0.4}
     - uiElement: {fileID: 1725943383}
-      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 1}
     - uiElement: {fileID: 615007477}
-      themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
+      themeColor: {r: 0.003921569, g: 0.26666668, b: 0.12941177, a: 1}
     - uiElement: {fileID: 1216665253}
-      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 1}
     - uiElement: {fileID: 384719939}
-      themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
+      themeColor: {r: 0.003921569, g: 0.26666668, b: 0.12941177, a: 1}
     - uiElement: {fileID: 690844427}
-      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 1}
     - uiElement: {fileID: 739777293}
-      themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
+      themeColor: {r: 0.003921569, g: 0.26666668, b: 0.12941177, a: 1}
     - uiElement: {fileID: 1607482516}
-      themeColor: {r: 0.5294118, g: 0.87058824, b: 1, a: 1}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 1}
     - uiElement: {fileID: 1934202539}
-      themeColor: {r: 0, g: 0.29803923, b: 0.40784314, a: 1}
-  - clip: {fileID: 32900000, guid: e0126c83ab647e14093b05fb033368fc, type: 3}
+      themeColor: {r: 0.8039216, g: 1, b: 0.9019608, a: 1}
+  - clip: {fileID: 32900000, guid: f8bbd35fb55d5c84e9c13c81c0bc11c5, type: 3}
     colorTargets:
     - uiElement: {fileID: 14259577}
       themeColor: {r: 0.28235295, g: 0.23137255, b: 0.21568628, a: 1}
     - uiElement: {fileID: 740934314}
-      themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 1}
+      themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 0.4}
     - uiElement: {fileID: 313844083}
       themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 1}
     - uiElement: {fileID: 167852804}
       themeColor: {r: 0.28235295, g: 0.23137255, b: 0.21568628, a: 1}
     - uiElement: {fileID: 37192341}
-      themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 1}
+      themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 0.4}
     - uiElement: {fileID: 1725943383}
       themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 1}
     - uiElement: {fileID: 615007477}
@@ -1482,19 +1482,19 @@ MonoBehaviour:
     - uiElement: {fileID: 1607482516}
       themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 1}
     - uiElement: {fileID: 1934202539}
-      themeColor: {r: 0.28235295, g: 0.23137255, b: 0.21568628, a: 1}
-  - clip: {fileID: 32900000, guid: dc92f4472f04e3d4dba32c6207cb4750, type: 3}
+      themeColor: {r: 0.88235295, g: 0.8117647, b: 0.6862745, a: 1}
+  - clip: {fileID: 32900000, guid: ef268eb297be3254da67117555599b94, type: 3}
     colorTargets:
     - uiElement: {fileID: 14259577}
       themeColor: {r: 0.16078432, g: 0.1764706, b: 0.24705882, a: 1}
     - uiElement: {fileID: 740934314}
-      themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 1}
+      themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 0.4}
     - uiElement: {fileID: 313844083}
       themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 1}
     - uiElement: {fileID: 167852804}
       themeColor: {r: 0.16078432, g: 0.1764706, b: 0.24705882, a: 1}
     - uiElement: {fileID: 37192341}
-      themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 1}
+      themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 0.4}
     - uiElement: {fileID: 1725943383}
       themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 1}
     - uiElement: {fileID: 615007477}
@@ -1510,9 +1510,9 @@ MonoBehaviour:
     - uiElement: {fileID: 1607482516}
       themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 1}
     - uiElement: {fileID: 1934202539}
-      themeColor: {r: 0.16078432, g: 0.1764706, b: 0.24705882, a: 1}
+      themeColor: {r: 0.6627451, g: 0.69411767, b: 0.8392157, a: 1}
   fadeCanvasGroup: {fileID: 543943803}
-  fadeDuration: 0.25
+  fadeDuration: 0.3
 --- !u!328 &679915880
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2177,6 +2177,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031704637}
   m_CullTransparentMesh: 1
+--- !u!1 &1077689006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077689007}
+  - component: {fileID: 1077689010}
+  - component: {fileID: 1077689009}
+  - component: {fileID: 1077689008}
+  m_Layer: 5
+  m_Name: Video
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1077689007
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077689006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 284891520}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1077689008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077689006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1077689009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077689006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1077689010
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077689006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1216665251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,7 +2450,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 960, y: 1080}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1403485496
 MonoBehaviour:
@@ -2373,9 +2475,9 @@ MonoBehaviour:
   m_Texture: {fileID: 8400000, guid: 7c73641333b0fdd40899ecccde94b4d6, type: 2}
   m_UVRect:
     serializedVersion: 2
-    x: 0.25
+    x: 0
     y: 0
-    width: 0.5
+    width: 1
     height: 1
 --- !u!222 &1403485497
 CanvasRenderer:
@@ -2464,7 +2566,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1031704638}
-  - {fileID: 284891520}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2533,7 +2634,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1607482514
 GameObject:
@@ -3154,8 +3255,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3231,6 +3332,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1689278826}
   - {fileID: 1460503428}
+  - {fileID: 1077689007}
   - {fileID: 894649207}
   - {fileID: 1411003743}
   - {fileID: 1916809063}
