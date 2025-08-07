@@ -21,4 +21,13 @@ public class LobbyCharacterAnimations : MonoBehaviour
     {
         range.SetTrigger("Select");
     }
+
+    public void StartGame()
+    {
+        if (CharSelector.Instance.getIsStarted())
+        {
+            MeleeSelect();
+            RangeSelect();
+        }
+    }
 }
