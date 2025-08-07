@@ -26,6 +26,7 @@ public class BaseControll : NetworkBehaviour
     private bool topDown;
     private const float SCALE = 2.2f;
     protected GameManager gameManager;
+    
 
     //inputs:
     public void OnMove(InputAction.CallbackContext context)

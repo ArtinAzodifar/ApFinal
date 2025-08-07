@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class Boss : MonoBehaviour
@@ -33,6 +34,9 @@ public class Boss : MonoBehaviour
     [SerializeField] private int numOfSpells;
     private float _spawnEnemyCooldownTimer = 0;
     private float _castCooldownTimer;
+
+    [SerializeField] private GameObject attackZone;
+    [SerializeField] private LayerMask[] playerLayers;
 
     void Start()
     {
@@ -127,13 +131,15 @@ public class Boss : MonoBehaviour
             Vector2 direction = (_closestPlayer.position - transform.position).normalized;
             _movement = direction;
 
-            if (direction.x > 0.01f)
+            float scaleX = Mathf.Abs(transform.localScale.x);
+
+            if (direction.x > -0.01f) // Facing Left
             {
-                _spriteRenderer.flipX = true;
+                transform.localScale = new Vector3(-scaleX, transform.localScale.y, transform.localScale.z);
             }
-            else if (direction.x < -0.01f)
+            else if (direction.x < 0.01f) // Facing Right
             {
-                _spriteRenderer.flipX = false;
+                transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
             }
 
             _animator.SetFloat("Speed", _movement.magnitude);
@@ -154,17 +160,31 @@ public class Boss : MonoBehaviour
             _animator.SetFloat("Speed", 0);
 
             Vector2 direction = (_closestPlayer.position - transform.position);
-            if (direction.x > 0.01f)
-            {
-                _spriteRenderer.flipX = false;
-            }
-            else if (direction.x < -0.01f)
-            {
-                _spriteRenderer.flipX = true;
-            }
 
             _animator.SetTrigger("Attack");
             _cooldownTimer = attackCooldown;
+        }
+    }
+    
+    private void ActiveCollider()
+    {
+        LayerMask combinedLayers = playerLayers[0] | playerLayers[1]; 
+        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackZone.transform.position, attackRange, combinedLayers);
+
+        foreach (Collider2D player in hitPlayers)
+        {
+            Damagable damagableComponent = player.GetComponent<Damagable>();
+            if (damagableComponent != null)
+            {
+                damagableComponent.Damage(damageAmount);
+            }
+
+            BaseControll b = player.GetComponent<BaseControll>();
+            if (b != null)
+            {
+                b.setKnockFromRight(player.transform.position.x <= transform.position.x);
+                b.startKnock(300);
+            }
         }
     }
 

@@ -104,12 +104,16 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
         }
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
+        if (_cooldownTimer > 0f)
+        {
+            _cooldownTimer -= Time.deltaTime;
+        }
+
         if (_distance <= attackRange && _cooldownTimer <= 0)
         {
             Vector2 direction = (_closestPlayer.position - transform.position);
-
             if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
                 _animator.SetFloat("XInput", direction.x > 0 ? 1 : -1);
@@ -120,19 +124,14 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
                 _animator.SetFloat("XInput", 0);
                 _animator.SetFloat("YInput", direction.y > 0 ? 1 : -1);
             }
-
-            _animator.SetBool("IsAttacking", true);
-
+            
+            _animator.SetTrigger("Attack");
             _cooldownTimer = attackCooldown;
-        } 
-        else 
-        {
-            _animator.SetBool("IsAttacking", false);
         }
+    }
 
-        if (_cooldownTimer > 0f)
-        {
-            _cooldownTimer -= Time.deltaTime;
-        }
+    public Vector2 getMovement()
+    {
+        return _movement;
     }
 }

@@ -62,7 +62,7 @@ public class SaveManager : MonoBehaviour
         string json = JsonUtility.ToJson(gameData, true);
         File.WriteAllText(GetSaveFilePath(CurrentSlotIndex), json);
         IsGameLoaded = true;
-        SceneManager.LoadScene(gameData.currentLevelSceneName);
+        SceneManager.LoadScene("LevelThree");
     }
 
     public void LoadGame()

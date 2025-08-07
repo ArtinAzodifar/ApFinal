@@ -12,6 +12,8 @@ public class CharSelector : NetworkBehaviour
     public static CharSelector Instance { get; private set; }
     private GameManager gameManager = GameManager.Instance;
 
+    private bool _IsStarted = false;
+
     private void Awake()
     {
         players = new NetworkList<CharacterSelectState>();
@@ -182,6 +184,13 @@ public class CharSelector : NetworkBehaviour
         {
             if (players[i].characterID == -1) return;
         }
+
+        _IsStarted = true;
         gameManager.StartGame();
+    }
+
+    public bool getIsStarted()
+    {
+        return _IsStarted;
     }
 }
