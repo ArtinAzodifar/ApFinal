@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Unity.Netcode;
 using System.Collections;
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 
 public class EnemyHealth : NetworkBehaviour, Damagable
 {
@@ -25,10 +26,17 @@ public class EnemyHealth : NetworkBehaviour, Damagable
 
     public void Start()
     {
-        if (gameManager.IsLocalMode() || IsServer) health.Value = initialHealth;
+        if (gameManager.IsLocalMode()) health.Value = initialHealth;
         if (healthBar != null) healthBar.SetMaxHealth(initialHealth);
         soundPlayer = GetComponent<SoundPlayer>();
         _damageFlash = GetComponent<DamageFlash>();
+        //if (!gameManager.IsLocalMode() && IsServer && GetComponent<NetworkObject>() != null && !GetComponent<NetworkObject>().IsSpawned) GetComponent<NetworkObject>().Spawn();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkDespawn();
+        if (IsServer) health.Value = initialHealth;
     }
 
     public void Damage(int amount)
@@ -107,7 +115,8 @@ public class EnemyHealth : NetworkBehaviour, Damagable
 
                 //delete object
                 if (gameManager.IsLocalMode()) Destroy(gameObject, 1.8f);
-                else if (IsServer) StartCoroutine(Despawn());
+                else if (IsServer && GetComponent<NetworkObject>() != null) StartCoroutine(Despawn());
+                else if (IsServer) DestroyClientRpc(1.8f);
             }
             else
             {
@@ -116,7 +125,12 @@ public class EnemyHealth : NetworkBehaviour, Damagable
 
                 //delete object
                 if (gameManager.IsLocalMode()) Destroy(gameObject);
-                else if (IsServer) gameObject.GetComponent<NetworkObject>().Despawn();
+                else if (IsServer && GetComponent<NetworkObject>() != null)
+                {
+                    if ((bool)GetComponent<NetworkObject>().IsSceneObject) DestroyClientRpc(0);
+                    gameObject.GetComponent<NetworkObject>().Despawn();
+                }
+                else if (IsServer) DestroyClientRpc(0f);
             }
         }
     }
@@ -145,6 +159,7 @@ public class EnemyHealth : NetworkBehaviour, Damagable
     private IEnumerator Despawn()
     {
         yield return new WaitForSeconds(1.8f);
+        if ((bool)GetComponent<NetworkObject>().IsSceneObject) DestroyClientRpc(0);
         gameObject.GetComponent<NetworkObject>().Despawn();
     }
 
@@ -157,4 +172,7 @@ public class EnemyHealth : NetworkBehaviour, Damagable
 
     [ClientRpc]
     private void damageFlashClientRpc() { _damageFlash.CallDamageFlash(); }
+
+    [ClientRpc]
+    private void DestroyClientRpc(float time) { Destroy(gameObject, time); }
 }

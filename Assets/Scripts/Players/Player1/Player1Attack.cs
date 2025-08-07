@@ -69,8 +69,10 @@ public class Player1Attack : NetworkBehaviour
             {
                 enemy.gameObject.GetComponent<Damagable>().Damage(BaseDamageAmount + damageBoostAmount);
             }
+
+            //mana
             if (gameManager.IsLocalMode()) P1Mana?.Invoke();
-            else if(IsServer) invokeManaClientRpc();
+            else if (IsServer) invokeManaClientRpc();
         }
 
         //use levers

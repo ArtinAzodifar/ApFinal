@@ -3330,6 +3330,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5797651948339370991, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1611005655
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797651948339370991, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797651948339370991, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 4181680201
+      objectReference: {fileID: 0}
     - target: {fileID: 5820737954348163165, guid: 8d90fabd78f43d04bad62b8b74e9e95d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

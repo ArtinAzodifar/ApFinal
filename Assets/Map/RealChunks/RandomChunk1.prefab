@@ -9182,6 +9182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68def13f4c092743a250dcb1b4dbce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   damageAmount: 20
 --- !u!1 &4082639122615371724
 GameObject:
@@ -9251,7 +9252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 1454593195
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -18003,6 +18004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68def13f4c092743a250dcb1b4dbce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   damageAmount: 10
 --- !u!1 &9183537755339920028
 GameObject:
@@ -18122,6 +18124,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3545002871799082405}
     m_Modifications:
+    - target: {fileID: -7205297921467775949, guid: 7ca1d0d750d47764082cea3547797328, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7205297921467775949, guid: 7ca1d0d750d47764082cea3547797328, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1981963835
+      objectReference: {fileID: 0}
+    - target: {fileID: -7205297921467775949, guid: 7ca1d0d750d47764082cea3547797328, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 477685574399317459, guid: 7ca1d0d750d47764082cea3547797328, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.929565
@@ -18178,7 +18192,8 @@ PrefabInstance:
       propertyPath: uniqueIdInChunk
       value: Werewolf
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7205297921467775949, guid: 7ca1d0d750d47764082cea3547797328, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -18196,6 +18211,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3545002871799082405}
     m_Modifications:
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1390194163
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2940142175538323122, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.61
@@ -18252,7 +18279,8 @@ PrefabInstance:
       propertyPath: uniqueIdInChunk
       value: FlyinDemon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -130,7 +130,7 @@ public class ChunkManager : NetworkBehaviour
         }
 
         GameObject chunk = Instantiate(selectedChunkPrefab, transform);
-        
+
 
         chunk.name = $"Chunk_{chunkIndex}";
 
@@ -141,8 +141,23 @@ public class ChunkManager : NetworkBehaviour
         {
             chunk.GetComponent<NetworkObject>().Spawn(true);
             Debug.Log($"Spawned ID: {chunk.GetComponent<NetworkObject>().NetworkObjectId}");
+
+            //SpawnAllChildNetworkObjects(chunk);
         }
 
         return chunk;
     }
+    
+    void SpawnAllChildNetworkObjects(GameObject parent)
+    {
+        NetworkObject[] netObjects = parent.GetComponentsInChildren<NetworkObject>(true);
+        foreach (var netObj in netObjects)
+        {
+            if (!netObj.IsSpawned && netObj.gameObject != parent)
+            {
+                netObj.Spawn();
+            }
+        }
+    }
+
 }

@@ -70,10 +70,11 @@ public class PlayerHealth : NetworkBehaviour, Damagable
         }
 
         Health.Value -= amount;
-        StartCoroutine(LockPlayer());
 
         if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
         else if (IsServer) updateHealthBarClientRpc(Health.Value);
+
+        StartCoroutine(LockPlayer());
 
         if (Health.Value <= 0)
         {
@@ -125,7 +126,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     private IEnumerator LockPlayer()
     {
         gameObject.GetComponent<BaseControll>().setIsInDamage(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
 

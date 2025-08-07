@@ -13330,7 +13330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 1876319531
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -13397,6 +13397,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2723875575217673939}
     m_Modifications:
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2940142175538323122, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.65871
@@ -13453,7 +13465,8 @@ PrefabInstance:
       propertyPath: uniqueIdInChunk
       value: FlyinDemon4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13471,6 +13484,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2723875575217673939}
     m_Modifications:
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2940142175538323122, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.920273
@@ -13527,7 +13552,8 @@ PrefabInstance:
       propertyPath: uniqueIdInChunk
       value: FlyinDemon2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13545,6 +13571,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2723875575217673939}
     m_Modifications:
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2940142175538323122, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.433117
@@ -13601,7 +13639,8 @@ PrefabInstance:
       propertyPath: uniqueIdInChunk
       value: FlyinDemon3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13697,6 +13736,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1817738992633965602, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817738992633965602, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817738992633965602, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6003438253526825842, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
       propertyPath: m_Name
       value: Skeleton
@@ -13749,7 +13800,8 @@ PrefabInstance:
       propertyPath: distance
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1817738992633965602, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13767,6 +13819,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2723875575217673939}
     m_Modifications:
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2940142175538323122, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.2868686
@@ -13823,7 +13887,8 @@ PrefabInstance:
       propertyPath: uniqueIdInChunk
       value: FlyinDemon1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13848,6 +13913,18 @@ PrefabInstance:
     - target: {fileID: 3108945221216207101, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4951063659455403527, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: uniqueIdInChunk
@@ -13897,7 +13974,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ogre
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

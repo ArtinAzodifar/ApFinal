@@ -116,7 +116,7 @@ public class BaseControll : NetworkBehaviour
 
     public void startKnock(float knockbackForce)
     {
-        if (!gameManager.IsLocalMode() || !IsServer) return;
+        if (!gameManager.IsLocalMode() && !IsServer) return;
         StartCoroutine(KnockBack(knockbackForce));
     }
 

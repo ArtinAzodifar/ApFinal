@@ -8381,6 +8381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68def13f4c092743a250dcb1b4dbce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   damageAmount: 10
 --- !u!1 &4928717773762213043
 GameObject:
@@ -9352,6 +9353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68def13f4c092743a250dcb1b4dbce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   damageAmount: 20
 --- !u!61 &6758865337580521426
 BoxCollider2D:
@@ -14164,11 +14166,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4176504204714613799, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176504204714613799, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176504204714613799, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
       propertyPath: m_Name
       value: Life
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4176504204714613799, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -14214,6 +14229,18 @@ PrefabInstance:
     - target: {fileID: 3108945221216207101, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4951063659455403527, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       propertyPath: uniqueIdInChunk
@@ -14263,7 +14290,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ogre
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3641914029032370632, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -14281,6 +14309,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 150901694537493651}
     m_Modifications:
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AllowOwnerToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2940142175538323122, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 52.2
@@ -14337,7 +14377,8 @@ PrefabInstance:
       propertyPath: uniqueIdInChunk
       value: FlyinDemon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2673705009521124360, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
