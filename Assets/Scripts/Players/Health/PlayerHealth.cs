@@ -17,6 +17,8 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     private NetworkVariable<bool> isDying = new NetworkVariable<bool>(false);
     private GameManager gameManager;
 
+    private DamageFlash _damageFlash;
+
     private void OnEnable()
     {
         CollectibleHealth.OnHealthCollected += GetLife;
@@ -33,6 +35,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
         animator = GetComponent<Animator>();
         healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
         healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
+        _damageFlash = GetComponent<DamageFlash>();
     }
 
     public void Start()
@@ -59,6 +62,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
         if (!gameManager.IsLocalMode() && !IsServer) return;
         
         if (isDying.Value) return;
+        if(_damageFlash != null)    _damageFlash.CallDamageFlash();
         Health.Value -= amount;
         StartCoroutine(LockPlayer());
         if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
@@ -76,10 +80,6 @@ public class PlayerHealth : NetworkBehaviour, Damagable
             if (gameManager.IsLocalMode()) healthPoint.ExplodeHeart();
             else if (IsServer) explodeHeartClientRpc();
             StartCoroutine(GameOverCheck());
-        }
-        else
-        {
-            animator.SetTrigger("TakeHit");
         }
     }
 

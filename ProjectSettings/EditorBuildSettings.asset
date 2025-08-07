@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/tests/LobbyScene.unity
     guid: e8a3abd2c0fdaac49b6b7a177397ac91
+  - enabled: 1
+    path: Assets/Scenes/LevelThree.unity
+    guid: 6457962453c0575438c81e699a35087c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b19be6e8fd2d5db4bb9f71a2c524c7cd, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

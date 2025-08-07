@@ -11,16 +11,33 @@ public class OutlineHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerE
     void Awake()
     {
         buttonOutline = GetComponent<Outline>();
-        originalColor = buttonOutline.effectColor;
+        if (buttonOutline != null)
+        {
+            originalColor = buttonOutline.effectColor;
+        }
+    }
+
+    void OnEnable()
+    {
+        if (buttonOutline != null)
+        {
+            buttonOutline.effectColor = originalColor;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        buttonOutline.effectColor = Color.white;
+        if (buttonOutline != null)
+        {
+            buttonOutline.effectColor = Color.white;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        buttonOutline.effectColor = originalColor;
+        if (buttonOutline != null)
+        {
+            buttonOutline.effectColor = originalColor;
+        }
     }
 }

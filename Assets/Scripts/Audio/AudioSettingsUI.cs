@@ -2,53 +2,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class AudioThemeUI
-{
-    public string themeName; // e.g., "Green", "Brown", "Gray"
-    public Slider sfxSlider;
-    public Slider musicSlider;
-    public Toggle sfxMuteToggle;
-    public Toggle musicMuteToggle;
-    public Image sfxMuteIcon;
-    public Image musicMuteIcon;
-    public Sprite muteSprite;
-    public Sprite unmuteSprite;
-}
 public class AudioSettingsUI : MonoBehaviour
 {
-    public List<AudioThemeUI> themes = new List<AudioThemeUI>();
+    [Header("Music UI References")]
+    public Slider musicSlider;
+    public Toggle musicMuteToggle;
+    public Image musicMuteIcon;
+
+    [Header("SFX UI References")]
+    public Slider sfxSlider;
+    public Toggle sfxMuteToggle;
+    public Image sfxMuteIcon;
+
+    [Header("Mute Sprites")]
+    public Sprite muteSprite;
+    public Sprite unmuteSprite;
 
     private void Start()
     {
-        // Wait until the AudioController is ready before doing anything.
         if (AudioController.Instance == null)
         {
             Debug.LogError("AudioController.Instance not found! AudioSettingsUI cannot initialize.", this.gameObject);
             return;
         }
 
-        // Add listeners for every theme's UI elements.
-        foreach (var theme in themes)
-        {
-            // Skip any empty slots in the list to prevent errors.
-            if (theme == null) continue;
+        if (musicSlider != null)
+            musicSlider.onValueChanged.AddListener(OnMusicSliderChanged);
+        if (sfxSlider != null)
+            sfxSlider.onValueChanged.AddListener(OnSfxSliderChanged);
+        if (sfxMuteToggle != null)
+            sfxMuteToggle.onValueChanged.AddListener(OnSfxMuteToggleChanged);
+        if (musicMuteToggle != null)
+            musicMuteToggle.onValueChanged.AddListener(OnMusicMuteToggleChanged);
 
-            if (theme.musicSlider != null)
-                theme.musicSlider.onValueChanged.AddListener(OnMusicSliderChanged);
-            if (theme.sfxSlider != null)
-                theme.sfxSlider.onValueChanged.AddListener(OnSfxSliderChanged);
-            if (theme.sfxMuteToggle != null)
-                theme.sfxMuteToggle.onValueChanged.AddListener(OnSfxMuteToggleChanged);
-            if (theme.musicMuteToggle != null)
-                theme.musicMuteToggle.onValueChanged.AddListener(OnMusicMuteToggleChanged);
-        }
-
-        // Set the initial state of ALL UI elements.
         UpdateAllUI();
     }
-
-    // --- GENERIC EVENT HANDLERS ---
 
     public void OnSfxSliderChanged(float val)
     {
@@ -87,11 +75,8 @@ public class AudioSettingsUI : MonoBehaviour
         UpdateAllUI();
     }
 
-    // --- UI SYNCHRONIZATION ---
-
     private void UpdateAllUI()
     {
-        // Check that the AudioController exists before trying to use it.
         if (AudioController.Instance == null) return;
         
         float sfxVol = AudioController.Instance.sfxVolume;
@@ -99,30 +84,20 @@ public class AudioSettingsUI : MonoBehaviour
         bool isSfxMuted = AudioController.Instance.isSFXMuted;
         bool isMusicMuted = AudioController.Instance.isMusicMuted;
 
-        foreach (var theme in themes)
-        {
-            // Skip any empty slots in the list.
-            if (theme == null)
-            {
-                Debug.LogWarning("Found a null theme element in the AudioSettingsUI list. Please check the Inspector.", this.gameObject);
-                continue;
-            }
-            
-            // Update SFX UI
-            if (theme.sfxSlider != null)
-                theme.sfxSlider.SetValueWithoutNotify(isSfxMuted ? 0 : sfxVol * 100);
-            if (theme.sfxMuteToggle != null)
-                theme.sfxMuteToggle.SetIsOnWithoutNotify(isSfxMuted);
-            if (theme.sfxMuteIcon != null && theme.muteSprite != null && theme.unmuteSprite != null)
-                theme.sfxMuteIcon.sprite = isSfxMuted ? theme.muteSprite : theme.unmuteSprite;
+        // Update SFX UI
+        if (sfxSlider != null)
+            sfxSlider.SetValueWithoutNotify(isSfxMuted ? 0 : sfxVol * 100);
+        if (sfxMuteToggle != null)
+            sfxMuteToggle.SetIsOnWithoutNotify(isSfxMuted);
+        if (sfxMuteIcon != null && muteSprite != null && unmuteSprite != null)
+            sfxMuteIcon.sprite = isSfxMuted ? muteSprite : unmuteSprite;
 
-            // Update Music UI
-            if (theme.musicSlider != null)
-                theme.musicSlider.SetValueWithoutNotify(isMusicMuted ? 0 : musicVol * 100);
-            if (theme.musicMuteToggle != null)
-                theme.musicMuteToggle.SetIsOnWithoutNotify(isMusicMuted);
-            if (theme.musicMuteIcon != null && theme.muteSprite != null && theme.unmuteSprite != null)
-                theme.musicMuteIcon.sprite = isMusicMuted ? theme.muteSprite : theme.unmuteSprite;
-        }
+        // Update Music UI
+        if (musicSlider != null)
+            musicSlider.SetValueWithoutNotify(isMusicMuted ? 0 : musicVol * 100);
+        if (musicMuteToggle != null)
+            musicMuteToggle.SetIsOnWithoutNotify(isMusicMuted);
+        if (musicMuteIcon != null && muteSprite != null && unmuteSprite != null)
+            musicMuteIcon.sprite = isMusicMuted ? muteSprite : unmuteSprite;
     }
 }
