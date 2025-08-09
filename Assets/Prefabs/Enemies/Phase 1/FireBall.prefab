@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 884415865690759399}
   - component: {fileID: 6167918606682626816}
   - component: {fileID: 9203020573517054074}
+  - component: {fileID: 7960597686829470436}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: FireBall
@@ -250,8 +251,25 @@ MonoBehaviour:
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
   SwitchTransformSpaceWhenParented: 0
-  Interpolate: 1
+  Interpolate: 0
   SlerpPosition: 0
+--- !u!114 &7960597686829470436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274467466959763034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1 &6956084824058535104
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,8 @@ public class Ogre : BaseMovingEnemy
 
     public override void Chase()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         animator.SetBool("Run", isChasing && !isAttacking);
         if (!isChasing) return;
 
@@ -44,6 +46,8 @@ public class Ogre : BaseMovingEnemy
 
     private void StartAttack()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (isInCoolDown) return;
         isAttacking = true;
         animator.SetTrigger("Attack");
@@ -51,21 +55,35 @@ public class Ogre : BaseMovingEnemy
 
     private void ActiveCollider()//is called in the middle of attack animation event
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackZone.position, attackRange, playerLayers);
         foreach (Collider2D player in hitPlayers)
         {
 
             if (player.gameObject.GetComponent<Damagable>() != null)
             {
-                player.gameObject.GetComponent<Damagable>().Damage(damageAmount);   
+                player.gameObject.GetComponent<Damagable>().Damage(damageAmount);
             }
-            BaseControll b = player.gameObject.GetComponent<BaseControll>();
-            b.setKnockFromRight(player.gameObject.transform.position.x <= transform.position.x);
-            b.startKnock(900);
+            
+            if (gameManager.IsLocalMode())
+            {
+                BaseControll b = player.gameObject.GetComponent<BaseControll>();
+                b.setKnockFromRight(player.gameObject.transform.position.x <= transform.position.x);
+                b.startKnock(900);
+            }
+            else if (IsServer)
+            {
+                BaseControll b = player.gameObject.GetComponent<BaseControll>();
+                b.setKnockFromRightClientRpc(player.gameObject.transform.position.x <= transform.position.x);
+                b.startKnockClientRpc(900);
+            }
         }
     }
     private void FinishAttack()//is called in the end of attack animation event
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+        
         isAttacking = false;
         StartCoroutine(CoolDown());
     }

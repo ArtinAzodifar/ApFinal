@@ -20,7 +20,7 @@ public class FireBall : NetworkBehaviour
     public void OnEnable()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
-        
+
         startPos = transform.position;
     }
 
@@ -32,7 +32,7 @@ public class FireBall : NetworkBehaviour
         float xDistance = startPos.x - transform.position.x;
         if (Mathf.Abs(xDistance) >= 30)
         {
-            gameObject.SetActive(false);
+            disableObject();
         }
     }
 
@@ -50,7 +50,15 @@ public class FireBall : NetworkBehaviour
 
         if (collision.gameObject.CompareTag("Player1") || collision.CompareTag("Player2") || collision.CompareTag("Ground"))
         {
-            gameObject.SetActive(false);
+            disableObject();
         }
     }
+    
+    private void disableObject()
+    {
+        if (GameManager.Instance.IsLocalMode()) gameObject.SetActive(false);
+        else disableObjectClientRpc();
+    }
+    [ClientRpc]
+    private void disableObjectClientRpc(){ gameObject.SetActive(false); }
 }

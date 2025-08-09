@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using Unity.Netcode;
 
-public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
+public abstract class BaseMovingEnemy : NetworkBehaviour, MovingEnemy
 {
     [SerializeField] protected float speed;
     [SerializeField] protected float distance;
@@ -15,10 +16,12 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
     protected bool isChasing;
     protected bool inCoolDown = false;
     protected bool isMovingRight;
+    protected GameManager gameManager;
 
     //unity events:
     public virtual void Awake()
     {
+        gameManager = GameManager.Instance;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         isChasing = false;
@@ -28,6 +31,8 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
     }
     public virtual void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         animator.SetBool("Run", isChasing && !inCoolDown);
         FindPlayer();
         Chase();
@@ -35,6 +40,8 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 
     public virtual void FindPlayer()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         float meleeXDistance = transform.position.x - melee.transform.position.x;
         float leafXDistance = transform.position.x - leaf.transform.position.x;
         float meleeYDistance = transform.position.y - melee.transform.position.y;
@@ -68,6 +75,8 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 
     public virtual void Chase()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (!isChasing)
         {
             rb.linearVelocity = Vector2.zero;
@@ -79,6 +88,8 @@ public abstract class BaseMovingEnemy : MonoBehaviour, MovingEnemy
 
     public void setDirection(GameObject target)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+        
         if (target == null) return;
         float targetDistance = transform.position.x - target.transform.position.x;
         if (targetDistance < 0)
