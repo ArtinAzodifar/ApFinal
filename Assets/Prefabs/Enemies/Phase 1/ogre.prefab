@@ -610,10 +610,10 @@ PrefabInstance:
       addedObject: {fileID: 9196061698363106059}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6284714299135539691}
+      addedObject: {fileID: 3641914029032370632}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3641914029032370632}
+      addedObject: {fileID: 6284714299135539691}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 8f63ae0f9997b20458e73f5c9d7f34d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1231511201122491611}
@@ -721,27 +721,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4770375, y: 0.53999996}
   m_EdgeRadius: 0
---- !u!114 &6284714299135539691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710864586969687704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7415c3df1539264e86b9d70b7a88ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  distance: 18
-  scale: 4
-  healthbar: {fileID: 4747945319592578782}
-  stopDistance: 2.2
-  damageAmount: 20
-  playerLayers:
-    serializedVersion: 2
-    m_Bits: 24576
 --- !u!114 &3641914029032370632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +746,28 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &6284714299135539691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710864586969687704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7415c3df1539264e86b9d70b7a88ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 2
+  distance: 18
+  scale: 4
+  healthbar: {fileID: 4747945319592578782}
+  stopDistance: 2.2
+  damageAmount: 20
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 24576
 --- !u!114 &1231511201122491611
 MonoBehaviour:
   m_ObjectHideFlags: 0
