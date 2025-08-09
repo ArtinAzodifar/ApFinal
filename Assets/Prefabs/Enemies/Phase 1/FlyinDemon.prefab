@@ -306,8 +306,8 @@ GameObject:
   - component: {fileID: 5740775418411564314}
   - component: {fileID: 3666262211365483584}
   - component: {fileID: 8569283367249888942}
-  - component: {fileID: 6019350415789255626}
   - component: {fileID: 2673705009521124360}
+  - component: {fileID: 6019350415789255626}
   - component: {fileID: 14556698426384813}
   - component: {fileID: 652210721510892243}
   - component: {fileID: -8490107568270870121}
@@ -489,22 +489,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.82, y: 0.61}
   m_EdgeRadius: 0
---- !u!114 &6019350415789255626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3001415287839663241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc281b3c5cfd7e14e96b2b0b0e7aaca8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale: 3
-  shootTimer: 2
-  distance: 26
-  healthbar: {fileID: 7662862354562482355}
 --- !u!114 &2673705009521124360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +514,24 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &6019350415789255626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001415287839663241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc281b3c5cfd7e14e96b2b0b0e7aaca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  scale: 3
+  shootTimer: 2
+  distance: 26
+  soundDistance: 19.5
+  healthbar: {fileID: 7662862354562482355}
 --- !u!114 &14556698426384813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,7 +676,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3001415287839663241}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
