@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 
 public class Ghost : BaseMovingEnemy
@@ -6,12 +8,16 @@ public class Ghost : BaseMovingEnemy
 
     public override void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         FindPlayer();
         Chase();
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(hasHit)  return;
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
+        if (hasHit) return;
         hasHit = true;
         if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
         {
@@ -19,16 +25,28 @@ public class Ghost : BaseMovingEnemy
             {
                 collision.gameObject.GetComponent<Damagable>().Damage(50);
             }
-            BaseControll b = collision.gameObject.GetComponent<BaseControll>();
-            b.setKnockFromRight(collision.gameObject.transform.position.x <= transform.position.x);
-            b.startKnock(900);
+            if (gameManager.IsLocalMode())
+            {
+                BaseControll b = collision.gameObject.GetComponent<BaseControll>();
+                b.setKnockFromRight(collision.gameObject.transform.position.x <= transform.position.x);
+                b.startKnock(900);
+            }
+            else if (IsServer)
+            {
+                BaseControll b = collision.gameObject.GetComponent<BaseControll>();
+                b.setKnockFromRightClientRpc(collision.gameObject.transform.position.x <= transform.position.x);
+                b.startKnockClientRpc(900);
+            }
             animator.SetTrigger("Vanish");
         }
-        Destroy(gameObject, 0.6f);
+        if (gameManager.IsLocalMode()) Destroy(gameObject, 0.6f);
+        else if (IsServer) StartCoroutine(despawnAfter(0.6f));
     }
 
     public override void FindPlayer()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         base.FindPlayer();
         if (isChasing)
         {
@@ -38,8 +56,16 @@ public class Ghost : BaseMovingEnemy
 
     public override void Chase()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         animator.SetBool("Run", isChasing);
         base.Chase();
+    }
+
+    private IEnumerator despawnAfter(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GetComponent<NetworkObject>().Despawn();
     }
     
 }

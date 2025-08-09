@@ -24,6 +24,7 @@ public class ArrowController : NetworkBehaviour
     private void OnEnable()
     {
         if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+        
         isCollided = false;
         canMove = true;
         rb.constraints = RigidbodyConstraints2D.None;

@@ -60,13 +60,22 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     public void Damage(int amount)
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
-        
-        if (isDying.Value) return;
-        if(_damageFlash != null)    _damageFlash.CallDamageFlash();
+
+        if (isDying.Value || gameObject.GetComponent<BaseControll>().IsInDamage()) return;
+
+        if (_damageFlash != null)
+        {
+            if (gameManager.IsLocalMode()) _damageFlash.CallDamageFlash();
+            else if (IsServer) damageFlashClientRpc();
+        }
+
         Health.Value -= amount;
-        StartCoroutine(LockPlayer());
+
         if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
         else if (IsServer) updateHealthBarClientRpc(Health.Value);
+
+        StartCoroutine(LockPlayer());
+
         if (Health.Value <= 0)
         {
             isDying.Value = true;
@@ -74,11 +83,15 @@ public class PlayerHealth : NetworkBehaviour, Damagable
             Health.Value = MaxHealth;
             lives.Value--;
 
+            //health bar reset
             if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
             else if (IsServer) updateHealthBarClientRpc(Health.Value);
 
+
+            //health point check
             if (gameManager.IsLocalMode()) healthPoint.ExplodeHeart();
             else if (IsServer) explodeHeartClientRpc();
+
             StartCoroutine(GameOverCheck());
         }
     }
@@ -113,16 +126,16 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     private IEnumerator LockPlayer()
     {
         gameObject.GetComponent<BaseControll>().setIsInDamage(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
-    
+
     public void LoadHealth(int healthAmount, int livesAmount)
     {
         // Assign the new values to the NetworkVariables
         Health.Value = healthAmount;
         lives.Value = livesAmount;
-    
+
         // Set the UI using the direct parameter values, NOT by reading back from the NetworkVariable
         healthBar.SetMaxHealth(MaxHealth);
         healthBar.SetHealth(healthAmount); // Use healthAmount directly
@@ -158,5 +171,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     private void explodeHeartClientRpc() { healthPoint.ExplodeHeart(); }
     [ClientRpc]
     private void addHeartClientRpc() { healthPoint.AddHeart(); }
+    [ClientRpc]
+    private void damageFlashClientRpc() { _damageFlash.CallDamageFlash(); }
 }
 
