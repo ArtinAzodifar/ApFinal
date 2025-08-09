@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1a28206fd36fd4bb2f9e84f1fb49a2, type: 3}
+  m_Name: Pattern
+  m_EditorClassIdentifier: 
+  tiles:
+  - relativePosition: {x: 0, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: 1fdf258b778d2b2469405974f240f978, type: 2}
+  - relativePosition: {x: 1, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: ff481fab5070bd84297621722627be95, type: 2}
+  - relativePosition: {x: -3, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 6a3431947072b42499be9c902e791104, type: 2}
+  - relativePosition: {x: -2, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 2424f7e30e2518047a197c2b98f8ee52, type: 2}
+  - relativePosition: {x: -1, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: d13e6900bbab38d4da405120932e6340, type: 2}
+  - relativePosition: {x: 0, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: edbb9c7ee528bdc419162a84d80fe455, type: 2}
+  - relativePosition: {x: 1, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 2b5bd75e21866544aafd2e92fd92a8e8, type: 2}
+  - relativePosition: {x: 2, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 4b2e63098f19a8045b77984b61086490, type: 2}
+  - relativePosition: {x: 3, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: b5a4ebb7a173af44299485f3193c3ab6, type: 2}
+  - relativePosition: {x: -2, y: -1, z: 0}
+    tile: {fileID: 11400000, guid: 5bd7a49e5a9a9d94aa3878cd39278325, type: 2}
+  - relativePosition: {x: -1, y: -1, z: 0}
+    tile: {fileID: 11400000, guid: aeffea48b6c1e1a43accc7dc6c87d0eb, type: 2}
+  - relativePosition: {x: 0, y: -1, z: 0}
+    tile: {fileID: 11400000, guid: 8aeb4d83a14cc7342881997b5fb16c21, type: 2}
+  - relativePosition: {x: 1, y: -1, z: 0}
+    tile: {fileID: 11400000, guid: 93cc6b514cfd759499d732ee1cc931a3, type: 2}
