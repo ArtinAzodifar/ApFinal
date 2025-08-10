@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CharSelector : NetworkBehaviour
 {
-    public NetworkList<CharacterSelectState> players;
+    public NetworkList<CharacterSelectState> players = new NetworkList<CharacterSelectState>();
     [SerializeField] private Character[] characters;
     public static CharSelector Instance { get; private set; }
     private GameManager gameManager = GameManager.Instance;
@@ -16,7 +16,6 @@ public class CharSelector : NetworkBehaviour
 
     private void Awake()
     {
-        players = new NetworkList<CharacterSelectState>();
         if (Instance == null)
         {
             Instance = this;
