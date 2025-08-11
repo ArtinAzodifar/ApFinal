@@ -1,29 +1,20 @@
-using System;
+using Unity.Netcode;
 using UnityEngine;
 
-public class GoToL3 : MonoBehaviour
+public class GoToL3 : NetworkBehaviour
 {
-    private GameManager gameManager = GameManager.Instance;
-    private bool keyFound = false;
+    private GameManager gameManager;
 
-    public void OnEnable()
+    public void Awake()
     {
-        Key.KeyCollected += FoundKey;
-    }
-
-    public void OnDisable()
-    {
-        Key.KeyCollected -= FoundKey;
-    }
-
-    public void FoundKey()
-    {
-        keyFound = true;
+        gameManager = GameManager.Instance;
     }
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if ((other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2")) && keyFound)
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
+        if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
         {
             gameManager.Level3();
             Debug.Log(other.gameObject.name);

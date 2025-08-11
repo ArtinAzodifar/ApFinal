@@ -1,34 +1,42 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Room7 : MonoBehaviour, LeverToggle
+public class Room7 : NetworkBehaviour, LeverToggle
 {
     [SerializeField] private Sprite[] sprites;
-    private int currentSprite;
+    private NetworkVariable<int> currentSprite = new NetworkVariable<int>(0);
     private SpriteRenderer spriteRenderer;
+    private GameManager gameManager;
 
     public void Awake()
     {
+        gameManager = GameManager.Instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentSprite = 0;
     }
 
     public void Start()
     {
-        spriteRenderer.sprite = sprites[currentSprite];
+        spriteRenderer.sprite = sprites[0];
     }
 
     public void Toggle()
     {
-        if (++currentSprite >= 7)
-        {
-            currentSprite = 0;
-        }
-        spriteRenderer.sprite = sprites[currentSprite];
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
+        if (++currentSprite.Value >= 7) currentSprite.Value = 0;
+
+        if (gameManager.IsLocalMode()) spriteRenderer.sprite = sprites[currentSprite.Value];
+        else changeSpriteClientRpc(currentSprite.Value);
+    }
+    [ClientRpc]
+    private void changeSpriteClientRpc(int value)
+    {
+        spriteRenderer.sprite = sprites[value];
     }
 
     public int GetSprite()
     {
-        return currentSprite;
+        return currentSprite.Value;
     }
 }
