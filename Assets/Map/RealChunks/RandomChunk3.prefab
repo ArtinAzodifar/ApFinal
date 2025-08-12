@@ -9307,14 +9307,17 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   prefabDatas:
   - prefab: {fileID: 8710864586969687704, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
-    positions:
-    - {fileID: 1350136310379125399}
+    spawnPoints:
+    - spawnTransform: {fileID: 1350136310379125399}
+      uniqueIdInChunk: 
   - prefab: {fileID: 3001415287839663241, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
-    positions:
-    - {fileID: 6423189448325376297}
+    spawnPoints:
+    - spawnTransform: {fileID: 6423189448325376297}
+      uniqueIdInChunk: 
   - prefab: {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
-    positions:
-    - {fileID: 7477490635963720304}
+    spawnPoints:
+    - spawnTransform: {fileID: 7477490635963720304}
+      uniqueIdInChunk: 
 --- !u!1 &8224730785981136893
 GameObject:
   m_ObjectHideFlags: 0

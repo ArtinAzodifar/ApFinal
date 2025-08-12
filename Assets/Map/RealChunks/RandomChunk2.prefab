@@ -15045,8 +15045,9 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   prefabDatas:
   - prefab: {fileID: 8710864586969687704, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
-    positions:
-    - {fileID: 3433349224065330672}
+    spawnPoints:
+    - spawnTransform: {fileID: 3433349224065330672}
+      uniqueIdInChunk: 
 --- !u!1 &9167582796198035379
 GameObject:
   m_ObjectHideFlags: 0

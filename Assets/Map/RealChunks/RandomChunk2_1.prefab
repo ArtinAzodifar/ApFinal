@@ -1586,14 +1586,17 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   prefabDatas:
   - prefab: {fileID: 3001415287839663241, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
-    positions:
-    - {fileID: 291979948622889801}
+    spawnPoints:
+    - spawnTransform: {fileID: 291979948622889801}
+      uniqueIdInChunk: 
   - prefab: {fileID: 6003438253526825842, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
-    positions:
-    - {fileID: 3503596265738405039}
+    spawnPoints:
+    - spawnTransform: {fileID: 3503596265738405039}
+      uniqueIdInChunk: 
   - prefab: {fileID: 8710864586969687704, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
-    positions:
-    - {fileID: 6665675230575919896}
+    spawnPoints:
+    - spawnTransform: {fileID: 6665675230575919896}
+      uniqueIdInChunk: 
 --- !u!1 &5341021726982233579
 GameObject:
   m_ObjectHideFlags: 0

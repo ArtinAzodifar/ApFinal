@@ -113,12 +113,20 @@ public class GameManager : NetworkBehaviour
     }
     public void Level2()
     {
+        SaveManager.Instance.IsChangingLevel = true;
+        SaveManager.Instance.SetNextLevel("LevelTwo");
+        SaveManager.Instance.SaveGame();
+        
         if (isLocalMode) SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
     }
     public void Level3()
-    {
+    {    
+        SaveManager.Instance.IsChangingLevel = true;
+        SaveManager.Instance.SetNextLevel("LevelThree");
+        SaveManager.Instance.SaveGame();
+        
         if (isLocalMode) SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);

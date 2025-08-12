@@ -7,6 +7,8 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance { get; private set; }
     public GameData LoadedData { get { return gameData; } }
     public bool IsGameLoaded { get; private set; }
+    
+    public bool IsChangingLevel { get; set; } = false;
     public int CurrentSlotIndex { get; private set; } = -1;
 
     private GameData gameData;
@@ -62,7 +64,7 @@ public class SaveManager : MonoBehaviour
         string json = JsonUtility.ToJson(gameData, true);
         File.WriteAllText(GetSaveFilePath(CurrentSlotIndex), json);
         IsGameLoaded = true;
-        SceneManager.LoadScene("LevelOne");
+        GameManager.Instance.StartGame();
     }
 
     public void LoadGame()
@@ -82,7 +84,7 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        if (CurrentSlotIndex == -1 || gameData == null) return;
+        if (CurrentSlotIndex == -1 || gameData == null || !GameManager.Instance.IsLocalMode()) return;
         gameData.currentLevelSceneName = SceneManager.GetActiveScene().name;
 
         GameObject player1 = GameObject.FindWithTag("Player1");
@@ -118,8 +120,11 @@ public class SaveManager : MonoBehaviour
         GameObject player1 = GameObject.FindWithTag("Player1");
         if (player1 != null)
         {
-            player1.transform.position = gameData.player1_position;
-            player1.transform.rotation = gameData.player1_rotation;
+            if (!IsChangingLevel)
+            {
+                player1.transform.position = gameData.player1_position;
+                player1.transform.rotation = gameData.player1_rotation;
+            }
             player1.GetComponent<PlayerHealth>().LoadHealth(gameData.player1_health, gameData.player1_lives);
             player1.GetComponent<Player1SuperAttack>().setMana(gameData.player1_mana);
         }
@@ -127,10 +132,23 @@ public class SaveManager : MonoBehaviour
         GameObject player2 = GameObject.FindWithTag("Player2");
         if (player2 != null)
         {
-            player2.transform.position = gameData.player2_position;
-            player2.transform.rotation = gameData.player2_rotation;
+            if (!IsChangingLevel)
+            {
+                player2.transform.position = gameData.player2_position;
+                player2.transform.rotation = gameData.player2_rotation;
+            }
             player2.GetComponent<PlayerHealth>().LoadHealth(gameData.player2_health, gameData.player2_lives);
             player2.GetComponent<P2SuperShoot>().setMana(gameData.player2_mana);
+        }
+
+        IsChangingLevel = false;
+    }
+    
+    public void SetNextLevel(string levelName)
+    {
+        if (gameData != null)
+        {
+            gameData.currentLevelSceneName = levelName;
         }
     }
 

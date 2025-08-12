@@ -13862,18 +13862,24 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   prefabDatas:
   - prefab: {fileID: 3001415287839663241, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
-    positions:
-    - {fileID: 6490750189166061764}
-    - {fileID: 802840781724614107}
-    - {fileID: 2047712382027589666}
-    - {fileID: 4546723725815287186}
+    spawnPoints:
+    - spawnTransform: {fileID: 6490750189166061764}
+      uniqueIdInChunk: 
+    - spawnTransform: {fileID: 802840781724614107}
+      uniqueIdInChunk: 
+    - spawnTransform: {fileID: 2047712382027589666}
+      uniqueIdInChunk: 
+    - spawnTransform: {fileID: 4546723725815287186}
+      uniqueIdInChunk: 
   - prefab: {fileID: 8710864586969687704, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
-    positions:
-    - {fileID: 462903087810760314}
+    spawnPoints:
+    - spawnTransform: {fileID: 462903087810760314}
+      uniqueIdInChunk: 
   - prefab: {fileID: 6003438253526825842, guid: 2195cfc2a646fe845984b15e1f11f58c, type: 3}
-    positions:
-    - {fileID: 3383524685980446176}
+    spawnPoints:
+    - spawnTransform: {fileID: 3383524685980446176}
+      uniqueIdInChunk: 
   - prefab: {fileID: 2802046562274536860, guid: 841f21a6e4d5b5a4dae523a6b70e1e83, type: 3}
-    positions:
-    - {fileID: 3383524685980446176}
-    - {fileID: 5186257911289283353}
+    spawnPoints:
+    - spawnTransform: {fileID: 5186257911289283353}
+      uniqueIdInChunk: 

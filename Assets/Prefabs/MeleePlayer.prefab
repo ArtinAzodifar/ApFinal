@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: -7616424023697368100}
   - component: {fileID: -7602706496774264768}
   - component: {fileID: -4351089037663649310}
+  - component: {fileID: -7514899630767262978}
   m_Layer: 13
   m_Name: MeleePlayer
   m_TagString: Player1
@@ -525,7 +526,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: cbd3e1cc4ae141c42a30e33b4d666a61, type: 3}
+  - {fileID: 2100000, guid: 62326e0dcd444f244a387735b467612b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -939,7 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4179032615
+  GlobalObjectIdHash: 579151581
   InScenePlacedSourceGlobalObjectIdHash: 579151581
   DeferredDespawnTick: 0
   Ownership: 1
@@ -985,6 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce90f99d85b1a941abb428520b13466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -1004,6 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2dc94d49709084eaf9995a2d4e2a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   healthTag: MeleeHealth
   maxLives: 5
   MaxHealth: 150
@@ -1019,11 +1022,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e7f1b1e01035244a59eb302fe208fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
   damageAmount: 1000
-  mana: 0
+  mana:
+    m_InternalValue: 0
+  manaBar: {fileID: 0}
 --- !u!114 &8891576289635702712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,3 +1272,50 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 0
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &-7514899630767262978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965920720854694110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704c754011267ae4c93d4f48c6070e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 0.7207546, g: 0, b: 0, a: 1}
+  flashTime: 0.25
+  _flashSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.0636525
+      outSlope: -2.0636525
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19108847
+      value: 0.6056598
+      inSlope: -6.172244
+      outSlope: -6.172244
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0
+      inSlope: -10.280836
+      outSlope: -10.280836
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
