@@ -83,8 +83,8 @@ public class P2SuperShoot : NetworkBehaviour
         {
             pastTime += Time.deltaTime;
             Vector2 boxCenter = transform.position;
-            boxCenter.x += gameObject.transform.localScale.x > 0 ? 4.5f : -4.5f;
-            Vector2 boxSize = new Vector2(9f, 2f);
+            boxCenter.x += gameObject.transform.localScale.x > 0 ? 6f : -6f;
+            Vector2 boxSize = new Vector2(12f, 2f);
             Collider2D[] hitEnemy = Physics2D.OverlapBoxAll(boxCenter, boxSize, 0f, enemyLayer);
             foreach (Collider2D enemy in hitEnemy)
             {
@@ -123,8 +123,8 @@ public class P2SuperShoot : NetworkBehaviour
     {
         Gizmos.color = Color.red;
         Vector2 boxCenter = transform.position;
-        boxCenter.x += gameObject.transform.localScale.x > 0 ? 4.5f : -4.5f;
-        Vector2 boxSize = new Vector2(9f, 2f);
+        boxCenter.x += gameObject.transform.localScale.x > 0 ? 6f : -6f;
+        Vector2 boxSize = new Vector2(12f, 2f);
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 

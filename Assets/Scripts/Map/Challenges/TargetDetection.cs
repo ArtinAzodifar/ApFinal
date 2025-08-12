@@ -1,26 +1,21 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
 
-public class TargetDetection : MonoBehaviour
+public class TargetDetection : NetworkBehaviour
 {
-    [SerializeField] private GameObject key;
-
-    void Start()
-    {
-        if (key != null)
-        {
-            key.SetActive(false);
-        }
-    }
+    [SerializeField] private GameObject keyPrefab;
+    [SerializeField] private Transform keyPosition;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+
         if (other.gameObject.CompareTag("ArrowPool"))
         {
-            if (key != null)
-            {
-                key.SetActive(true);
-            }
+            var key = Instantiate(keyPrefab, keyPosition.position, keyPosition.rotation);
+
+            if (!GameManager.Instance.IsLocalMode()) key.GetComponent<NetworkObject>().Spawn();
         }
     }
 }
