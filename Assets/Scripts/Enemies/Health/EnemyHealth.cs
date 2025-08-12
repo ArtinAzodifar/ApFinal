@@ -163,6 +163,9 @@ public class EnemyHealth : NetworkBehaviour, Damagable
         gameObject.GetComponent<NetworkObject>().Despawn();
     }
 
+    //getter
+    public bool IsDead() { return isDead; }
+
     //ClientRpc
     [ClientRpc]
     private void updateHealthBarClientRpc(int amount) { healthBar.SetHealth(amount); }

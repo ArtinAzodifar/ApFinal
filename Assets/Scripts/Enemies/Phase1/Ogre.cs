@@ -11,16 +11,19 @@ public class Ogre : BaseMovingEnemy
     private float attackRange = 1f;
     private bool isAttacking = false;
     private bool isInCoolDown = false;
+    private EnemyHealth enemyHealth;
 
     public override void Awake()
     {
         base.Awake();
         attackZone = transform.Find("OgreAttackZone");
+        enemyHealth = GetComponentInChildren<EnemyHealth>();
     }
 
     public override void Chase()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth.IsDead()) return;
 
         animator.SetBool("Run", isChasing && !isAttacking);
         if (!isChasing) return;
@@ -47,6 +50,7 @@ public class Ogre : BaseMovingEnemy
     private void StartAttack()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth.IsDead()) return;
 
         if (isInCoolDown) return;
         isAttacking = true;
@@ -56,6 +60,7 @@ public class Ogre : BaseMovingEnemy
     private void ActiveCollider()//is called in the middle of attack animation event
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth.IsDead()) return;
 
         Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackZone.position, attackRange, playerLayers);
         foreach (Collider2D player in hitPlayers)
@@ -83,6 +88,7 @@ public class Ogre : BaseMovingEnemy
     private void FinishAttack()//is called in the end of attack animation event
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth.IsDead()) return;
         
         isAttacking = false;
         StartCoroutine(CoolDown());
