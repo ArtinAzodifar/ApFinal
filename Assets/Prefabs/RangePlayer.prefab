@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 182590657648151833}
   - component: {fileID: -2494524612504240565}
   - component: {fileID: -2407735688815959884}
+  - component: {fileID: -292029848020932569}
   m_Layer: 14
   m_Name: RangePlayer
   m_TagString: Player2
@@ -445,7 +446,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: cbd3e1cc4ae141c42a30e33b4d666a61, type: 3}
+  - {fileID: 2100000, guid: 62326e0dcd444f244a387735b467612b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -537,7 +538,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.85, y: 0.76666665}
+    oldSize: {x: 4.8, y: 1.35}
     newSize: {x: 4.8, y: 1.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -668,7 +669,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.85, y: 0.76666665}
+    oldSize: {x: 4.8, y: 1.35}
     newSize: {x: 4.8, y: 1.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -862,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4085807008
+  GlobalObjectIdHash: 2157791479
   InScenePlacedSourceGlobalObjectIdHash: 2157791479
   DeferredDespawnTick: 0
   Ownership: 1
@@ -907,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2dc94d49709084eaf9995a2d4e2a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   healthTag: RangeHealth
   maxLives: 5
   MaxHealth: 100
@@ -922,10 +924,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6112accdf0e03f47a6f8c8def68b5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  mana: 0
+  manaBar: {fileID: 0}
+  mana:
+    m_InternalValue: 0
   laserSegmentPrefab: {fileID: 8247476490564017610, guid: e9c2cf1b8af1a5643a448230c85e36f3, type: 3}
   laserStartPoint: {fileID: 8583815463440738841}
   laserCount: 3
@@ -1215,6 +1220,53 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 0
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &-292029848020932569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061938598507072919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704c754011267ae4c93d4f48c6070e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 0.7207546, g: 0, b: 0, a: 1}
+  flashTime: 0.25
+  _flashSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.0636525
+      outSlope: -2.0636525
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19108847
+      value: 0.6056598
+      inSlope: -6.172244
+      outSlope: -6.172244
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0
+      inSlope: -10.280836
+      outSlope: -10.280836
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7573904575286300250
 GameObject:
   m_ObjectHideFlags: 0

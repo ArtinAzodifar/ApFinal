@@ -9389,11 +9389,13 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   prefabDatas:
   - prefab: {fileID: 3001415287839663241, guid: de8c907c7b0495e47918e106dedda5e4, type: 3}
-    positions:
-    - {fileID: 1368240240378542636}
+    spawnPoints:
+    - spawnTransform: {fileID: 1368240240378542636}
+      uniqueIdInChunk: 
   - prefab: {fileID: 814288348651847094, guid: 7ca1d0d750d47764082cea3547797328, type: 3}
-    positions:
-    - {fileID: 860117339065997856}
+    spawnPoints:
+    - spawnTransform: {fileID: 860117339065997856}
+      uniqueIdInChunk: 
 --- !u!1 &4410348040927861080
 GameObject:
   m_ObjectHideFlags: 0

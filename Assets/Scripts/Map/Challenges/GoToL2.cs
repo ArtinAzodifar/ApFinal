@@ -19,6 +19,7 @@ public class GoToL2 : NetworkBehaviour
             gameManager.setKey(false);
             gameManager.Level2();
             Debug.Log(other.gameObject.name);
+            
         }
     }
 }

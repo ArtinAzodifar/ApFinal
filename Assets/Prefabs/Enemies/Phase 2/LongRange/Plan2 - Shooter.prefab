@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3130857095643480640}
   - component: {fileID: 8823649232728456010}
   - component: {fileID: 1375191359603071268}
+  - component: {fileID: 1575664954842217222}
   - component: {fileID: 9114100924651390455}
   - component: {fileID: 2569805650419950798}
   m_Layer: 10
@@ -246,6 +247,31 @@ MonoBehaviour:
   attackPoint_Left: {fileID: 2978076650686263567}
   attackPoint_Right: {fileID: 1611797125474257279}
   projectilePrefab: {fileID: 1234545766259719272, guid: 6dce2033fd3bae34fb360145d724b76c, type: 3}
+--- !u!114 &1575664954842217222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023190645243070429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 526755898
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &9114100924651390455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,11 +284,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e48a34aaee66e24696da28dcbe631b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   collectibles:
   - {fileID: 7856322251727230245, guid: 00c884c15187ce74e8e3d75ca7933cc2, type: 3}
   - {fileID: 5434847798019709709, guid: a982e43fd4182d949b45964e22a24133, type: 3}
   - {fileID: 9008976044108745820, guid: 0e557109011a3b34d9d5acee7fecc33c, type: 3}
-  health: 1
+  initialHealth: 2
   healthBar: {fileID: 7688150051780300325}
   isDead: 0
   deathSoundName: 
@@ -282,7 +309,34 @@ MonoBehaviour:
   flashTime: 0.25
   _flashSpeedCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.0636525
+      outSlope: -2.0636525
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19108847
+      value: 0.6056598
+      inSlope: -6.172244
+      outSlope: -6.172244
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0
+      inSlope: -10.280836
+      outSlope: -10.280836
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

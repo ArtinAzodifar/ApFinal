@@ -262,8 +262,36 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8434907571468111613, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8647079394948979599}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8710864586969687704, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8331826853107032428}
   m_SourcePrefab: {fileID: 100100000, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+--- !u!1 &6003438253526825842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8710864586969687704, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
+  m_PrefabInstance: {fileID: 3148942444334063082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8331826853107032428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003438253526825842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704c754011267ae4c93d4f48c6070e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 0.25
+  _flashSpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &6826759700482265879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8434907571468111613, guid: e91980fe7e86da042881236da3fcd27d, type: 3}
