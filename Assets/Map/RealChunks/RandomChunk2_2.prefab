@@ -812,7 +812,6 @@ GameObject:
   - component: {fileID: 5395298719766087930}
   - component: {fileID: 7301378613397180206}
   - component: {fileID: 8795170645393324562}
-  - component: {fileID: 8068643455908389742}
   m_Layer: 8
   m_Name: Rock (1)
   m_TagString: Untagged
@@ -1028,23 +1027,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &8068643455908389742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914154071080073076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 0
-  AutoUpdateKinematicState: 1
-  AutoSetKinematicOnDespawn: 1
 --- !u!1 &1926025536632586055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1041,6 @@ GameObject:
   - component: {fileID: 7420776318388656844}
   - component: {fileID: 9045766663215497081}
   - component: {fileID: 3638669268408599670}
-  - component: {fileID: 6365646363744346039}
   m_Layer: 8
   m_Name: Rock (5)
   m_TagString: Untagged
@@ -1275,23 +1256,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &6365646363744346039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926025536632586055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 0
-  AutoUpdateKinematicState: 1
-  AutoSetKinematicOnDespawn: 1
 --- !u!1 &2089880755959976473
 GameObject:
   m_ObjectHideFlags: 0
@@ -10647,7 +10611,6 @@ GameObject:
   - component: {fileID: 3090200936613184601}
   - component: {fileID: 1144759507383166287}
   - component: {fileID: 4569794968425812179}
-  - component: {fileID: 8372609087417242880}
   m_Layer: 8
   m_Name: Rock (2)
   m_TagString: Untagged
@@ -10863,23 +10826,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &8372609087417242880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7210383008060216639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 0
-  AutoUpdateKinematicState: 1
-  AutoSetKinematicOnDespawn: 1
 --- !u!1 &7217578660583550516
 GameObject:
   m_ObjectHideFlags: 0
@@ -10894,7 +10840,6 @@ GameObject:
   - component: {fileID: 2787590484799408685}
   - component: {fileID: 1644138608262139793}
   - component: {fileID: 8296874453877440524}
-  - component: {fileID: 3244868739408952756}
   m_Layer: 8
   m_Name: Rock (3)
   m_TagString: Untagged
@@ -11110,23 +11055,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &3244868739408952756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7217578660583550516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 0
-  AutoUpdateKinematicState: 1
-  AutoSetKinematicOnDespawn: 1
 --- !u!1 &7404096989072266292
 GameObject:
   m_ObjectHideFlags: 0
@@ -13489,7 +13417,6 @@ GameObject:
   - component: {fileID: 1545775449020298092}
   - component: {fileID: 596058214539072975}
   - component: {fileID: 1339190354454369443}
-  - component: {fileID: 4719546443393200658}
   m_Layer: 8
   m_Name: Rock (4)
   m_TagString: Untagged
@@ -13705,23 +13632,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &4719546443393200658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8232359124239984051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkRigidbodyBaseExpanded: 0
-  UseRigidBodyForMotion: 0
-  AutoUpdateKinematicState: 1
-  AutoSetKinematicOnDespawn: 1
 --- !u!1 &8358801979027851507
 GameObject:
   m_ObjectHideFlags: 0
