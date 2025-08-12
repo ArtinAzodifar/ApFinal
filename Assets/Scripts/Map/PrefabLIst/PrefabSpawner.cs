@@ -39,10 +39,11 @@ public class PrefabSpawner : NetworkBehaviour
                 if (spawnPoint.spawnTransform == null) continue;
 
                 var obj = Instantiate(data.prefab, spawnPoint.spawnTransform.position, spawnPoint.spawnTransform.rotation, transform);
-                var persistentComp = obj.GetComponent<PersistentObject>();
-                if (persistentComp != null)
+                
+                if (GameManager.Instance.IsLocalMode())
                 {
-                    persistentComp.uniqueIdInChunk = spawnPoint.uniqueIdInChunk;
+                    var persistentComp = obj.GetComponent<PersistentObject>();
+                    if (persistentComp != null) persistentComp.uniqueIdInChunk = spawnPoint.uniqueIdInChunk;
                 }
 
                 var netObj = obj.GetComponent<NetworkObject>();
