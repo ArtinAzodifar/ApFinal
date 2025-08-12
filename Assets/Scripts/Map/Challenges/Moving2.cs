@@ -31,37 +31,41 @@ public class Moving2 : NetworkBehaviour
         nexPos = PointB.position;
     }
 
-    void Update()
-    {
-        if (!gameManager.IsLocalMode() && !IsServer) return;
-
-
-        if (Vector3.Distance(transform.position, nexPos) <= 0.01f)
-        {
-            nexPos = (nexPos == PointA.position) ? PointB.position : PointA.position;
-        }
-    }
-
     void FixedUpdate()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (rb == null) return;
 
-        rb.MovePosition(nexPos);
+        Vector2 current = rb.position;
+        Vector2 target = Vector2.MoveTowards(current, (Vector2)nexPos, speed * Time.fixedDeltaTime);
 
-        Vector2 delta = (Vector2)nexPos - lastPosition;
+        rb.MovePosition(target);
 
-        if (delta != Vector2.zero && connectedPlayers.Count > 0)
+        Vector2 platformVelocity = (target - lastPosition) / Time.fixedDeltaTime;
+
+        if (platformVelocity != Vector2.zero && connectedPlayers.Count > 0)
         {
-            foreach (var go in connectedPlayers)
+            for (int i = connectedPlayers.Count - 1; i >= 0; i--)
             {
-                if (go == null) continue;
+                var go = connectedPlayers[i];
+                if (go == null) { connectedPlayers.RemoveAt(i); continue; }
 
                 Rigidbody2D prb = go.GetComponent<Rigidbody2D>();
-                if (prb != null) prb.MovePosition(prb.position + delta);
+                if (prb != null)
+                {
+                    Vector2 pv = platformVelocity;
+                    pv.y = 0f;
+                    prb.linearVelocity += pv;
+                }
             }
         }
 
-        lastPosition = transform.position;
+        lastPosition = target;
+
+        if (Vector2.Distance(target, nexPos) <= 0.01f)
+        {
+            nexPos = (nexPos == PointA.position) ? PointB.position : PointA.position;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

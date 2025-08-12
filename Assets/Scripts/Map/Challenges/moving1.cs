@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Unity.Netcode;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 
 public class moving1 : NetworkBehaviour
 {
@@ -50,16 +51,21 @@ public class moving1 : NetworkBehaviour
 
         rb.MovePosition(target);
 
-        Vector2 delta = target - lastPosition;
+        Vector2 platformVelocity = (target - lastPosition) / Time.fixedDeltaTime;
 
-        if (delta != Vector2.zero && connectedPlayers.Count > 0)
+        if (platformVelocity != Vector2.zero && connectedPlayers.Count > 0)
         {
             foreach (var go in connectedPlayers)
             {
                 if (go == null) continue;
 
                 Rigidbody2D prb = go.GetComponent<Rigidbody2D>();
-                if (prb != null) prb.MovePosition(prb.position + delta);
+                if (prb != null)
+                {
+                    Vector2 pv = platformVelocity;
+                    pv.y = 0f;
+                    prb.linearVelocity += pv;
+                }
             }
         }
 
