@@ -112,7 +112,7 @@ public class GameManager : NetworkBehaviour
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
     }
     public void Level2()
-    {   
+    {
         if (isLocalMode) SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
@@ -167,14 +167,14 @@ public class GameManager : NetworkBehaviour
     {
         // the important call to save the game!
         SaveManager.Instance.SaveGame();
-            
+
         //in MainMenu we don't have network yet
         if (!isLocalMode && IsServer)
         {
             NetworkManager.Singleton.SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
             NetworkManager.Singleton.Shutdown();
         }
-        else if(isLocalMode)
+        else if (isLocalMode)
         {
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
@@ -217,7 +217,7 @@ public class GameManager : NetworkBehaviour
         }
         if (IsServer) pauseClientRpc();
         else if (IsClient) pauseServerRpc();
-        
+
     }
     [ServerRpc]
     private void pauseServerRpc()
@@ -294,5 +294,11 @@ public class GameManager : NetworkBehaviour
     public bool IsLocalMode()
     {
         return isLocalMode;
+    }
+
+    //setter
+    public void setKey(bool value)
+    {
+        keyFound.Value = false;
     }
 }

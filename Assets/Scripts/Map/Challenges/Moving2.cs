@@ -1,13 +1,20 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Moving2 : MonoBehaviour
+public class Moving2 : NetworkBehaviour
 {
     [SerializeField] private Transform PointA;
     [SerializeField] private Transform PointB;
     [SerializeField] private float speed;
     
     private Vector3 nexPos;
+    private GameManager gameManager;
+
+    public void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     private void Start()
     {
@@ -16,6 +23,8 @@ public class Moving2 : MonoBehaviour
 
     void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         transform.position = Vector3.MoveTowards(transform.position, nexPos, speed * Time.deltaTime);
 
         if (transform.position == nexPos)
@@ -26,17 +35,25 @@ public class Moving2 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        var netObj = collision.gameObject.GetComponent<NetworkObject>();
+        if (gameManager.IsLocalMode() || (netObj != null && netObj.IsOwner))
         {
-            collision.gameObject.transform.parent = transform;
+            if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+            {
+                collision.gameObject.transform.parent = transform;
+            }   
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        var netObj = collision.gameObject.GetComponent<NetworkObject>();
+        if (gameManager.IsLocalMode() || (netObj != null && netObj.IsOwner))
         {
-            collision.gameObject.transform.parent = null;
+            if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+            {
+                collision.gameObject.transform.parent = null;
+            }
         }
     }
 }

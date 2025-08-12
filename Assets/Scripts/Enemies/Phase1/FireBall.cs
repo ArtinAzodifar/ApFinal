@@ -28,7 +28,9 @@ public class FireBall : NetworkBehaviour
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
 
-        rb.linearVelocity = Vector2.left * transform.localScale.x * speed;
+        float direction = Mathf.Sign(transform.localScale.x);
+        transform.Translate(Vector2.left * (direction * speed * Time.deltaTime));
+
         float xDistance = startPos.x - transform.position.x;
         if (Mathf.Abs(xDistance) >= 30)
         {
