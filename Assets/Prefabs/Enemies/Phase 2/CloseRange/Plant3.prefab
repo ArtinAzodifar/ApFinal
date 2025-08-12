@@ -13,10 +13,12 @@ GameObject:
   - component: {fileID: 794183182620051541}
   - component: {fileID: 3876681333478312224}
   - component: {fileID: 5314985342775900129}
-  - component: {fileID: 1073322072367425929}
   - component: {fileID: 3468229663385703403}
+  - component: {fileID: 1073322072367425929}
   - component: {fileID: 993552177828999061}
   - component: {fileID: 6343138301496606949}
+  - component: {fileID: 3545131905017415683}
+  - component: {fileID: -6657657714509824068}
   m_Layer: 10
   m_Name: Plant3
   m_TagString: Enemy
@@ -194,28 +196,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16, y: 0.26}
   m_EdgeRadius: 0
---- !u!114 &1073322072367425929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380121550744045848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af577b441426ed649a1daf3ad41f332d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2.5
-  damageAmount: 1
-  detectionRange: 10
-  attackRange: 1.5
-  attackCooldown: 1
-  hitboxUp: {fileID: 2948805136536360934}
-  hitboxDown: {fileID: 3390610447055893094}
-  hitboxLeft: {fileID: 5695723085348490319}
-  hitboxRight: {fileID: 3245212444331026929}
-  knockBackForce: 100
 --- !u!114 &3468229663385703403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +221,29 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1073322072367425929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380121550744045848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af577b441426ed649a1daf3ad41f332d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 2.5
+  damageAmount: 1
+  detectionRange: 10
+  attackRange: 1.5
+  attackCooldown: 1
+  hitboxUp: {fileID: 2948805136536360934}
+  hitboxDown: {fileID: 3390610447055893094}
+  hitboxLeft: {fileID: 5695723085348490319}
+  hitboxRight: {fileID: 3245212444331026929}
+  knockBackForce: 100
 --- !u!114 &993552177828999061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +312,81 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3545131905017415683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380121550744045848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &-6657657714509824068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380121550744045848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  TransitionStateInfoList:
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 1748754976
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  m_Animator: {fileID: 794183182620051541}
 --- !u!1 &938816077821287380
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 1073322072367425929}
 --- !u!1 &3245212444331026929
 GameObject:
@@ -701,6 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 1073322072367425929}
 --- !u!1 &3390610447055893094
 GameObject:
@@ -793,6 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 1073322072367425929}
 --- !u!1 &4233758835682276409
 GameObject:
@@ -1062,4 +1143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 1073322072367425929}

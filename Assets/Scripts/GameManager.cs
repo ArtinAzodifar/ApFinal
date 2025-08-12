@@ -35,7 +35,7 @@ public class GameManager : NetworkBehaviour
         {
             Destroy(gameObject);
         }
-        isLocalMode = NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening;
+        isLocalMode = true;
     }
 
     //TODO
@@ -114,9 +114,13 @@ public class GameManager : NetworkBehaviour
     public void Level2()
     {
         if (!isLocalMode && IsServer) DespawnAllNetworkObjects();
-        SaveManager.Instance.IsChangingLevel = true;
-        SaveManager.Instance.SetNextLevel("LevelTwo");
-        SaveManager.Instance.SaveGame();
+
+        if (isLocalMode)
+        {
+            SaveManager.Instance.IsChangingLevel = true;
+            SaveManager.Instance.SetNextLevel("LevelTwo");
+            SaveManager.Instance.SaveGame();
+        }
 
         if (isLocalMode) SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
         //online mode
@@ -125,9 +129,13 @@ public class GameManager : NetworkBehaviour
     public void Level3()
     {
         if (!isLocalMode && IsServer) DespawnAllNetworkObjects();
-        SaveManager.Instance.IsChangingLevel = true;
-        SaveManager.Instance.SetNextLevel("LevelThree");
-        SaveManager.Instance.SaveGame();
+
+        if (isLocalMode)
+        {
+            SaveManager.Instance.IsChangingLevel = true;
+            SaveManager.Instance.SetNextLevel("LevelThree");
+            SaveManager.Instance.SaveGame();
+        }
 
         if (isLocalMode) SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);
         //online mode
@@ -148,6 +156,21 @@ public class GameManager : NetworkBehaviour
             if (scenePlayer == null) continue;
             yield return new WaitUntil(() => scenePlayer.GetComponent<NetworkObject>().IsSpawned == true);
             scenePlayer.GetComponent<NetworkObject>().ChangeOwnership(player.clientID);
+        }
+    }
+
+    private void DespawnAllNetworkObjects()
+    {
+        if (isLocalMode || !IsServer) return;
+
+        var allNetworkObjects = FindObjectsByType<NetworkObject>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var netObj in allNetworkObjects)
+        {
+            if (netObj.gameObject.scene.name == "DontDestroyOnLoad") continue;
+            if (netObj.IsSpawned)
+            {
+                netObj.Despawn(true);
+            }
         }
     }
 
@@ -176,7 +199,7 @@ public class GameManager : NetworkBehaviour
     public void MainMenu()
     {
         // the important call to save the game!
-        SaveManager.Instance.SaveGame();
+        if (isLocalMode) SaveManager.Instance.SaveGame();
 
         //in MainMenu we don't have network yet
         if (!isLocalMode && IsServer)
@@ -189,21 +212,6 @@ public class GameManager : NetworkBehaviour
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
         Instance.isLocalMode = true;
-    }
-
-    private void DespawnAllNetworkObjects()
-    {
-        if (isLocalMode || !IsServer) return;
-
-        var allNetworkObjects = FindObjectsOfType<NetworkObject>();
-        foreach (var netObj in allNetworkObjects)
-        {
-            if (netObj.gameObject.scene.name == "DontDestroyOnLoad") continue;
-            if (netObj.IsSpawned)
-            {
-                netObj.Despawn(true);
-            }
-        }
     }
 
 

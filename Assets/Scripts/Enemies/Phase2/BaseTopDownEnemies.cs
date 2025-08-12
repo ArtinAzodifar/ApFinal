@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
 
-public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
+public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
 {
     [SerializeField] protected float speed;
     [SerializeField] protected int damageAmount;
@@ -9,7 +10,7 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackCooldown;
     protected float _cooldownTimer = 0;
-    
+
     protected Transform _meleePlayer;
     protected Transform _rangePlayer;
     protected Transform _closestPlayer;
@@ -20,23 +21,31 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
     protected float _distance;
     protected float _distance1;
     protected float _distance2;
-    
+
+    protected GameManager gameManager;
+
+    void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     void Start()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         GameObject player1 = GameObject.FindWithTag("Player1");
-        if (player1 != null) {
-            _meleePlayer = player1.transform;
-        }
+        if (player1 != null) _meleePlayer = player1.transform;
+
         GameObject player2 = GameObject.FindWithTag("Player2");
-        if (player2 != null) {
-            _rangePlayer = player2.transform;
-        }
-        
+        if (player2 != null) _rangePlayer = player2.transform;
+
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
     void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+        
         FindPlayer();
         Chase();
         Attack();
@@ -44,11 +53,15 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
 
     protected void FixedUpdate()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         _rb.MovePosition(_rb.position + _movement * (speed * Time.fixedDeltaTime));
     }
 
     public void FindPlayer()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (_meleePlayer != null && _rangePlayer != null)
         {
             _distance1 = Vector2.Distance(transform.position, _meleePlayer.position);
@@ -79,6 +92,8 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
 
     public void Chase()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (_distance <= detectionRange && _distance >= attackRange)
         {
             Vector2 direction = (_closestPlayer.position - transform.position).normalized;
@@ -106,6 +121,8 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
 
     public virtual void Attack()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (_cooldownTimer > 0f)
         {
             _cooldownTimer -= Time.deltaTime;
@@ -124,7 +141,7 @@ public class BaseTopDownEnemies : MonoBehaviour, MovingEnemy
                 _animator.SetFloat("XInput", 0);
                 _animator.SetFloat("YInput", direction.y > 0 ? 1 : -1);
             }
-            
+
             _animator.SetTrigger("Attack");
             _cooldownTimer = attackCooldown;
         }

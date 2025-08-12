@@ -41,7 +41,7 @@ public class PatternPlacer : MonoBehaviour
         int maxX = Mathf.Max(cornerA.x, cornerB.x);
         int minY = Mathf.Min(cornerA.y, cornerB.y);
         int maxY = Mathf.Max(cornerA.y, cornerB.y);
-        
+
         int patternsPlaced = 0;
         int placementAttempts = 0;
         int maxAttempts = numberOfPatterns * 200;
@@ -53,25 +53,25 @@ public class PatternPlacer : MonoBehaviour
         while (patternsPlaced < numberOfPatterns && placementAttempts < maxAttempts)
         {
             placementAttempts++;
-            
+
             int randomX = Random.Range(minX, maxX + 1);
             int randomY = Random.Range(minY, maxY + 1);
             Vector3Int anchorPosition = new Vector3Int(randomX, randomY, 0);
 
             if (CanPlacePattern(anchorPosition))
             {
-                for(int i = 0; i < patternSize; i++)
+                for (int i = 0; i < patternSize; i++)
                 {
                     positionArray[i] = anchorPosition + patternToPlace.tiles[i].relativePosition;
                     tileArray[i] = patternToPlace.tiles[i].tile;
                 }
-                
+
                 targetTilemap.SetTiles(positionArray, tileArray);
-                
+
                 patternsPlaced++;
             }
         }
-        
+
         EditorUtility.SetDirty(targetTilemap);
         Debug.Log($"Placed {patternsPlaced} out of {numberOfPatterns} requested patterns.");
     }
