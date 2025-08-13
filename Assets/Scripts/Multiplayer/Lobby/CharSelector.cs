@@ -46,13 +46,13 @@ public class CharSelector : NetworkBehaviour
 
     private IEnumerator setEmail()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         RegisterEmailServerRpc(EmailStore.Instance.GetEmail());
     }
 
     private void OnClientConnected(ulong clientId)
     {
-        players.Add(new CharacterSelectState(clientId, -1, "test"));
+        players.Add(new CharacterSelectState(clientId, -1, "Wait..."));
     }
 
     private void OnClientDisconnected(ulong clientId)
@@ -185,8 +185,11 @@ public class CharSelector : NetworkBehaviour
         }
 
         _IsStarted = true;
-        gameManager.StartGame();
+        if (IsServer) gameManager.StartGame();
+        else startServerRpc();
     }
+    [ServerRpc(RequireOwnership = false)]
+    private void startServerRpc() { gameManager.StartGame(); }
 
     public bool getIsStarted()
     {

@@ -35,7 +35,7 @@ public class GameManager : NetworkBehaviour
         {
             Destroy(gameObject);
         }
-        isLocalMode = NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening;
+        isLocalMode = true;
     }
 
     //TODO
@@ -113,20 +113,30 @@ public class GameManager : NetworkBehaviour
     }
     public void Level2()
     {
-        SaveManager.Instance.IsChangingLevel = true;
-        SaveManager.Instance.SetNextLevel("LevelTwo");
-        SaveManager.Instance.SaveGame();
-        
+        if (!isLocalMode && IsServer) DespawnAllNetworkObjects();
+
+        if (isLocalMode)
+        {
+            SaveManager.Instance.IsChangingLevel = true;
+            SaveManager.Instance.SetNextLevel("LevelTwo");
+            SaveManager.Instance.SaveGame();
+        }
+
         if (isLocalMode) SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelTwo", LoadSceneMode.Single);
     }
     public void Level3()
-    {    
-        SaveManager.Instance.IsChangingLevel = true;
-        SaveManager.Instance.SetNextLevel("LevelThree");
-        SaveManager.Instance.SaveGame();
-        
+    {
+        if (!isLocalMode && IsServer) DespawnAllNetworkObjects();
+
+        if (isLocalMode)
+        {
+            SaveManager.Instance.IsChangingLevel = true;
+            SaveManager.Instance.SetNextLevel("LevelThree");
+            SaveManager.Instance.SaveGame();
+        }
+
         if (isLocalMode) SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);
@@ -149,32 +159,39 @@ public class GameManager : NetworkBehaviour
         }
     }
 
+    private void DespawnAllNetworkObjects()
+    {
+        if (isLocalMode || !IsServer) return;
+
+        var allNetworkObjects = FindObjectsByType<NetworkObject>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var netObj in allNetworkObjects)
+        {
+            if (netObj.gameObject.scene.name == "DontDestroyOnLoad") continue;
+            if (netObj.IsSpawned)
+            {
+                netObj.Despawn(true);
+            }
+        }
+    }
+
     public void Restart()
     {
         if (isLocalMode)
         {
             Time.timeScale = 1f;
-            Cursor.visible = true;
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return;
         }
         if (!IsServer) return;
-        restartClientRpc(SceneManager.GetActiveScene().buildIndex);
-    }
-    [ClientRpc]
-    private void restartClientRpc(int sceneIndex)
-    {
-        Time.timeScale = 1f;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        SceneManager.LoadScene(sceneIndex);
+        NetworkManager.Singleton.SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
     public void MainMenu()
     {
         // the important call to save the game!
-        SaveManager.Instance.SaveGame();
+        if (isLocalMode) SaveManager.Instance.SaveGame();
 
         //in MainMenu we don't have network yet
         if (!isLocalMode && IsServer)
@@ -188,6 +205,7 @@ public class GameManager : NetworkBehaviour
         }
         Instance.isLocalMode = true;
     }
+
 
     public void LoginScene()
     {
@@ -227,7 +245,7 @@ public class GameManager : NetworkBehaviour
         else if (IsClient) pauseServerRpc();
 
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void pauseServerRpc()
     {
         pauseClientRpc();
@@ -260,7 +278,7 @@ public class GameManager : NetworkBehaviour
         if (IsServer) resumeClientRpc();
         else if (IsClient) resumeServerRpc();
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void resumeServerRpc()
     {
         resumeClientRpc();
@@ -275,7 +293,7 @@ public class GameManager : NetworkBehaviour
     private void applyResume()
     {
         Time.timeScale = 1f;
-        Cursor.visible = true;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         if (pauseMenuController != null)
         {

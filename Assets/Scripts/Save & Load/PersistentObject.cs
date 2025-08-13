@@ -8,6 +8,8 @@ public class PersistentObject : MonoBehaviour
 
     void Start()
     {
+        if (!GameManager.Instance.IsLocalMode()) return;
+        
         fullUniqueId = $"{transform.parent.name}_{uniqueIdInChunk}";
 
         if (SaveManager.Instance != null && SaveManager.Instance.IsObjectProcessed(fullUniqueId))

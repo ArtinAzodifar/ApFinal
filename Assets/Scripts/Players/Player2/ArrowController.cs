@@ -24,7 +24,7 @@ public class ArrowController : NetworkBehaviour
     private void OnEnable()
     {
         if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
-        
+
         isCollided = false;
         canMove = true;
         rb.constraints = RigidbodyConstraints2D.None;
@@ -59,7 +59,8 @@ public class ArrowController : NetworkBehaviour
         {
             animator.SetTrigger("Arrow-hit");
             canMove = false;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            if (GameManager.Instance.IsLocalMode()) rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            else freezeClientRpc();
             StartCoroutine(ArrowDamageCooldown(3f));
         }
         else if (collision.gameObject.CompareTag("Enemy"))
@@ -77,11 +78,13 @@ public class ArrowController : NetworkBehaviour
         {
             disableObject();
         }
-        
+
         canMove = false;
     }
     [ClientRpc]
-    private void invokeManaClientRpc()  {P2Mana?.Invoke();}
+    private void invokeManaClientRpc() { P2Mana?.Invoke(); }
+    [ClientRpc]
+    private void freezeClientRpc() { rb.constraints = RigidbodyConstraints2D.FreezeAll; }
 
     private IEnumerator ArrowDamageCooldown(float cooldownTime)
     {
@@ -95,8 +98,8 @@ public class ArrowController : NetworkBehaviour
         else disableObjectClientRpc();
     }
     [ClientRpc]
-    private void disableObjectClientRpc(){ gameObject.SetActive(false); }
-    
+    private void disableObjectClientRpc() { gameObject.SetActive(false); }
+
     //getters:
     public int GetDamageAmount()
     {
