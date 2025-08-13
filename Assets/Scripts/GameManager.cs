@@ -179,21 +179,13 @@ public class GameManager : NetworkBehaviour
         if (isLocalMode)
         {
             Time.timeScale = 1f;
-            Cursor.visible = true;
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return;
         }
         if (!IsServer) return;
-        restartClientRpc(SceneManager.GetActiveScene().buildIndex);
-    }
-    [ClientRpc]
-    private void restartClientRpc(int sceneIndex)
-    {
-        Time.timeScale = 1f;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        SceneManager.LoadScene(sceneIndex);
+        NetworkManager.Singleton.SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
     public void MainMenu()
@@ -253,7 +245,7 @@ public class GameManager : NetworkBehaviour
         else if (IsClient) pauseServerRpc();
 
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void pauseServerRpc()
     {
         pauseClientRpc();
@@ -286,7 +278,7 @@ public class GameManager : NetworkBehaviour
         if (IsServer) resumeClientRpc();
         else if (IsClient) resumeServerRpc();
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void resumeServerRpc()
     {
         resumeClientRpc();
@@ -301,7 +293,7 @@ public class GameManager : NetworkBehaviour
     private void applyResume()
     {
         Time.timeScale = 1f;
-        Cursor.visible = true;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         if (pauseMenuController != null)
         {
