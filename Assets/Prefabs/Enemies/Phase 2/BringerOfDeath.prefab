@@ -88,10 +88,12 @@ GameObject:
   - component: {fileID: 4394366357566307380}
   - component: {fileID: 5490807292114495122}
   - component: {fileID: 3936943365486190275}
-  - component: {fileID: 461322745848146879}
   - component: {fileID: -7463827395197590205}
+  - component: {fileID: 461322745848146879}
   - component: {fileID: 8772420956647668499}
   - component: {fileID: 7478937240294271037}
+  - component: {fileID: -1171167738750321352}
+  - component: {fileID: 3108808227810520205}
   m_Layer: 10
   m_Name: BringerOfDeath
   m_TagString: Enemy
@@ -266,40 +268,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.26666668, y: 0.53}
   m_EdgeRadius: 0
---- !u!114 &461322745848146879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2427919237766678554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d497159dbfbd19e4a96afb4a2ddcaa84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2.5
-  damageAmount: 5
-  detectionRange: 15
-  attackRange: 5
-  attackCooldown: 3
-  enemies:
-  - {fileID: 5823845203306623818, guid: 50166ce5fb0d1494d8d8dea18668416e, type: 3}
-  - {fileID: 380121550744045848, guid: e9a8b67ad52ae35469b3b53c94206a6d, type: 3}
-  - {fileID: 2699445880093235987, guid: 7ed820f34b9160e45aab151477eafb6a, type: 3}
-  - {fileID: 1023190645243070429, guid: c042f82c7ee33494dbd6134e9c19af31, type: 3}
-  spawn: {fileID: 2615954796237967590, guid: 8efd8fd83216be14baf7ca7a491ed373, type: 3}
-  spell: {fileID: 6545745795427489732, guid: 1e1463ea86b1d96478dd19cac41adb45, type: 3}
-  spawnRadius: 20
-  spawnCooldown: 25
-  castCooldown: 10
-  numOfSpells: 4
-  attackZone: {fileID: 6324213517078740694}
-  playerLayers:
-  - serializedVersion: 2
-    m_Bits: 8192
-  - serializedVersion: 2
-    m_Bits: 16384
 --- !u!114 &-7463827395197590205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +293,41 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &461322745848146879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427919237766678554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d497159dbfbd19e4a96afb4a2ddcaa84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 2.5
+  damageAmount: 5
+  detectionRange: 15
+  attackRange: 5
+  attackCooldown: 3
+  enemies:
+  - {fileID: 5823845203306623818, guid: 50166ce5fb0d1494d8d8dea18668416e, type: 3}
+  - {fileID: 380121550744045848, guid: e9a8b67ad52ae35469b3b53c94206a6d, type: 3}
+  - {fileID: 2699445880093235987, guid: 7ed820f34b9160e45aab151477eafb6a, type: 3}
+  - {fileID: 1023190645243070429, guid: c042f82c7ee33494dbd6134e9c19af31, type: 3}
+  spawn: {fileID: 2615954796237967590, guid: 8efd8fd83216be14baf7ca7a491ed373, type: 3}
+  spell: {fileID: 6545745795427489732, guid: 1e1463ea86b1d96478dd19cac41adb45, type: 3}
+  spawnRadius: 20
+  spawnCooldown: 25
+  castCooldown: 10
+  numOfSpells: 4
+  attackZone: {fileID: 6324213517078740694}
+  playerLayers:
+  - serializedVersion: 2
+    m_Bits: 8192
+  - serializedVersion: 2
+    m_Bits: 16384
 --- !u!114 &8772420956647668499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +396,116 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1171167738750321352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427919237766678554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &3108808227810520205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427919237766678554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  TransitionStateInfoList:
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 1740614436
+    DestinationState: 646380074
+    TransitionDuration: 0
+    TriggerNameHash: 646380074
+    TransitionIndex: 0
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: -1299573048
+    TransitionDuration: 0
+    TriggerNameHash: -1299573048
+    TransitionIndex: 2
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: -876152609
+    TransitionDuration: 0
+    TriggerNameHash: 1372578019
+    TransitionIndex: 3
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 765711723
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 765711723
+    DestinationState: -1299573048
+    TransitionDuration: 0
+    TriggerNameHash: -1299573048
+    TransitionIndex: 2
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 765711723
+    DestinationState: -876152609
+    TransitionDuration: 0
+    TriggerNameHash: 1372578019
+    TransitionIndex: 3
+  m_Animator: {fileID: 1864121667131261118}
 --- !u!1 &3663127203141618144
 GameObject:
   m_ObjectHideFlags: 0

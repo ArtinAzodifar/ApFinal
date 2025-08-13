@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 963514130887139127}
 --- !u!61 &3820750722500362390
 BoxCollider2D:
@@ -207,10 +208,12 @@ GameObject:
   - component: {fileID: 272508158861372398}
   - component: {fileID: 5697744697510875426}
   - component: {fileID: 5087465677757167304}
-  - component: {fileID: 963514130887139127}
   - component: {fileID: 5296225646103723871}
+  - component: {fileID: 963514130887139127}
   - component: {fileID: 6300213445557331436}
   - component: {fileID: -5560160836203266408}
+  - component: {fileID: 6916458476419085808}
+  - component: {fileID: 6566750095537492542}
   m_Layer: 10
   m_Name: Slime2
   m_TagString: Enemy
@@ -388,28 +391,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16, y: 0.12}
   m_EdgeRadius: 0
---- !u!114 &963514130887139127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2699445880093235987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af577b441426ed649a1daf3ad41f332d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  damageAmount: 1
-  detectionRange: 10
-  attackRange: 1.5
-  attackCooldown: 1
-  hitboxUp: {fileID: 6523664239535373070}
-  hitboxDown: {fileID: 0}
-  hitboxLeft: {fileID: 5388733730833657269}
-  hitboxRight: {fileID: 0}
-  knockBackForce: 100
 --- !u!114 &5296225646103723871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +416,29 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &963514130887139127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699445880093235987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af577b441426ed649a1daf3ad41f332d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 5
+  damageAmount: 1
+  detectionRange: 10
+  attackRange: 1.5
+  attackCooldown: 1
+  hitboxUp: {fileID: 6523664239535373070}
+  hitboxDown: {fileID: 0}
+  hitboxLeft: {fileID: 5388733730833657269}
+  hitboxRight: {fileID: 0}
+  knockBackForce: 100
 --- !u!114 &6300213445557331436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +507,81 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6916458476419085808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699445880093235987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &6566750095537492542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699445880093235987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  TransitionStateInfoList:
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 1748754976
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  m_Animator: {fileID: 272508158861372398}
 --- !u!1 &2699634651794418662
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 963514130887139127}
 --- !u!61 &2041557861758150583
 BoxCollider2D:
@@ -849,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 963514130887139127}
 --- !u!61 &10935372253976979
 BoxCollider2D:
@@ -1016,6 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8ace884bf900043938f5e8e788bb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   enemyParent: {fileID: 963514130887139127}
 --- !u!61 &9114925822881662415
 BoxCollider2D:

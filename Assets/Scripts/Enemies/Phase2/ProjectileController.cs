@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
 
-public class ProjectileController : MonoBehaviour
+public class ProjectileController : NetworkBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private int damageAmount;
@@ -22,17 +23,21 @@ public class ProjectileController : MonoBehaviour
     private float _timer;
 
     private bool _canMove = true;
-    
+
+    private GameManager gameManager;
+
+    void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     void Start()
     {
         GameObject player1 = GameObject.FindWithTag("Player1");
-        if (player1 != null) {
-            _meleePlayer = player1.transform;
-        }
+        if (player1 != null) _meleePlayer = player1.transform;
+
         GameObject player2 = GameObject.FindWithTag("Player2");
-        if (player2 != null) {
-            _rangePlayer = player2.transform;
-        }
+        if (player2 != null) _rangePlayer = player2.transform;
 
         FindPlayer();
         
@@ -42,6 +47,8 @@ public class ProjectileController : MonoBehaviour
 
     private void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (_timer >= timeToDestroy)
         {
             _canMove = false;
@@ -54,6 +61,8 @@ public class ProjectileController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (_direction != Vector2.zero && _canMove)
         {
             _rb.MovePosition(_rb.position + _direction * (speed * Time.fixedDeltaTime));
@@ -62,6 +71,8 @@ public class ProjectileController : MonoBehaviour
     
     public void FindPlayer()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (_meleePlayer != null && _rangePlayer != null)
         {
             _distance1 = Vector2.Distance(transform.position, _meleePlayer.position);
@@ -92,14 +103,18 @@ public class ProjectileController : MonoBehaviour
 
     public void Chase()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         _direction = (_closestPlayer.position - transform.position).normalized;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
-           
+
             if (other.TryGetComponent<Damagable>(out Damagable damagable))
             {
                 damagable.Damage(damageAmount);
@@ -110,8 +125,11 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
+
+    //is called in the end of animation
     public void DestroyOnAnimationEnd()
     {
-        Destroy(gameObject);
+        if (gameManager.IsLocalMode()) Destroy(gameObject);
+        else if (IsServer) GetComponent<NetworkObject>().Despawn();
     }
 }

@@ -44,10 +44,12 @@ GameObject:
   - component: {fileID: 8607406395844159786}
   - component: {fileID: 3130857095643480640}
   - component: {fileID: 8823649232728456010}
-  - component: {fileID: 1375191359603071268}
   - component: {fileID: 1575664954842217222}
+  - component: {fileID: 1375191359603071268}
   - component: {fileID: 9114100924651390455}
   - component: {fileID: 2569805650419950798}
+  - component: {fileID: -4742778416677428194}
+  - component: {fileID: -6975288419000660073}
   m_Layer: 10
   m_Name: Plan2 - Shooter
   m_TagString: Enemy
@@ -225,28 +227,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.19, y: 0.29}
   m_EdgeRadius: 0
---- !u!114 &1375191359603071268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023190645243070429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63d0975a94f8bcc43979f473c81b9ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  damageAmount: 3
-  detectionRange: 10
-  attackRange: 6
-  attackCooldown: 3
-  attackPoint_Up: {fileID: 640295506745614144}
-  attackPoint_Down: {fileID: 6750810688965596583}
-  attackPoint_Left: {fileID: 2978076650686263567}
-  attackPoint_Right: {fileID: 1611797125474257279}
-  projectilePrefab: {fileID: 1234545766259719272, guid: 6dce2033fd3bae34fb360145d724b76c, type: 3}
 --- !u!114 &1575664954842217222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +252,29 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1375191359603071268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023190645243070429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d0975a94f8bcc43979f473c81b9ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 1
+  damageAmount: 3
+  detectionRange: 10
+  attackRange: 6
+  attackCooldown: 3
+  attackPoint_Up: {fileID: 640295506745614144}
+  attackPoint_Down: {fileID: 6750810688965596583}
+  attackPoint_Left: {fileID: 2978076650686263567}
+  attackPoint_Right: {fileID: 1611797125474257279}
+  projectilePrefab: {fileID: 1234545766259719272, guid: 6dce2033fd3bae34fb360145d724b76c, type: 3}
 --- !u!114 &9114100924651390455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +343,81 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4742778416677428194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023190645243070429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &-6975288419000660073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023190645243070429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  TransitionStateInfoList:
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 2081823275
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 0
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 765711723
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  m_Animator: {fileID: 8607406395844159786}
 --- !u!1 &1515016930903451734
 GameObject:
   m_ObjectHideFlags: 0

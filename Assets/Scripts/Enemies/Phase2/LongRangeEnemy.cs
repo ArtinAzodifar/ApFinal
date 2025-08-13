@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 
 public class LongRangeEnemy : BaseTopDownEnemies
@@ -17,10 +18,15 @@ public class LongRangeEnemy : BaseTopDownEnemies
 
     public void FireProjectile()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (projectilePrefab != null || _currentAttackPoint != null)
         {
             GameObject projectileObj = Instantiate(projectilePrefab,
                 _currentAttackPoint.position, _currentAttackPoint.rotation);
+
+            var netObj = projectileObj.GetComponent<NetworkObject>();
+            if (!gameManager.IsLocalMode() && netObj != null) netObj.Spawn();
         }
     }
 }
