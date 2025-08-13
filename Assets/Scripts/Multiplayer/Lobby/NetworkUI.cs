@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -26,8 +27,8 @@ public class NetworkUI : MonoBehaviour
     public void OnHostButtonClicked()
     {
         NetworkManager.Singleton.StartHost();
-        LobbyPanel.SetActive(false);
-        selectPanel.SetActive(true);
+
+        StartCoroutine(PlayUIAnimation());
     }
 
     public void OnClientButtonModeClicked()
@@ -44,8 +45,19 @@ public class NetworkUI : MonoBehaviour
         {
             unityTransport.SetConnectionData(serverIP, 8888);
             NetworkManager.Singleton.StartClient();
-            LobbyPanel.SetActive(false);
-            selectPanel.SetActive(true);
+
+            StartCoroutine(PlayUIAnimation());
         }
+    }
+
+    public IEnumerator PlayUIAnimation()
+    {
+        RectTransform LobbyPanelRect = LobbyPanel.GetComponent<RectTransform>();
+        UIAnimationManager.Instance.HideWindow(LobbyPanelRect);
+        
+        yield return new WaitForSecondsRealtime(0.3f);
+        
+        RectTransform selectPanelRect = selectPanel.GetComponent<RectTransform>();
+        UIAnimationManager.Instance.ShowWindow(selectPanelRect);
     }
 }

@@ -1,38 +1,32 @@
 using UnityEngine;
-using DG.Tweening;
 
 public class SignTrigger : MonoBehaviour
 {
-    public RectTransform windowRectTransform;
+    public RectTransform signWindow;
 
-    // Awake is called before the first frame update
-    void Awake()
+    void Start()
     {
-        // Ensure the window is assigned
-        if (windowRectTransform != null)
+        // Make sure the window is hidden initially
+        if (signWindow != null)
         {
-            // Start with the window hidden (scaled to zero)
-            windowRectTransform.localScale = Vector3.zero;
+            signWindow.localScale = Vector3.zero;
+            signWindow.gameObject.SetActive(false);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && windowRectTransform != null)
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
-            // Kill any previous animation and scale up to 1
-            windowRectTransform.DOKill();
-            windowRectTransform.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
+            UIAnimationManager.Instance.ShowWindow(signWindow);
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && windowRectTransform != null)
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
-            // Kill any previous animation and scale down to 0
-            windowRectTransform.DOKill();
-            windowRectTransform.DOScale(0f, 0.3f).SetEase(Ease.InQuad);
+            UIAnimationManager.Instance.HideWindow(signWindow);
         }
     }
 }

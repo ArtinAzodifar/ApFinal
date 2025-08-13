@@ -9483,7 +9483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650e09541e65eeb45899bfa7dc88a78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windowRectTransform: {fileID: 1804280682169037544}
+  signWindow: {fileID: 1804280682169037544}
 --- !u!1 &7679222054491741683
 GameObject:
   m_ObjectHideFlags: 0
