@@ -403,14 +403,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 136632759
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 2086037116
+  InScenePlacedSourceGlobalObjectIdHash: 136632759
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -435,9 +435,9 @@ MonoBehaviour:
   attackRange: 1.5
   attackCooldown: 1
   hitboxUp: {fileID: 6523664239535373070}
-  hitboxDown: {fileID: 0}
+  hitboxDown: {fileID: 1142500135177920940}
   hitboxLeft: {fileID: 5388733730833657269}
-  hitboxRight: {fileID: 0}
+  hitboxRight: {fileID: 5823685101060197526}
   knockBackForce: 100
 --- !u!114 &6300213445557331436
 MonoBehaviour:
