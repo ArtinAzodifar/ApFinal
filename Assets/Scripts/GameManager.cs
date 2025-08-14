@@ -190,8 +190,12 @@ public class GameManager : NetworkBehaviour
 
     public void MainMenu()
     {
+        bool isInGame = SceneManager.GetActiveScene().name == "LevelOne"
+                        || SceneManager.GetActiveScene().name == "LevelTwo"
+                        || SceneManager.GetActiveScene().name == "LevelThree";
+        
         // the important call to save the game!
-        if (isLocalMode) SaveManager.Instance.SaveGame();
+        if (isLocalMode && isInGame) SaveManager.Instance.SaveGame();
 
         //in MainMenu we don't have network yet
         if (!isLocalMode && IsServer)

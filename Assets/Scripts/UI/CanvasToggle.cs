@@ -1,18 +1,24 @@
 using UnityEngine;
+using System.Collections;
 
 public class CanvasToggle : MonoBehaviour
 {
-    [SerializeField] private Canvas otherCanvas;
-    [SerializeField] private Canvas currentCanvas;
+    [SerializeField] private RectTransform canvasToShow;
+    [SerializeField] private RectTransform canvasToHide;
 
     public void ToggleCanvases()
     {
-        if (currentCanvas == null || otherCanvas == null) return;
+        if (canvasToHide == null || canvasToShow == null) return;
 
-        bool isCurrentActive = currentCanvas.gameObject.activeSelf;
-        bool isOtherActive = otherCanvas.gameObject.activeSelf;
+        StartCoroutine(AnimateToggle());
+    }
 
-        currentCanvas.gameObject.SetActive(!isCurrentActive);
-        otherCanvas.gameObject.SetActive(!isOtherActive);
+    private IEnumerator AnimateToggle()
+    {
+        UIAnimationManager.Instance.HideWindow(canvasToHide);
+
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        UIAnimationManager.Instance.ShowWindow(canvasToShow);
     }
 }
