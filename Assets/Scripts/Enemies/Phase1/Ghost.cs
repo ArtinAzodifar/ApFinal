@@ -39,8 +39,9 @@ public class Ghost : BaseMovingEnemy
             }
             animator.SetTrigger("Vanish");
         }
-        if (gameManager.IsLocalMode()) Destroy(gameObject, 0.6f);
-        else if (IsServer) StartCoroutine(despawnAfter(0.6f));
+        if (gameManager.IsLocalMode()) Destroy(gameObject, 1.8f);
+        else if (IsServer && GetComponent<NetworkObject>() != null) StartCoroutine(despawnAfter(0.6f));
+        else if (IsServer) DestroyClientRpc(0.6f);
     }
 
     public override void FindPlayer()
@@ -65,7 +66,15 @@ public class Ghost : BaseMovingEnemy
     private IEnumerator despawnAfter(float time)
     {
         yield return new WaitForSeconds(time);
-        GetComponent<NetworkObject>().Despawn();
+
+        if ((bool)GetComponent<NetworkObject>().IsSceneObject) DestroyClientRpc(0);
+        gameObject.GetComponent<NetworkObject>().Despawn();
+    }
+
+    [ClientRpc]
+    private void DestroyClientRpc(float time)
+    {
+        Destroy(gameObject, time);
     }
     
 }

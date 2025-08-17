@@ -20,6 +20,7 @@ TagManager:
   - PauseScreen
   - FireBall
   - ProjectilePool
+  - WinScreen
   layers:
   - Default
   - TransparentFX

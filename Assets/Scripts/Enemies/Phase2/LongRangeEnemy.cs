@@ -19,6 +19,7 @@ public class LongRangeEnemy : BaseTopDownEnemies
     public void FireProjectile()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth != null && enemyHealth.IsDead()) return;
 
         if (projectilePrefab != null || _currentAttackPoint != null)
         {
