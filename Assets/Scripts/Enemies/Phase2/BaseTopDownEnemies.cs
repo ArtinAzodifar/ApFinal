@@ -23,10 +23,12 @@ public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
     protected float _distance2;
 
     protected GameManager gameManager;
+    protected EnemyHealth enemyHealth;
 
     void Awake()
     {
         gameManager = GameManager.Instance;
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     void Start()
@@ -45,6 +47,7 @@ public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
     void Update()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth != null && enemyHealth.IsDead()) return;
         
         FindPlayer();
         Chase();
@@ -61,6 +64,7 @@ public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
     public void FindPlayer()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth != null && enemyHealth.IsDead()) return;
 
         if (_meleePlayer != null && _rangePlayer != null)
         {
@@ -93,6 +97,7 @@ public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
     public void Chase()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth != null && enemyHealth.IsDead()) return;
 
         if (_distance <= detectionRange && _distance >= attackRange)
         {
@@ -122,6 +127,7 @@ public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
     public virtual void Attack()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth != null && enemyHealth.IsDead()) return;
 
         if (_cooldownTimer > 0f)
         {

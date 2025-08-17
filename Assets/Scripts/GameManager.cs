@@ -15,6 +15,7 @@ public class GameManager : NetworkBehaviour
     public static GameManager Instance { get; private set; }
     private GameObject gameOverScreen;
     private GameObject pauseScreen;
+    private GameObject winScreen;
 
     private PauseMenuController pauseMenuController;
     private NetworkVariable<bool> keyFound = new NetworkVariable<bool>(false);
@@ -66,10 +67,9 @@ public class GameManager : NetworkBehaviour
         Time.timeScale = 1f;
         pauseScreen = GameObject.FindWithTag("PauseScreen");
         gameOverScreen = GameObject.FindWithTag("GameOver");
-        if (gameOverScreen != null)
-        {
-            gameOverScreen.SetActive(false);
-        }
+        winScreen = GameObject.FindWithTag("WinScreen");
+        if (winScreen != null) winScreen.SetActive(false);
+        if (gameOverScreen != null) gameOverScreen.SetActive(false);
 
         if (pauseScreen != null)
         {
@@ -77,6 +77,24 @@ public class GameManager : NetworkBehaviour
             pauseScreen.SetActive(false);
         }
         if (!isLocalMode && scene.name.Contains("Level") && IsServer) StartCoroutine(assignPlayers());
+    }
+
+
+    public void Win()
+    {
+        if (isLocalMode) applyWin();
+        else if (IsServer) applyWinClientRpc();
+    }
+
+    [ClientRpc]
+    private void applyWinClientRpc() { applyWin(); }
+
+    private void applyWin()
+    {
+        Time.timeScale = 0f;
+        winScreen.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void GameOver()
@@ -91,11 +109,10 @@ public class GameManager : NetworkBehaviour
         //ask all clients to apply gameOver
         gameOverClientRpc();
     }
+
     [ClientRpc]
-    private void gameOverClientRpc()
-    {
-        applyGameOver();
-    }
+    private void gameOverClientRpc() { applyGameOver(); }
+
     private void applyGameOver()
     {
         Time.timeScale = 0f;
@@ -193,7 +210,7 @@ public class GameManager : NetworkBehaviour
         bool isInGame = SceneManager.GetActiveScene().name == "LevelOne"
                         || SceneManager.GetActiveScene().name == "LevelTwo"
                         || SceneManager.GetActiveScene().name == "LevelThree";
-        
+
         // the important call to save the game!
         if (isLocalMode && isInGame) SaveManager.Instance.SaveGame();
 
@@ -228,14 +245,8 @@ public class GameManager : NetworkBehaviour
     //in online mode, only host can pause/resume the game
     public void TogglePause()
     {
-        if (Time.timeScale == 0f)
-        {
-            ResumeGame();
-        }
-        else
-        {
-            PauseGame();
-        }
+        if (Time.timeScale == 0f) ResumeGame();
+        else PauseGame();
     }
 
     public void PauseGame()
@@ -249,17 +260,12 @@ public class GameManager : NetworkBehaviour
         else if (IsClient) pauseServerRpc();
 
     }
+
     [ServerRpc(RequireOwnership = false)]
-    private void pauseServerRpc()
-    {
-        pauseClientRpc();
-    }
+    private void pauseServerRpc() { pauseClientRpc(); }
 
     [ClientRpc]
-    private void pauseClientRpc()
-    {
-        applyPause();
-    }
+    private void pauseClientRpc() { applyPause(); }
 
     private void applyPause()
     {
@@ -282,17 +288,12 @@ public class GameManager : NetworkBehaviour
         if (IsServer) resumeClientRpc();
         else if (IsClient) resumeServerRpc();
     }
+
     [ServerRpc(RequireOwnership = false)]
-    private void resumeServerRpc()
-    {
-        resumeClientRpc();
-    }
+    private void resumeServerRpc() { resumeClientRpc(); }
 
     [ClientRpc]
-    private void resumeClientRpc()
-    {
-        applyResume();
-    }
+    private void resumeClientRpc() { applyResume(); }
 
     private void applyResume()
     {
@@ -310,25 +311,14 @@ public class GameManager : NetworkBehaviour
         if (isLocalMode || IsServer) keyFound.Value = true;
         else requestFindKeyServerRpc();
     }
+    
     [ServerRpc]
-    private void requestFindKeyServerRpc()
-    {
-        keyFound.Value = true;
-    }
+    private void requestFindKeyServerRpc() { keyFound.Value = true; }
 
     //getters
-    public bool GetKey()
-    {
-        return keyFound.Value;
-    }
-    public bool IsLocalMode()
-    {
-        return isLocalMode;
-    }
+    public bool GetKey() { return keyFound.Value; }
+    public bool IsLocalMode() { return isLocalMode; }
 
     //setter
-    public void setKey(bool value)
-    {
-        keyFound.Value = false;
-    }
+    public void setKey(bool value) { keyFound.Value = value; }
 }
