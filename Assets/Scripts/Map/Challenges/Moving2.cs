@@ -48,14 +48,17 @@ public class Moving2 : NetworkBehaviour
             for (int i = connectedPlayers.Count - 1; i >= 0; i--)
             {
                 var go = connectedPlayers[i];
-                if (go == null) { connectedPlayers.RemoveAt(i); continue; }
+                if (go == null) continue;
+
+                var netObj = go.GetComponent<NetworkObject>();
 
                 Rigidbody2D prb = go.GetComponent<Rigidbody2D>();
                 if (prb != null)
                 {
                     Vector2 pv = platformVelocity;
                     pv.y = 0f;
-                    prb.linearVelocity += pv;
+                    if (gameManager.IsLocalMode()) prb.linearVelocity += pv;
+                    else changeVelocityClientRpc(netObj.NetworkObjectId, pv);
                 }
             }
         }
@@ -65,6 +68,21 @@ public class Moving2 : NetworkBehaviour
         if (Vector2.Distance(target, nexPos) <= 0.01f)
         {
             nexPos = (nexPos == PointA.position) ? PointB.position : PointA.position;
+        }
+    }
+
+    [ClientRpc]
+    private void changeVelocityClientRpc(ulong netObjId, Vector2 pv)
+    {
+        NetworkObject targetObj;
+        if (NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(netObjId, out targetObj))
+        {
+            if (NetworkManager.Singleton.LocalClientId == targetObj.OwnerClientId)
+            {
+                Rigidbody2D rb = targetObj.GetComponent<Rigidbody2D>();
+                rb.linearVelocity += pv;
+            }
+            
         }
     }
 

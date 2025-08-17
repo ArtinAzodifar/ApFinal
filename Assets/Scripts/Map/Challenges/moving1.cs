@@ -3,6 +3,7 @@ using UnityEngine;
 using Unity.Netcode;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
+using Unity.Mathematics;
 
 public class moving1 : NetworkBehaviour
 {
@@ -55,21 +56,40 @@ public class moving1 : NetworkBehaviour
 
         if (platformVelocity != Vector2.zero && connectedPlayers.Count > 0)
         {
+
             foreach (var go in connectedPlayers)
             {
                 if (go == null) continue;
+
+                var netObj = go.GetComponent<NetworkObject>();
 
                 Rigidbody2D prb = go.GetComponent<Rigidbody2D>();
                 if (prb != null)
                 {
                     Vector2 pv = platformVelocity;
                     pv.y = 0f;
-                    prb.linearVelocity += pv;
+                    if (gameManager.IsLocalMode()) prb.linearVelocity += pv;
+                    else changeVelocityClientRpc(netObj.NetworkObjectId, pv);
                 }
             }
         }
 
         lastPosition = target;
+    }
+    
+    [ClientRpc]
+    private void changeVelocityClientRpc(ulong netObjId, Vector2 pv)
+    {
+        NetworkObject targetObj;
+        if (NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(netObjId, out targetObj))
+        {
+            if (NetworkManager.Singleton.LocalClientId == targetObj.OwnerClientId)
+            {
+                Rigidbody2D rb = targetObj.GetComponent<Rigidbody2D>();
+                rb.linearVelocity += pv;
+            }
+            
+        }
     }
 
     private Vector2 ComputeTargetPosition(Vector2 current)

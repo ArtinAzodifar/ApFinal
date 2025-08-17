@@ -15,6 +15,12 @@ public class CloseRangeEnemy : BaseTopDownEnemies
     public void EnableLeftHitbox() { hitboxLeft.SetActive(true); }
     public void EnableRightHitbox() { hitboxRight.SetActive(true); }
 
+    public void Start()
+    {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+        DisableAllHitboxes();
+    }
+
     public void DisableAllHitboxes()
     {
         hitboxUp.SetActive(false);
@@ -22,10 +28,11 @@ public class CloseRangeEnemy : BaseTopDownEnemies
         hitboxLeft.SetActive(false);
         hitboxRight.SetActive(false);
     }
-    
+
     public void ApplyDamageAndKnockback(Collider2D player)
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        if (enemyHealth != null && enemyHealth.IsDead()) return;
 
         Damagable damagableComponent = player.GetComponent<Damagable>();
         if (damagableComponent != null)
@@ -45,7 +52,7 @@ public class CloseRangeEnemy : BaseTopDownEnemies
             b.setKnockFromRightClientRpc(player.gameObject.transform.position.x <= transform.position.x);
             b.startKnockClientRpc(knockBackForce);
         }
-    
+
         DisableAllHitboxes();
     }
 }
