@@ -147452,7 +147452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use Shift Key to dash
+  m_text: Double click Up Arrow key for double jump
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 889f9025d2e7dbd4eba924feec4de9e7, type: 2}
   m_sharedMaterial: {fileID: 5506673170971666558, guid: 889f9025d2e7dbd4eba924feec4de9e7, type: 2}
@@ -160001,7 +160001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Use Left & RIght Arrow Keys to move '
+  m_text: 'Use Left & Right Arrow Keys to move '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 889f9025d2e7dbd4eba924feec4de9e7, type: 2}
   m_sharedMaterial: {fileID: 5506673170971666558, guid: 889f9025d2e7dbd4eba924feec4de9e7, type: 2}

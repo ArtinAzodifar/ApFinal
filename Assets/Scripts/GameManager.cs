@@ -115,8 +115,9 @@ public class GameManager : NetworkBehaviour
 
     private void applyGameOver()
     {
+        RectTransform GOSRect = gameOverScreen.GetComponent<RectTransform>();
         Time.timeScale = 0f;
-        gameOverScreen.SetActive(true);
+        UIAnimationManager.Instance.ShowWindow(GOSRect);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -207,13 +208,6 @@ public class GameManager : NetworkBehaviour
 
     public void MainMenu()
     {
-        bool isInGame = SceneManager.GetActiveScene().name == "LevelOne"
-                        || SceneManager.GetActiveScene().name == "LevelTwo"
-                        || SceneManager.GetActiveScene().name == "LevelThree";
-
-        // the important call to save the game!
-        if (isLocalMode && isInGame) SaveManager.Instance.SaveGame();
-
         //in MainMenu we don't have network yet
         if (!isLocalMode && IsServer)
         {

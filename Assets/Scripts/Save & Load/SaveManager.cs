@@ -85,6 +85,8 @@ public class SaveManager : MonoBehaviour
     public void SaveGame()
     {
         if (CurrentSlotIndex == -1 || gameData == null || !GameManager.Instance.IsLocalMode()) return;
+        
+        Debug.Log("Saved");
         gameData.currentLevelSceneName = SceneManager.GetActiveScene().name;
 
         GameObject player1 = GameObject.FindWithTag("Player1");

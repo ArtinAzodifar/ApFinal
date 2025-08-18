@@ -126,7 +126,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     private IEnumerator LockPlayer()
     {
         gameObject.GetComponent<BaseControll>().setIsInDamage(true);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
 
