@@ -4,7 +4,7 @@ public class MenuActions : MonoBehaviour
 {
     public void LoadMainMenu()
     {
-        GameManager.Instance.MainMenu();
+        GameManager.Instance.MainMenu(false);
     }
     
     public void LoadLoginScene()

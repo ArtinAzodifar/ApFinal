@@ -7,6 +7,7 @@ public class WinCondition : NetworkBehaviour
     [SerializeField] private GameObject boss;
 
     private GameManager gameManager;
+    private bool gameHasEnded = false;
 
     public void Start()
     {
@@ -16,6 +17,11 @@ public class WinCondition : NetworkBehaviour
     public void Update()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
-        if (boss == null) gameManager.Win();
+        
+        if (boss == null && !gameHasEnded)
+        {
+            gameHasEnded = true;
+            gameManager.Win();
+        }
     }
 }

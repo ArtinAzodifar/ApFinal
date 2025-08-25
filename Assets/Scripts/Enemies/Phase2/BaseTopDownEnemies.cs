@@ -31,7 +31,7 @@ public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    void Start()
+    protected void Start()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
 

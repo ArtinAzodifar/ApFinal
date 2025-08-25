@@ -92,7 +92,8 @@ public class GameManager : NetworkBehaviour
     private void applyWin()
     {
         Time.timeScale = 0f;
-        winScreen.SetActive(true);
+        RectTransform rectWinScreen = winScreen.GetComponent<RectTransform>();
+        UIAnimationManager.Instance.ShowWindow(rectWinScreen);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -206,7 +207,7 @@ public class GameManager : NetworkBehaviour
         NetworkManager.Singleton.SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
-    public void MainMenu()
+    public void MainMenu(bool shouldSave)
     {
         //in MainMenu we don't have network yet
         if (!isLocalMode && IsServer)
@@ -216,11 +217,11 @@ public class GameManager : NetworkBehaviour
         }
         else if (isLocalMode)
         {
+            if (shouldSave) SaveManager.Instance.SaveGame();
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
         Instance.isLocalMode = true;
     }
-
 
     public void LoginScene()
     {
