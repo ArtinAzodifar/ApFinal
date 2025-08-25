@@ -117,7 +117,7 @@ public class PauseMenuController : MonoBehaviour
                 Debug.Log("Options Selected!");
                 break;
             case 3: // Main Menu
-                GameManager.Instance.MainMenu();
+                GameManager.Instance.MainMenu(true);
                 break;
         }
     }

@@ -17,6 +17,7 @@ public class CloseRangeEnemy : BaseTopDownEnemies
 
     public void Start()
     {
+        base.Start();
         if (!gameManager.IsLocalMode() && !IsServer) return;
         DisableAllHitboxes();
     }

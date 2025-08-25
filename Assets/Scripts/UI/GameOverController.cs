@@ -15,7 +15,7 @@ public class GameOverMenuController : MonoBehaviour
 
         if (mainMenuButton != null)
         {
-            mainMenuButton.onClick.AddListener(GameManager.Instance.MainMenu);
+            mainMenuButton.onClick.AddListener(() => GameManager.Instance.MainMenu(false));
         }
     }
 }

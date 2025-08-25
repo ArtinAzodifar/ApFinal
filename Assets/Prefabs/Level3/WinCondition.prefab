@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5201092895025523322}
   - component: {fileID: 4836264999023899569}
   - component: {fileID: 4431594941441016814}
+  - component: {fileID: 3001537344879717952}
   m_Layer: 0
   m_Name: WinCondition
   m_TagString: Untagged
@@ -45,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2011713611
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 798106814
+  InScenePlacedSourceGlobalObjectIdHash: 227428466
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
@@ -72,3 +73,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   boss: {fileID: 0}
+--- !u!114 &3001537344879717952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018925814588400445}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29df7c9e3db587d49a6b02773b9cb997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  meleePosition: {fileID: 0}
+  rangePosition: {fileID: 0}
+  melee: {fileID: 0}
+  range: {fileID: 0}
+  meleeAttackZone: {fileID: 0}
+  rangeAttackZone: {fileID: 0}
+  attackBoxSize: {x: 800, y: 100}
+  hittableLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  Win: {fileID: 0}
