@@ -44,7 +44,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
     void Zoom()
     {
-        float requiredSize = GetRequiredSize();
+        float requiredSize = (targets[0].GetComponent<PlayerHealth>().getLives() > 0 && targets[1].GetComponent<PlayerHealth>().getLives() > 0) ?GetRequiredSize() : minSize;
         float targetSize = Mathf.Max(requiredSize, minSize);
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetSize, zoomSmoothTime * Time.deltaTime);
     }
@@ -65,7 +65,11 @@ public class MultipleTargetCamera : MonoBehaviour
 
     Vector3 GetCenterPoint()
     {
-        if (targets.Count == 1)
+        if (targets[0].GetComponent<PlayerHealth>().getLives() <= 0)
+        {
+            return targets[1].position;
+        }
+        if (targets[1].GetComponent<PlayerHealth>().getLives() <= 0)
         {
             return targets[0].position;
         }

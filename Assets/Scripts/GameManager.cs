@@ -23,6 +23,9 @@ public class GameManager : NetworkBehaviour
     public GameObject audioControllerPrefab;
     public GameObject musicPlayerPrefab;
     private bool isLocalMode;
+    
+    private bool won = false;
+    
 
     private void Awake()
     {
@@ -82,6 +85,7 @@ public class GameManager : NetworkBehaviour
 
     public void Win()
     {
+        won = true;
         if (isLocalMode) applyWin();
         else if (IsServer) applyWinClientRpc();
     }
@@ -217,10 +221,11 @@ public class GameManager : NetworkBehaviour
         }
         else if (isLocalMode)
         {
-            if (shouldSave) SaveManager.Instance.SaveGame();
+            if (shouldSave && !won) SaveManager.Instance.SaveGame();
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
         Instance.isLocalMode = true;
+        won = false;
     }
 
     public void LoginScene()

@@ -104,6 +104,19 @@ public class Boss : NetworkBehaviour
     public void FindPlayer()
     {
         if (!gameManager.IsLocalMode() && !IsServer) return;
+        
+        if (_meleePlayer.GetComponent<PlayerHealth>().getLives() <= 0)
+        {
+            _closestPlayer = _rangePlayer;
+            _distance = Vector2.Distance(transform.position, _rangePlayer.position);
+            return;
+        }
+        if(_rangePlayer.GetComponent<PlayerHealth>().getLives() <= 0)
+        {
+            _closestPlayer = _meleePlayer;
+            _distance = Vector2.Distance(transform.position, _meleePlayer.position);;
+            return;
+        }
 
         if (_meleePlayer != null && _rangePlayer != null)
         {
