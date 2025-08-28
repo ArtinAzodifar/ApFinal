@@ -682,7 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   speed: 3
-  damageAmount: 2
+  damageAmount: 10
   detectionRange: 10
   attackRange: 2
   attackCooldown: 1

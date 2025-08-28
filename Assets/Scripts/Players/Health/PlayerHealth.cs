@@ -3,11 +3,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : NetworkBehaviour, Damagable
 {
     private Animator animator;
     [SerializeField] private String healthTag;
+    [SerializeField] private Sprite deathSprite;
     private PlayerHB healthBar;
     private HealthPoint healthPoint;
     [SerializeField] private int maxLives;
@@ -16,6 +18,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     private NetworkVariable<int> lives = new NetworkVariable<int>(3);
     private NetworkVariable<bool> isDying = new NetworkVariable<bool>(false);
     private GameManager gameManager;
+    private GameObject otherPlayer;
 
     private DamageFlash _damageFlash;
 
@@ -36,6 +39,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
         healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
         healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
         _damageFlash = GetComponent<DamageFlash>();
+        otherPlayer = gameObject.tag.Equals("Player2") ? GameObject.FindWithTag("Player1") : GameObject.FindWithTag("Player2");
     }
 
     public void Start()
@@ -116,7 +120,15 @@ public class PlayerHealth : NetworkBehaviour, Damagable
     private IEnumerator GameOverCheck()
     {
         yield return new WaitForSeconds(2.5f);
-        if (lives.Value <= 0)
+        if (lives.Value <= 0 && !SceneManager.GetActiveScene().name.Equals("LevelThree"))
+        {
+            gameManager.GameOver();
+        } 
+        else if (lives.Value <= 0 && otherPlayer.GetComponent<PlayerHealth>().getLives() > 0)
+        {
+            permenantDeath();
+        }
+        else if (lives.Value <= 0)
         {
             gameManager.GameOver();
         }
@@ -130,6 +142,29 @@ public class PlayerHealth : NetworkBehaviour, Damagable
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
 
+    private void permenantDeath()
+    {
+        isDying.Value = true;
+        if(gameManager.IsLocalMode())
+        {
+            gameObject.GetComponent<BaseControll>().setIsInDamage(true);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Animator>().enabled = false;
+            GetComponent<SpriteRenderer>().sprite = deathSprite;
+        } else if (IsServer)
+        {
+            applyPermenantDeathClientRpc();
+        }
+    }
+    [ClientRpc]
+    private void applyPermenantDeathClientRpc()
+    {
+        gameObject.GetComponent<BaseControll>().setIsInDamage(true);
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Animator>().enabled = false;
+        GetComponent<SpriteRenderer>().sprite = deathSprite;
+    }
+    
     public void LoadHealth(int healthAmount, int livesAmount)
     {
         // Assign the new values to the NetworkVariables

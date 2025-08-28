@@ -66,6 +66,19 @@ public class BaseTopDownEnemies : NetworkBehaviour, MovingEnemy
         if (!gameManager.IsLocalMode() && !IsServer) return;
         if (enemyHealth != null && enemyHealth.IsDead()) return;
 
+        if (_meleePlayer.GetComponent<PlayerHealth>().getLives() <= 0)
+        {
+            _closestPlayer = _rangePlayer;
+            _distance = Vector2.Distance(transform.position, _rangePlayer.position);
+            return;
+        }
+        if(_rangePlayer.GetComponent<PlayerHealth>().getLives() <= 0)
+        {
+            _closestPlayer = _meleePlayer;
+            _distance = Vector2.Distance(transform.position, _meleePlayer.position);
+            return;
+        }
+
         if (_meleePlayer != null && _rangePlayer != null)
         {
             _distance1 = Vector2.Distance(transform.position, _meleePlayer.position);
