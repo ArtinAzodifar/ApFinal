@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using Unity.Cinemachine;
 using Unity.Netcode;
-using UnityEditor.Recorder.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Scripting.APIUpdating;
 
 public class Player1controll : BaseControll
 {
