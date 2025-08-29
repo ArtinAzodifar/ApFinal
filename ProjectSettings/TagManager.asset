@@ -19,6 +19,8 @@ TagManager:
   - GameOver
   - PauseScreen
   - FireBall
+  - ProjectilePool
+  - WinScreen
   layers:
   - Default
   - TransparentFX
@@ -36,7 +38,7 @@ TagManager:
   - Player1
   - Player2
   - Arrow
-  - 
+  - MenuUI
   - 
   - 
   - 
@@ -94,6 +96,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2489550621
+    locked: 0
+  - name: Level3Objects
+    uniqueID: 2503559835
     locked: 0
   - name: HealthBar
     uniqueID: 558454447

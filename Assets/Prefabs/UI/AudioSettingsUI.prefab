@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b8642a9d29430408422cc2a35629fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSlider: {fileID: 0}
   musicSlider: {fileID: 0}
-  sfxMuteToggle: {fileID: 0}
   musicMuteToggle: {fileID: 0}
-  sfxMuteIcon: {fileID: 0}
   musicMuteIcon: {fileID: 0}
-  muteSprite: {fileID: -1276094637, guid: ed6cbf7a97037f84e9f12e6ce565aa7c, type: 3}
-  unmuteSprite: {fileID: -1226052992, guid: ed6cbf7a97037f84e9f12e6ce565aa7c, type: 3}
+  sfxSlider: {fileID: 0}
+  sfxMuteToggle: {fileID: 0}
+  sfxMuteIcon: {fileID: 0}
+  muteSprite: {fileID: 21300000, guid: 5ffeca25c541db0409a9ae5c38d715b6, type: 3}
+  unmuteSprite: {fileID: 21300000, guid: 1fe32f83e2b97594c96ddbb07e15d299, type: 3}

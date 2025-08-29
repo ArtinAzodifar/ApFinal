@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
-using Unity.Cinemachine;
-using UnityEditor.Recorder.Input;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Scripting.APIUpdating;
 
 public class Player1controll : BaseControll
 {
@@ -16,26 +14,27 @@ public class Player1controll : BaseControll
     //inputs:
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && canDash && IsRunning() && !GetComponent<Player1Attack>().IsAttacking())
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (context.performed && canDash && IsRunning() && !GetComponent<Player1Attack>().IsAttacking() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             StartCoroutine(Dash());
-            animator.Play("Dash");
+            if (gameManager.IsLocalMode() || IsServer) animator.Play("Dash");
+            else dashAnimServerRpc();
         }
     }
+    [ServerRpc]
+    private void dashAnimServerRpc(){ animator.Play("Dash"); }
 
     //unity events:
     public override void Awake()
     {
         base.Awake();
         tr = GetComponent<TrailRenderer>();
-        vcam = GetComponent<CinemachineCamera>();
     }
     public override void Update()
     {
-        if (isDashing)
-        {
-            return;
-        }
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (isDashing)  return;
         base.Update();
     }
 

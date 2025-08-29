@@ -1,7 +1,10 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class ChunkManager : MonoBehaviour
+public class ChunkManager : NetworkBehaviour
 {
+    private int worldSeed;
+
     [Header("Chunk Settings")]
     [SerializeField] private int chunkWidth;
     [SerializeField] private float generateAheadDistance;
@@ -17,18 +20,40 @@ public class ChunkManager : MonoBehaviour
 
     [SerializeField] private int numOfChunks1 = 4;
     private int fixIndex = 1;
-    private int lastIndexChunk1 = -1; 
+    private int lastIndexChunk1 = -1;
     private int chunks1Counter = 0;
     private bool type1Ended = false;
 
     [SerializeField] private int numOfChunks2 = 3;
     private int lastIndexChunk2 = -1;
     private int chunks2Counter = 0;
+    private GameManager gameManager;
+
+    public void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     void Start()
     {
-        chunkWorldWidth = chunkWidth;
+        if (!gameManager.IsLocalMode() && !IsServer) return;
 
+        if (gameManager.IsLocalMode() && SaveManager.Instance != null && SaveManager.Instance.IsGameLoaded)
+        {
+            worldSeed = SaveManager.Instance.GetWorldSeed();
+        }
+        else
+        {
+            if (gameManager.IsLocalMode() || IsServer) worldSeed = Random.Range(int.MinValue, int.MaxValue);
+            if (gameManager.IsLocalMode() && SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SetWorldSeed(this.worldSeed);
+            }
+        }
+
+        Random.InitState(worldSeed);
+
+        chunkWorldWidth = chunkWidth;
         for (int i = 0; i < initialChunks; i++)
         {
             GameObject newChunk = GenerateChunk(i);
@@ -38,6 +63,8 @@ public class ChunkManager : MonoBehaviour
 
     void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         float furthestPlayerX = float.MinValue;
 
         foreach (GameObject player in players)
@@ -62,6 +89,8 @@ public class ChunkManager : MonoBehaviour
 
     GameObject GenerateChunk(int chunkIndex)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return null;
+
         GameObject selectedChunkPrefab = null;
         int randomChunkIndex;
         float positionY = 0f;
@@ -82,7 +111,6 @@ public class ChunkManager : MonoBehaviour
             selectedChunkPrefab = chunkPrefabs1[fixIndex];
             type1Ended = true;
             totalChunksGenerated++;
-            //return null;
         }
         else if (chunks2Counter < numOfChunks2)
         {
@@ -102,11 +130,34 @@ public class ChunkManager : MonoBehaviour
         }
 
         GameObject chunk = Instantiate(selectedChunkPrefab, transform);
-        //chunk.name = "Chunk_1_" + chunkIndex + "_Type_" + randomChunkIndex;
+
+
+        chunk.name = $"Chunk_{chunkIndex}";
 
         float positionX = chunkIndex * chunkWorldWidth;
-        chunk.transform.position = new Vector3(positionX, positionY, 0);
+        chunk.transform.position = new Vector3(positionX, positionY, 2);
+
+        if (!gameManager.IsLocalMode() && IsServer)
+        {
+            chunk.GetComponent<NetworkObject>().Spawn(true);
+            Debug.Log($"Spawned ID: {chunk.GetComponent<NetworkObject>().NetworkObjectId}");
+
+            //SpawnAllChildNetworkObjects(chunk);
+        }
 
         return chunk;
     }
+    
+    void SpawnAllChildNetworkObjects(GameObject parent)
+    {
+        NetworkObject[] netObjects = parent.GetComponentsInChildren<NetworkObject>(true);
+        foreach (var netObj in netObjects)
+        {
+            if (!netObj.IsSpawned && netObj.gameObject != parent)
+            {
+                netObj.Spawn();
+            }
+        }
+    }
+
 }

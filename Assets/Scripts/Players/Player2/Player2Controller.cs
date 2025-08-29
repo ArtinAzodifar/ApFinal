@@ -1,15 +1,16 @@
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player2Controller : BaseControll
 {
     private ObjectPooler ArrowPooler;
-    
+
     private bool _canDoubleJump;
     private bool isBoosted = false;
     private Coroutine boostCoroutine;
-    
+
     public override void Awake()
     {
         base.Awake();
@@ -25,48 +26,75 @@ public class Player2Controller : BaseControll
         DamageBooster.OnDamageBoost -= DamageBoost;
     }
 
+    //inputs
     public override void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && !IsInDamage() && !inKnock)
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (context.performed && isGrounded && !IsInDamage() && !inKnock && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             _canDoubleJump = true;
             base.OnJump(context);
-        } 
-        else if (context.performed && _canDoubleJump && !IsInDamage() && !inKnock)
+        }
+        else if (context.performed && _canDoubleJump && !IsInDamage() && !inKnock && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             _canDoubleJump = false;
-            animator.SetTrigger("DoubleJump");//should be changed
+            if (gameManager.IsLocalMode() || IsServer) animator.SetTrigger("DoubleJump");
+            else dJumpAnimServerRpc();
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(GetJumpForce() * Vector2.up, ForceMode2D.Impulse);
         }
-        
+
     }
+    [ServerRpc]
+    private void dJumpAnimServerRpc() { animator.SetTrigger("DoubleJump"); }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started && !IsInDamage())
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (context.started && !IsInDamage() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
-            animator.SetTrigger("Shoot");
+            if (gameManager.IsLocalMode() || IsServer) animator.SetTrigger("Shoot");
+            else shootAnimServerRpc();
         }
     }
+    [ServerRpc]
+    private void shootAnimServerRpc() { animator.SetTrigger("Shoot"); }
 
     private void Shoot()// is called in the middle of attack animation
+    {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
+        if (gameManager.IsLocalMode()) applyShoot();
+        else shootServerRpc();
+    }
+    private GameObject applyShoot()
     {
         float direction = transform.localScale.x > 0 ? 1f : -1f;
         float offsetX = Mathf.Abs(transform.localScale.x) * 0.5f;
         float offsetY = Mathf.Abs(transform.localScale.y) * 0.1f;
 
         Vector3 spawnPosition = transform.position + new Vector3(offsetX * direction, offsetY, 0f);
+
         GameObject newArrow = ArrowPooler.GetObject();
         newArrow.transform.position = spawnPosition;
         newArrow.gameObject.GetComponent<ArrowController>().SetDamageAmount(isBoosted ? 2 : 1);
         Vector3 arrowScale = newArrow.transform.localScale;
         arrowScale.x = Mathf.Abs(arrowScale.x) * direction;
         newArrow.transform.localScale = arrowScale;
+        return newArrow;
     }
-    
+
+    [ServerRpc]
+    private void shootServerRpc()
+    {
+        GameObject newArrow = applyShoot();
+
+        NetworkObject netObj = newArrow.GetComponent<NetworkObject>();
+        if (netObj != null && !netObj.IsSpawned) netObj.Spawn();
+    }
+
     private void DamageBoost(GameObject player, int damage, float time)
     {
+        if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (player != gameObject) return;
         if (boostCoroutine != null)
         {

@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Unity.Netcode;
 
-public class ArrowController : MonoBehaviour
+public class ArrowController : NetworkBehaviour
 {
     public static event Action P2Mana;
     [SerializeField] private float speed;
@@ -22,6 +23,8 @@ public class ArrowController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+
         isCollided = false;
         canMove = true;
         rb.constraints = RigidbodyConstraints2D.None;
@@ -31,10 +34,12 @@ public class ArrowController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= totalTime)
         {
-            gameObject.SetActive(false);
+            disableObject();
         }
         if (canMove)
         {
@@ -46,38 +51,55 @@ public class ArrowController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(isCollided) return;
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+
+        if (isCollided) return;
         isCollided = true;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             animator.SetTrigger("Arrow-hit");
             canMove = false;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            if (GameManager.Instance.IsLocalMode()) rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            else freezeClientRpc();
             StartCoroutine(ArrowDamageCooldown(3f));
-        } else if (collision.gameObject.CompareTag("Enemy"))
+        }
+        else if (collision.gameObject.CompareTag("Enemy"))
         {
             animator.SetTrigger("Arrow-Damage");
             if (collision.gameObject.GetComponent<Damagable>() != null)
             {
                 collision.gameObject.GetComponent<Damagable>().Damage(DamageAmount);
             }
-            P2Mana?.Invoke();
+            if (GameManager.Instance.IsLocalMode()) P2Mana?.Invoke();
+            else if (IsServer) invokeManaClientRpc();
             StartCoroutine(ArrowDamageCooldown(0.5f));
         }
         else
         {
-            gameObject.SetActive(false);
+            disableObject();
         }
-        
+
         canMove = false;
     }
+    [ClientRpc]
+    private void invokeManaClientRpc() { P2Mana?.Invoke(); }
+    [ClientRpc]
+    private void freezeClientRpc() { rb.constraints = RigidbodyConstraints2D.FreezeAll; }
 
     private IEnumerator ArrowDamageCooldown(float cooldownTime)
     {
         yield return new WaitForSeconds(cooldownTime);
-        gameObject.SetActive(false);
+        disableObject();
     }
-    
+
+    private void disableObject()
+    {
+        if (GameManager.Instance.IsLocalMode()) gameObject.SetActive(false);
+        else disableObjectClientRpc();
+    }
+    [ClientRpc]
+    private void disableObjectClientRpc() { gameObject.SetActive(false); }
+
     //getters:
     public int GetDamageAmount()
     {

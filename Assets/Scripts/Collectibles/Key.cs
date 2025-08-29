@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Key : MonoBehaviour
+public class Key : NetworkBehaviour
 {
     public static event Action KeyCollected;
     private bool isCollected = false;
@@ -9,19 +10,50 @@ public class Key : MonoBehaviour
 
     public void Start()
     {
-        if (gameManager.GetKey1())
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+
+        if (gameManager.GetKey())
         {
-            Destroy(gameObject);
+            //local
+            if (GameManager.Instance.IsLocalMode())
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            //online
+            if (GetComponent<NetworkObject>() != null)
+            {
+                if ((bool)GetComponent<NetworkObject>().IsSceneObject) DestroyClientRpc();
+                GetComponent<NetworkObject>().Despawn();
+            }
+            else DestroyClientRpc();
         }
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (!GameManager.Instance.IsLocalMode() && !IsServer) return;
+
         if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
         {
-            if (isCollected)    return;
+            if (isCollected) return;
             isCollected = true;
             KeyCollected?.Invoke();
-            Destroy(gameObject);
+            if (GetComponent<PersistentObject>() != null) GetComponent<PersistentObject>().OnProcessed();
+
+            //local
+            if (GameManager.Instance.IsLocalMode())
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            //online
+            if ((bool)GetComponent<NetworkObject>().IsSceneObject) DestroyClientRpc();
+            GetComponent<NetworkObject>().Despawn();
         }
     }
+
+    [ClientRpc]
+    private void DestroyClientRpc() { Destroy(gameObject); }
 }

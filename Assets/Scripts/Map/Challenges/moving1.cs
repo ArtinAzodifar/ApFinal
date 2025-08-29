@@ -1,51 +1,117 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
+using System.Collections.Generic;
+using UnityEngine.Rendering;
+using Unity.Mathematics;
 
-public class moving1 : MonoBehaviour
+public class moving1 : NetworkBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
-    
-     private bool movingToStart = false;
-     private bool shouldMoveToEnd = false;
-     private bool player1Touched = false;
-     private bool player2Touched = false;
+
+    private List<GameObject> connectedPlayers = new();
+
+    private bool movingToStart = false;
+    private bool shouldMoveToEnd = false;
+    private bool player1Touched = false;
+    private bool player2Touched = false;
+
+    private Rigidbody2D rb;
+    private Vector2 lastPosition;
+
+    private GameManager gameManager;
+
+    void Awake()
+    {
+        gameManager = GameManager.Instance;
+        rb = GetComponent<Rigidbody2D>();
+        lastPosition = (Vector2)transform.position;
+    }
 
     void Update()
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (movingToStart)
         {
-            MoveTo(startPoint.position);
-
             if (Vector2.Distance(transform.position, startPoint.position) < 0.01f)
             {
                 movingToStart = false;
             }
         }
-        else if (shouldMoveToEnd)
+    }
+
+    void FixedUpdate()
+    {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
+        Vector2 current = rb.position;
+        Vector2 target = ComputeTargetPosition(current);
+
+        rb.MovePosition(target);
+
+        Vector2 platformVelocity = (target - lastPosition) / Time.fixedDeltaTime;
+
+        if (platformVelocity != Vector2.zero && connectedPlayers.Count > 0)
         {
-            MoveTo(endPoint.position);
+
+            foreach (var go in connectedPlayers)
+            {
+                if (go == null) continue;
+
+                var netObj = go.GetComponent<NetworkObject>();
+
+                Rigidbody2D prb = go.GetComponent<Rigidbody2D>();
+                if (prb != null)
+                {
+                    Vector2 pv = platformVelocity;
+                    pv.y = 0f;
+                    if (gameManager.IsLocalMode()) prb.linearVelocity += pv;
+                    else changeVelocityClientRpc(netObj.NetworkObjectId, pv);
+                }
+            }
+        }
+
+        lastPosition = target;
+    }
+    
+    [ClientRpc]
+    private void changeVelocityClientRpc(ulong netObjId, Vector2 pv)
+    {
+        NetworkObject targetObj;
+        if (NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(netObjId, out targetObj))
+        {
+            if (NetworkManager.Singleton.LocalClientId == targetObj.OwnerClientId)
+            {
+                if (!IsServer) pv.x += 2f;
+                Rigidbody2D rb = targetObj.GetComponent<Rigidbody2D>();
+                rb.linearVelocity += pv;
+            }
+            
         }
     }
 
-    private void MoveTo(Vector2 target)
+    private Vector2 ComputeTargetPosition(Vector2 current)
     {
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        return movingToStart ? Vector2.MoveTowards(current, startPoint.position, speed * Time.fixedDeltaTime) : (shouldMoveToEnd ? Vector2.MoveTowards(current, endPoint.position, speed * Time.fixedDeltaTime) : current);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (collision.gameObject.CompareTag("Player1"))
         {
             player1Touched = true;
-            collision.transform.SetParent(transform);
+            if (!connectedPlayers.Contains(collision.gameObject)) connectedPlayers.Add(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Player2"))
         {
             player2Touched = true;
-            collision.transform.SetParent(transform);
+            if (!connectedPlayers.Contains(collision.gameObject)) connectedPlayers.Add(collision.gameObject);
         }
 
         if (player1Touched && player2Touched)
@@ -54,11 +120,13 @@ public class moving1 : MonoBehaviour
         }
     }
 
-    public void OnCollisionExit(Collision collision)
+    public void OnCollisionExit2D(Collision2D collision)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
         {
-            collision.transform.SetParent(null);
+            if (connectedPlayers.Contains(collision.gameObject)) connectedPlayers.Remove(collision.gameObject);
         }
     }
 

@@ -1,92 +1,103 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class AudioSettingsUI : MonoBehaviour
 {
-    public Slider sfxSlider;
+    [Header("Music UI References")]
     public Slider musicSlider;
-
-    public Toggle sfxMuteToggle;
     public Toggle musicMuteToggle;
-
-    public Image sfxMuteIcon;
     public Image musicMuteIcon;
 
+    [Header("SFX UI References")]
+    public Slider sfxSlider;
+    public Toggle sfxMuteToggle;
+    public Image sfxMuteIcon;
+
+    [Header("Mute Sprites")]
     public Sprite muteSprite;
     public Sprite unmuteSprite;
 
-    void Start()
+    private void Start()
     {
-        musicSlider.onValueChanged.AddListener(OnMusicSliderChanged);
-        sfxSlider.onValueChanged.AddListener(OnSFXSliderChanged);
-        
-        sfxSlider.value = AudioController.Instance.sfxVolume * 100;
-        musicSlider.value = AudioController.Instance.musicVolume * 100;
+        if (AudioController.Instance == null)
+        {
+            Debug.LogError("AudioController.Instance not found! AudioSettingsUI cannot initialize.", this.gameObject);
+            return;
+        }
 
+        if (musicSlider != null)
+            musicSlider.onValueChanged.AddListener(OnMusicSliderChanged);
+        if (sfxSlider != null)
+            sfxSlider.onValueChanged.AddListener(OnSfxSliderChanged);
         if (sfxMuteToggle != null)
-        {
-            sfxMuteToggle.onValueChanged.AddListener(OnSFXMuteToggleChanged);
-            sfxMuteToggle.isOn = AudioController.Instance.isSFXMuted;
-            UpdateMuteIcon(sfxMuteIcon, sfxMuteToggle.isOn);
-            sfxSlider.value = sfxMuteToggle.isOn ? 0 : AudioController.Instance.sfxVolume * 100;
-        }
-
+            sfxMuteToggle.onValueChanged.AddListener(OnSfxMuteToggleChanged);
         if (musicMuteToggle != null)
-        {
             musicMuteToggle.onValueChanged.AddListener(OnMusicMuteToggleChanged);
-            musicMuteToggle.isOn = AudioController.Instance.isMusicMuted;
-            UpdateMuteIcon(musicMuteIcon, musicMuteToggle.isOn);
-            musicSlider.value = musicMuteToggle.isOn ? 0 : AudioController.Instance.musicVolume * 100;
-        }
+
+        UpdateAllUI();
     }
 
-    public void OnSFXSliderChanged(float val)
+    public void OnSfxSliderChanged(float val)
     {
+        if (AudioController.Instance == null) return;
         AudioController.Instance.SetSFXVolume(val / 100f);
-    
-        if (val > 0 && sfxMuteToggle.isOn)
+
+        if (val > 0 && AudioController.Instance.isSFXMuted)
         {
-            sfxMuteToggle.isOn = false;
-        
-            OnSFXMuteToggleChanged(false);
+            AudioController.Instance.ToggleSFXMute(false);
         }
+        UpdateAllUI();
     }
 
     public void OnMusicSliderChanged(float val)
     {
+        if (AudioController.Instance == null) return;
         AudioController.Instance.SetMusicVolume(val / 100f);
-        if (val > 0 && musicMuteToggle.isOn)
+        if (val > 0 && AudioController.Instance.isMusicMuted)
         {
-        
-            musicMuteToggle.isOn = false;
-        
-            OnMusicMuteToggleChanged(false);
+            AudioController.Instance.ToggleMusicMute(false);
         }
+        UpdateAllUI();
     }
 
-    public void OnSFXMuteToggleChanged(bool isMuted)
+    public void OnSfxMuteToggleChanged(bool isMuted)
     {
+        if (AudioController.Instance == null) return;
         AudioController.Instance.ToggleSFXMute(isMuted);
-        UpdateMuteIcon(sfxMuteIcon, isMuted);
-    
-        sfxSlider.value = isMuted ? 0 : AudioController.Instance.sfxVolume * 100;
+        UpdateAllUI();
     }
 
     public void OnMusicMuteToggleChanged(bool isMuted)
     {
-        
+        if (AudioController.Instance == null) return;
         AudioController.Instance.ToggleMusicMute(isMuted);
-        UpdateMuteIcon(musicMuteIcon, isMuted);
-
-        musicSlider.value = isMuted ? 0 : AudioController.Instance.musicVolume * 100;
+        UpdateAllUI();
     }
 
-    private void UpdateMuteIcon(Image iconImage, bool isMuted)
+    private void UpdateAllUI()
     {
-        if (iconImage != null)
-        {
-            iconImage.sprite = isMuted ? muteSprite : unmuteSprite;
-        }
+        if (AudioController.Instance == null) return;
+        
+        float sfxVol = AudioController.Instance.sfxVolume;
+        float musicVol = AudioController.Instance.musicVolume;
+        bool isSfxMuted = AudioController.Instance.isSFXMuted;
+        bool isMusicMuted = AudioController.Instance.isMusicMuted;
+
+        // Update SFX UI
+        if (sfxSlider != null)
+            sfxSlider.SetValueWithoutNotify(isSfxMuted ? 0 : sfxVol * 100);
+        if (sfxMuteToggle != null)
+            sfxMuteToggle.SetIsOnWithoutNotify(isSfxMuted);
+        if (sfxMuteIcon != null && muteSprite != null && unmuteSprite != null)
+            sfxMuteIcon.sprite = isSfxMuted ? muteSprite : unmuteSprite;
+
+        // Update Music UI
+        if (musicSlider != null)
+            musicSlider.SetValueWithoutNotify(isMusicMuted ? 0 : musicVol * 100);
+        if (musicMuteToggle != null)
+            musicMuteToggle.SetIsOnWithoutNotify(isMusicMuted);
+        if (musicMuteIcon != null && muteSprite != null && unmuteSprite != null)
+            musicMuteIcon.sprite = isMusicMuted ? muteSprite : unmuteSprite;
     }
 }

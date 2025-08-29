@@ -31,16 +31,12 @@ public class TeleportException : MonoBehaviour
         }
         if (other.CompareTag("Player1"))
         {
-            Light2D Light = player1.GetComponentInChildren<Light2D>();
-            if (Light != null) Destroy(Light.gameObject);
             DestroyAllChildren();
             player1.Teleport(destination1.position);
         }
 
         if (other.CompareTag("Player2"))
         {
-            Light2D Light = player2.GetComponentInChildren<Light2D>();
-            if (Light != null) Destroy(Light.gameObject);
             DestroyAllChildren();
             player2.Teleport(destination2.position);
         }

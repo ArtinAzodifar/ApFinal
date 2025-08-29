@@ -2,18 +2,25 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour, Damagable
+public class PlayerHealth : NetworkBehaviour, Damagable
 {
     private Animator animator;
     [SerializeField] private String healthTag;
+    [SerializeField] private Sprite deathSprite;
     private PlayerHB healthBar;
     private HealthPoint healthPoint;
     [SerializeField] private int maxLives;
     [SerializeField] private int MaxHealth;
-    private int Health;
-    private int lives = 3;
+    private NetworkVariable<int> Health = new NetworkVariable<int>();
+    private NetworkVariable<int> lives = new NetworkVariable<int>(3);
+    private NetworkVariable<bool> isDying = new NetworkVariable<bool>(false);
     private GameManager gameManager;
+    private GameObject otherPlayer;
+
+    private DamageFlash _damageFlash;
 
     private void OnEnable()
     {
@@ -31,53 +38,101 @@ public class PlayerHealth : MonoBehaviour, Damagable
         animator = GetComponent<Animator>();
         healthBar = GameObject.FindWithTag(healthTag).GetComponentInChildren<PlayerHB>();
         healthPoint = GameObject.FindWithTag(healthTag).GetComponentInChildren<HealthPoint>();
+        _damageFlash = GetComponent<DamageFlash>();
+        otherPlayer = gameObject.tag.Equals("Player2") ? GameObject.FindWithTag("Player1") : GameObject.FindWithTag("Player2");
     }
 
     public void Start()
     {
-        Health = MaxHealth;
+        // This is fine, it just sets the slider's maximum possible value.
         healthBar.SetMaxHealth(MaxHealth);
-        healthBar.SetHealth(MaxHealth);
-        healthPoint.SetLives(lives);
+
+        // Only initialize health and UI for a new game.
+        // If a game is loaded, the SaveManager will handle setting the values.
+        if (SaveManager.Instance == null || !SaveManager.Instance.IsGameLoaded)
+        {
+            if (gameManager.IsLocalMode() || IsServer)
+            {
+                Health.Value = MaxHealth;
+            }
+            // These lines are now correctly inside the IF block.
+            healthBar.SetHealth(MaxHealth);
+            healthPoint.SetLives(lives.Value);
+        }
     }
 
     public void Damage(int amount)
     {
-        Health -= amount;
-        StartCoroutine(LockPlayer());
-        healthBar.SetHealth(Health);
-        if (Health <= 0)
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
+        if (isDying.Value || gameObject.GetComponent<BaseControll>().IsInDamage()) return;
+
+        if (_damageFlash != null)
         {
-            animator.SetTrigger("Death");
-            Health = MaxHealth;
-            lives--;
-            healthBar.SetHealth(Health);
-            healthPoint.ExplodeHeart();
-            StartCoroutine(GameOverCheck());
+            if (gameManager.IsLocalMode()) _damageFlash.CallDamageFlash();
+            else if (IsServer) damageFlashClientRpc();
         }
-        else
+
+        Health.Value -= amount;
+
+        if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
+        else if (IsServer) updateHealthBarClientRpc(Health.Value);
+
+        StartCoroutine(LockPlayer());
+
+        if (Health.Value <= 0)
         {
-            animator.SetTrigger("TakeHit");
+            isDying.Value = true;
+            animator.SetTrigger("Death");
+            Health.Value = MaxHealth;
+            lives.Value--;
+
+            //health bar reset
+            if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
+            else if (IsServer) updateHealthBarClientRpc(Health.Value);
+
+
+            //health point check
+            if (gameManager.IsLocalMode()) healthPoint.ExplodeHeart();
+            else if (IsServer) explodeHeartClientRpc();
+
+            StartCoroutine(GameOverCheck());
         }
     }
 
     public void GetLife(GameObject player)
     {
+        if (!gameManager.IsLocalMode() && !IsServer) return;
+
         if (player != gameObject) return;
-        Health = MaxHealth;
-        healthBar.SetHealth(Health);
-        if(lives == maxLives) return;
-        lives++;
-        healthPoint.AddHeart();
+        Health.Value = MaxHealth;
+
+        if (gameManager.IsLocalMode()) healthBar.SetHealth(Health.Value);
+        else if (IsServer) updateHealthBarClientRpc(Health.Value);
+
+        if (lives.Value == maxLives) return;
+        lives.Value++;
+
+        if (gameManager.IsLocalMode()) healthPoint.AddHeart();
+        else if (IsServer) addHeartClientRpc();
     }
 
     private IEnumerator GameOverCheck()
     {
-        yield return new WaitForSeconds(1f);
-        if (lives <= 0)
+        yield return new WaitForSeconds(2.5f);
+        if (lives.Value <= 0 && !SceneManager.GetActiveScene().name.Equals("LevelThree"))
+        {
+            gameManager.GameOver();
+        } 
+        else if (lives.Value <= 0 && otherPlayer.GetComponent<PlayerHealth>().getLives() > 0)
+        {
+            permenantDeath();
+        }
+        else if (lives.Value <= 0)
         {
             gameManager.GameOver();
         }
+        isDying.Value = false;
     }
 
     private IEnumerator LockPlayer()
@@ -86,4 +141,72 @@ public class PlayerHealth : MonoBehaviour, Damagable
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
+
+    public void permenantDeath()
+    {
+        isDying.Value = true;
+        if(gameManager.IsLocalMode())
+        {
+            gameObject.GetComponent<BaseControll>().setIsInDamage(true);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Animator>().enabled = false;
+            GetComponent<SpriteRenderer>().sprite = deathSprite;
+        } else if (IsServer)
+        {
+            applyPermenantDeathClientRpc();
+        }
+    }
+    [ClientRpc]
+    private void applyPermenantDeathClientRpc()
+    {
+        gameObject.GetComponent<BaseControll>().setIsInDamage(true);
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Animator>().enabled = false;
+        GetComponent<SpriteRenderer>().sprite = deathSprite;
+    }
+    
+    public void LoadHealth(int healthAmount, int livesAmount)
+    {
+        // Assign the new values to the NetworkVariables
+        Health.Value = healthAmount;
+        lives.Value = livesAmount;
+
+        // Set the UI using the direct parameter values, NOT by reading back from the NetworkVariable
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(healthAmount); // Use healthAmount directly
+        healthPoint.SetLives(livesAmount); // Use livesAmount directly
+    }
+
+
+    //getters
+    public int getHealth()
+    {
+        return Health.Value;
+    }
+    public int getLives()
+    {
+        return lives.Value;
+    }
+    public bool IsDying()
+    {
+        return isDying.Value;
+    }
+
+    //setter
+    public void setHealth(int amount)
+    {
+        Health.Value = amount;
+    }
+
+
+    //Rpc - for UI update in online mode
+    [ClientRpc]
+    private void updateHealthBarClientRpc(int health) { healthBar.SetHealth(health); }
+    [ClientRpc]
+    private void explodeHeartClientRpc() { healthPoint.ExplodeHeart(); }
+    [ClientRpc]
+    private void addHeartClientRpc() { healthPoint.AddHeart(); }
+    [ClientRpc]
+    private void damageFlashClientRpc() { _damageFlash.CallDamageFlash(); }
 }
+
