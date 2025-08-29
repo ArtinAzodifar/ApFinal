@@ -350,7 +350,7 @@ MonoBehaviour:
   initialHealth: 25
   healthBar: {fileID: 5724408953543398926}
   isDead: 0
-  deathSoundName: 
+  deathSoundName: BossDeath
 --- !u!114 &7478937240294271037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,6 +527,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 39e3251703169d74f8b10cb5a8c9a9f2, type: 3}
   - name: BossAttack
     clip: {fileID: 8300000, guid: 54334a24312df5c46b051193bf1b77f3, type: 3}
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: 97c94413e09e8c249a557c4cae065f6f, type: 3}
 --- !u!82 &5084175979682958390
 AudioSource:
   m_ObjectHideFlags: 0

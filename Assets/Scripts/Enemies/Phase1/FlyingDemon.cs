@@ -1,8 +1,6 @@
 using System;
-using UnityEditor.UIElements;
 using UnityEngine;
 using Unity.Netcode;
-using Unity.VisualScripting;
 
 public class FlyingDemon : NetworkBehaviour
 {
