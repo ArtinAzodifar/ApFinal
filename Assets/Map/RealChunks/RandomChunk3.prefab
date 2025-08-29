@@ -8568,7 +8568,7 @@ GameObject:
   - component: {fileID: 8216051919077385831}
   - component: {fileID: 112136998584577768}
   - component: {fileID: 2645259318791090249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

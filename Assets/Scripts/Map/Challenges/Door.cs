@@ -51,9 +51,9 @@ public class Door : MonoBehaviour
     {
         foreach (GameObject enemy in enemies)
         {
-            if (enemy != null)
+            if (enemy != null && enemy.activeInHierarchy)
                 return false;
         }
-        return true;
+        return true; 
     }
 }

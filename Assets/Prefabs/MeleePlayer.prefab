@@ -940,7 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2746986624
+  GlobalObjectIdHash: 4179032615
   InScenePlacedSourceGlobalObjectIdHash: 579151581
   DeferredDespawnTick: 0
   Ownership: 1
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   healthTag: MeleeHealth
-  deathSprite: {fileID: 0}
+  deathSprite: {fileID: 21300000, guid: 68992c7f55951b249b27dddf66e55294, type: 3}
   maxLives: 5
   MaxHealth: 150
 --- !u!114 &5854428833428526923

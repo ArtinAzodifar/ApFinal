@@ -130,7 +130,7 @@ public class GameManager : NetworkBehaviour
     //level set
     public void StartGame()
     {
-        if (isLocalMode) SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
+        if (isLocalMode) SceneManager.LoadScene("LevelThree", LoadSceneMode.Single);
         //online mode
         else NetworkManager.Singleton.SceneManager.LoadScene("LevelOne", LoadSceneMode.Single);
     }
