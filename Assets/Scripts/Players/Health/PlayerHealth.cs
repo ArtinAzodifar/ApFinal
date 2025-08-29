@@ -142,7 +142,7 @@ public class PlayerHealth : NetworkBehaviour, Damagable
         gameObject.GetComponent<BaseControll>().setIsInDamage(false);
     }
 
-    private void permenantDeath()
+    public void permenantDeath()
     {
         isDying.Value = true;
         if(gameManager.IsLocalMode())

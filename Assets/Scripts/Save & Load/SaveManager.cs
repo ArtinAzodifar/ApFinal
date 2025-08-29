@@ -129,6 +129,7 @@ public class SaveManager : MonoBehaviour
             }
             player1.GetComponent<PlayerHealth>().LoadHealth(gameData.player1_health, gameData.player1_lives);
             player1.GetComponent<Player1SuperAttack>().setMana(gameData.player1_mana);
+            if (gameData.player1_lives <= 0 ) player1.GetComponent<PlayerHealth>().permenantDeath();
         }
 
         GameObject player2 = GameObject.FindWithTag("Player2");
@@ -141,6 +142,7 @@ public class SaveManager : MonoBehaviour
             }
             player2.GetComponent<PlayerHealth>().LoadHealth(gameData.player2_health, gameData.player2_lives);
             player2.GetComponent<P2SuperShoot>().setMana(gameData.player2_mana);
+            if (gameData.player2_lives <= 0 ) player2.GetComponent<PlayerHealth>().permenantDeath();
         }
 
         IsChangingLevel = false;

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 2966937861
       objectReference: {fileID: 0}
+    - target: {fileID: -1082669617771971578, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1244305224
+      objectReference: {fileID: 0}
     - target: {fileID: 816654553973444014, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_DefaultActionMap
       value: rangeLevel3
@@ -250,11 +254,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 62326e0dcd444f244a387735b467612b, type: 2}
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -203.65
+      value: -191.34175
       objectReference: {fileID: 0}
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.64
+      value: -69
       objectReference: {fileID: 0}
     - target: {fileID: 5886372563858301900, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
       propertyPath: m_LocalPosition.z
@@ -308,6 +312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeLevel3
       objectReference: {fileID: 0}
+    - target: {fileID: 8994911087607422442, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 590615391, guid: 29f83345831c24544ae1e20b4e396321, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5060072617130127336, guid: 3c42a5b66ca018d4dabf5f501d2d3251, type: 3}
