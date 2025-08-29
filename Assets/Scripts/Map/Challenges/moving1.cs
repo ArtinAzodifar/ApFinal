@@ -85,6 +85,7 @@ public class moving1 : NetworkBehaviour
         {
             if (NetworkManager.Singleton.LocalClientId == targetObj.OwnerClientId)
             {
+                if (!IsServer) pv.x += 2f;
                 Rigidbody2D rb = targetObj.GetComponent<Rigidbody2D>();
                 rb.linearVelocity += pv;
             }

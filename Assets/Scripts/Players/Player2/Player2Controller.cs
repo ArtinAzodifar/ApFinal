@@ -38,21 +38,27 @@ public class Player2Controller : BaseControll
         else if (context.performed && _canDoubleJump && !IsInDamage() && !inKnock && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             _canDoubleJump = false;
-            animator.SetTrigger("DoubleJump");//should be changed
+            if (gameManager.IsLocalMode() || IsServer) animator.SetTrigger("DoubleJump");
+            else dJumpAnimServerRpc();
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(GetJumpForce() * Vector2.up, ForceMode2D.Impulse);
         }
 
     }
+    [ServerRpc]
+    private void dJumpAnimServerRpc() { animator.SetTrigger("DoubleJump"); }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (context.started && !IsInDamage() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
-            animator.SetTrigger("Shoot");
+            if (gameManager.IsLocalMode() || IsServer) animator.SetTrigger("Shoot");
+            else shootAnimServerRpc();
         }
     }
+    [ServerRpc]
+    private void shootAnimServerRpc() { animator.SetTrigger("Shoot"); }
 
     private void Shoot()// is called in the middle of attack animation
     {

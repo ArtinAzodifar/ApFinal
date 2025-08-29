@@ -26,7 +26,7 @@ public class BaseControll : NetworkBehaviour
     private bool topDown;
     private const float SCALE = 2.2f;
     protected GameManager gameManager;
-    
+
 
     //inputs:
     public void OnMove(InputAction.CallbackContext context)
@@ -40,10 +40,13 @@ public class BaseControll : NetworkBehaviour
         if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (context.performed && isGrounded && !isInDamage && !inKnock && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
-            animator.SetTrigger("Jump");
+            if (gameManager.IsLocalMode() || IsServer) animator.SetTrigger("Jump");
+            else jumpAnimServerRpc();
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
     }
+    [ServerRpc]
+    private void jumpAnimServerRpc() { animator.SetTrigger("Jump"); }
 
     //unity events:
     public virtual void Awake()
@@ -77,12 +80,17 @@ public class BaseControll : NetworkBehaviour
     {
         if (!gameManager.IsLocalMode() && !IsOwner) return;
         if (isInDamage || inKnock) return;
-        animator.SetBool("Run", movingInput.x != 0 || movingInput.y != 0);
+        
+        if (gameManager.IsLocalMode() || IsServer) animator.SetBool("Run", movingInput.x != 0 || movingInput.y != 0);
+        else runAnimServerRpc(movingInput.x != 0 || movingInput.y != 0);
+
         //character direction
         transform.localScale = movingInput.x > 0 ? new Vector3(SCALE, SCALE, SCALE) : movingInput.x < 0 ? transform.localScale = new Vector3(-SCALE, SCALE, SCALE) : transform.localScale = transform.localScale;
         rb.linearVelocity = new Vector2(movingInput.x * speed, topDown ? movingInput.y * speed : rb.linearVelocity.y);
         if (gameObject.GetComponent<PlayerHealth>().IsDying()) rb.linearVelocity = Vector2.zero;
     }
+    [ServerRpc]
+    private void runAnimServerRpc(bool value) { animator.SetBool("Run", value); }
     public void GroundCheck()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundCheckRadius, groundLayer);

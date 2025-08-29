@@ -3,6 +3,7 @@ using UnityEngine;
 using Unity.Netcode;
 using System.Collections;
 using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealth : NetworkBehaviour, Damagable
 {
@@ -114,9 +115,9 @@ public class EnemyHealth : NetworkBehaviour, Damagable
                 if (gameManager.IsLocalMode() && GetComponent<PersistentObject>() != null) GetComponent<PersistentObject>().OnProcessed();
 
                 //delete object
-                if (gameManager.IsLocalMode()) Destroy(gameObject, 1.8f);
+                if (gameManager.IsLocalMode()) Destroy(gameObject, !SceneManager.GetActiveScene().name.Equals("LevelThree") ? 1.8f : 0.8f);
                 else if (IsServer && GetComponent<NetworkObject>() != null) StartCoroutine(Despawn());
-                else if (IsServer) DestroyClientRpc(1.8f);
+                else if (IsServer) DestroyClientRpc(!SceneManager.GetActiveScene().name.Equals("LevelThree") ? 1.8f : 0.8f);
             }
             else
             {
@@ -158,7 +159,7 @@ public class EnemyHealth : NetworkBehaviour, Damagable
 
     private IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(!SceneManager.GetActiveScene().name.Equals("LevelThree") ? 1.8f : 0.8f);
         if ((bool)GetComponent<NetworkObject>().IsSceneObject) DestroyClientRpc(0);
         gameObject.GetComponent<NetworkObject>().Despawn();
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Unity.Cinemachine;
+using Unity.Netcode;
 using UnityEditor.Recorder.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,9 +21,12 @@ public class Player1controll : BaseControll
         if (context.performed && canDash && IsRunning() && !GetComponent<Player1Attack>().IsAttacking() && !gameObject.GetComponent<PlayerHealth>().IsDying())
         {
             StartCoroutine(Dash());
-            animator.Play("Dash");
+            if (gameManager.IsLocalMode() || IsServer) animator.Play("Dash");
+            else dashAnimServerRpc();
         }
     }
+    [ServerRpc]
+    private void dashAnimServerRpc(){ animator.Play("Dash"); }
 
     //unity events:
     public override void Awake()
