@@ -11,16 +11,17 @@ https://github.com/ArtinAzodifar/ApFinal/releases/tag/v1.0.0
 ---
 
 ## 🎮 Preview 
-<img width="1747" height="952" alt="image" src="https://github.com/user-attachments/assets/64d88a3d-ef90-4e15-87b8-42141e8a0c51" />
 
-<img width="1433" height="722" alt="image" src="https://github.com/user-attachments/assets/5b0fd59b-2708-4d9e-8db4-aff692bdb02e" />
-
-<img width="1742" height="975" alt="image" src="https://github.com/user-attachments/assets/4d36b7c6-84b2-4055-9be9-31cba8c6f7ef" />
-
-<img width="1810" height="986" alt="image" src="https://github.com/user-attachments/assets/54d82231-549a-421a-b2a1-ee7177b941a8" />
-
-
-
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/64d88a3d-ef90-4e15-87b8-42141e8a0c51"></td>
+    <td><img src="https://github.com/user-attachments/assets/5b0fd59b-2708-4d9e-8db4-aff692bdb02e"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/4d36b7c6-84b2-4055-9be9-31cba8c6f7ef"></td>
+    <td><img src="https://github.com/user-attachments/assets/54d82231-549a-421a-b2a1-ee7177b941a8"></td>
+  </tr>
+</table>
 
 ---
 
