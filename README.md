@@ -4,6 +4,12 @@ A cooperative **2D platformer game** built in Unity, featuring **split-screen**,
 
 ---
 
+## Downloads
+You can access the builds from the release page: 
+https://github.com/ArtinAzodifar/ApFinal/releases/tag/v1.0.0
+
+---
+
 ## 🎮 Preview 
 <img width="1747" height="952" alt="image" src="https://github.com/user-attachments/assets/64d88a3d-ef90-4e15-87b8-42141e8a0c51" />
 
